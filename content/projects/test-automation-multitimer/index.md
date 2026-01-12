@@ -56,3 +56,6 @@ Manual, timed DMM monitoring is repetitive and easy to mess up: the instrument c
 - The UI attempts MAT-file saving via `instKS_34461A.save_matfile(...)`, but `instKS_34461A` in `dmm_driver.py` does not define `save_matfile`; as-is, saves will be skipped unless the driver/base class is updated.
 - A MAT save implementation exists in `equips_final.py` (`bATEinst_base.save_matfile` using `scipy.io.savemat`), but the current UI imports `instKS_34461A` from `dmm_driver.py`, so that implementation is not wired into the run path.
 - Sampling runs in the UI thread; long runs rely on frequent `update()` calls rather than a background worker/thread, which can still impact responsiveness under load.
+
+## Links
+- [GitHub](https://github.com/lishehao-ctrl/test-automation-multitimer)
