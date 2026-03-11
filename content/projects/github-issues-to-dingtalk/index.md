@@ -31,4 +31,4 @@ issue events to DingTalk, ensuring that key updates are visible to the entire te
 - Faster response to critical updates
 
 ## Links
-- GitHub: https://github.com/lishehao-ctrl/github-issues-to-dingtalk (coming soon)
+- GitHub: https://github.com/lishehao/github-issues-to-dingtalk (coming soon)

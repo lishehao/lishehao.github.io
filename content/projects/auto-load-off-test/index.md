@@ -45,4 +45,4 @@ This project implements an end-to-end automation pipeline that:
 - Managing long-running sweeps without losing logs/data and keeping run artifacts consistent
 
 ## Links
-- GitHub: https://github.com/lishehao-ctrl/auto-load-off-test
+- GitHub: https://github.com/lishehao/auto-load-off-test

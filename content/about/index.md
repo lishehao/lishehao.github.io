@@ -52,5 +52,5 @@ I’m interested in machine learning. Long term, I want to work at the intersect
 
 ## Links
 
-* [GitHub](https://github.com/lishehao-ctrl)
+* [GitHub](https://github.com/lishehao)
 * [LinkedIn](https://www.linkedin.com/in/shehao-li-897626267/)

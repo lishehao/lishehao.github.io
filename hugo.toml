@@ -1,6 +1,6 @@
 theme = "PaperMod"
 publishDir = "docs"
-baseURL = "https://lishehao-ctrl.github.io/"
+baseURL = "https://lishehao.github.io/"
 title = "Shehao Li"
 
 [menu]

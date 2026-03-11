@@ -58,4 +58,4 @@ This project implements a small email-to-task pipeline that:
 - Centralizes configuration and validates required inputs early to avoid silent failures.
 
 ## Links
-- GitHub: https://github.com/lishehao-ctrl/mail-to-dingtalk-todo
+- GitHub: https://github.com/lishehao/mail-to-dingtalk-todo

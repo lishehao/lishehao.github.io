@@ -58,4 +58,4 @@ Manual, timed DMM monitoring is repetitive and easy to mess up: the instrument c
 - Sampling runs in the UI thread; long runs rely on frequent `update()` calls rather than a background worker/thread, which can still impact responsiveness under load.
 
 ## Links
-- [GitHub](https://github.com/lishehao-ctrl/test-automation-multitimer)
+- [GitHub](https://github.com/lishehao/test-automation-multitimer)
