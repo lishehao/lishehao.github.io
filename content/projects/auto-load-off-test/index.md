@@ -1,48 +1,44 @@
 ---
 title: "Auto Load-Off Test"
-summary: "Python GUI that automates instrument-driven test runs: configures devices via SCPI/PyVISA, executes repeatable sweeps, logs results, and generates plots."
+summary: "Python automation tool for AWG + oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export."
 tags: ["Python", "Test Automation", "PyVISA", "SCPI", "Tkinter", "Data Logging"]
-weight: 10
+weight: 20
 ---
 
 ## Overview
-Auto Load-Off Test is a Python-based test automation tool that replaces a repetitive “configure instruments → run sweep → record data → plot results” workflow with a single, repeatable run. It provides a GUI for configuring a test, drives lab instruments programmatically, collects measurements, and produces structured outputs for review.
+
+Auto Load-Off Test is a Python-based validation tool for instrument-driven test workflows. It automates AWG and oscilloscope control, standardizes run setup, and produces structured outputs so verification runs can be repeated and compared reliably.
 
 ## Problem
-A manual test run typically involves repeatedly:
-- Setting instrument parameters and keeping them consistent across runs
-- Executing the same sweep procedure and timing each step correctly
-- Recording measurements and organizing files for later comparison
-- Regenerating plots when parameters change
 
-This is time-consuming, easy to make inconsistent, and difficult to reproduce exactly.
+Manual validation runs are slow and inconsistent. Test engineers have to repeatedly configure instruments, execute the same sequence, collect outputs, and整理 results, which makes it hard to keep runs reproducible.
 
 ## Solution
-This project implements an end-to-end automation pipeline that:
-- Encodes test configuration as explicit inputs (rather than “remembered” instrument settings)
-- Runs sweeps automatically with deterministic step order
-- Captures measurements and timestamps in a structured format
-- Generates plots and saves artifacts for later analysis
+
+- Automated the end-to-end validation sequence for AWG + oscilloscope workflows
+- Added validation, logging, retry/timeout handling, and CSV/MAT export
+- Turned a manual lab-style process into a repeatable tool that supports actual team usage
 
 ## Architecture
-- **GUI (Tkinter)**: test configuration, run control, and status/log display
-- **Device abstraction layer**: instrument interfaces separated from the UI
-- **Transport + protocol**: SCPI commands over VISA sessions (PyVISA)
-- **Outputs**: logged data files and plots generated from the same captured dataset
+
+- **UI layer** for run configuration and execution control
+- **Instrument layer** built on PyVISA + SCPI for command orchestration
+- **Output layer** for structured logs and exported artifacts used in later comparison
 
 ## Tech Stack
-- Python
-- Tkinter
-- PyVISA (VISA session management)
-- SCPI (instrument command protocol)
-- multi-threading (UI responsiveness during runs)
-- Matplotlib (plotting)
-- NumPy (data handling)
 
-## What makes this project non-trivial
-- Treating a lab “procedure” as a software pipeline: inputs → deterministic execution → reproducible outputs
-- Separating UI concerns from instrument control so devices can be swapped/extended with minimal changes
-- Managing long-running sweeps without losing logs/data and keeping run artifacts consistent
+- Python
+- PyVISA
+- SCPI
+- Tkinter
+- CSV / MAT export
+
+## Impact
+
+- Reduced test preparation and result整理 effort by **75%**
+- Supported a real validation workflow used by **about 5 users**
+- Improved repeatability and traceability for internal test runs
 
 ## Links
+
 - GitHub: https://github.com/lishehao/auto-load-off-test

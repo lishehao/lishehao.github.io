@@ -1,56 +1,56 @@
 ---
-
 title: "About"
-summary: "Background, focus areas, and links for Shehao Li."
-tags: ["Profile", "UCSD", "Software Engineering", "Machine Learning", "Test Automation"]
-----------------------------------------------------------------------------------------
+summary: "Background, experience, and focus areas for Shehao Li."
+tags: ["Profile", "UCSD", "Backend", "AI Engineering", "Software Engineering"]
+---
 
-I’m Shehao Li, a UC San Diego undergraduate majoring in Math–Computer Science.
+I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and a Software Engineer Intern candidate focused on backend systems, software reliability, test/validation workflows, and operationalizing AI into maintainable product pipelines.
 
-I enjoy building practical software that makes real workflows more repeatable: test/measurement automation, small tools that turn messy inputs into structured outputs, and web prototypes that people can actually use.
+## Snapshot
 
-I’m interested in machine learning. Long term, I want to work at the intersection of **ML and experiment/evaluation infrastructure**—the engineering side that makes results reproducible, comparable, and easier to debug.
+- University of California, San Diego (UCSD)
+- Major: Mathematics-Computer Science
+- Expected graduation: June 2027
+- GPA: 3.95
+- Based in Shanghai, China
 
-## Background
+## Internship Experience
 
-* UC San Diego (UCSD)
-* Major: Math–Computer Science
+### Saiwei — Software Engineering Intern / Test Engineering Intern
+Shanghai, China | Jul 2025 - Sep 2025
 
-## What I’ve worked on
+Worked on medical imaging device testing workflows and internal tooling. Built Python automation tools that supported requirement understanding, implementation, debugging, validation, and rollout support. Collaborated closely with test engineers and PMs to improve execution efficiency and process consistency.
 
-* **Test & measurement automation**
-  Built Python-based automation for lab-style workflows (instrument control patterns, repeatable runs, and structured logging). A recurring theme in my projects is designing runs so results can be reproduced later and compared across changes.
+## What I Build
 
-* **Workflow automation tools**
-  Built small scripts that convert incoming information into trackable tasks (with attention to idempotency so the system stays consistent when inputs repeat).
+- **Backend systems** that make data flow explicit, reviewable, and reliable
+- **Testing and validation tooling** with strong logging, retries, and deterministic boundaries
+- **AI-enabled products** where LLMs are constrained to the parts they are good at, while critical state and execution remain deterministic
 
-* **Web system prototype (in progress)**
-  Prototyping a real-time queue-style web app idea (Office Hours / TA Queue): students join a queue, staff manage help flow, and the system can later support basic analytics.
+## Selected Work
 
-## Current focus
+- **[CalendarDIFF](/projects/calendardiff/)** — schedule-change management system using ICS + Gmail, review workflows, and reliable notifications
+- **[AI Narrative Platform](/projects/ai-narrative-platform/)** — author/play split architecture with LangGraph workflows, deterministic runtime, and generated frontend SDKs
+- **[Auto Load-Off Test](/projects/auto-load-off-test/)** — automation tool for repeatable validation runs with structured outputs and test-lab workflow improvements
+- **[Workflow Automation Projects](/projects/mail-to-dingtalk-todo/)** — email/task automation and GitHub-to-DingTalk summary pipelines used in real daily workflows
 
-* Building and documenting small, reliable systems with clear inputs/outputs
-* Learning ML fundamentals while keeping an engineering mindset about evaluation
-* Making test runs traceable with logs/metrics and consistent data formats
-* Designing workflows that are repeatable instead of one-off demos
+## Tech Stack
 
-## How I work
+- **Languages**: Python, Java, C
+- **Frameworks / tools**: FastAPI, SQLAlchemy, Pytest, Git
+- **Infrastructure**: PostgreSQL, Redis, Docker
+- **Other**: LangChain, Prompt Design, PyVISA, SCPI
 
-* Break problems into small, testable components
-* Instrument early (logs, metrics, intermediate outputs)
-* Debug by narrowing variables, not guessing
-* Prefer “re-run and compare” over “it worked once”
+## Highlight Metrics
 
-## Selected work
-
-* **Projects**: See [Projects](/projects/) for write-ups and technical notes.
+- CalendarDIFF: 1-year calendar simulation with **100% stability**
+- AI Narrative Platform: 3000-call smoke test with **99.8% stability**
+- Auto Load-Off Test: **75% reduction** in test setup/result整理 effort
+- Email automation: stable handling of **~200 emails/day**
+- GitHub issue digest: **1000+ issues/day** across **~50 owners**
 
 ## Contact
 
-* Email: `shl145@ucsd.edu`
-* Location/timezone: `San Diego, CA (PT)`
-
-## Links
-
-* [GitHub](https://github.com/lishehao)
-* [LinkedIn](https://www.linkedin.com/in/shehao-li-897626267/)
+- Email: `lishehao@gmail.com`
+- GitHub: [github.com/lishehao](https://github.com/lishehao)
+- LinkedIn: [Shehao Li](https://www.linkedin.com/in/shehao-li-897626267/)

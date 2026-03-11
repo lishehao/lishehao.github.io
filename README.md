@@ -34,17 +34,23 @@ hugo --gc --minify
 
 ## Content Workflow
 
+This site is bilingual: English stays at the root URL, and Chinese is generated under `/zh/`.
+
+For translated pages, use sibling files in the same bundle, for example `index.md` and `index.zh.md`.
+
 ### Update homepage profile
 
-Edit `hugo.toml`:
+Edit `hugo.toml` per language:
 
-- `[params.profileMode].title`
-- `[params.profileMode].subtitle`
-- `[params.profileMode].imageUrl`
+- `[languages.en.params.profileMode].title`
+- `[languages.en.params.profileMode].subtitle`
+- `[languages.zh.params.profileMode].title`
+- `[languages.zh.params.profileMode].subtitle`
+- shared image path in `imageUrl`
 
 ### Update About page
 
-Edit `content/about/index.md`.
+Edit both `content/about/index.md` and `content/about/index.zh.md`.
 
 ### Add a new project
 
@@ -54,7 +60,7 @@ Create a new project page with Hugo:
 hugo new content/projects/my-project/index.md
 ```
 
-Then fill in the generated file.
+Then fill in the generated English file and add a sibling `index.zh.md` if you want the page to be switchable in Chinese.
 
 Recommended fields:
 

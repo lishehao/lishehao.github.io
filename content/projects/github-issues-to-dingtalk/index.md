@@ -1,34 +1,37 @@
 ---
 title: "GitHub Issues to DingTalk"
-summary: "Forwards GitHub Issues events to DingTalk to keep teams updated in near real time without manually checking GitHub."
+summary: "Webhook-based GitHub issue digest service that aggregates issue events, performs incremental sync, and pushes summaries into DingTalk for responsible owners."
 tags: ["Automation", "DevOps", "Integration"]
-weight: 30
+weight: 35
 ---
 
 ## Overview
-A lightweight automation tool that synchronizes GitHub Issues activity to
-DingTalk, enabling teams to receive real-time updates without constantly
-monitoring GitHub.
 
-## Motivation
-In cross-platform teams, important issue updates are often missed due to:
-- Notification overload
-- Context switching between tools
-- Delayed manual checking
+This service turns GitHub issue activity into DingTalk summaries for internal owners. It aggregates webhook events, supports incremental sync, and reduces the need for teams to manually watch large issue queues.
+
+## Problem
+
+When issue volume grows, important updates are easy to miss and responsibility becomes harder to track across teams.
 
 ## Solution
-This project bridges GitHub Issues and DingTalk by automatically forwarding
-issue events to DingTalk, ensuring that key updates are visible to the entire team.
 
-## Features
-- Automatic issue event forwarding
-- Near real-time notifications
-- Simple configuration and deployment
+- Ingested GitHub issue events through webhooks
+- Aggregated changes into digest-friendly summaries instead of forwarding noisy one-by-one alerts
+- Supported incremental sync so summaries stay current without full rescans
 
-## Use Cases
-- Team issue tracking
-- Project status monitoring
-- Faster response to critical updates
+## Tech Stack
+
+- Python
+- GitHub Webhooks
+- HTTP integration
+- DingTalk messaging
+
+## Impact
+
+- Summarized **1000+ issues per day**
+- Covered **about 50 responsible owners**
+- Stayed in stable production use for **around six months**
 
 ## Links
-- GitHub: https://github.com/lishehao/github-issues-to-dingtalk (coming soon)
+
+- GitHub: https://github.com/lishehao/github-issues-to-dingtalk

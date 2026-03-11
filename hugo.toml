@@ -2,40 +2,88 @@ theme = "PaperMod"
 publishDir = "docs"
 baseURL = "https://lishehao.github.io/"
 title = "Shehao Li"
-
-[menu]
-  [[menu.main]]
-    name = "Home"
-    pageRef = "/"
-    weight = 1
-
-  [[menu.main]]
-    name = "About"
-    pageRef = "/about"
-    weight = 10
-
-  [[menu.main]]
-    name = "Projects"
-    pageRef = "/projects"
-    weight = 20
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 
 [params]
   ShowReadingTime = false
   ShowShareButtons = false
-  mainSections = []
   ShowPostTags = false
+  mainSections = []
+  displayFullLangName = true
 
-  [params.profileMode]
-    enabled = true
-    title = "Shehao (Oliver) Li"
-    subtitle = "Math-CS @ UCSD.\nInterested in Machine Learning & Software Engineering."
-    imageUrl = "images/shehao_homepage.jpg"
-    imageWidth = 200
-    imageHeight = 200
-    imageTitle = "me"
+[languages.en]
+  languageName = "English"
+  languageCode = "en-US"
+  weight = 1
+  title = "Shehao Li"
 
-  [params.label]
-    text = "Shehao Li"
-    icon = ""
-    iconHeight = 18
+  [languages.en.params]
+    languageAltTitle = "English"
 
+    [languages.en.params.profileMode]
+      enabled = true
+      title = "Shehao Li"
+      subtitle = "Math-CS @ UCSD.\nBackend systems, reliability, and AI engineering."
+      imageUrl = "images/shehao_homepage.jpg"
+      imageWidth = 200
+      imageHeight = 200
+      imageTitle = "me"
+
+    [languages.en.params.label]
+      text = "Shehao Li"
+      icon = ""
+      iconHeight = 18
+
+  [[languages.en.menu.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 1
+
+  [[languages.en.menu.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 10
+
+  [[languages.en.menu.main]]
+    name = "Projects"
+    pageRef = "/projects"
+    weight = 20
+
+[languages.zh]
+  languageName = "中文"
+  languageCode = "zh-CN"
+  weight = 2
+  title = "李佘昊"
+
+  [languages.zh.params]
+    languageAltTitle = "中文"
+
+    [languages.zh.params.profileMode]
+      enabled = true
+      title = "李佘昊"
+      subtitle = "UC San Diego 数学-计算机科学本科。\n后端系统、可靠性与 AI 工程化。"
+      imageUrl = "images/shehao_homepage.jpg"
+      imageWidth = 200
+      imageHeight = 200
+      imageTitle = "me"
+
+    [languages.zh.params.label]
+      text = "李佘昊"
+      icon = ""
+      iconHeight = 18
+
+  [[languages.zh.menu.main]]
+    name = "首页"
+    pageRef = "/"
+    weight = 1
+
+  [[languages.zh.menu.main]]
+    name = "关于"
+    pageRef = "/about"
+    weight = 10
+
+  [[languages.zh.menu.main]]
+    name = "项目"
+    pageRef = "/projects"
+    weight = 20
