@@ -29,7 +29,7 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## Selected Work
 
-- **[CalendarDIFF](/projects/calendardiff/)** — schedule-change management system using ICS + Gmail, review workflows, and reliable notifications
+- **[CalendarDIFF](/projects/calendardiff/)** — schedule-change management system using ICS + Gmail, review workflows, reliable notifications, and a live deployment at [cal.shehao.app](https://cal.shehao.app)
 - **[AI Narrative Platform](/projects/ai-narrative-platform/)** — author/play split architecture with LangGraph workflows, deterministic runtime, and generated frontend SDKs
 - **[Auto Load-Off Test](/projects/auto-load-off-test/)** — automation tool for repeatable validation runs with structured outputs and test-lab workflow improvements
 - **[Workflow Automation Projects](/projects/mail-to-dingtalk-todo/)** — email/task automation and GitHub-to-DingTalk summary pipelines used in real daily workflows

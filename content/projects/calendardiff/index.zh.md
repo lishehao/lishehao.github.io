@@ -39,7 +39,9 @@ weight: 5
 - 完成 **1 年日历模拟测试，稳定性达到 100%**
 - 在保留关键时间字段确定性的同时，把 LLM 用在真正增值的抽取环节
 - 通过 review-first 设计，避免未经确认的数据直接触达最终用户
+- 已上线地址：**[cal.shehao.app](https://cal.shehao.app)**
 
 ## 链接
 
+- 线上地址：https://cal.shehao.app
 - GitHub: https://github.com/lishehao/CalendarDIFF

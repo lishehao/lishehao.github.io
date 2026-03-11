@@ -29,7 +29,7 @@ tags: ["Profile", "UCSD", "Backend", "AI Engineering", "Software Engineering"]
 
 ## 代表项目
 
-- **[日程变更管理系统](/zh/projects/calendardiff/)** - 接入 ICS 与 Gmail，通过审核台和可靠通知链路管理日程变更
+- **[日程变更管理系统](/zh/projects/calendardiff/)** - 接入 ICS 与 Gmail，通过审核台和可靠通知链路管理日程变更，现已上线 [cal.shehao.app](https://cal.shehao.app)
 - **[AI 自动叙事平台](/zh/projects/ai-narrative-platform/)** - 用 LangGraph 承接 Author Mode，用确定性 runtime 承接 Play Mode
 - **[自动带载断载测试工具](/zh/projects/auto-load-off-test/)** - 面向实际验证流程的自动化工具，强调可重复性与可追踪性
 - **[流程自动化项目](/zh/projects/mail-to-dingtalk-todo/)** - 包括 Email -> DingTalk 待办与 GitHub Issues -> DingTalk 摘要链路

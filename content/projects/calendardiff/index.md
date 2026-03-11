@@ -39,7 +39,9 @@ Calendar updates arrive from multiple sources and often disagree in timing, nami
 - Completed a **1-year calendar simulation with 100% stability**
 - Preserved deterministic handling for critical time fields while still using LLMs where they add value
 - Designed a review-first flow that prevents unconfirmed extracted data from directly reaching end users
+- Deployed the live app at **[cal.shehao.app](https://cal.shehao.app)**
 
 ## Links
 
+- Live: https://cal.shehao.app
 - GitHub: https://github.com/lishehao/CalendarDIFF
