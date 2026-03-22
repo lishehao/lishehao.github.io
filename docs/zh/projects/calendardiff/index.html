@@ -1,7 +1,349 @@
-<!doctype html><html lang=zh dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>日程变更管理系统 | 李佘昊</title><meta name=keywords content="FastAPI,Next.js,PostgreSQL,Redis,Systems Design,LLM"><meta name=description content="接入 ICS 与 Gmail 信号，经过审核链路整合变更结果，只把确认后的变更发送到通知链路。"><meta name=author content><link rel=canonical href=https://lishehao.github.io/zh/projects/calendardiff/><link crossorigin=anonymous href=/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css integrity="sha256-NDzEgLn/yPBMy+XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as=style><link rel=icon href=https://lishehao.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://lishehao.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://lishehao.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://lishehao.github.io/apple-touch-icon.png><link rel=mask-icon href=https://lishehao.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://lishehao.github.io/projects/calendardiff/><link rel=alternate hreflang=zh href=https://lishehao.github.io/zh/projects/calendardiff/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://lishehao.github.io/zh/projects/calendardiff/"><meta property="og:site_name" content="李佘昊"><meta property="og:title" content="日程变更管理系统"><meta property="og:description" content="接入 ICS 与 Gmail 信号，经过审核链路整合变更结果，只把确认后的变更发送到通知链路。"><meta property="og:locale" content="zh-CN"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:tag" content="FastAPI"><meta property="article:tag" content="Next.js"><meta property="article:tag" content="PostgreSQL"><meta property="article:tag" content="Redis"><meta property="article:tag" content="Systems Design"><meta property="article:tag" content="LLM"><meta name=twitter:card content="summary"><meta name=twitter:title content="日程变更管理系统"><meta name=twitter:description content="接入 ICS 与 Gmail 信号，经过审核链路整合变更结果，只把确认后的变更发送到通知链路。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"项目","item":"https://lishehao.github.io/zh/projects/"},{"@type":"ListItem","position":2,"name":"日程变更管理系统","item":"https://lishehao.github.io/zh/projects/calendardiff/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"日程变更管理系统","name":"日程变更管理系统","description":"接入 ICS 与 Gmail 信号，经过审核链路整合变更结果，只把确认后的变更发送到通知链路。","keywords":["FastAPI","Next.js","PostgreSQL","Redis","Systems Design","LLM"],"articleBody":"概览 这是一个面向日程密集型工作流的变更治理系统。系统接入 ICS 和 Gmail 两类输入源，把跨来源观察值整合成规范化事件，并只把经过审核确认的变更推进到通知链路。\n问题 日程更新往往来自多个来源，而且在时间、命名和结构上经常不一致。如果完全自动处理，一旦抽取字段有噪声或跨源关联出错，就很容易把错误结果直接推送给用户。\n方案 设计统一公网入口 + 5 个后端服务的系统结构 对标题、开始时间、结束时间、地点、状态等 canonical 字段坚持确定性处理 把 LLM 限定在增强抽取和解析辅助环节，不让它主导事件身份或时间真值 增加人工审核台，让不确定变更先被查看、纠错和确认，再进入通知链路 架构 服务拆分：在统一入口后拆分 input、ingest、review、notification 和 LLM 相关服务 数据骨架：使用 PostgreSQL outbox/inbox 模式和 Redis Streams 串联同步、解析、审核与通知 审核工作流：证据查看、纠错、确认和 digest 发送彼此解耦，候选变更不会直接进入通知路径 技术栈 FastAPI Next.js PostgreSQL Redis Docker 结果 完成 1 年日历模拟测试，稳定性达到 100% 在保留关键时间字段确定性的同时，把 LLM 用在真正增值的抽取环节 通过 review-first 设计，避免未经确认的数据直接触达最终用户 已上线地址：cal.shehao.app 链接 线上地址：https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ","wordCount":"58","inLanguage":"zh","datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://lishehao.github.io/zh/projects/calendardiff/"},"publisher":{"@type":"Organization","name":"李佘昊","logo":{"@type":"ImageObject","url":"https://lishehao.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://lishehao.github.io/zh/ accesskey=h title="李佘昊 (Alt + H)">李佘昊</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://lishehao.github.io/projects/calendardiff/ title=English aria-label=English>English</a></li></ul></div></div><ul id=menu><li><a href=https://lishehao.github.io/zh/ title=首页><span>首页</span></a></li><li><a href=https://lishehao.github.io/zh/about/ title=关于><span>关于</span></a></li><li><a href=https://lishehao.github.io/zh/projects/ title=项目><span>项目</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">日程变更管理系统</h1><div class=post-meta><span>语言:</span><ul class=i18n_list><li><a href=https://lishehao.github.io/projects/calendardiff/>English</a></li></ul></div></header><div class=post-content><h2 id=概览>概览<a hidden class=anchor aria-hidden=true href=#概览>#</a></h2><p>这是一个面向日程密集型工作流的变更治理系统。系统接入 ICS 和 Gmail 两类输入源，把跨来源观察值整合成规范化事件，并只把经过审核确认的变更推进到通知链路。</p><h2 id=问题>问题<a hidden class=anchor aria-hidden=true href=#问题>#</a></h2><p>日程更新往往来自多个来源，而且在时间、命名和结构上经常不一致。如果完全自动处理，一旦抽取字段有噪声或跨源关联出错，就很容易把错误结果直接推送给用户。</p><h2 id=方案>方案<a hidden class=anchor aria-hidden=true href=#方案>#</a></h2><ul><li>设计统一公网入口 + 5 个后端服务的系统结构</li><li>对标题、开始时间、结束时间、地点、状态等 canonical 字段坚持确定性处理</li><li>把 LLM 限定在增强抽取和解析辅助环节，不让它主导事件身份或时间真值</li><li>增加人工审核台，让不确定变更先被查看、纠错和确认，再进入通知链路</li></ul><h2 id=架构>架构<a hidden class=anchor aria-hidden=true href=#架构>#</a></h2><ul><li><strong>服务拆分</strong>：在统一入口后拆分 input、ingest、review、notification 和 LLM 相关服务</li><li><strong>数据骨架</strong>：使用 PostgreSQL outbox/inbox 模式和 Redis Streams 串联同步、解析、审核与通知</li><li><strong>审核工作流</strong>：证据查看、纠错、确认和 digest 发送彼此解耦，候选变更不会直接进入通知路径</li></ul><h2 id=技术栈>技术栈<a hidden class=anchor aria-hidden=true href=#技术栈>#</a></h2><ul><li>FastAPI</li><li>Next.js</li><li>PostgreSQL</li><li>Redis</li><li>Docker</li></ul><h2 id=结果>结果<a hidden class=anchor aria-hidden=true href=#结果>#</a></h2><ul><li>完成 <strong>1 年日历模拟测试，稳定性达到 100%</strong></li><li>在保留关键时间字段确定性的同时，把 LLM 用在真正增值的抽取环节</li><li>通过 review-first 设计，避免未经确认的数据直接触达最终用户</li><li>已上线地址：<strong><a href=https://cal.shehao.app>cal.shehao.app</a></strong></li></ul><h2 id=链接>链接<a hidden class=anchor aria-hidden=true href=#链接>#</a></h2><ul><li>线上地址：https://cal.shehao.app</li><li>GitHub: <a href=https://github.com/lishehao/CalendarDIFF>https://github.com/lishehao/CalendarDIFF</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://lishehao.github.io/zh/tags/fastapi/>FastAPI</a></li><li><a href=https://lishehao.github.io/zh/tags/next.js/>Next.js</a></li><li><a href=https://lishehao.github.io/zh/tags/postgresql/>PostgreSQL</a></li><li><a href=https://lishehao.github.io/zh/tags/redis/>Redis</a></li><li><a href=https://lishehao.github.io/zh/tags/systems-design/>Systems Design</a></li><li><a href=https://lishehao.github.io/zh/tags/llm/>LLM</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://lishehao.github.io/zh/>李佘昊</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CalendarDIFF｜AI 日程变更治理系统 | 李佘昊</title>
+<meta name="keywords" content="FastAPI, PostgreSQL, Redis, AI Agent, Runtime, LLM">
+<meta name="description" content="面向 ICS &#43; Gmail 的 AI 日程变更治理运行时，通过显式状态机、人工审核和回放验收控制长链路任务风险。">
+<meta name="author" content="">
+<link rel="canonical" href="https://lishehao.github.io/zh/projects/calendardiff/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lishehao.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lishehao.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lishehao.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://lishehao.github.io/projects/calendardiff/">
+<link rel="alternate" hreflang="zh" href="https://lishehao.github.io/zh/projects/calendardiff/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://lishehao.github.io/zh/projects/calendardiff/">
+  <meta property="og:site_name" content="李佘昊">
+  <meta property="og:title" content="CalendarDIFF｜AI 日程变更治理系统">
+  <meta property="og:description" content="面向 ICS &#43; Gmail 的 AI 日程变更治理运行时，通过显式状态机、人工审核和回放验收控制长链路任务风险。">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="FastAPI">
+    <meta property="article:tag" content="PostgreSQL">
+    <meta property="article:tag" content="Redis">
+    <meta property="article:tag" content="AI Agent">
+    <meta property="article:tag" content="Runtime">
+    <meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CalendarDIFF｜AI 日程变更治理系统">
+<meta name="twitter:description" content="面向 ICS &#43; Gmail 的 AI 日程变更治理运行时，通过显式状态机、人工审核和回放验收控制长链路任务风险。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "项目",
+      "item": "https://lishehao.github.io/zh/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CalendarDIFF｜AI 日程变更治理系统",
+      "item": "https://lishehao.github.io/zh/projects/calendardiff/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CalendarDIFF｜AI 日程变更治理系统",
+  "name": "CalendarDIFF｜AI 日程变更治理系统",
+  "description": "面向 ICS + Gmail 的 AI 日程变更治理运行时，通过显式状态机、人工审核和回放验收控制长链路任务风险。",
+  "keywords": [
+    "FastAPI", "PostgreSQL", "Redis", "AI Agent", "Runtime", "LLM"
+  ],
+  "articleBody": "概览 CalendarDIFF 是一个面向 ICS + Gmail 的 AI 日程变更治理后端。它不是简单的“邮件解析 + 通知”系统，而是把连接器、LLM 抽取、语义候选变更、人工审核与通知组织成显式状态机运行时，用来承接长链路智能体任务。\n核心问题 日程变更链路天然带有长尾样本、多源冲突和噪声输入。若完全自动化，抽取误差和跨源关联错误会在链路中被放大，最终直接变成错误通知；若全部人工处理，又无法承受真实流量和长期运行。\n系统设计 把连接器、抽取、proposal、review 和 notify 拆成显式阶段，保证每一步都可恢复、可追踪、可观察 将 Gmail intake 收敛为确定性预筛 + 结构化抽取链路，让 LLM 只处理真正需要语义判断的部分 用人工审核台承接不确定 proposal，把纠错与确认放在关键状态转换前，而不是在通知后补救 Runtime 与可靠性 显式状态机运行时：把推进、重试、失败恢复和通知边界都编码进系统状态 消息级解析缓存：减少重复解析，提高重试与回放的稳定性 坏样本隔离：把异常输入与长尾请求限制在局部阶段，避免放大全链路风险 回放与验收报告：为全年回放、检查点验收和指标对比提供统一基线 技术栈 FastAPI PostgreSQL Redis BERT OpenAI API Docker 结果 搭建全年时序回放验收，覆盖 24 个检查点、10,368 封 Gmail 全仿真邮件 达到目标召回率 100%、总体拦截率 72.1% 持续输出 token、缓存命中、延迟和稳定性指标，用于基准评测与回归验证 已上线地址：cal.shehao.app 链接 线上地址：https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ",
+  "wordCount" : "60",
+  "inLanguage": "zh",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lishehao.github.io/zh/projects/calendardiff/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "李佘昊",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lishehao.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lishehao.github.io/zh/" accesskey="h" title="李佘昊 (Alt + H)">李佘昊</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="https://lishehao.github.io/projects/calendardiff/" title="English"
+                                aria-label="English">English</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lishehao.github.io/zh/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lishehao.github.io/zh/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lishehao.github.io/zh/projects/" title="项目">
+                    <span>项目</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lishehao.github.io/zh/resume/shehao_resume_preview.html" title="简历">
+                    <span>简历</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      CalendarDIFF｜AI 日程变更治理系统
+    </h1>
+    <div class="post-meta"><span>语言:</span>
+<ul class="i18n_list">
+    <li>
+        <a href="https://lishehao.github.io/projects/calendardiff/">English</a>
+    </li>
+</ul>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="概览">概览<a hidden class="anchor" aria-hidden="true" href="#概览">#</a></h2>
+<p>CalendarDIFF 是一个面向 ICS + Gmail 的 AI 日程变更治理后端。它不是简单的“邮件解析 + 通知”系统，而是把连接器、LLM 抽取、语义候选变更、人工审核与通知组织成显式状态机运行时，用来承接长链路智能体任务。</p>
+<h2 id="核心问题">核心问题<a hidden class="anchor" aria-hidden="true" href="#核心问题">#</a></h2>
+<p>日程变更链路天然带有长尾样本、多源冲突和噪声输入。若完全自动化，抽取误差和跨源关联错误会在链路中被放大，最终直接变成错误通知；若全部人工处理，又无法承受真实流量和长期运行。</p>
+<h2 id="系统设计">系统设计<a hidden class="anchor" aria-hidden="true" href="#系统设计">#</a></h2>
+<ul>
+<li>把连接器、抽取、proposal、review 和 notify 拆成显式阶段，保证每一步都可恢复、可追踪、可观察</li>
+<li>将 Gmail intake 收敛为确定性预筛 + 结构化抽取链路，让 LLM 只处理真正需要语义判断的部分</li>
+<li>用人工审核台承接不确定 proposal，把纠错与确认放在关键状态转换前，而不是在通知后补救</li>
+</ul>
+<h2 id="runtime-与可靠性">Runtime 与可靠性<a hidden class="anchor" aria-hidden="true" href="#runtime-与可靠性">#</a></h2>
+<ul>
+<li><strong>显式状态机运行时</strong>：把推进、重试、失败恢复和通知边界都编码进系统状态</li>
+<li><strong>消息级解析缓存</strong>：减少重复解析，提高重试与回放的稳定性</li>
+<li><strong>坏样本隔离</strong>：把异常输入与长尾请求限制在局部阶段，避免放大全链路风险</li>
+<li><strong>回放与验收报告</strong>：为全年回放、检查点验收和指标对比提供统一基线</li>
+</ul>
+<h2 id="技术栈">技术栈<a hidden class="anchor" aria-hidden="true" href="#技术栈">#</a></h2>
+<ul>
+<li>FastAPI</li>
+<li>PostgreSQL</li>
+<li>Redis</li>
+<li>BERT</li>
+<li>OpenAI API</li>
+<li>Docker</li>
+</ul>
+<h2 id="结果">结果<a hidden class="anchor" aria-hidden="true" href="#结果">#</a></h2>
+<ul>
+<li>搭建全年时序回放验收，覆盖 <strong>24 个检查点</strong>、<strong>10,368 封 Gmail 全仿真邮件</strong></li>
+<li>达到目标召回率 <strong>100%</strong>、总体拦截率 <strong>72.1%</strong></li>
+<li>持续输出 token、缓存命中、延迟和稳定性指标，用于基准评测与回归验证</li>
+<li>已上线地址：<strong><a href="https://cal.shehao.app">cal.shehao.app</a></strong></li>
+</ul>
+<h2 id="链接">链接<a hidden class="anchor" aria-hidden="true" href="#链接">#</a></h2>
+<ul>
+<li>线上地址：https://cal.shehao.app</li>
+<li>GitHub: <a href="https://github.com/lishehao/CalendarDIFF">https://github.com/lishehao/CalendarDIFF</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lishehao.github.io/zh/tags/fastapi/">FastAPI</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/postgresql/">PostgreSQL</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/redis/">Redis</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/ai-agent/">AI Agent</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/runtime/">Runtime</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/llm/">LLM</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://lishehao.github.io/zh/">李佘昊</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

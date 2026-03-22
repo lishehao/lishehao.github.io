@@ -1,1 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SCPI on Shehao Li</title><link>https://lishehao.github.io/tags/scpi/</link><description>Recent content in SCPI on Shehao Li</description><generator>Hugo -- 0.153.3</generator><language>en-US</language><atom:link href="https://lishehao.github.io/tags/scpi/index.xml" rel="self" type="application/rss+xml"/><item><title>Auto Load-Off Test</title><link>https://lishehao.github.io/projects/auto-load-off-test/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lishehao.github.io/projects/auto-load-off-test/</guid><description>Python automation tool for AWG + oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export.</description></item><item><title>Test Automation MultiTimer</title><link>https://lishehao.github.io/projects/test-automation-multitimer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lishehao.github.io/projects/test-automation-multitimer/</guid><description>Supplementary Python Tkinter GUI for timed DMM monitoring over VISA/SCPI with interval sampling, logging, and optional MAT export.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SCPI on Shehao Li</title>
+    <link>https://lishehao.github.io/tags/scpi/</link>
+    <description>Recent content in SCPI on Shehao Li</description>
+    <generator>Hugo -- 0.153.3</generator>
+    <language>en-US</language>
+    <atom:link href="https://lishehao.github.io/tags/scpi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auto Load-Off Test</title>
+      <link>https://lishehao.github.io/projects/auto-load-off-test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lishehao.github.io/projects/auto-load-off-test/</guid>
+      <description>Python automation tool for AWG + oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export.</description>
+    </item>
+    <item>
+      <title>Test Automation MultiTimer</title>
+      <link>https://lishehao.github.io/projects/test-automation-multitimer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lishehao.github.io/projects/test-automation-multitimer/</guid>
+      <description>Supplementary Python Tkinter GUI for timed DMM monitoring over VISA/SCPI with interval sampling, logging, and optional MAT export.</description>
+    </item>
+  </channel>
+</rss>
