@@ -1,0 +1,216 @@
+{{- $isZh := eq site.Language.Lang "zh" -}}
+{{- $pages := where site.RegularPages "Lang" site.Language.Lang -}}
+{{- $featured := first 2 (where (where $pages "Section" "projects") "Params.featured" true) -}}
+{{- $resumeUrl := cond $isZh "/zh/resume/shehao_resume_preview.html" "/resume/shehao_resume_preview.html" -}}
+{{- $projectsUrl := cond $isZh "/zh/projects/" "/projects/" -}}
+{{- $aboutUrl := cond $isZh "/zh/about/" "/about/" -}}
+{{- $linkedinUrl := "https://www.linkedin.com/in/shehao-li-897626267/" -}}
+{{- $githubUrl := "https://github.com/lishehao" -}}
+
+<div class="profile home-portfolio">
+  <div class="home-shell">
+    <section class="home-hero">
+      <div class="home-hero-copy">
+        <div class="home-eyebrow">
+          {{- if $isZh -}}
+          AI 智能体系统 / 后端可靠性 / LLM 工程
+          {{- else -}}
+          AI Agent Systems / Backend Reliability / LLM Engineering
+          {{- end -}}
+        </div>
+        <h1>
+          {{- if $isZh -}}
+          智能体系统、后端系统与评测验证工程。
+          {{- else -}}
+          AI agent systems, backend reliability, and evaluation-driven engineering.
+          {{- end -}}
+        </h1>
+        <p class="home-hero-text">
+          {{- if $isZh -}}
+          聚焦智能体运行时、人工介入工作流、结构化输出，以及评测 / 回放 / 可观测性。
+          站点集中展示代表项目、量化指标与简历入口。
+          {{- else -}}
+          Focused on agent runtime, human-in-the-loop workflow, structured outputs, and evaluation / replay / observability.
+          Built to surface real projects, hard metrics, and a clean resume path.
+          {{- end -}}
+        </p>
+        <div class="home-actions">
+          <a class="project-chip project-chip-primary" href="{{ $resumeUrl }}">
+            {{- if $isZh }}打开简历{{ else }}Open Resume{{ end -}}
+          </a>
+          <a class="project-chip" href="{{ $projectsUrl }}">
+            {{- if $isZh }}查看项目{{ else }}View Projects{{ end -}}
+          </a>
+          <a class="project-chip" href="{{ $aboutUrl }}">
+            {{- if $isZh }}关于我{{ else }}About Me{{ end -}}
+          </a>
+        </div>
+        <div class="home-link-row">
+          <a href="mailto:lishehao@gmail.com">lishehao@gmail.com</a>
+          <a href="{{ $githubUrl }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="{{ $linkedinUrl }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="home-hero-side">
+        <div class="home-profile-card">
+          <div class="home-profile-top">
+            <div class="home-avatar-wrap">
+              <img
+                class="home-avatar"
+                src="{{ site.Params.profileMode.imageUrl | absURL }}"
+                alt="{{ site.Params.profileMode.imageTitle | default site.Title }}"
+                width="{{ site.Params.profileMode.imageWidth | default 200 }}"
+                height="{{ site.Params.profileMode.imageHeight | default 200 }}">
+            </div>
+            <div>
+              <div class="home-profile-name">{{ site.Title }}</div>
+              <div class="home-profile-role">
+                {{- if $isZh -}}
+                AI 智能体 / 后端系统 / AI 工程化
+                {{- else -}}
+                AI Agent / Backend Systems / AI Engineering
+                {{- end -}}
+              </div>
+            </div>
+          </div>
+          <div class="home-profile-list">
+            <div class="home-profile-item">
+              <span>{{ if $isZh }}目前身份{{ else }}Current{{ end }}</span>
+              <strong>{{ if $isZh }}UC San Diego Math-CS · 2027{{ else }}UC San Diego Math-CS · 2027{{ end }}</strong>
+            </div>
+            <div class="home-profile-item">
+              <span>{{ if $isZh }}求职方向{{ else }}Target Role{{ end }}</span>
+              <strong>{{ if $isZh }}AI 智能体 / Software Engineer Intern{{ else }}AI Agent / Software Engineer Intern{{ end }}</strong>
+            </div>
+            <div class="home-profile-item">
+              <span>{{ if $isZh }}所在地{{ else }}Based In{{ end }}</span>
+              <strong>{{ if $isZh }}上海，中国{{ else }}Shanghai, China{{ end }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-proof-grid">
+          <div class="home-proof-card">
+            <span>{{ if $isZh }}真实部署{{ else }}Live Deployment{{ end }}</span>
+            <strong>{{ if $isZh }}CalendarDIFF 已上线{{ else }}CalendarDIFF is live{{ end }}</strong>
+            <p>{{ if $isZh }}不是 demo 页面，而是可访问的真实产品入口。{{ else }}Not a mockup, but a public product entrypoint.{{ end }}</p>
+          </div>
+          <div class="home-proof-card">
+            <span>{{ if $isZh }}关键环节可控{{ else }}Control Surface{{ end }}</span>
+            <strong>{{ if $isZh }}人工审核放在状态迁移前{{ else }}Human review before state transitions{{ end }}</strong>
+            <p>{{ if $isZh }}高风险结果先审后发，不靠事后补救。{{ else }}High-risk outputs are reviewed before they are sent, not patched after the fact.{{ end }}</p>
+          </div>
+          <div class="home-proof-card">
+            <span>{{ if $isZh }}验证方式{{ else }}Validation Model{{ end }}</span>
+            <strong>{{ if $isZh }}回放与基准评测驱动收敛{{ else }}Replay and benchmarks drive convergence{{ end }}</strong>
+            <p>{{ if $isZh }}关键判断来自回放、评测与真实运行，而不是主观描述。{{ else }}Key decisions are grounded in replay, benchmarks, and production behavior.{{ end }}</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">{{ if $isZh }}主打项目{{ else }}Featured Work{{ end }}</div>
+          <h2>{{ if $isZh }}代表项目{{ else }}Selected Projects{{ end }}</h2>
+        </div>
+        <a class="home-section-link" href="{{ $projectsUrl }}">
+          {{ if $isZh }}全部项目{{ else }}All Projects{{ end }}
+        </a>
+      </div>
+
+      <div class="home-feature-grid">
+        {{- range $featured }}
+        <article class="home-feature-card tone-{{ .Params.previewTone | default "sky" }}">
+          <div class="home-feature-header">
+            <div class="home-eyebrow">
+              {{- if .Params.liveUrl -}}
+                {{- if $isZh }}真实项目{{ else }}Live Product{{ end -}}
+              {{- else -}}
+                {{- if $isZh }}项目案例{{ else }}Case Study{{ end -}}
+              {{- end -}}
+            </div>
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Summary | plainify | htmlUnescape }}</p>
+          </div>
+          {{- with .Params.metrics }}
+          <div class="project-metric-row">
+            {{- range first 4 . }}
+            <span class="project-metric-chip">{{ . }}</span>
+            {{- end }}
+          </div>
+          {{- end }}
+          <div class="home-feature-actions">
+            <a class="project-chip" href="{{ .Permalink }}">
+              {{- if $isZh }}查看详情{{ else }}Details{{ end -}}
+            </a>
+            {{- with .Params.liveUrl }}
+            <a class="project-chip project-chip-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+              {{- if $isZh }}访问首页{{ else }}Live Site{{ end -}}
+            </a>
+            {{- end }}
+          </div>
+        </article>
+        {{- end }}
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-head home-section-head-tight">
+        <div>
+          <div class="home-section-kicker">{{ if $isZh }}构建方式{{ else }}Build Style{{ end }}</div>
+          <h2>{{ if $isZh }}关注的问题{{ else }}Core Concerns{{ end }}</h2>
+        </div>
+      </div>
+      <div class="home-principles">
+        <article class="home-principle-card">
+          <h3>{{ if $isZh }}长流程运行时{{ else }}Long-running Runtime{{ end }}</h3>
+          <p>
+            {{- if $isZh -}}
+            不把 AI 当成一次性调用，而是把长链路任务拆成显式状态、边界条件和可恢复步骤。
+            {{- else -}}
+            I do not treat AI as a one-shot API call. I break long-running tasks into explicit state, boundaries, and recoverable steps.
+            {{- end -}}
+          </p>
+        </article>
+        <article class="home-principle-card">
+          <h3>{{ if $isZh }}人工介入流程{{ else }}Human-in-the-loop{{ end }}</h3>
+          <p>
+            {{- if $isZh -}}
+            审核、纠错和确认应该在关键状态迁移之前出现，而不是在错误结果发出之后补救。
+            {{- else -}}
+            Review, correction, and confirmation should sit before critical state transitions, not as a weak after-the-fact fallback.
+            {{- end -}}
+          </p>
+        </article>
+        <article class="home-principle-card">
+          <h3>{{ if $isZh }}评测与可观测性{{ else }}Evaluation & Observability{{ end }}</h3>
+          <p>
+            {{- if $isZh -}}
+            回放、基准评测、追踪，以及 token / 缓存命中 / 延迟指标要从一开始就是系统的一部分。
+            {{- else -}}
+            Replay, benchmark, trace, and token/cache/latency metrics should be part of the system from day one.
+            {{- end -}}
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-cta-band">
+      <div>
+        <div class="home-section-kicker">{{ if $isZh }}下一步{{ else }}Next Step{{ end }}</div>
+        <h2>{{ if $isZh }}从简历或项目开始。{{ else }}Start with the resume or the projects.{{ end }}</h2>
+      </div>
+      <div class="home-actions">
+        <a class="project-chip project-chip-primary" href="{{ $resumeUrl }}">
+          {{ if $isZh }}打开简历{{ else }}Open Resume{{ end }}
+        </a>
+        <a class="project-chip" href="{{ $projectsUrl }}">
+          {{ if $isZh }}浏览项目{{ else }}Browse Projects{{ end }}
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
