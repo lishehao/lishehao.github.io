@@ -1,44 +1,53 @@
 ---
 title: "CalendarDIFF"
-summary: "Schedule-change management system that ingests ICS and Gmail signals, routes uncertain cases through review, and sends only confirmed notifications."
-tags: ["FastAPI", "Next.js", "PostgreSQL", "Redis", "Systems Design", "LLM"]
+summary: "AI schedule-change governance runtime for ICS + Gmail with explicit state, human review, and replay-driven reliability validation."
+tags: ["FastAPI", "PostgreSQL", "Redis", "AI Agent", "Runtime", "LLM"]
 weight: 5
+featured: true
+liveUrl: "https://cal.shehao.app"
+previewTone: "sky"
+metrics:
+  - "live product deployed"
+  - "human review in the critical path"
+  - "24-checkpoint replay"
+  - "target recall 100%"
 ---
 
 ## Overview
 
-CalendarDIFF is a schedule-change management system for calendar-heavy workflows. It ingests ICS and Gmail sources, reconciles cross-source observations into canonical events, and sends only reviewed, confirmed changes into the notification path.
+CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running agent tasks.
 
-## Problem
+## Core Problem
 
-Calendar updates arrive from multiple sources and often disagree in timing, naming, or structure. A fully automatic pipeline can easily create false notifications if extracted fields are noisy or if cross-source linking is wrong.
+Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.
 
-## Solution
+## System Design
 
-- Built a system around a unified public gateway and five backend services
-- Kept canonical fields such as title, start, end, location, and status deterministic from parsers/source data
-- Limited LLM usage to enrichment and parsing assistance instead of letting it own event identity or time truth
-- Added a human review console so uncertain changes are corrected before they enter the notification flow
+- Turned connectors, extraction, proposal, review, and notify into explicit stages with recoverable state transitions
+- Collapsed Gmail intake into a deterministic prefilter plus structured extraction path so the model only handles the semantic part
+- Put human review in front of critical state transitions instead of using it as a weak after-the-fact fallback
 
-## Architecture
+## Runtime and Reliability
 
-- **Public gateway + service split**: input, ingest, review, notification, and LLM-facing services behind one public entrypoint
-- **Data backbone**: PostgreSQL outbox/inbox patterns plus Redis streams for sync, parsing, review, and notification coordination
-- **Review workflow**: evidence view, correction, confirmation, and digest send are separated so candidate changes stay out of the notify path until approved
+- **Explicit state-machine runtime** for task progression, retries, recovery, and notification boundaries
+- **Message-level parse cache** to stabilize retries and replay runs
+- **Bad-sample isolation** so long-tail requests do not amplify failure across the whole pipeline
+- **Replay / acceptance reporting** to benchmark behavior across checkpoints and regressions
 
 ## Tech Stack
 
 - FastAPI
-- Next.js
 - PostgreSQL
 - Redis
+- BERT
+- OpenAI API
 - Docker
 
 ## Impact
 
-- Completed a **1-year calendar simulation with 100% stability**
-- Preserved deterministic handling for critical time fields while still using LLMs where they add value
-- Designed a review-first flow that prevents unconfirmed extracted data from directly reaching end users
+- Built an annual chronological replay covering **24 checkpoints** and **10,368 Gmail full-sim messages**
+- Reached target recall **100%** and overall interception **72.1%**
+- Emitted token, cache, latency, and stability metrics for benchmark and regression tracking
 - Deployed the live app at **[cal.shehao.app](https://cal.shehao.app)**
 
 ## Links

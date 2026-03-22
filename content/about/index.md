@@ -1,10 +1,10 @@
 ---
 title: "About"
-summary: "Background, experience, and focus areas for Shehao Li."
-tags: ["Profile", "UCSD", "Backend", "AI Engineering", "Software Engineering"]
+summary: "Background, experience, and focus areas for Shehao Li in AI agent systems and backend engineering."
+tags: ["Profile", "UCSD", "AI Agent", "Backend", "AI Engineering"]
 ---
 
-I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and a Software Engineer Intern candidate focused on backend systems, software reliability, test/validation workflows, and operationalizing AI into maintainable product pipelines.
+I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and an AI Agent / Software Engineer Intern candidate focused on backend systems, agent runtimes, structured outputs, evaluation, and turning AI into maintainable production workflows.
 
 ## Snapshot
 
@@ -23,34 +23,33 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## What I Build
 
-- **Backend systems** that make data flow explicit, reviewable, and reliable
-- **Testing and validation tooling** with strong logging, retries, and deterministic boundaries
-- **AI-enabled products** where LLMs are constrained to the parts they are good at, while critical state and execution remain deterministic
+- **AI agent runtimes** with explicit state, recoverable steps, and inspectable outputs
+- **Human-in-the-loop workflows** where review and correction sit in the critical path instead of as a weak fallback
+- **Evaluation and observability** built around replay, benchmark, logging, and stability metrics
 
 ## Selected Work
 
-- **[CalendarDIFF](/projects/calendardiff/)** — schedule-change management system using ICS + Gmail, review workflows, reliable notifications, and a live deployment at [cal.shehao.app](https://cal.shehao.app)
-- **[AI Narrative Platform](/projects/ai-narrative-platform/)** — author/play split architecture with LangGraph workflows, deterministic runtime, and generated frontend SDKs
+- **[CalendarDIFF](/projects/calendardiff/)** — ICS + Gmail schedule-governance runtime with explicit state, human review, replay acceptance, and a live deployment at [cal.shehao.app](https://cal.shehao.app)
+- **[AI Narrative Platform](/projects/ai-narrative-platform/)** — structured narrative workflow with persistent authoring, deterministic play runtime, and benchmark diagnostics
 - **[Auto Load-Off Test](/projects/auto-load-off-test/)** — automation tool for repeatable validation runs with structured outputs and test-lab workflow improvements
 - **[Workflow Automation Projects](/projects/mail-to-dingtalk-todo/)** — email/task automation and GitHub-to-DingTalk summary pipelines used in real daily workflows
 
 ## Tech Stack
 
-- **Languages**: Python, Java, C
-- **Frameworks / tools**: FastAPI, SQLAlchemy, Pytest, Git
-- **Infrastructure**: PostgreSQL, Redis, Docker
-- **Other**: LangChain, Prompt Design, PyVISA, SCPI
+- **Languages**: Python, Java, C/Cpp
+- **Frameworks & engineering**: FastAPI, Pydantic, LangGraph, Pytest, React, TypeScript, Vite
+- **Infrastructure**: PostgreSQL, Redis, SQLite, Docker
+- **AI engineering**: OpenAI-compatible Responses API, Structured Output, Prompt Design, Benchmarking
 
 ## Highlight Metrics
 
-- CalendarDIFF: 1-year calendar simulation with **100% stability**
-- AI Narrative Platform: 3000-call smoke test with **99.8% stability**
-- Auto Load-Off Test: **75% reduction** in test setup/result整理 effort
-- Email automation: stable handling of **~200 emails/day**
-- GitHub issue digest: **1000+ issues/day** across **~50 owners**
+- CalendarDIFF: **24-checkpoint** annual replay over **10,368 Gmail full-sim messages**; target recall **100%**, interception **72.1%**
+- AI Narrative Platform: **5 story x 3 agent** benchmark completion **100%**; best-round p95 turn latency **13.3s**, render fallback **0%**
+- Auto Load-Off Test: **75% reduction** in test setup/result handling effort
 
 ## Contact
 
 - Email: `lishehao@gmail.com`
 - GitHub: [github.com/lishehao](https://github.com/lishehao)
 - LinkedIn: [Shehao Li](https://www.linkedin.com/in/shehao-li-897626267/)
+- Resume: [/resume/shehao_resume_preview.html](/resume/shehao_resume_preview.html)

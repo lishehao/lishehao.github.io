@@ -1,30 +1,37 @@
 ---
 title: "AI Narrative Platform"
-summary: "Author/play split AI narrative system with a persisted LangGraph workflow, deterministic runtime, generated SDK contracts, and operational debugging hooks."
+summary: "Multi-turn narrative agent system where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior."
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8
+featured: true
+previewTone: "ember"
+metrics:
+  - "real multi-agent benchmark"
+  - "deterministic play runtime"
+  - "15/15 sessions complete"
+  - "0% render fallback"
 ---
 
 ## Overview
 
-This project is an AI narrative platform built around a strict split between Author Mode and Play Mode. The backend uses a layered architecture, exports OpenAPI contracts, and feeds a generated frontend SDK so the product surface stays explicit and versionable.
+This project is a multi-turn narrative agent system. The point is not to let the model directly write the whole story, but to place LLMs inside a structured workflow: Author produces executable story packs, while Play lets the model handle action understanding, ending preference judgment, and text rendering, with deterministic runtime state progression everywhere else.
 
-## Problem
+## Core Problem
 
-Narrative products built directly on top of free-form LLM orchestration are hard to debug, hard to validate, and hard to keep stable under repeated runtime calls. The challenge is to keep authoring flexibility without giving up deterministic runtime behavior.
+Free-form LLM orchestration makes narrative systems hard to debug, hard to validate, and hard to reproduce under repeated use. The hardest part is not text generation itself; it is the semantic mismatch between endings and state feedback, plus failure recovery across long-running turn sequences.
 
-## Solution
+## System Design
 
-- Used **LangGraph** for a persisted Author Mode workflow with explicit run, event, and artifact tracking
-- Added bounded retries, failure localization, and review gating around story generation
-- Kept **Play Mode** on a thin LangChain layer plus a deterministic runtime, so LLMs handle intent recognition and narration rather than owning state transitions
-- Exported backend contracts through OpenAPI and consumed them from the frontend through a generated SDK
+- Used **LangGraph** for a persisted Author workflow with explicit run, event, and artifact tracking
+- Kept **Play runtime** deterministic, with LLMs limited to action understanding, ending judgment, and rendering
+- Added structured-output validation, failure recovery, ending gates, turn traces, and benchmark diagnostics
 
-## Architecture
+## Evaluation and Impact
 
-- **Author Mode**: workflow state persists through run/event/artifact tables and only review-ready outputs can be published
-- **Play Mode**: user input is routed, resolved, and committed deterministically before narration is generated
-- **LLM boundary**: all model traffic goes through an internal worker layer so prompts, routing, and failures stay observable
+- Built a real multi-agent benchmark loop that generates **5 new stories per round**
+- Had **3 persona agents** play through them via real APIs and report subjective experience
+- Aggregated time, token, cache, fallback, and ending-distribution metrics into one evaluation surface
+- Best round reached **15/15 completed sessions** with **0% render fallback**
 
 ## Tech Stack
 
@@ -34,12 +41,6 @@ Narrative products built directly on top of free-form LLM orchestration are hard
 - LangGraph
 - LangChain
 - PostgreSQL
-
-## Impact
-
-- Completed a **3000-call LLM smoke test with 99.8% stability**
-- Made failures easier to localize by separating workflow state, runtime state, and model calls
-- Reduced coupling between backend and frontend with generated API contracts
 
 ## Status
 
