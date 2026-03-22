@@ -74,18 +74,6 @@
                 href="https://lishehao.github.io/zh/projects/test-automation-multitimer/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/zh/tags/ai-agent/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/ai-agent/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/ai-agent/"
-                />
-  </url><url>
     <loc>https://lishehao.github.io/zh/tags/ai-engineering/</loc>
     <xhtml:link
                 rel="alternate"
@@ -276,6 +264,18 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="https://lishehao.github.io/zh/tags/llm/"
+                />
+  </url><url>
+    <loc>https://lishehao.github.io/zh/tags/llm-workflow/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://lishehao.github.io/tags/llm-workflow/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://lishehao.github.io/zh/tags/llm-workflow/"
                 />
   </url><url>
     <loc>https://lishehao.github.io/zh/tags/mat-file/</loc>

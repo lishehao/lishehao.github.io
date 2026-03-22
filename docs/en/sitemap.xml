@@ -98,18 +98,6 @@
                 href="https://lishehao.github.io/about/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/ai-agent/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/ai-agent/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/ai-agent/"
-                />
-  </url><url>
     <loc>https://lishehao.github.io/tags/ai-engineering/</loc>
     <xhtml:link
                 rel="alternate"
@@ -300,6 +288,18 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="https://lishehao.github.io/tags/llm/"
+                />
+  </url><url>
+    <loc>https://lishehao.github.io/tags/llm-workflow/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://lishehao.github.io/zh/tags/llm-workflow/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://lishehao.github.io/tags/llm-workflow/"
                 />
   </url><url>
     <loc>https://lishehao.github.io/tags/mat-file/</loc>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>CalendarDIFF | Shehao Li</title>
-<meta name="keywords" content="FastAPI, PostgreSQL, Redis, AI Agent, Runtime, LLM">
+<meta name="keywords" content="FastAPI, PostgreSQL, Redis, LLM Workflow, Runtime, LLM">
 <meta name="description" content="AI schedule-change governance runtime for ICS &#43; Gmail with explicit state, human review, and replay-driven reliability validation.">
 <meta name="author" content="">
 <link rel="canonical" href="https://lishehao.github.io/projects/calendardiff/">
@@ -81,7 +81,7 @@
     <meta property="article:tag" content="FastAPI">
     <meta property="article:tag" content="PostgreSQL">
     <meta property="article:tag" content="Redis">
-    <meta property="article:tag" content="AI Agent">
+    <meta property="article:tag" content="LLM Workflow">
     <meta property="article:tag" content="Runtime">
     <meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary">
@@ -117,10 +117,10 @@
   "name": "CalendarDIFF",
   "description": "AI schedule-change governance runtime for ICS + Gmail with explicit state, human review, and replay-driven reliability validation.",
   "keywords": [
-    "FastAPI", "PostgreSQL", "Redis", "AI Agent", "Runtime", "LLM"
+    "FastAPI", "PostgreSQL", "Redis", "LLM Workflow", "Runtime", "LLM"
   ],
-  "articleBody": "Overview CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running agent tasks.\nCore Problem Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.\nSystem Design Turned connectors, extraction, proposal, review, and notify into explicit stages with recoverable state transitions Collapsed Gmail intake into a deterministic prefilter plus structured extraction path so the model only handles the semantic part Put human review in front of critical state transitions instead of using it as a weak after-the-fact fallback Runtime and Reliability Explicit state-machine runtime for task progression, retries, recovery, and notification boundaries Message-level parse cache to stabilize retries and replay runs Bad-sample isolation so long-tail requests do not amplify failure across the whole pipeline Replay / acceptance reporting to benchmark behavior across checkpoints and regressions Tech Stack FastAPI PostgreSQL Redis BERT OpenAI API Docker Impact Built an annual chronological replay covering 24 checkpoints and 10,368 Gmail full-sim messages Reached target recall 100% and overall interception 72.1% Emitted token, cache, latency, and stability metrics for benchmark and regression tracking Deployed the live app at cal.shehao.app Links Live: https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ",
-  "wordCount" : "226",
+  "articleBody": "Overview CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running LLM workflow tasks.\nCore Problem Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.\nSystem Design Turned connectors, extraction, proposal, review, and notify into explicit stages with recoverable state transitions Collapsed Gmail intake into a deterministic prefilter plus structured extraction path so the model only handles the semantic part Put human review in front of critical state transitions instead of using it as a weak after-the-fact fallback Runtime and Reliability Explicit state-machine runtime for task progression, retries, recovery, and notification boundaries Message-level parse cache to stabilize retries and replay runs Bad-sample isolation so long-tail requests do not amplify failure across the whole pipeline Replay / acceptance reporting to benchmark behavior across checkpoints and regressions Tech Stack FastAPI PostgreSQL Redis BERT OpenAI API Docker Impact Built an annual chronological replay covering 24 checkpoints and 10,368 Gmail full-sim messages Reached target recall 100% and overall interception 72.1% Emitted token, cache, latency, and stability metrics for benchmark and regression tracking Deployed the live app at cal.shehao.app Links Live: https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ",
+  "wordCount" : "227",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -215,7 +215,7 @@
 </div>
   </header> 
   <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
-<p>CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running agent tasks.</p>
+<p>CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running LLM workflow tasks.</p>
 <h2 id="core-problem">Core Problem<a hidden class="anchor" aria-hidden="true" href="#core-problem">#</a></h2>
 <p>Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.</p>
 <h2 id="system-design">System Design<a hidden class="anchor" aria-hidden="true" href="#system-design">#</a></h2>
@@ -261,7 +261,7 @@
       <li><a href="https://lishehao.github.io/tags/fastapi/">FastAPI</a></li>
       <li><a href="https://lishehao.github.io/tags/postgresql/">PostgreSQL</a></li>
       <li><a href="https://lishehao.github.io/tags/redis/">Redis</a></li>
-      <li><a href="https://lishehao.github.io/tags/ai-agent/">AI Agent</a></li>
+      <li><a href="https://lishehao.github.io/tags/llm-workflow/">LLM Workflow</a></li>
       <li><a href="https://lishehao.github.io/tags/runtime/">Runtime</a></li>
       <li><a href="https://lishehao.github.io/tags/llm/">LLM</a></li>
     </ul>

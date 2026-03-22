@@ -8,13 +8,6 @@
     <language>zh-CN</language>
     <atom:link href="https://lishehao.github.io/zh/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI Agent</title>
-      <link>https://lishehao.github.io/zh/tags/ai-agent/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/tags/ai-agent/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>AI Engineering</title>
       <link>https://lishehao.github.io/zh/tags/ai-engineering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -117,6 +110,13 @@
       <link>https://lishehao.github.io/zh/tags/llm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lishehao.github.io/zh/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM Workflow</title>
+      <link>https://lishehao.github.io/zh/tags/llm-workflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lishehao.github.io/zh/tags/llm-workflow/</guid>
       <description></description>
     </item>
     <item>
