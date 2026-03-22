@@ -1,10 +1,10 @@
 ---
 title: "About"
-summary: "Background, experience, and focus areas for Shehao Li in AI agent systems and backend engineering."
-tags: ["Profile", "UCSD", "AI Agent", "Backend", "AI Engineering"]
+summary: "Background, experience, and focus areas for Shehao Li in LLM workflows and backend engineering."
+tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 ---
 
-I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and an AI Agent / Software Engineer Intern candidate focused on backend systems, agent runtimes, structured outputs, evaluation, and turning AI into maintainable production workflows.
+I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and an LLM Workflow / Software Engineer Intern candidate focused on backend systems, LLM workflow runtimes, structured outputs, evaluation, and turning AI into maintainable production workflows.
 
 ## Snapshot
 
@@ -23,7 +23,7 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## What I Build
 
-- **AI agent runtimes** with explicit state, recoverable steps, and inspectable outputs
+- **LLM workflow runtimes** with explicit state, recoverable steps, and inspectable outputs
 - **Human-in-the-loop workflows** where review and correction sit in the critical path instead of as a weak fallback
 - **Evaluation and observability** built around replay, benchmark, logging, and stability metrics
 
@@ -44,7 +44,7 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 ## Highlight Metrics
 
 - CalendarDIFF: **24-checkpoint** annual replay over **10,368 Gmail full-sim messages**; target recall **100%**, interception **72.1%**
-- AI Narrative Platform: **5 story x 3 agent** benchmark completion **100%**; best-round p95 turn latency **13.3s**, render fallback **0%**
+- AI Narrative Platform: **5 stories x 3 evaluation flows** benchmark completion **100%**; best-round p95 turn latency **13.3s**, render fallback **0%**
 - Auto Load-Off Test: **75% reduction** in test setup/result handling effort
 
 ## Contact

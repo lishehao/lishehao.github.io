@@ -1,7 +1,7 @@
 ---
 title: "CalendarDIFF｜AI 日程变更治理系统"
 summary: "面向 ICS + Gmail 的 AI 日程变更治理运行时，通过显式状态机、人工审核和回放验收控制长链路任务风险。"
-tags: ["FastAPI", "PostgreSQL", "Redis", "AI Agent", "Runtime", "LLM"]
+tags: ["FastAPI", "PostgreSQL", "Redis", "LLM Workflow", "Runtime", "LLM"]
 weight: 5
 featured: true
 liveUrl: "https://cal.shehao.app"
@@ -15,7 +15,7 @@ metrics:
 
 ## 概览
 
-CalendarDIFF 是一个面向 ICS + Gmail 的 AI 日程变更治理后端。它不是简单的“邮件解析 + 通知”系统，而是把连接器、LLM 抽取、语义候选变更、人工审核与通知组织成显式状态机运行时，用来承接长链路智能体任务。
+CalendarDIFF 是一个面向 ICS + Gmail 的 AI 日程变更治理后端。它不是简单的“邮件解析 + 通知”系统，而是把连接器、LLM 抽取、语义候选变更、人工审核与通知组织成显式状态机运行时，用来承接长链路 LLM workflow 任务。
 
 ## 核心问题
 

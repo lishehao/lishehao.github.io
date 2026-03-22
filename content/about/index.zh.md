@@ -1,10 +1,10 @@
 ---
 title: "关于"
-summary: "李佘昊的背景、经历与 AI Agent / 后端系统方向。"
-tags: ["Profile", "UCSD", "AI Agent", "Backend", "AI Engineering"]
+summary: "李佘昊的背景、经历与 LLM workflow / 后端系统方向。"
+tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 ---
 
-我是李佘昊，目前就读于 UC San Diego，专业是 Mathematics-Computer Science，求职方向为 AI 智能体 / Software Engineer Intern。重点方向是后端系统与 AI 工程化，关注智能体运行时、结构化输出、评测验证，以及把 AI 能力真正落到可运行、可维护的工作流中。
+我是李佘昊，目前就读于 UC San Diego，专业是 Mathematics-Computer Science，求职方向为 LLM Workflow / Software Engineer Intern。重点方向是后端系统与 AI 工程化，关注 LLM workflow 运行时、结构化输出、评测验证，以及把 AI 能力真正落到可运行、可维护的工作流中。
 
 ## 基本信息
 
@@ -23,7 +23,7 @@ tags: ["Profile", "UCSD", "AI Agent", "Backend", "AI Engineering"]
 
 ## 我在做什么类型的系统
 
-- **智能体运行时系统**：把长链路任务拆成显式状态、可恢复步骤和可追踪输出
+- **LLM workflow 运行时系统**：把长链路任务拆成显式状态、可恢复步骤和可追踪输出
 - **人工介入工作流**：把审核、纠错和确认放在真正关键的位置，而不是事后兜底
 - **评测与可观测性**：关注回放、基准评测、日志和稳定性指标，而不只是在“调用模型”
 
@@ -44,7 +44,7 @@ tags: ["Profile", "UCSD", "AI Agent", "Backend", "AI Engineering"]
 ## 亮点数据
 
 - CalendarDIFF：**24 个检查点**年度回放，**10,368 封 Gmail 全仿真邮件**；目标召回率 **100%**，拦截率 **72.1%**
-- 叙事平台：**5 个故事 × 3 个智能体**基准测试完成率 **100%**；最佳轮次 p95 单回合 **13.3s**，渲染回退率 **0%**
+- 叙事平台：**5 个故事 × 3 条评测流程**完成率 **100%**；最佳轮次 p95 单回合 **13.3s**，渲染回退率 **0%**
 - Auto Load-Off：测试准备与结果整理工时下降 **75%**
 
 ## 联系方式

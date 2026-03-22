@@ -13,24 +13,24 @@
       <div class="home-hero-copy">
         <div class="home-eyebrow">
           {{- if $isZh -}}
-          AI 智能体系统 / 后端可靠性 / LLM 工程
+          LLM Workflow / 后端可靠性 / LLM 工程
           {{- else -}}
-          AI Agent Systems / Backend Reliability / LLM Engineering
+          LLM Workflows / Backend Reliability / LLM Engineering
           {{- end -}}
         </div>
         <h1>
           {{- if $isZh -}}
-          智能体系统、后端系统与评测验证工程。
+          LLM workflow、后端系统与评测验证工程。
           {{- else -}}
-          AI agent systems, backend reliability, and evaluation-driven engineering.
+          LLM workflows, backend reliability, and evaluation-driven engineering.
           {{- end -}}
         </h1>
         <p class="home-hero-text">
           {{- if $isZh -}}
-          聚焦智能体运行时、人工介入工作流、结构化输出，以及评测 / 回放 / 可观测性。
+          聚焦 LLM workflow 运行时、人工介入工作流、结构化输出，以及评测 / 回放 / 可观测性。
           站点集中展示代表项目、量化指标与简历入口。
           {{- else -}}
-          Focused on agent runtime, human-in-the-loop workflow, structured outputs, and evaluation / replay / observability.
+          Focused on LLM workflow runtimes, human-in-the-loop workflows, structured outputs, and evaluation / replay / observability.
           Built to surface real projects, hard metrics, and a clean resume path.
           {{- end -}}
         </p>
@@ -67,9 +67,9 @@
               <div class="home-profile-name">{{ site.Title }}</div>
               <div class="home-profile-role">
                 {{- if $isZh -}}
-                AI 智能体 / 后端系统 / AI 工程化
+                LLM Workflow / 后端系统 / AI 工程化
                 {{- else -}}
-                AI Agent / Backend Systems / AI Engineering
+                LLM Workflows / Backend Systems / AI Engineering
                 {{- end -}}
               </div>
             </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="home-profile-item">
               <span>{{ if $isZh }}求职方向{{ else }}Target Role{{ end }}</span>
-              <strong>{{ if $isZh }}AI 智能体 / Software Engineer Intern{{ else }}AI Agent / Software Engineer Intern{{ end }}</strong>
+              <strong>{{ if $isZh }}LLM Workflow / Software Engineer Intern{{ else }}LLM Workflow / Software Engineer Intern{{ end }}</strong>
             </div>
             <div class="home-profile-item">
               <span>{{ if $isZh }}所在地{{ else }}Based In{{ end }}</span>
@@ -127,7 +127,7 @@
           <div class="home-feature-header">
             <div class="home-eyebrow">
               {{- if .Params.liveUrl -}}
-                {{- if $isZh }}真实项目{{ else }}Live Product{{ end -}}
+                {{- if $isZh }}已上线产品{{ else }}Live Product{{ end -}}
               {{- else -}}
                 {{- if $isZh }}项目案例{{ else }}Case Study{{ end -}}
               {{- end -}}

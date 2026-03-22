@@ -1,7 +1,7 @@
 ---
 title: "CalendarDIFF"
 summary: "AI schedule-change governance runtime for ICS + Gmail with explicit state, human review, and replay-driven reliability validation."
-tags: ["FastAPI", "PostgreSQL", "Redis", "AI Agent", "Runtime", "LLM"]
+tags: ["FastAPI", "PostgreSQL", "Redis", "LLM Workflow", "Runtime", "LLM"]
 weight: 5
 featured: true
 liveUrl: "https://cal.shehao.app"
@@ -15,7 +15,7 @@ metrics:
 
 ## Overview
 
-CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running agent tasks.
+CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running LLM workflow tasks.
 
 ## Core Problem
 

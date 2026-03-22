@@ -1,12 +1,13 @@
 ---
 title: "AI Narrative Platform"
-summary: "Multi-turn narrative agent system where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior."
+summary: "Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior."
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8
 featured: true
 previewTone: "ember"
+liveUrl: "https://rpg.shehao.app"
 metrics:
-  - "real multi-agent benchmark"
+  - "real multi-workflow benchmark"
   - "deterministic play runtime"
   - "15/15 sessions complete"
   - "0% render fallback"
@@ -14,7 +15,7 @@ metrics:
 
 ## Overview
 
-This project is a multi-turn narrative agent system. The point is not to let the model directly write the whole story, but to place LLMs inside a structured workflow: Author produces executable story packs, while Play lets the model handle action understanding, ending preference judgment, and text rendering, with deterministic runtime state progression everywhere else.
+This project is a multi-turn narrative workflow system. The point is not to let the model directly write the whole story, but to place LLMs inside a structured workflow: Author produces executable story packs, while Play lets the model handle action understanding, ending preference judgment, and text rendering, with deterministic runtime state progression everywhere else.
 
 ## Core Problem
 
@@ -28,8 +29,8 @@ Free-form LLM orchestration makes narrative systems hard to debug, hard to valid
 
 ## Evaluation and Impact
 
-- Built a real multi-agent benchmark loop that generates **5 new stories per round**
-- Had **3 persona agents** play through them via real APIs and report subjective experience
+- Built a real multi-workflow benchmark loop that generates **5 new stories per round**
+- Had **3 persona-driven flows** play through them via real APIs and report subjective experience
 - Aggregated time, token, cache, fallback, and ending-distribution metrics into one evaluation surface
 - Best round reached **15/15 completed sessions** with **0% render fallback**
 
@@ -44,4 +45,5 @@ Free-form LLM orchestration makes narrative systems hard to debug, hard to valid
 
 ## Status
 
-- Private prototype for now; public repo is not available yet
+- Live site: **[rpg.shehao.app](https://rpg.shehao.app)**
+- Repository is private for now
