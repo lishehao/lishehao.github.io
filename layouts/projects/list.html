@@ -1,0 +1,139 @@
+{{- define "main" }}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $paginator := .Paginate .RegularPages }}
+{{- $isZh := eq site.Language.Lang "zh" }}
+{{- $featured := where $paginator.Pages "Params.featured" true }}
+{{- $rest := where $paginator.Pages "Params.featured" "!=" true }}
+
+{{- if gt (len $featured) 0 }}
+<section class="project-showcase-grid">
+  {{- range $featured }}
+  <article class="project-feature-card tone-{{ .Params.previewTone | default "sky" }}">
+    <div class="project-feature-visual">
+      <div class="project-feature-browser">
+        <span class="project-preview-dot"></span>
+        <span class="project-preview-dot"></span>
+        <span class="project-preview-dot"></span>
+        <span class="project-preview-url">
+          {{- with .Params.liveUrl }}{{ . }}{{ else }}{{ .Permalink }}{{ end -}}
+        </span>
+      </div>
+      <div class="project-feature-canvas">
+        <div class="project-feature-kicker">
+          {{- if .Params.liveUrl -}}
+            {{- if $isZh }}真实项目首页{{ else }}Live Product{{ end -}}
+          {{- else -}}
+            {{- if $isZh }}项目案例{{ else }}Case Study{{ end -}}
+          {{- end -}}
+        </div>
+        <h2>{{ .Title }}</h2>
+        <p>{{ .Summary | plainify | htmlUnescape }}</p>
+        {{- with .Params.metrics }}
+        <div class="project-metric-row">
+          {{- range first 4 . }}
+          <span class="project-metric-chip">{{ . }}</span>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+    </div>
+    <div class="project-feature-body">
+      <div class="project-feature-actions">
+        <a class="project-chip" href="{{ .Permalink }}">
+          {{- if $isZh }}查看详情{{ else }}Details{{ end -}}
+        </a>
+        {{- with .Params.liveUrl }}
+        <a class="project-chip project-chip-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+          {{- if $isZh }}访问首页{{ else }}Live Site{{ end -}}
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </article>
+  {{- end }}
+</section>
+{{- end }}
+
+{{- if gt (len $rest) 0 }}
+<section class="project-compact-grid">
+{{- range $rest }}
+<article class="post-entry project-post-entry">
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      <a class="project-card-title" href="{{ .Permalink }}">{{ .Title }}</a>
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+      {{- end }}
+    </h2>
+  </header>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  {{- end }}
+  <footer class="entry-footer project-entry-footer">
+    <div class="project-entry-links">
+      <a class="project-chip" href="{{ .Permalink }}">
+        {{- if $isZh }}查看详情{{ else }}Details{{ end -}}
+      </a>
+      {{- with .Params.liveUrl }}
+      <a class="project-chip project-chip-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+        {{- if $isZh }}访问首页{{ else }}Live Site{{ end -}}
+      </a>
+      {{- end }}
+    </div>
+  </footer>
+</article>
+{{- end }}
+</section>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+      {{- end }}
+    </a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+      {{- end }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}

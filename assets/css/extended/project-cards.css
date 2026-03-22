@@ -1,0 +1,196 @@
+.project-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 28px 0 34px;
+}
+
+.project-feature-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 2px);
+    background: var(--entry);
+    box-shadow: 0 16px 36px rgba(24, 38, 58, 0.08);
+}
+
+.project-feature-visual {
+    position: relative;
+    min-height: 320px;
+    border-bottom: 1px solid var(--border);
+}
+
+.project-feature-card.tone-sky .project-feature-visual {
+    background:
+        radial-gradient(circle at top right, rgba(87, 167, 255, 0.28), transparent 36%),
+        linear-gradient(135deg, #eff6ff 0%, #f7fbff 55%, #ffffff 100%);
+}
+
+.project-feature-card.tone-ember .project-feature-visual {
+    background:
+        radial-gradient(circle at top right, rgba(255, 158, 97, 0.24), transparent 34%),
+        linear-gradient(135deg, #fff6ef 0%, #fffaf6 55%, #ffffff 100%);
+}
+
+.project-feature-browser {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.project-preview-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--secondary);
+    opacity: 0.55;
+}
+
+.project-preview-url {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--secondary);
+}
+
+.project-feature-canvas {
+    padding: 26px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.project-feature-kicker {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.project-feature-canvas h2 {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+}
+
+.project-feature-canvas p {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--secondary);
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.project-feature-body {
+    padding: 16px 20px 18px;
+}
+
+.project-feature-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-metric-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-metric-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(22, 32, 47, 0.09);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--primary);
+    font-size: 12px;
+    line-height: 1;
+}
+
+.project-compact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.project-post-entry {
+    transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.project-post-entry:hover {
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(24, 38, 58, 0.06);
+}
+
+.project-card-title {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card-title:hover {
+    color: var(--primary);
+}
+
+.project-entry-footer {
+    margin-top: 14px;
+}
+
+.project-entry-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1;
+    background: transparent;
+    transition: transform 0.12s ease, border-color 0.12s ease, background-color 0.12s ease;
+}
+
+.project-chip:hover {
+    transform: translateY(-1px);
+    border-color: var(--primary);
+}
+
+.project-chip-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--theme);
+}
+
+.project-chip-primary:hover {
+    opacity: 0.92;
+}
+
+@media (max-width: 768px) {
+    .project-showcase-grid,
+    .project-compact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-feature-visual {
+        min-height: auto;
+    }
+
+    .project-feature-canvas h2 {
+        font-size: 28px;
+    }
+}
