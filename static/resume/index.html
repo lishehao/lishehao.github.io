@@ -229,19 +229,22 @@
 
       <div class="entry">
         <div class="row">
-          <div class="title">CalendarDIFF｜AI 日程变更治理系统</div>
+          <div class="title">CalendarDIFF｜面向 Gmail + ICS 的 AI 工作流运行时 / 日程变更治理系统</div>
           <div class="meta">FastAPI / PostgreSQL / Redis / BERT / OpenAI API ｜ 2026.01 - 至今</div>
         </div>
         <ul>
-          <li>设计并实现面向 ICS + Gmail 的 AI 日程变更治理后端，将连接器、LLM 抽取、semantic proposal、人工审核与通知组织为显式状态机 runtime，解决长链路任务推进、失败恢复与可观测。</li>
-          <li>完成基于 Hugging Face DistilBERT 的 Gmail 二级筛选研究：对比 prefilter→LLM 与 prefilter→BERT→LLM 在真实 Gmail + synthetic DDL-change 样本下的 token/cache/成本，支持主链路收敛到 deterministic prefilter → LLM。</li>
-          <li>搭建全年 chronological replay 验收：覆盖 24 个 checkpoint、10,368 封 full-sim Gmail；prefilter target recall 100%，overall interception 72.1%。</li>
+          <li>独立设计并实现面向 Gmail + ICS 的 AI 日程变更治理后端，将 connector 接入、prefilter、LLM 抽取、canonical state apply、人工审核与通知收敛为一套显式状态机 runtime，解决长链路任务推进、失败恢复与阶段可观测问题。</li>
+          <li>以 agent workflow 思路重构系统，不把 LLM 当作“直接给答案的黑盒”，而是让模型负责 proposal 生成，由确定性 runtime 负责状态推进、结果落库与异常恢复，支持 approve / reject / edit / manual fallback 的人机协同闭环。</li>
+          <li>搭建全年 chronological replay 验收框架，将 Gmail/ICS 信号按真实时间顺序推进，并在 checkpoint 停顿后通过真实 API 完成人工决策，验证系统在持续演化场景下的稳定性、可恢复性与 operator 负担，而非只做离线 parser regression。</li>
+          <li>设计 Gmail 多阶段过滤与抽取链路，形成 deterministic prefilter -> LLM 主路径，并对 prefilter -> DistilBERT -> LLM 方案进行成本与效果评估，围绕 token / cache / latency / stability 建立实验与优化闭环。</li>
+          <li>重构 source sync runtime，将 bootstrap / replay 分账、显式 stage/substage/progress、source observability 与 operator guidance 接入同一状态机，提升 runtime blocker 定位能力与系统可维护性。</li>
+          <li>在全年数据集上完成系统级评测，覆盖 24 个 checkpoint、10,368 封 full-sim Gmail；实现 prefilter target recall 100%、overall interception 72.1%，并沉淀 token/cache/latency 指标与稳定性验收流程。</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="row">
-          <div class="title">AI 自动叙事平台</div>
+          <div class="title">AI 自动叙事与 Workflow 评测平台</div>
           <div class="meta">FastAPI / React / TypeScript / LangGraph / LangChain ｜ 2026.01 - 至今</div>
         </div>
         <ul>
@@ -296,7 +299,7 @@
     <div class="section">
       <div class="section-title">亮点数据</div>
       <div class="highlight-grid">
-        <div class="highlight-item">CalendarDIFF：24 checkpoint 年度回放，10,368 封 Gmail full-sim；target recall 100%，interception 72.1%</div>
+        <div class="highlight-item">CalendarDIFF：24 个 checkpoint、10,368 封 full-sim Gmail；prefilter target recall 100%，overall interception 72.1%</div>
         <div class="highlight-item">叙事平台：5 个故事 × 3 条评测流程完成率 100%，最佳轮次 p95 单回合 13.3s，渲染回退率 0%</div>
         <div class="highlight-item">Auto Load-Off：测试工时下降 75%</div>
       </div>

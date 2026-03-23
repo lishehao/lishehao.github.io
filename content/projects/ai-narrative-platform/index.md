@@ -1,5 +1,5 @@
 ---
-title: "AI Narrative Platform"
+title: "AI Narrative and Workflow Evaluation Platform"
 summary: "Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior."
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8

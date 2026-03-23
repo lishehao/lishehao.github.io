@@ -1,5 +1,5 @@
 ---
-title: "AI 自动叙事平台"
+title: "AI 自动叙事与 Workflow 评测平台"
 summary: "已上线的多回合交互叙事 workflow 产品：创作侧产出可执行故事包，交互侧由确定性运行时承接状态推进与评测。"
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8

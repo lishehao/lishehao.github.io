@@ -52,7 +52,7 @@ defaultContentLanguageInSubdir = false
 
   [[languages.en.menu.main]]
     name = "Resume"
-    url = "/resume/shehao_resume_preview.html"
+    url = "/resume/"
     weight = 30
 
 [languages.zh]
@@ -95,5 +95,5 @@ defaultContentLanguageInSubdir = false
 
   [[languages.zh.menu.main]]
     name = "简历"
-    url = "/resume/shehao_resume_preview.html"
+    url = "/resume/"
     weight = 30

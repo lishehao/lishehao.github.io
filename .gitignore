@@ -12,3 +12,10 @@ venv/
 
 # OS
 .DS_Store
+
+# local previews
+output/
+public/
+
+# hugo runtime
+.hugo_build.lock

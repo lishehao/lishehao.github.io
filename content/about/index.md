@@ -29,8 +29,8 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## Selected Work
 
-- **[CalendarDIFF](/projects/calendardiff/)** — ICS + Gmail schedule-governance runtime with explicit state, human review, replay acceptance, and a live deployment at [cal.shehao.app](https://cal.shehao.app)
-- **[AI Narrative Platform](/projects/ai-narrative-platform/)** — structured narrative workflow with persistent authoring, deterministic play runtime, and benchmark diagnostics
+- **[CalendarDIFF | AI Workflow Runtime for Gmail + ICS](/projects/calendardiff/)** — workflow runtime for Gmail + ICS that unifies connectors, prefiltering, proposals, human review, and chronological replay around one explicit state machine
+- **[AI Narrative and Workflow Evaluation Platform](/projects/ai-narrative-platform/)** — structured narrative workflow with persistent authoring, deterministic play runtime, and benchmark diagnostics
 - **[Auto Load-Off Test](/projects/auto-load-off-test/)** — automation tool for repeatable validation runs with structured outputs and test-lab workflow improvements
 - **[Workflow Automation Projects](/projects/mail-to-dingtalk-todo/)** — email/task automation and GitHub-to-DingTalk summary pipelines used in real daily workflows
 
@@ -52,4 +52,4 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 - Email: `lishehao@gmail.com`
 - GitHub: [github.com/lishehao](https://github.com/lishehao)
 - LinkedIn: [Shehao Li](https://www.linkedin.com/in/shehao-li-897626267/)
-- Resume: [/resume/shehao_resume_preview.html](/resume/shehao_resume_preview.html)
+- Resume: [/resume/](/resume/)

@@ -1,38 +1,30 @@
 ---
-title: "CalendarDIFF"
-summary: "AI schedule-change governance runtime for ICS + Gmail with explicit state, human review, and replay-driven reliability validation."
+title: "CalendarDIFF | AI Workflow Runtime for Gmail + ICS"
+summary: "AI workflow runtime and schedule-change governance system for Gmail + ICS, built around an explicit state-machine runtime, human review, chronological replay, and a deterministic prefilter -> LLM path."
 tags: ["FastAPI", "PostgreSQL", "Redis", "LLM Workflow", "Runtime", "LLM"]
 weight: 5
 featured: true
 liveUrl: "https://cal.shehao.app"
 previewTone: "sky"
 metrics:
-  - "live product deployed"
-  - "human review in the critical path"
+  - "state-machine runtime"
+  - "human review loop"
   - "24-checkpoint replay"
-  - "target recall 100%"
+  - "overall interception 72.1%"
 ---
 
 ## Overview
 
-CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running LLM workflow tasks.
+CalendarDIFF is an AI workflow runtime and schedule-change governance system for Gmail + ICS. The point is not to treat the LLM as a black box that directly returns answers, but to unify connector intake, prefiltering, proposal generation, human review, state progression, and notification inside one recoverable and observable workflow runtime.
 
-## Core Problem
+## System Design and Evaluation
 
-Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.
-
-## System Design
-
-- Turned connectors, extraction, proposal, review, and notify into explicit stages with recoverable state transitions
-- Collapsed Gmail intake into a deterministic prefilter plus structured extraction path so the model only handles the semantic part
-- Put human review in front of critical state transitions instead of using it as a weak after-the-fact fallback
-
-## Runtime and Reliability
-
-- **Explicit state-machine runtime** for task progression, retries, recovery, and notification boundaries
-- **Message-level parse cache** to stabilize retries and replay runs
-- **Bad-sample isolation** so long-tail requests do not amplify failure across the whole pipeline
-- **Replay / acceptance reporting** to benchmark behavior across checkpoints and regressions
+- Designed and implemented a Gmail + ICS schedule-change governance backend that collapses connector intake, prefiltering, LLM extraction, canonical state apply, human review, and notification into one explicit state-machine runtime for long-running task progression, recovery, and stage-level observability.
+- Reframed the system around an agent-workflow model: the model generates proposals while a deterministic runtime owns state progression, persistence, and recovery, supporting an approve / reject / edit / manual fallback human-in-the-loop loop.
+- Built an annual chronological replay harness that advances Gmail/ICS signals in real timestamp order and pauses at checkpoints for real API-backed human decisions, validating stability, recoverability, and operator burden under continuous evolution rather than only offline parser regression.
+- Designed a multi-stage Gmail filtering and extraction pipeline around deterministic prefilter -> LLM, and evaluated a prefilter -> DistilBERT -> LLM path for cost and quality tradeoffs, using token / cache / latency / stability as the optimization surface.
+- Reworked the source-sync runtime to unify bootstrap / replay accounting, explicit stage/substage/progress tracking, source observability, and operator guidance inside one state machine, improving runtime blocker localization and maintainability.
+- Completed system-level evaluation over an annual dataset covering 24 checkpoints and 10,368 full-sim Gmail messages; achieved 100% prefilter target recall and 72.1% overall interception, and established token/cache/latency metrics plus a stability acceptance workflow.
 
 ## Tech Stack
 
@@ -43,12 +35,9 @@ Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and 
 - OpenAI API
 - Docker
 
-## Impact
+## Status
 
-- Built an annual chronological replay covering **24 checkpoints** and **10,368 Gmail full-sim messages**
-- Reached target recall **100%** and overall interception **72.1%**
-- Emitted token, cache, latency, and stability metrics for benchmark and regression tracking
-- Deployed the live app at **[cal.shehao.app](https://cal.shehao.app)**
+- Live site: **[cal.shehao.app](https://cal.shehao.app)**
 
 ## Links
 

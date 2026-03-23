@@ -29,8 +29,8 @@ tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 
 ## 代表项目
 
-- **[CalendarDIFF｜AI 日程变更治理系统](/zh/projects/calendardiff/)** - 面向 ICS + Gmail 的显式状态机运行时，结合人工审核、回放验收与可靠通知链路，现已上线 [cal.shehao.app](https://cal.shehao.app)
-- **[AI 自动叙事平台](/zh/projects/ai-narrative-platform/)** - 将 LLM 放入结构化工作流，由持久化创作工作流与确定性交互运行时承接长流程交互
+- **[CalendarDIFF｜面向 Gmail + ICS 的 AI 工作流运行时 / 日程变更治理系统](/zh/projects/calendardiff/)** - 将 connector、prefilter、proposal、人工审核与通知收敛为显式状态机 runtime，围绕 chronological replay 与人机协同闭环构建
+- **[AI 自动叙事与 Workflow 评测平台](/zh/projects/ai-narrative-platform/)** - 将 LLM 放入结构化工作流，由持久化创作工作流与确定性交互运行时承接长流程交互
 - **[自动带载断载测试工具](/zh/projects/auto-load-off-test/)** - 面向实际验证流程的自动化工具，强调可重复性与可追踪性
 - **[流程自动化项目](/zh/projects/mail-to-dingtalk-todo/)** - 包括 Email -> DingTalk 待办与 GitHub Issues -> DingTalk 摘要链路
 
@@ -52,4 +52,4 @@ tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 - Email: `lishehao@gmail.com`
 - GitHub: [github.com/lishehao](https://github.com/lishehao)
 - LinkedIn: [李佘昊 / Shehao Li](https://www.linkedin.com/in/shehao-li-897626267/)
-- 简历: [/resume/shehao_resume_preview.html](/resume/shehao_resume_preview.html)
+- 简历: [/resume/](/resume/)

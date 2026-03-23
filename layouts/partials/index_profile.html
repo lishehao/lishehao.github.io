@@ -1,7 +1,7 @@
 {{- $isZh := eq site.Language.Lang "zh" -}}
 {{- $pages := where site.RegularPages "Lang" site.Language.Lang -}}
 {{- $featured := first 2 (where (where $pages "Section" "projects") "Params.featured" true) -}}
-{{- $resumeUrl := cond $isZh "/zh/resume/shehao_resume_preview.html" "/resume/shehao_resume_preview.html" -}}
+{{- $resumeUrl := "/resume/" -}}
 {{- $projectsUrl := cond $isZh "/zh/projects/" "/projects/" -}}
 {{- $aboutUrl := cond $isZh "/zh/about/" "/about/" -}}
 {{- $linkedinUrl := "https://www.linkedin.com/in/shehao-li-897626267/" -}}
