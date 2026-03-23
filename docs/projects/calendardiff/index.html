@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>CalendarDIFF | Shehao Li</title>
+<title>CalendarDIFF | AI Workflow Runtime for Gmail &#43; ICS | Shehao Li</title>
 <meta name="keywords" content="FastAPI, PostgreSQL, Redis, LLM Workflow, Runtime, LLM">
-<meta name="description" content="AI schedule-change governance runtime for ICS &#43; Gmail with explicit state, human review, and replay-driven reliability validation.">
+<meta name="description" content="AI workflow runtime and schedule-change governance system for Gmail &#43; ICS, built around an explicit state-machine runtime, human review, chronological replay, and a deterministic prefilter -&gt; LLM path.">
 <meta name="author" content="">
 <link rel="canonical" href="https://lishehao.github.io/projects/calendardiff/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
@@ -73,8 +73,8 @@
 
 </script><meta property="og:url" content="https://lishehao.github.io/projects/calendardiff/">
   <meta property="og:site_name" content="Shehao Li">
-  <meta property="og:title" content="CalendarDIFF">
-  <meta property="og:description" content="AI schedule-change governance runtime for ICS &#43; Gmail with explicit state, human review, and replay-driven reliability validation.">
+  <meta property="og:title" content="CalendarDIFF | AI Workflow Runtime for Gmail &#43; ICS">
+  <meta property="og:description" content="AI workflow runtime and schedule-change governance system for Gmail &#43; ICS, built around an explicit state-machine runtime, human review, chronological replay, and a deterministic prefilter -&gt; LLM path.">
   <meta property="og:locale" content="en-US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="projects">
@@ -85,8 +85,8 @@
     <meta property="article:tag" content="Runtime">
     <meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CalendarDIFF">
-<meta name="twitter:description" content="AI schedule-change governance runtime for ICS &#43; Gmail with explicit state, human review, and replay-driven reliability validation.">
+<meta name="twitter:title" content="CalendarDIFF | AI Workflow Runtime for Gmail &#43; ICS">
+<meta name="twitter:description" content="AI workflow runtime and schedule-change governance system for Gmail &#43; ICS, built around an explicit state-machine runtime, human review, chronological replay, and a deterministic prefilter -&gt; LLM path.">
 
 
 <script type="application/ld+json">
@@ -103,7 +103,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "CalendarDIFF",
+      "name": "CalendarDIFF | AI Workflow Runtime for Gmail + ICS",
       "item": "https://lishehao.github.io/projects/calendardiff/"
     }
   ]
@@ -113,14 +113,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "CalendarDIFF",
-  "name": "CalendarDIFF",
-  "description": "AI schedule-change governance runtime for ICS + Gmail with explicit state, human review, and replay-driven reliability validation.",
+  "headline": "CalendarDIFF | AI Workflow Runtime for Gmail + ICS",
+  "name": "CalendarDIFF | AI Workflow Runtime for Gmail \u002b ICS",
+  "description": "AI workflow runtime and schedule-change governance system for Gmail + ICS, built around an explicit state-machine runtime, human review, chronological replay, and a deterministic prefilter -\u0026gt; LLM path.",
   "keywords": [
     "FastAPI", "PostgreSQL", "Redis", "LLM Workflow", "Runtime", "LLM"
   ],
-  "articleBody": "Overview CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running LLM workflow tasks.\nCore Problem Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.\nSystem Design Turned connectors, extraction, proposal, review, and notify into explicit stages with recoverable state transitions Collapsed Gmail intake into a deterministic prefilter plus structured extraction path so the model only handles the semantic part Put human review in front of critical state transitions instead of using it as a weak after-the-fact fallback Runtime and Reliability Explicit state-machine runtime for task progression, retries, recovery, and notification boundaries Message-level parse cache to stabilize retries and replay runs Bad-sample isolation so long-tail requests do not amplify failure across the whole pipeline Replay / acceptance reporting to benchmark behavior across checkpoints and regressions Tech Stack FastAPI PostgreSQL Redis BERT OpenAI API Docker Impact Built an annual chronological replay covering 24 checkpoints and 10,368 Gmail full-sim messages Reached target recall 100% and overall interception 72.1% Emitted token, cache, latency, and stability metrics for benchmark and regression tracking Deployed the live app at cal.shehao.app Links Live: https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ",
-  "wordCount" : "227",
+  "articleBody": "Overview CalendarDIFF is an AI workflow runtime and schedule-change governance system for Gmail + ICS. The point is not to treat the LLM as a black box that directly returns answers, but to unify connector intake, prefiltering, proposal generation, human review, state progression, and notification inside one recoverable and observable workflow runtime.\nSystem Design and Evaluation Designed and implemented a Gmail + ICS schedule-change governance backend that collapses connector intake, prefiltering, LLM extraction, canonical state apply, human review, and notification into one explicit state-machine runtime for long-running task progression, recovery, and stage-level observability. Reframed the system around an agent-workflow model: the model generates proposals while a deterministic runtime owns state progression, persistence, and recovery, supporting an approve / reject / edit / manual fallback human-in-the-loop loop. Built an annual chronological replay harness that advances Gmail/ICS signals in real timestamp order and pauses at checkpoints for real API-backed human decisions, validating stability, recoverability, and operator burden under continuous evolution rather than only offline parser regression. Designed a multi-stage Gmail filtering and extraction pipeline around deterministic prefilter -\u003e LLM, and evaluated a prefilter -\u003e DistilBERT -\u003e LLM path for cost and quality tradeoffs, using token / cache / latency / stability as the optimization surface. Reworked the source-sync runtime to unify bootstrap / replay accounting, explicit stage/substage/progress tracking, source observability, and operator guidance inside one state machine, improving runtime blocker localization and maintainability. Completed system-level evaluation over an annual dataset covering 24 checkpoints and 10,368 full-sim Gmail messages; achieved 100% prefilter target recall and 72.1% overall interception, and established token/cache/latency metrics plus a stability acceptance workflow. Tech Stack FastAPI PostgreSQL Redis BERT OpenAI API Docker Status Live site: cal.shehao.app Links Live: https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ",
+  "wordCount" : "282",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -190,7 +190,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/resume/shehao_resume_preview.html" title="Resume">
+                <a href="https://lishehao.github.io/resume/" title="Resume">
                     <span>Resume</span>
                 </a>
             </li>
@@ -203,7 +203,7 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      CalendarDIFF
+      CalendarDIFF | AI Workflow Runtime for Gmail &#43; ICS
     </h1>
     <div class="post-meta"><span>Translations:</span>
 <ul class="i18n_list">
@@ -215,21 +215,15 @@
 </div>
   </header> 
   <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
-<p>CalendarDIFF is an AI schedule-change governance backend for ICS + Gmail. Instead of treating the problem as simple parsing plus notification, it organizes connectors, LLM extraction, semantic proposals, human review, and notification into an explicit runtime for long-running LLM workflow tasks.</p>
-<h2 id="core-problem">Core Problem<a hidden class="anchor" aria-hidden="true" href="#core-problem">#</a></h2>
-<p>Schedule-change pipelines are full of noisy inputs, cross-source conflicts, and long-tail cases. A fully automatic system turns extraction mistakes into false notifications; a fully manual one does not scale.</p>
-<h2 id="system-design">System Design<a hidden class="anchor" aria-hidden="true" href="#system-design">#</a></h2>
+<p>CalendarDIFF is an AI workflow runtime and schedule-change governance system for Gmail + ICS. The point is not to treat the LLM as a black box that directly returns answers, but to unify connector intake, prefiltering, proposal generation, human review, state progression, and notification inside one recoverable and observable workflow runtime.</p>
+<h2 id="system-design-and-evaluation">System Design and Evaluation<a hidden class="anchor" aria-hidden="true" href="#system-design-and-evaluation">#</a></h2>
 <ul>
-<li>Turned connectors, extraction, proposal, review, and notify into explicit stages with recoverable state transitions</li>
-<li>Collapsed Gmail intake into a deterministic prefilter plus structured extraction path so the model only handles the semantic part</li>
-<li>Put human review in front of critical state transitions instead of using it as a weak after-the-fact fallback</li>
-</ul>
-<h2 id="runtime-and-reliability">Runtime and Reliability<a hidden class="anchor" aria-hidden="true" href="#runtime-and-reliability">#</a></h2>
-<ul>
-<li><strong>Explicit state-machine runtime</strong> for task progression, retries, recovery, and notification boundaries</li>
-<li><strong>Message-level parse cache</strong> to stabilize retries and replay runs</li>
-<li><strong>Bad-sample isolation</strong> so long-tail requests do not amplify failure across the whole pipeline</li>
-<li><strong>Replay / acceptance reporting</strong> to benchmark behavior across checkpoints and regressions</li>
+<li>Designed and implemented a Gmail + ICS schedule-change governance backend that collapses connector intake, prefiltering, LLM extraction, canonical state apply, human review, and notification into one explicit state-machine runtime for long-running task progression, recovery, and stage-level observability.</li>
+<li>Reframed the system around an agent-workflow model: the model generates proposals while a deterministic runtime owns state progression, persistence, and recovery, supporting an approve / reject / edit / manual fallback human-in-the-loop loop.</li>
+<li>Built an annual chronological replay harness that advances Gmail/ICS signals in real timestamp order and pauses at checkpoints for real API-backed human decisions, validating stability, recoverability, and operator burden under continuous evolution rather than only offline parser regression.</li>
+<li>Designed a multi-stage Gmail filtering and extraction pipeline around deterministic prefilter -&gt; LLM, and evaluated a prefilter -&gt; DistilBERT -&gt; LLM path for cost and quality tradeoffs, using token / cache / latency / stability as the optimization surface.</li>
+<li>Reworked the source-sync runtime to unify bootstrap / replay accounting, explicit stage/substage/progress tracking, source observability, and operator guidance inside one state machine, improving runtime blocker localization and maintainability.</li>
+<li>Completed system-level evaluation over an annual dataset covering 24 checkpoints and 10,368 full-sim Gmail messages; achieved 100% prefilter target recall and 72.1% overall interception, and established token/cache/latency metrics plus a stability acceptance workflow.</li>
 </ul>
 <h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
 <ul>
@@ -240,12 +234,9 @@
 <li>OpenAI API</li>
 <li>Docker</li>
 </ul>
-<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<h2 id="status">Status<a hidden class="anchor" aria-hidden="true" href="#status">#</a></h2>
 <ul>
-<li>Built an annual chronological replay covering <strong>24 checkpoints</strong> and <strong>10,368 Gmail full-sim messages</strong></li>
-<li>Reached target recall <strong>100%</strong> and overall interception <strong>72.1%</strong></li>
-<li>Emitted token, cache, latency, and stability metrics for benchmark and regression tracking</li>
-<li>Deployed the live app at <strong><a href="https://cal.shehao.app">cal.shehao.app</a></strong></li>
+<li>Live site: <strong><a href="https://cal.shehao.app">cal.shehao.app</a></strong></li>
 </ul>
 <h2 id="links">Links<a hidden class="anchor" aria-hidden="true" href="#links">#</a></h2>
 <ul>

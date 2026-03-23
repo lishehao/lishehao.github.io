@@ -8,11 +8,11 @@
     <language>zh-CN</language>
     <atom:link href="https://lishehao.github.io/zh/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CalendarDIFF｜AI 日程变更治理系统</title>
+      <title>CalendarDIFF｜面向 Gmail &#43; ICS 的 AI 工作流运行时 / 日程变更治理系统</title>
       <link>https://lishehao.github.io/zh/projects/calendardiff/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lishehao.github.io/zh/projects/calendardiff/</guid>
-      <description>面向 ICS + Gmail 的 AI 日程变更治理运行时，通过显式状态机、人工审核和回放验收控制长链路任务风险。</description>
+      <description>面向 Gmail + ICS 的 AI 工作流运行时与日程变更治理系统，围绕显式状态机、人工审核、chronological replay 和 deterministic prefilter -&amp;gt; LLM 主链路构建。</description>
     </item>
   </channel>
 </rss>
