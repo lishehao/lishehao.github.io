@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>AI Narrative and Workflow Evaluation Platform | Shehao Li</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Author Copilot Narrative Editing and Evaluation Platform | Shehao Li</title>
 <meta name="keywords" content="FastAPI, React, TypeScript, LangGraph, LangChain, AI Engineering">
-<meta name="description" content="Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior.">
+<meta name="description" content="Live interactive narrative product built around an Author Copilot editing loop, a stateful Play runtime, and end-to-end author -&gt; publish -&gt; play evaluation.">
 <meta name="author" content="">
-<link rel="canonical" href="https://lishehao.github.io/projects/ai-narrative-platform/">
+<link rel="canonical" href="http://localhost:1314/projects/ai-narrative-platform/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lishehao.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://lishehao.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://lishehao.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1314/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://lishehao.github.io/projects/ai-narrative-platform/">
-<link rel="alternate" hreflang="zh" href="https://lishehao.github.io/zh/projects/ai-narrative-platform/">
+<link rel="alternate" hreflang="en" href="http://localhost:1314/projects/ai-narrative-platform/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1314/zh/projects/ai-narrative-platform/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,79 +71,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://lishehao.github.io/projects/ai-narrative-platform/">
-  <meta property="og:site_name" content="Shehao Li">
-  <meta property="og:title" content="AI Narrative and Workflow Evaluation Platform">
-  <meta property="og:description" content="Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior.">
-  <meta property="og:locale" content="en-US">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="projects">
-    <meta property="article:tag" content="FastAPI">
-    <meta property="article:tag" content="React">
-    <meta property="article:tag" content="TypeScript">
-    <meta property="article:tag" content="LangGraph">
-    <meta property="article:tag" content="LangChain">
-    <meta property="article:tag" content="AI Engineering">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AI Narrative and Workflow Evaluation Platform">
-<meta name="twitter:description" content="Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Projects",
-      "item": "https://lishehao.github.io/projects/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "AI Narrative and Workflow Evaluation Platform",
-      "item": "https://lishehao.github.io/projects/ai-narrative-platform/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "AI Narrative and Workflow Evaluation Platform",
-  "name": "AI Narrative and Workflow Evaluation Platform",
-  "description": "Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior.",
-  "keywords": [
-    "FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"
-  ],
-  "articleBody": "Overview This project is a multi-turn narrative workflow system. The point is not to let the model directly write the whole story, but to place LLMs inside a structured workflow: Author produces executable story packs, while Play lets the model handle action understanding, ending preference judgment, and text rendering, with deterministic runtime state progression everywhere else.\nCore Problem Free-form LLM orchestration makes narrative systems hard to debug, hard to validate, and hard to reproduce under repeated use. The hardest part is not text generation itself; it is the semantic mismatch between endings and state feedback, plus failure recovery across long-running turn sequences.\nSystem Design Used LangGraph for a persisted Author workflow with explicit run, event, and artifact tracking Kept Play runtime deterministic, with LLMs limited to action understanding, ending judgment, and rendering Added structured-output validation, failure recovery, ending gates, turn traces, and benchmark diagnostics Evaluation and Impact Built a real multi-workflow benchmark loop that generates 5 new stories per round Had 3 persona-driven flows play through them via real APIs and report subjective experience Aggregated time, token, cache, fallback, and ending-distribution metrics into one evaluation surface Best round reached 15/15 completed sessions with 0% render fallback Tech Stack FastAPI React TypeScript LangGraph LangChain PostgreSQL Status Live site: rpg.shehao.app Repository is private for now ",
-  "wordCount" : "213",
-  "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://lishehao.github.io/projects/ai-narrative-platform/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Shehao Li",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://lishehao.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lishehao.github.io/" accesskey="h" title="Shehao Li (Alt + H)">Shehao Li</a>
+            <a href="http://localhost:1314/" accesskey="h" title="Shehao Li (Alt + H)">Shehao Li</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -167,7 +101,7 @@
                 </button>
                     <ul class="lang-switch"><li>|</li>
                         <li>
-                            <a href="https://lishehao.github.io/zh/projects/ai-narrative-platform/" title="中文"
+                            <a href="http://localhost:1314/zh/projects/ai-narrative-platform/" title="中文"
                                 aria-label="中文">中文</a>
                         </li>
                     </ul>
@@ -175,22 +109,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://lishehao.github.io/" title="Home">
+                <a href="http://localhost:1314/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/about/" title="About">
+                <a href="http://localhost:1314/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/projects/" title="Projects">
+                <a href="http://localhost:1314/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/resume/" title="Resume">
+                <a href="http://localhost:1314/resume/" title="Resume">
                     <span>Resume</span>
                 </a>
             </li>
@@ -203,33 +137,28 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      AI Narrative and Workflow Evaluation Platform
+      Author Copilot Narrative Editing and Evaluation Platform
     </h1>
     <div class="post-meta"><span>Translations:</span>
 <ul class="i18n_list">
     <li>
-        <a href="https://lishehao.github.io/zh/projects/ai-narrative-platform/">中文</a>
+        <a href="http://localhost:1314/zh/projects/ai-narrative-platform/">中文</a>
     </li>
 </ul>
 
 </div>
   </header> 
   <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
-<p>This project is a multi-turn narrative workflow system. The point is not to let the model directly write the whole story, but to place LLMs inside a structured workflow: Author produces executable story packs, while Play lets the model handle action understanding, ending preference judgment, and text rendering, with deterministic runtime state progression everywhere else.</p>
+<p>This project is a live interactive narrative product built around an Author Copilot editing loop, a stateful Play runtime, and an evaluation layer spanning author -&gt; publish -&gt; play. Instead of treating the model as a black-box story generator, the system makes editing, application, and validation part of one controllable product flow.</p>
 <h2 id="core-problem">Core Problem<a hidden class="anchor" aria-hidden="true" href="#core-problem">#</a></h2>
-<p>Free-form LLM orchestration makes narrative systems hard to debug, hard to validate, and hard to reproduce under repeated use. The hardest part is not text generation itself; it is the semantic mismatch between endings and state feedback, plus failure recovery across long-running turn sequences.</p>
-<h2 id="system-design">System Design<a hidden class="anchor" aria-hidden="true" href="#system-design">#</a></h2>
+<p>Narrative systems are easy to prototype but hard to edit, validate, and evolve. The hard part is not raw text generation; it is keeping AI edits controllable, runtime state consistent, and quality evaluation tied to the real product loop rather than isolated prompt tests.</p>
+<h2 id="system-design-and-evaluation">System Design and Evaluation<a hidden class="anchor" aria-hidden="true" href="#system-design-and-evaluation">#</a></h2>
 <ul>
-<li>Used <strong>LangGraph</strong> for a persisted Author workflow with explicit run, event, and artifact tracking</li>
-<li>Kept <strong>Play runtime</strong> deterministic, with LLMs limited to action understanding, ending judgment, and rendering</li>
-<li>Added structured-output validation, failure recovery, ending gates, turn traces, and benchmark diagnostics</li>
-</ul>
-<h2 id="evaluation-and-impact">Evaluation and Impact<a hidden class="anchor" aria-hidden="true" href="#evaluation-and-impact">#</a></h2>
-<ul>
-<li>Built a real multi-workflow benchmark loop that generates <strong>5 new stories per round</strong></li>
-<li>Had <strong>3 persona-driven flows</strong> play through them via real APIs and report subjective experience</li>
-<li>Aggregated time, token, cache, fallback, and ending-distribution metrics into one evaluation surface</li>
-<li>Best round reached <strong>15/15 completed sessions</strong> with <strong>0% render fallback</strong></li>
+<li>Designed and implemented an Author Copilot editing loop that lets users issue natural-language instructions against generated drafts, producing structured modification suggestions for character setup, story spine, ending tendency, and gameplay rules before a generate -&gt; preview -&gt; apply collaboration loop.</li>
+<li>Designed a Copilot proposal state machine and editing contract with an isolated editor-state workspace supporting draft / applied / superseded / stale states so multi-turn AI edits remain controllable and recoverable.</li>
+<li>Added multi-variant suggestion support so one instruction over the same draft can produce distinct candidate edits, with Try another behavior instead of near-duplicate outputs.</li>
+<li>Implemented frontend/backend interface layering for Copilot state and product state, separating product APIs, editor-state data, and bundle / trace internals so the system can evolve without leaking workflow internals into the product surface.</li>
+<li>Built a real multi-flow evaluation chain: each round generates 5 new stories, 3 persona workflows play through them via real APIs and report subjective experience, and time, token, cache, fallback, and ending-distribution metrics are aggregated into one evaluation surface; the best round reached 15/15 completed sessions with 0% render fallback.</li>
 </ul>
 <h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
 <ul>
@@ -251,19 +180,19 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://lishehao.github.io/tags/fastapi/">FastAPI</a></li>
-      <li><a href="https://lishehao.github.io/tags/react/">React</a></li>
-      <li><a href="https://lishehao.github.io/tags/typescript/">TypeScript</a></li>
-      <li><a href="https://lishehao.github.io/tags/langgraph/">LangGraph</a></li>
-      <li><a href="https://lishehao.github.io/tags/langchain/">LangChain</a></li>
-      <li><a href="https://lishehao.github.io/tags/ai-engineering/">AI Engineering</a></li>
+      <li><a href="http://localhost:1314/tags/fastapi/">FastAPI</a></li>
+      <li><a href="http://localhost:1314/tags/react/">React</a></li>
+      <li><a href="http://localhost:1314/tags/typescript/">TypeScript</a></li>
+      <li><a href="http://localhost:1314/tags/langgraph/">LangGraph</a></li>
+      <li><a href="http://localhost:1314/tags/langchain/">LangChain</a></li>
+      <li><a href="http://localhost:1314/tags/ai-engineering/">AI Engineering</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://lishehao.github.io/">Shehao Li</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1314/">Shehao Li</a></span> · 
 
     <span>
         Powered by

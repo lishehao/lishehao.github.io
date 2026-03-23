@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Redis on Shehao Li</title>
-    <link>https://lishehao.github.io/tags/redis/</link>
+    <link>http://localhost:1314/tags/redis/</link>
     <description>Recent content in Redis on Shehao Li</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-US</language>
-    <atom:link href="https://lishehao.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CalendarDIFF | AI Workflow Runtime for Gmail &#43; ICS</title>
-      <link>https://lishehao.github.io/projects/calendardiff/</link>
+      <title>CalendarDIFF | AI Agent Workflow System for Gmail &#43; ICS</title>
+      <link>http://localhost:1314/projects/calendardiff/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/projects/calendardiff/</guid>
-      <description>AI workflow runtime and schedule-change governance system for Gmail + ICS, built around an explicit state-machine runtime, human review, chronological replay, and a deterministic prefilter -&amp;gt; LLM path.</description>
+      <guid>http://localhost:1314/projects/calendardiff/</guid>
+      <description>AI agent workflow system and schedule-change governance platform for Gmail + ICS, built around structured proposals, human approval, an explicit runtime, MCP interfaces, and annual replay validation.</description>
     </item>
   </channel>
 </rss>

@@ -2,508 +2,520 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lishehao.github.io/projects/calendardiff/</loc>
+    <loc>http://localhost:1314/projects/calendardiff/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/calendardiff/"
+                href="http://localhost:1314/zh/projects/calendardiff/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/calendardiff/"
+                href="http://localhost:1314/projects/calendardiff/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/projects/ai-narrative-platform/</loc>
+    <loc>http://localhost:1314/projects/ai-narrative-platform/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/ai-narrative-platform/"
+                href="http://localhost:1314/zh/projects/ai-narrative-platform/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/ai-narrative-platform/"
+                href="http://localhost:1314/projects/ai-narrative-platform/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/projects/auto-load-off-test/</loc>
+    <loc>http://localhost:1314/projects/auto-load-off-test/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/auto-load-off-test/"
+                href="http://localhost:1314/zh/projects/auto-load-off-test/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/auto-load-off-test/"
+                href="http://localhost:1314/projects/auto-load-off-test/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/projects/mail-to-dingtalk-todo/</loc>
+    <loc>http://localhost:1314/projects/mail-to-dingtalk-todo/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/mail-to-dingtalk-todo/"
+                href="http://localhost:1314/zh/projects/mail-to-dingtalk-todo/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/mail-to-dingtalk-todo/"
+                href="http://localhost:1314/projects/mail-to-dingtalk-todo/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/projects/github-issues-to-dingtalk/</loc>
+    <loc>http://localhost:1314/projects/github-issues-to-dingtalk/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/"
+                href="http://localhost:1314/zh/projects/github-issues-to-dingtalk/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/github-issues-to-dingtalk/"
+                href="http://localhost:1314/projects/github-issues-to-dingtalk/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/projects/test-automation-multitimer/</loc>
+    <loc>http://localhost:1314/projects/test-automation-multitimer/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/test-automation-multitimer/"
+                href="http://localhost:1314/zh/projects/test-automation-multitimer/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/test-automation-multitimer/"
+                href="http://localhost:1314/projects/test-automation-multitimer/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/</loc>
+    <loc>http://localhost:1314/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/"
+                href="http://localhost:1314/zh/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/"
+                href="http://localhost:1314/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/about/</loc>
+    <loc>http://localhost:1314/about/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/about/"
+                href="http://localhost:1314/zh/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/about/"
+                href="http://localhost:1314/about/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/ai-engineering/</loc>
+    <loc>http://localhost:1314/tags/ai-agent/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/ai-engineering/"
+                href="http://localhost:1314/zh/tags/ai-agent/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/ai-engineering/"
+                href="http://localhost:1314/tags/ai-agent/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/automation/</loc>
+    <loc>http://localhost:1314/tags/ai-engineering/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/automation/"
+                href="http://localhost:1314/zh/tags/ai-engineering/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/automation/"
+                href="http://localhost:1314/tags/ai-engineering/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/backend/</loc>
+    <loc>http://localhost:1314/tags/automation/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/backend/"
+                href="http://localhost:1314/zh/tags/automation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/backend/"
+                href="http://localhost:1314/tags/automation/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/categories/</loc>
+    <loc>http://localhost:1314/tags/backend/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/categories/"
+                href="http://localhost:1314/zh/tags/backend/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/categories/"
+                href="http://localhost:1314/tags/backend/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/data-logging/</loc>
+    <loc>http://localhost:1314/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/data-logging/"
+                href="http://localhost:1314/zh/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/data-logging/"
+                href="http://localhost:1314/categories/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/devops/</loc>
+    <loc>http://localhost:1314/tags/data-logging/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/devops/"
+                href="http://localhost:1314/zh/tags/data-logging/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/devops/"
+                href="http://localhost:1314/tags/data-logging/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/dingtalk/</loc>
+    <loc>http://localhost:1314/tags/devops/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/dingtalk/"
+                href="http://localhost:1314/zh/tags/devops/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/dingtalk/"
+                href="http://localhost:1314/tags/devops/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/dmm/</loc>
+    <loc>http://localhost:1314/tags/dingtalk/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/dmm/"
+                href="http://localhost:1314/zh/tags/dingtalk/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/dmm/"
+                href="http://localhost:1314/tags/dingtalk/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/email-parsing/</loc>
+    <loc>http://localhost:1314/tags/dmm/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/email-parsing/"
+                href="http://localhost:1314/zh/tags/dmm/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/email-parsing/"
+                href="http://localhost:1314/tags/dmm/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/fastapi/</loc>
+    <loc>http://localhost:1314/tags/email-parsing/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/fastapi/"
+                href="http://localhost:1314/zh/tags/email-parsing/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/fastapi/"
+                href="http://localhost:1314/tags/email-parsing/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/imap/</loc>
+    <loc>http://localhost:1314/tags/fastapi/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/imap/"
+                href="http://localhost:1314/zh/tags/fastapi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/imap/"
+                href="http://localhost:1314/tags/fastapi/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/integration/</loc>
+    <loc>http://localhost:1314/tags/imap/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/integration/"
+                href="http://localhost:1314/zh/tags/imap/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/integration/"
+                href="http://localhost:1314/tags/imap/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/keysight-34461a/</loc>
+    <loc>http://localhost:1314/tags/integration/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/keysight-34461a/"
+                href="http://localhost:1314/zh/tags/integration/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/keysight-34461a/"
+                href="http://localhost:1314/tags/integration/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/langchain/</loc>
+    <loc>http://localhost:1314/tags/keysight-34461a/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/langchain/"
+                href="http://localhost:1314/zh/tags/keysight-34461a/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/langchain/"
+                href="http://localhost:1314/tags/keysight-34461a/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/langgraph/</loc>
+    <loc>http://localhost:1314/tags/langchain/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/langgraph/"
+                href="http://localhost:1314/zh/tags/langchain/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/langgraph/"
+                href="http://localhost:1314/tags/langchain/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/llm/</loc>
+    <loc>http://localhost:1314/tags/langgraph/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/llm/"
+                href="http://localhost:1314/zh/tags/langgraph/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/llm/"
+                href="http://localhost:1314/tags/langgraph/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/llm-workflow/</loc>
+    <loc>http://localhost:1314/tags/llm/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/llm-workflow/"
+                href="http://localhost:1314/zh/tags/llm/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/llm-workflow/"
+                href="http://localhost:1314/tags/llm/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/mat-file/</loc>
+    <loc>http://localhost:1314/tags/llm-workflow/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/mat-file/"
+                href="http://localhost:1314/zh/tags/llm-workflow/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/mat-file/"
+                href="http://localhost:1314/tags/llm-workflow/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/postgresql/</loc>
+    <loc>http://localhost:1314/tags/mat-file/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/postgresql/"
+                href="http://localhost:1314/zh/tags/mat-file/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/postgresql/"
+                href="http://localhost:1314/tags/mat-file/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/profile/</loc>
+    <loc>http://localhost:1314/tags/mcp/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/profile/"
+                href="http://localhost:1314/zh/tags/mcp/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/profile/"
+                href="http://localhost:1314/tags/mcp/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/projects/</loc>
+    <loc>http://localhost:1314/tags/postgresql/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/"
+                href="http://localhost:1314/zh/tags/postgresql/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/projects/"
+                href="http://localhost:1314/tags/postgresql/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/python/</loc>
+    <loc>http://localhost:1314/tags/profile/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/python/"
+                href="http://localhost:1314/zh/tags/profile/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/python/"
+                href="http://localhost:1314/tags/profile/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/pyvisa/</loc>
+    <loc>http://localhost:1314/projects/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/pyvisa/"
+                href="http://localhost:1314/zh/projects/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/pyvisa/"
+                href="http://localhost:1314/projects/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/react/</loc>
+    <loc>http://localhost:1314/tags/python/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/react/"
+                href="http://localhost:1314/zh/tags/python/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/react/"
+                href="http://localhost:1314/tags/python/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/redis/</loc>
+    <loc>http://localhost:1314/tags/pyvisa/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/redis/"
+                href="http://localhost:1314/zh/tags/pyvisa/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/redis/"
+                href="http://localhost:1314/tags/pyvisa/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/runtime/</loc>
+    <loc>http://localhost:1314/tags/react/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/runtime/"
+                href="http://localhost:1314/zh/tags/react/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/runtime/"
+                href="http://localhost:1314/tags/react/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/scpi/</loc>
+    <loc>http://localhost:1314/tags/redis/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/scpi/"
+                href="http://localhost:1314/zh/tags/redis/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/scpi/"
+                href="http://localhost:1314/tags/redis/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/</loc>
+    <loc>http://localhost:1314/tags/scpi/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/"
+                href="http://localhost:1314/zh/tags/scpi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/"
+                href="http://localhost:1314/tags/scpi/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/test-automation/</loc>
+    <loc>http://localhost:1314/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/test-automation/"
+                href="http://localhost:1314/zh/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/test-automation/"
+                href="http://localhost:1314/tags/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/tkinter/</loc>
+    <loc>http://localhost:1314/tags/test-automation/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/tkinter/"
+                href="http://localhost:1314/zh/tags/test-automation/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/tkinter/"
+                href="http://localhost:1314/tags/test-automation/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/typescript/</loc>
+    <loc>http://localhost:1314/tags/tkinter/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/typescript/"
+                href="http://localhost:1314/zh/tags/tkinter/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/typescript/"
+                href="http://localhost:1314/tags/tkinter/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/ucsd/</loc>
+    <loc>http://localhost:1314/tags/typescript/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/ucsd/"
+                href="http://localhost:1314/zh/tags/typescript/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/ucsd/"
+                href="http://localhost:1314/tags/typescript/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/visa/</loc>
+    <loc>http://localhost:1314/tags/ucsd/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/visa/"
+                href="http://localhost:1314/zh/tags/ucsd/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/visa/"
+                href="http://localhost:1314/tags/ucsd/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/tags/workflow-automation/</loc>
+    <loc>http://localhost:1314/tags/visa/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/workflow-automation/"
+                href="http://localhost:1314/zh/tags/visa/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://lishehao.github.io/tags/workflow-automation/"
+                href="http://localhost:1314/tags/visa/"
+                />
+  </url><url>
+    <loc>http://localhost:1314/tags/workflow-automation/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1314/zh/tags/workflow-automation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1314/tags/workflow-automation/"
                 />
   </url>
 </urlset>

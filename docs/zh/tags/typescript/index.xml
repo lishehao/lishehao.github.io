@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>TypeScript on 李佘昊</title>
-    <link>https://lishehao.github.io/zh/tags/typescript/</link>
+    <link>http://localhost:1314/zh/tags/typescript/</link>
     <description>Recent content in TypeScript on 李佘昊</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>zh-CN</language>
-    <atom:link href="https://lishehao.github.io/zh/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/zh/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI 自动叙事与 Workflow 评测平台</title>
-      <link>https://lishehao.github.io/zh/projects/ai-narrative-platform/</link>
+      <title>Author Copilot 叙事编辑与评测平台</title>
+      <link>http://localhost:1314/zh/projects/ai-narrative-platform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/ai-narrative-platform/</guid>
-      <description>已上线的多回合交互叙事 workflow 产品：创作侧产出可执行故事包，交互侧由确定性运行时承接状态推进与评测。</description>
+      <guid>http://localhost:1314/zh/projects/ai-narrative-platform/</guid>
+      <description>已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&amp;gt; publish -&amp;gt; play 全链路评测构建。</description>
     </item>
   </channel>
 </rss>

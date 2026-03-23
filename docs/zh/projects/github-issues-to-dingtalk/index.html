@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>GitHub Issues 到 DingTalk 摘要服务 | 李佘昊</title>
 <meta name="keywords" content="Automation, DevOps, Integration">
 <meta name="description" content="基于 webhook 聚合与增量同步，把 GitHub Issues 活动整理成面向负责人的 DingTalk 摘要。">
 <meta name="author" content="">
-<link rel="canonical" href="https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/">
+<link rel="canonical" href="http://localhost:1314/zh/projects/github-issues-to-dingtalk/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lishehao.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://lishehao.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://lishehao.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1314/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://lishehao.github.io/projects/github-issues-to-dingtalk/">
-<link rel="alternate" hreflang="zh" href="https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/">
+<link rel="alternate" hreflang="en" href="http://localhost:1314/projects/github-issues-to-dingtalk/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1314/zh/projects/github-issues-to-dingtalk/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,76 +71,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/">
-  <meta property="og:site_name" content="李佘昊">
-  <meta property="og:title" content="GitHub Issues 到 DingTalk 摘要服务">
-  <meta property="og:description" content="基于 webhook 聚合与增量同步，把 GitHub Issues 活动整理成面向负责人的 DingTalk 摘要。">
-  <meta property="og:locale" content="zh-CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="projects">
-    <meta property="article:tag" content="Automation">
-    <meta property="article:tag" content="DevOps">
-    <meta property="article:tag" content="Integration">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitHub Issues 到 DingTalk 摘要服务">
-<meta name="twitter:description" content="基于 webhook 聚合与增量同步，把 GitHub Issues 活动整理成面向负责人的 DingTalk 摘要。">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "项目",
-      "item": "https://lishehao.github.io/zh/projects/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "GitHub Issues 到 DingTalk 摘要服务",
-      "item": "https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "GitHub Issues 到 DingTalk 摘要服务",
-  "name": "GitHub Issues 到 DingTalk 摘要服务",
-  "description": "基于 webhook 聚合与增量同步，把 GitHub Issues 活动整理成面向负责人的 DingTalk 摘要。",
-  "keywords": [
-    "Automation", "DevOps", "Integration"
-  ],
-  "articleBody": "概览 这个服务把 GitHub issue 活动整理成面向内部负责人的 DingTalk 摘要。它聚合 webhook 事件、支持增量同步，减少团队对大规模 issue 队列的人工盯盘成本。\n问题 当 issue 量变大以后，关键更新很容易被淹没，跨团队责任归属也更难跟踪。\n方案 通过 webhook 接入 GitHub issue 事件 把变更聚合成适合阅读的摘要，而不是逐条转发噪声通知 通过增量同步保持摘要结果最新，同时避免全量重扫 技术栈 Python GitHub Webhooks HTTP 集成 DingTalk 消息链路 结果 日均汇总 1000+ issues 覆盖 约 50 位负责人 稳定运行 约半年 链接 GitHub: https://github.com/lishehao/github-issues-to-dingtalk ",
-  "wordCount" : "45",
-  "inLanguage": "zh",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "李佘昊",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://lishehao.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lishehao.github.io/zh/" accesskey="h" title="李佘昊 (Alt + H)">李佘昊</a>
+            <a href="http://localhost:1314/zh/" accesskey="h" title="李佘昊 (Alt + H)">李佘昊</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -164,7 +101,7 @@
                 </button>
                     <ul class="lang-switch"><li>|</li>
                         <li>
-                            <a href="https://lishehao.github.io/projects/github-issues-to-dingtalk/" title="English"
+                            <a href="http://localhost:1314/projects/github-issues-to-dingtalk/" title="English"
                                 aria-label="English">English</a>
                         </li>
                     </ul>
@@ -172,22 +109,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://lishehao.github.io/zh/" title="首页">
+                <a href="http://localhost:1314/zh/" title="首页">
                     <span>首页</span>
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/zh/about/" title="关于">
+                <a href="http://localhost:1314/zh/about/" title="关于">
                     <span>关于</span>
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/zh/projects/" title="项目">
+                <a href="http://localhost:1314/zh/projects/" title="项目">
                     <span>项目</span>
                 </a>
             </li>
             <li>
-                <a href="https://lishehao.github.io/resume/" title="简历">
+                <a href="http://localhost:1314/resume/" title="简历">
                     <span>简历</span>
                 </a>
             </li>
@@ -205,7 +142,7 @@
     <div class="post-meta"><span>语言:</span>
 <ul class="i18n_list">
     <li>
-        <a href="https://lishehao.github.io/projects/github-issues-to-dingtalk/">English</a>
+        <a href="http://localhost:1314/projects/github-issues-to-dingtalk/">English</a>
     </li>
 </ul>
 
@@ -244,16 +181,16 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://lishehao.github.io/zh/tags/automation/">Automation</a></li>
-      <li><a href="https://lishehao.github.io/zh/tags/devops/">DevOps</a></li>
-      <li><a href="https://lishehao.github.io/zh/tags/integration/">Integration</a></li>
+      <li><a href="http://localhost:1314/zh/tags/automation/">Automation</a></li>
+      <li><a href="http://localhost:1314/zh/tags/devops/">DevOps</a></li>
+      <li><a href="http://localhost:1314/zh/tags/integration/">Integration</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://lishehao.github.io/zh/">李佘昊</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1314/zh/">李佘昊</a></span> · 
 
     <span>
         Powered by

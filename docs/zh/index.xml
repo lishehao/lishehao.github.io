@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>首页 on 李佘昊</title>
-    <link>https://lishehao.github.io/zh/</link>
+    <link>http://localhost:1314/zh/</link>
     <description>Recent content in 首页 on 李佘昊</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>zh-CN</language>
-    <atom:link href="https://lishehao.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CalendarDIFF｜面向 Gmail &#43; ICS 的 AI 工作流运行时 / 日程变更治理系统</title>
-      <link>https://lishehao.github.io/zh/projects/calendardiff/</link>
+      <title>CalendarDIFF｜面向 Gmail &#43; ICS 的 AI Agent 工作流系统 / 日程变更治理平台</title>
+      <link>http://localhost:1314/zh/projects/calendardiff/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/calendardiff/</guid>
-      <description>面向 Gmail + ICS 的 AI 工作流运行时与日程变更治理系统，围绕显式状态机、人工审核、chronological replay 和 deterministic prefilter -&amp;gt; LLM 主链路构建。</description>
+      <guid>http://localhost:1314/zh/projects/calendardiff/</guid>
+      <description>面向 Gmail + ICS 的 AI Agent 工作流系统 / 日程变更治理平台，围绕结构化 proposal、人工审批、显式状态机 runtime、MCP 接口与全年 replay 验收构建。</description>
     </item>
     <item>
-      <title>AI 自动叙事与 Workflow 评测平台</title>
-      <link>https://lishehao.github.io/zh/projects/ai-narrative-platform/</link>
+      <title>Author Copilot 叙事编辑与评测平台</title>
+      <link>http://localhost:1314/zh/projects/ai-narrative-platform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/ai-narrative-platform/</guid>
-      <description>已上线的多回合交互叙事 workflow 产品：创作侧产出可执行故事包，交互侧由确定性运行时承接状态推进与评测。</description>
+      <guid>http://localhost:1314/zh/projects/ai-narrative-platform/</guid>
+      <description>已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&amp;gt; publish -&amp;gt; play 全链路评测构建。</description>
     </item>
     <item>
       <title>自动带载断载测试工具</title>
-      <link>https://lishehao.github.io/zh/projects/auto-load-off-test/</link>
+      <link>http://localhost:1314/zh/projects/auto-load-off-test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/auto-load-off-test/</guid>
+      <guid>http://localhost:1314/zh/projects/auto-load-off-test/</guid>
       <description>面向 AWG + 示波器验证流程的 Python 自动化工具，补齐 validation、logging、retry/timeout 与 CSV/MAT 导出。</description>
     </item>
     <item>
       <title>从邮件创建钉钉待办</title>
-      <link>https://lishehao.github.io/zh/projects/mail-to-dingtalk-todo/</link>
+      <link>http://localhost:1314/zh/projects/mail-to-dingtalk-todo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/mail-to-dingtalk-todo/</guid>
+      <guid>http://localhost:1314/zh/projects/mail-to-dingtalk-todo/</guid>
       <description>通过轮询 IMAP 邮箱、提取结构化字段、创建钉钉待办并做幂等控制，把邮件工作流转成稳定的任务链路。</description>
     </item>
     <item>
       <title>GitHub Issues 到 DingTalk 摘要服务</title>
-      <link>https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/</link>
+      <link>http://localhost:1314/zh/projects/github-issues-to-dingtalk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/github-issues-to-dingtalk/</guid>
+      <guid>http://localhost:1314/zh/projects/github-issues-to-dingtalk/</guid>
       <description>基于 webhook 聚合与增量同步，把 GitHub Issues 活动整理成面向负责人的 DingTalk 摘要。</description>
     </item>
     <item>
       <title>Test Automation MultiTimer</title>
-      <link>https://lishehao.github.io/zh/projects/test-automation-multitimer/</link>
+      <link>http://localhost:1314/zh/projects/test-automation-multitimer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/projects/test-automation-multitimer/</guid>
+      <guid>http://localhost:1314/zh/projects/test-automation-multitimer/</guid>
       <description>补充型 Python Tkinter GUI 工具：用 VISA / SCPI 做有时间边界的 DMM 监控，并支持采样、日志与可选 MAT 导出。</description>
     </item>
     <item>
       <title>关于</title>
-      <link>https://lishehao.github.io/zh/about/</link>
+      <link>http://localhost:1314/zh/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lishehao.github.io/zh/about/</guid>
-      <description>李佘昊的背景、经历与 LLM workflow / 后端系统方向。</description>
+      <guid>http://localhost:1314/zh/about/</guid>
+      <description>李佘昊的背景、经历与 AI Agent / LLM工程化 / 后端系统方向。</description>
     </item>
   </channel>
 </rss>
