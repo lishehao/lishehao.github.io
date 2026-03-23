@@ -1,10 +1,10 @@
 ---
 title: "About"
-summary: "Background, experience, and focus areas for Shehao Li in LLM workflows and backend engineering."
+summary: "Background, experience, and focus areas for Shehao Li in AI agent systems, LLM engineering, and backend systems."
 tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 ---
 
-I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and an LLM Workflow / Software Engineer Intern candidate focused on backend systems, LLM workflow runtimes, structured outputs, evaluation, and turning AI into maintainable production workflows.
+I’m Shehao Li, a Mathematics-Computer Science undergraduate at UC San Diego and an AI Agent / Software Engineer Intern candidate focused on LLM engineering, backend systems, structured outputs, evaluation, and turning AI workflows into maintainable production systems.
 
 ## Snapshot
 
@@ -29,8 +29,8 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## Selected Work
 
-- **[CalendarDIFF | AI Workflow Runtime for Gmail + ICS](/projects/calendardiff/)** — workflow runtime for Gmail + ICS that unifies connectors, prefiltering, proposals, human review, and chronological replay around one explicit state machine
-- **[AI Narrative and Workflow Evaluation Platform](/projects/ai-narrative-platform/)** — structured narrative workflow with persistent authoring, deterministic play runtime, and benchmark diagnostics
+- **[CalendarDIFF | AI Agent Workflow System for Gmail + ICS](/projects/calendardiff/)** — AI agent workflow backend for Gmail + ICS spanning source intake, proposal generation, human approval, MCP interfaces, and replay validation
+- **[Author Copilot Narrative Editing and Evaluation Platform](/projects/ai-narrative-platform/)** — Author Copilot editing, stateful play runtime, and author -> publish -> play validation inside one product loop
 - **[Auto Load-Off Test](/projects/auto-load-off-test/)** — automation tool for repeatable validation runs with structured outputs and test-lab workflow improvements
 - **[Workflow Automation Projects](/projects/mail-to-dingtalk-todo/)** — email/task automation and GitHub-to-DingTalk summary pipelines used in real daily workflows
 
@@ -43,8 +43,8 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## Highlight Metrics
 
-- CalendarDIFF: **24-checkpoint** annual replay over **10,368 Gmail full-sim messages**; target recall **100%**, interception **72.1%**
-- AI Narrative Platform: **5 stories x 3 evaluation flows** benchmark completion **100%**; best-round p95 turn latency **13.3s**, render fallback **0%**
+- CalendarDIFF: evaluation over **10,368 Gmail full-sim messages**; target recall **100%**, overall interception **72.1%**
+- AI Narrative Platform: **5 stories x 3 persona workflows** in one evaluation loop; best round reached **15/15 sessions**, render fallback **0%**
 - Auto Load-Off Test: **75% reduction** in test setup/result handling effort
 
 ## Contact

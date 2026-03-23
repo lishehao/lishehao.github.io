@@ -1,38 +1,34 @@
 ---
-title: "AI Narrative and Workflow Evaluation Platform"
-summary: "Live multi-turn narrative workflow product where Author produces executable story packs and Play runs on a deterministic runtime with benchmarkable behavior."
+title: "Author Copilot Narrative Editing and Evaluation Platform"
+summary: "Live interactive narrative product built around an Author Copilot editing loop, a stateful Play runtime, and end-to-end author -> publish -> play evaluation."
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8
 featured: true
 previewTone: "ember"
 liveUrl: "https://rpg.shehao.app"
 metrics:
-  - "real multi-workflow benchmark"
-  - "deterministic play runtime"
+  - "Author Copilot editing"
+  - "multi-variant suggestions"
+  - "author -> publish -> play validation"
   - "15/15 sessions complete"
   - "0% render fallback"
 ---
 
 ## Overview
 
-This project is a multi-turn narrative workflow system. The point is not to let the model directly write the whole story, but to place LLMs inside a structured workflow: Author produces executable story packs, while Play lets the model handle action understanding, ending preference judgment, and text rendering, with deterministic runtime state progression everywhere else.
+This project is a live interactive narrative product built around an Author Copilot editing loop, a stateful Play runtime, and an evaluation layer spanning author -> publish -> play. Instead of treating the model as a black-box story generator, the system makes editing, application, and validation part of one controllable product flow.
 
 ## Core Problem
 
-Free-form LLM orchestration makes narrative systems hard to debug, hard to validate, and hard to reproduce under repeated use. The hardest part is not text generation itself; it is the semantic mismatch between endings and state feedback, plus failure recovery across long-running turn sequences.
+Narrative systems are easy to prototype but hard to edit, validate, and evolve. The hard part is not raw text generation; it is keeping AI edits controllable, runtime state consistent, and quality evaluation tied to the real product loop rather than isolated prompt tests.
 
-## System Design
+## System Design and Evaluation
 
-- Used **LangGraph** for a persisted Author workflow with explicit run, event, and artifact tracking
-- Kept **Play runtime** deterministic, with LLMs limited to action understanding, ending judgment, and rendering
-- Added structured-output validation, failure recovery, ending gates, turn traces, and benchmark diagnostics
-
-## Evaluation and Impact
-
-- Built a real multi-workflow benchmark loop that generates **5 new stories per round**
-- Had **3 persona-driven flows** play through them via real APIs and report subjective experience
-- Aggregated time, token, cache, fallback, and ending-distribution metrics into one evaluation surface
-- Best round reached **15/15 completed sessions** with **0% render fallback**
+- Designed and implemented an Author Copilot editing loop that lets users issue natural-language instructions against generated drafts, producing structured modification suggestions for character setup, story spine, ending tendency, and gameplay rules before a generate -> preview -> apply collaboration loop.
+- Designed a Copilot proposal state machine and editing contract with an isolated editor-state workspace supporting draft / applied / superseded / stale states so multi-turn AI edits remain controllable and recoverable.
+- Added multi-variant suggestion support so one instruction over the same draft can produce distinct candidate edits, with Try another behavior instead of near-duplicate outputs.
+- Implemented frontend/backend interface layering for Copilot state and product state, separating product APIs, editor-state data, and bundle / trace internals so the system can evolve without leaking workflow internals into the product surface.
+- Built a real multi-flow evaluation chain: each round generates 5 new stories, 3 persona workflows play through them via real APIs and report subjective experience, and time, token, cache, fallback, and ending-distribution metrics are aggregated into one evaluation surface; the best round reached 15/15 completed sessions with 0% render fallback.
 
 ## Tech Stack
 
