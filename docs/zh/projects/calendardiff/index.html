@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>CalendarDIFF｜面向 Gmail &#43; ICS 的 AI Agent 工作流系统 / 日程变更治理平台 | 李佘昊</title>
 <meta name="keywords" content="FastAPI, PostgreSQL, Redis, AI Agent, MCP, LLM">
-<meta name="description" content="面向 Gmail &#43; ICS 的 AI Agent 工作流系统 / 日程变更治理平台，围绕结构化 proposal、人工审批、显式状态机 runtime、MCP 接口与全年 replay 验收构建。">
+<meta name="description" content="面向 Gmail &#43; ICS 多源接入的 AI 日程变更治理后端，围绕规则过滤、LLM 结构化抽取、proposal 生成、人工审批、显式状态机 runtime 与全年 chronological replay 构建。">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1314/zh/projects/calendardiff/">
+<link rel="canonical" href="https://lishehao.github.io/zh/projects/calendardiff/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1314/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
+<link rel="icon" href="https://lishehao.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lishehao.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lishehao.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1314/projects/calendardiff/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1314/zh/projects/calendardiff/">
+<link rel="alternate" hreflang="en" href="https://lishehao.github.io/projects/calendardiff/">
+<link rel="alternate" hreflang="zh" href="https://lishehao.github.io/zh/projects/calendardiff/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,13 +71,79 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://lishehao.github.io/zh/projects/calendardiff/">
+  <meta property="og:site_name" content="李佘昊">
+  <meta property="og:title" content="CalendarDIFF｜面向 Gmail &#43; ICS 的 AI Agent 工作流系统 / 日程变更治理平台">
+  <meta property="og:description" content="面向 Gmail &#43; ICS 多源接入的 AI 日程变更治理后端，围绕规则过滤、LLM 结构化抽取、proposal 生成、人工审批、显式状态机 runtime 与全年 chronological replay 构建。">
+  <meta property="og:locale" content="zh-CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="FastAPI">
+    <meta property="article:tag" content="PostgreSQL">
+    <meta property="article:tag" content="Redis">
+    <meta property="article:tag" content="AI Agent">
+    <meta property="article:tag" content="MCP">
+    <meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CalendarDIFF｜面向 Gmail &#43; ICS 的 AI Agent 工作流系统 / 日程变更治理平台">
+<meta name="twitter:description" content="面向 Gmail &#43; ICS 多源接入的 AI 日程变更治理后端，围绕规则过滤、LLM 结构化抽取、proposal 生成、人工审批、显式状态机 runtime 与全年 chronological replay 构建。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "项目",
+      "item": "https://lishehao.github.io/zh/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CalendarDIFF｜面向 Gmail + ICS 的 AI Agent 工作流系统 / 日程变更治理平台",
+      "item": "https://lishehao.github.io/zh/projects/calendardiff/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CalendarDIFF｜面向 Gmail + ICS 的 AI Agent 工作流系统 / 日程变更治理平台",
+  "name": "CalendarDIFF｜面向 Gmail \u002b ICS 的 AI Agent 工作流系统 \/ 日程变更治理平台",
+  "description": "面向 Gmail + ICS 多源接入的 AI 日程变更治理后端，围绕规则过滤、LLM 结构化抽取、proposal 生成、人工审批、显式状态机 runtime 与全年 chronological replay 构建。",
+  "keywords": [
+    "FastAPI", "PostgreSQL", "Redis", "AI Agent", "MCP", "LLM"
+  ],
+  "articleBody": "概览 CalendarDIFF 是一个面向 Gmail + ICS 多源接入的 AI 日程变更治理后端。系统把 source 接入、规则过滤、LLM 结构化抽取、proposal 生成、人工审批、状态落库与通知下发收敛到同一套可运行、可恢复、可观测的工作流后端中。\n系统设计与评测 从 0 到 1 设计并实现 Gmail + ICS 多源接入的 AI 日程变更治理后端，打通 source 接入、规则过滤、LLM 结构化抽取、proposal 生成、人工审批、状态落库与通知下发全链路。 基于显式状态机重构工作流运行时，统一管理 stage / substage / progress、任务重试、失败恢复与 source observability，解决长链路 AI workflow 在真实运行中的卡死、收尾不一致与定位困难问题。 设计“LLM 生成建议、业务系统负责裁决”的人机协同机制，确保模型只参与结构化 proposal 生成，不直接写入 canonical state，降低误判对业务真相的污染风险。 实现 context / proposal / approval-ticket 三层 Agent 后端接口，并通过 MCP Server 对外暴露受控能力，支持外部智能体进行上下文读取、建议生成与低风险动作确认。 搭建全年 chronological replay 验收与评测体系，覆盖 24 个 checkpoint、10,368 封 Gmail full-sim 数据与全年 ICS 时间线，验证系统稳定性、成本与人工操作复杂度。 完成系统级评测，target recall 100%、overall interception 72.1%，并建立 token / cache / latency / stability 指标闭环。 技术栈 FastAPI PostgreSQL Redis OpenAI API MCP Server DistilBERT 状态 已上线地址：cal.shehao.app 链接 线上地址：https://cal.shehao.app GitHub: https://github.com/lishehao/CalendarDIFF ",
+  "wordCount" : "99",
+  "inLanguage": "zh",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lishehao.github.io/zh/projects/calendardiff/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "李佘昊",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lishehao.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1314/zh/" accesskey="h" title="李佘昊 (Alt + H)">李佘昊</a>
+            <a href="https://lishehao.github.io/zh/" accesskey="h" title="李佘昊 (Alt + H)">李佘昊</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -101,7 +167,7 @@
                 </button>
                     <ul class="lang-switch"><li>|</li>
                         <li>
-                            <a href="http://localhost:1314/projects/calendardiff/" title="English"
+                            <a href="https://lishehao.github.io/projects/calendardiff/" title="English"
                                 aria-label="English">English</a>
                         </li>
                     </ul>
@@ -109,22 +175,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1314/zh/" title="首页">
+                <a href="https://lishehao.github.io/zh/" title="首页">
                     <span>首页</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1314/zh/about/" title="关于">
+                <a href="https://lishehao.github.io/zh/about/" title="关于">
                     <span>关于</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1314/zh/projects/" title="项目">
+                <a href="https://lishehao.github.io/zh/projects/" title="项目">
                     <span>项目</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1314/resume/" title="简历">
+                <a href="https://lishehao.github.io/resume/" title="简历">
                     <span>简历</span>
                 </a>
             </li>
@@ -142,22 +208,22 @@
     <div class="post-meta"><span>语言:</span>
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1314/projects/calendardiff/">English</a>
+        <a href="https://lishehao.github.io/projects/calendardiff/">English</a>
     </li>
 </ul>
 
 </div>
   </header> 
   <div class="post-content"><h2 id="概览">概览<a hidden class="anchor" aria-hidden="true" href="#概览">#</a></h2>
-<p>CalendarDIFF 是一个面向 Gmail + ICS 的 AI Agent 工作流系统 / 日程变更治理平台。核心不是让模型直接给出业务结论，而是把 source 接入、规则过滤、LLM 建议生成、状态流转、人工审批与通知下发整合进同一套可运行、可恢复、可观测的工作流后端。</p>
+<p>CalendarDIFF 是一个面向 Gmail + ICS 多源接入的 AI 日程变更治理后端。系统把 source 接入、规则过滤、LLM 结构化抽取、proposal 生成、人工审批、状态落库与通知下发收敛到同一套可运行、可恢复、可观测的工作流后端中。</p>
 <h2 id="系统设计与评测">系统设计与评测<a hidden class="anchor" aria-hidden="true" href="#系统设计与评测">#</a></h2>
 <ul>
-<li>从 0 到 1 设计并实现 Gmail + ICS 场景下的 AI Agent 工作流后端，完成 source 接入、规则过滤、LLM 建议生成、状态流转、人工审批、通知下发等核心链路。</li>
-<li>设计人机协同决策机制：LLM 仅负责生成结构化 proposal，业务系统负责状态推进、落库、重试与异常恢复，避免模型直接写业务真相。</li>
-<li>基于显式状态机重构 runtime，引入 stage / substage / progress 与 source observability，提升长链路任务的稳定性、可恢复性和问题定位效率。</li>
-<li>实现 context / proposal / approval-ticket 三层 Agent 后端接口，并通过 MCP Server 暴露给外部智能体客户端，在受控权限下支持上下文读取、建议生成和低风险动作确认。</li>
-<li>搭建全年 replay 验收与评测体系，覆盖 Gmail/ICS 全链路，验证系统在真实时间序列下的稳定性、成本与人工操作复杂度。</li>
-<li>在 10,368 封 Gmail full-sim 数据上完成评测，target recall 100%、overall interception 72.1%，并建立 token / cache / latency / stability 指标闭环。</li>
+<li>从 0 到 1 设计并实现 Gmail + ICS 多源接入的 AI 日程变更治理后端，打通 source 接入、规则过滤、LLM 结构化抽取、proposal 生成、人工审批、状态落库与通知下发全链路。</li>
+<li>基于显式状态机重构工作流运行时，统一管理 stage / substage / progress、任务重试、失败恢复与 source observability，解决长链路 AI workflow 在真实运行中的卡死、收尾不一致与定位困难问题。</li>
+<li>设计“LLM 生成建议、业务系统负责裁决”的人机协同机制，确保模型只参与结构化 proposal 生成，不直接写入 canonical state，降低误判对业务真相的污染风险。</li>
+<li>实现 context / proposal / approval-ticket 三层 Agent 后端接口，并通过 MCP Server 对外暴露受控能力，支持外部智能体进行上下文读取、建议生成与低风险动作确认。</li>
+<li>搭建全年 chronological replay 验收与评测体系，覆盖 24 个 checkpoint、10,368 封 Gmail full-sim 数据与全年 ICS 时间线，验证系统稳定性、成本与人工操作复杂度。</li>
+<li>完成系统级评测，target recall 100%、overall interception 72.1%，并建立 token / cache / latency / stability 指标闭环。</li>
 </ul>
 <h2 id="技术栈">技术栈<a hidden class="anchor" aria-hidden="true" href="#技术栈">#</a></h2>
 <ul>
@@ -183,19 +249,19 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1314/zh/tags/fastapi/">FastAPI</a></li>
-      <li><a href="http://localhost:1314/zh/tags/postgresql/">PostgreSQL</a></li>
-      <li><a href="http://localhost:1314/zh/tags/redis/">Redis</a></li>
-      <li><a href="http://localhost:1314/zh/tags/ai-agent/">AI Agent</a></li>
-      <li><a href="http://localhost:1314/zh/tags/mcp/">MCP</a></li>
-      <li><a href="http://localhost:1314/zh/tags/llm/">LLM</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/fastapi/">FastAPI</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/postgresql/">PostgreSQL</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/redis/">Redis</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/ai-agent/">AI Agent</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/mcp/">MCP</a></li>
+      <li><a href="https://lishehao.github.io/zh/tags/llm/">LLM</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1314/zh/">李佘昊</a></span> · 
+        <span>&copy; 2026 <a href="https://lishehao.github.io/zh/">李佘昊</a></span> · 
 
     <span>
         Powered by

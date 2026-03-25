@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Auto Load-Off Test | Shehao Li</title>
 <meta name="keywords" content="Python, Test Automation, PyVISA, SCPI, Tkinter, Data Logging">
 <meta name="description" content="Python automation tool for AWG &#43; oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1314/projects/auto-load-off-test/">
+<link rel="canonical" href="https://lishehao.github.io/projects/auto-load-off-test/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1314/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
+<link rel="icon" href="https://lishehao.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lishehao.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lishehao.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1314/projects/auto-load-off-test/">
-<link rel="alternate" hreflang="zh" href="http://localhost:1314/zh/projects/auto-load-off-test/">
+<link rel="alternate" hreflang="en" href="https://lishehao.github.io/projects/auto-load-off-test/">
+<link rel="alternate" hreflang="zh" href="https://lishehao.github.io/zh/projects/auto-load-off-test/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,13 +71,79 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://lishehao.github.io/projects/auto-load-off-test/">
+  <meta property="og:site_name" content="Shehao Li">
+  <meta property="og:title" content="Auto Load-Off Test">
+  <meta property="og:description" content="Python automation tool for AWG &#43; oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export.">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Test Automation">
+    <meta property="article:tag" content="PyVISA">
+    <meta property="article:tag" content="SCPI">
+    <meta property="article:tag" content="Tkinter">
+    <meta property="article:tag" content="Data Logging">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Auto Load-Off Test">
+<meta name="twitter:description" content="Python automation tool for AWG &#43; oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://lishehao.github.io/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Auto Load-Off Test",
+      "item": "https://lishehao.github.io/projects/auto-load-off-test/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Auto Load-Off Test",
+  "name": "Auto Load-Off Test",
+  "description": "Python automation tool for AWG + oscilloscope validation flows with validation, logging, retry/timeout handling, and CSV/MAT export.",
+  "keywords": [
+    "Python", "Test Automation", "PyVISA", "SCPI", "Tkinter", "Data Logging"
+  ],
+  "articleBody": "Overview Auto Load-Off Test is a Python-based validation tool for instrument-driven test workflows. It automates AWG and oscilloscope control, standardizes run setup, and produces structured outputs so verification runs can be repeated and compared reliably.\nProblem Manual validation runs are slow and inconsistent. Test engineers have to repeatedly configure instruments, execute the same sequence, collect outputs, and整理 results, which makes it hard to keep runs reproducible.\nSolution Automated the end-to-end validation sequence for AWG + oscilloscope workflows Added validation, logging, retry/timeout handling, and CSV/MAT export Turned a manual lab-style process into a repeatable tool that supports actual team usage Architecture UI layer for run configuration and execution control Instrument layer built on PyVISA + SCPI for command orchestration Output layer for structured logs and exported artifacts used in later comparison Tech Stack Python PyVISA SCPI Tkinter CSV / MAT export Impact Reduced test preparation and result整理 effort by 75% Supported a real validation workflow used by about 5 users Improved repeatability and traceability for internal test runs Links GitHub: https://github.com/lishehao/auto-load-off-test ",
+  "wordCount" : "170",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lishehao.github.io/projects/auto-load-off-test/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shehao Li",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lishehao.github.io/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1314/" accesskey="h" title="Shehao Li (Alt + H)">Shehao Li</a>
+            <a href="https://lishehao.github.io/" accesskey="h" title="Shehao Li (Alt + H)">Shehao Li</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -101,7 +167,7 @@
                 </button>
                     <ul class="lang-switch"><li>|</li>
                         <li>
-                            <a href="http://localhost:1314/zh/projects/auto-load-off-test/" title="中文"
+                            <a href="https://lishehao.github.io/zh/projects/auto-load-off-test/" title="中文"
                                 aria-label="中文">中文</a>
                         </li>
                     </ul>
@@ -109,22 +175,22 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1314/" title="Home">
+                <a href="https://lishehao.github.io/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1314/about/" title="About">
+                <a href="https://lishehao.github.io/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1314/projects/" title="Projects">
+                <a href="https://lishehao.github.io/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1314/resume/" title="Resume">
+                <a href="https://lishehao.github.io/resume/" title="Resume">
                     <span>Resume</span>
                 </a>
             </li>
@@ -142,7 +208,7 @@
     <div class="post-meta"><span>Translations:</span>
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1314/zh/projects/auto-load-off-test/">中文</a>
+        <a href="https://lishehao.github.io/zh/projects/auto-load-off-test/">中文</a>
     </li>
 </ul>
 
@@ -188,19 +254,19 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1314/tags/python/">Python</a></li>
-      <li><a href="http://localhost:1314/tags/test-automation/">Test Automation</a></li>
-      <li><a href="http://localhost:1314/tags/pyvisa/">PyVISA</a></li>
-      <li><a href="http://localhost:1314/tags/scpi/">SCPI</a></li>
-      <li><a href="http://localhost:1314/tags/tkinter/">Tkinter</a></li>
-      <li><a href="http://localhost:1314/tags/data-logging/">Data Logging</a></li>
+      <li><a href="https://lishehao.github.io/tags/python/">Python</a></li>
+      <li><a href="https://lishehao.github.io/tags/test-automation/">Test Automation</a></li>
+      <li><a href="https://lishehao.github.io/tags/pyvisa/">PyVISA</a></li>
+      <li><a href="https://lishehao.github.io/tags/scpi/">SCPI</a></li>
+      <li><a href="https://lishehao.github.io/tags/tkinter/">Tkinter</a></li>
+      <li><a href="https://lishehao.github.io/tags/data-logging/">Data Logging</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1314/">Shehao Li</a></span> · 
+        <span>&copy; 2026 <a href="https://lishehao.github.io/">Shehao Li</a></span> · 
 
     <span>
         Powered by

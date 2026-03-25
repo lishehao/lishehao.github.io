@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>LangGraph on Shehao Li</title>
-    <link>http://localhost:1314/tags/langgraph/</link>
+    <link>https://lishehao.github.io/tags/langgraph/</link>
     <description>Recent content in LangGraph on Shehao Li</description>
     <generator>Hugo -- 0.153.3</generator>
     <language>en-US</language>
-    <atom:link href="http://localhost:1314/tags/langgraph/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lishehao.github.io/tags/langgraph/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Author Copilot Narrative Editing and Evaluation Platform</title>
-      <link>http://localhost:1314/projects/ai-narrative-platform/</link>
+      <link>https://lishehao.github.io/projects/ai-narrative-platform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1314/projects/ai-narrative-platform/</guid>
+      <guid>https://lishehao.github.io/projects/ai-narrative-platform/</guid>
       <description>Live interactive narrative product built around an Author Copilot editing loop, a stateful Play runtime, and end-to-end author -&amp;gt; publish -&amp;gt; play evaluation.</description>
     </item>
   </channel>

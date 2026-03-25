@@ -2,12 +2,12 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>http://localhost:1314/en/sitemap.xml</loc>
+    <loc>https://lishehao.github.io/en/sitemap.xml</loc>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1314/zh/sitemap.xml</loc>
+    <loc>https://lishehao.github.io/zh/sitemap.xml</loc>
     
   </sitemap>
   
