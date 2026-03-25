@@ -210,21 +210,6 @@
     </div>
 
     <div class="section">
-      <div class="section-title">实习经历</div>
-      <div class="entry">
-        <div class="row">
-          <div class="title">赛炜｜软件工程实习生 / 测试工程实习生</div>
-          <div class="meta">上海，中国 ｜ 2025.07 - 2025.09</div>
-        </div>
-        <div class="sub">医疗影像设备方向</div>
-        <ul>
-          <li>开发 Python 自动化工具支撑内部测试与协同流程，负责需求理解、实现、调试验证与上线支持。</li>
-          <li>与测试工程师和 PM 协作推进工具落地，提升执行效率与流程一致性。</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section">
       <div class="section-title">项目经历</div>
 
       <div class="entry">
@@ -233,12 +218,12 @@
           <div class="meta">FastAPI / PostgreSQL / Redis / OpenAI API / MCP / DistilBERT ｜ 2026.01 - 至今</div>
         </div>
         <ul>
-          <li>从 0 到 1 设计并实现 Gmail + ICS 场景下的 AI Agent 工作流后端，完成 source 接入、规则过滤、LLM 建议生成、状态流转、人工审批、通知下发等核心链路。</li>
-          <li>设计人机协同决策机制：LLM 仅负责生成结构化 proposal，业务系统负责状态推进、落库、重试与异常恢复，避免模型直接写业务真相。</li>
-          <li>基于显式状态机重构 runtime，引入 stage / substage / progress 与 source observability，提升长链路任务的稳定性、可恢复性和问题定位效率。</li>
-          <li>实现 context / proposal / approval-ticket 三层 Agent 后端接口，并通过 MCP Server 暴露给外部智能体客户端，在受控权限下支持上下文读取、建议生成和低风险动作确认。</li>
-          <li>搭建全年 replay 验收与评测体系，覆盖 Gmail/ICS 全链路，验证系统在真实时间序列下的稳定性、成本与人工操作复杂度。</li>
-          <li>在 10,368 封 Gmail full-sim 数据上完成评测，target recall 100%、overall interception 72.1%，并建立 token / cache / latency / stability 指标闭环。</li>
+          <li>从 0 到 1 设计并实现 Gmail + ICS 多源接入的 AI 日程变更治理后端，打通 source 接入、规则过滤、LLM 结构化抽取、proposal 生成、人工审批、状态落库与通知下发全链路。</li>
+          <li>基于显式状态机重构工作流运行时，统一管理 stage / substage / progress、任务重试、失败恢复与 source observability，解决长链路 AI workflow 在真实运行中的卡死、收尾不一致与定位困难问题。</li>
+          <li>设计“LLM 生成建议、业务系统负责裁决”的人机协同机制，确保模型只参与结构化 proposal 生成，不直接写入 canonical state，降低误判对业务真相的污染风险。</li>
+          <li>实现 context / proposal / approval-ticket 三层 Agent 后端接口，并通过 MCP Server 对外暴露受控能力，支持外部智能体进行上下文读取、建议生成与低风险动作确认。</li>
+          <li>搭建全年 chronological replay 验收与评测体系，覆盖 24 个 checkpoint、10,368 封 Gmail full-sim 数据与全年 ICS 时间线，验证系统稳定性、成本与人工操作复杂度。</li>
+          <li>完成系统级评测，target recall 100%、overall interception 72.1%，并建立 token / cache / latency / stability 指标闭环。</li>
         </ul>
       </div>
 
@@ -252,7 +237,7 @@
           <li>设计 Copilot proposal 状态机与编辑态契约，建立独立 editor-state 作为主工作区，支持 draft / applied / superseded / stale 等状态，保证多轮 AI 修改过程可控、可回溯。</li>
           <li>为智能体增加“多版本建议”能力，同一条用户指令在同一版草稿上可生成多个有区分度的候选方案，并支持 Try another，提升了智能体交互自然度和可用性。</li>
           <li>完成 Copilot 前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，提升了智能体系统的演进性和维护性。</li>
-          <li>搭建真实多流程评测链路：每轮自动生成 5 个新故事，由 3 条 persona workflow 通过真实 API 独立游玩并输出主观体感，结合时间、token、cache、fallback 和结局分布进行统一评估；最佳轮次 15/15 session 完成，render fallback 0%。</li>
+          <li>建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 可写为 100+ sessions 级别。</li>
         </ul>
       </div>
 
@@ -275,6 +260,21 @@
         <ul>
           <li>开发 Email → DingTalk 待办链路，完成结构化字段解析、去重和持久化恢复，面向约 10 名使用者每天稳定处理约 200 封邮件。</li>
           <li>开发 GitHub Issues → DingTalk 摘要服务，支持 webhook 聚合与增量同步，日均总结 1000+ issues，覆盖约 50 位负责人，稳定运行半年。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">实习经历</div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">赛炜｜软件工程实习生 / 测试工程实习生</div>
+          <div class="meta">上海，中国 ｜ 2025.07 - 2025.09</div>
+        </div>
+        <div class="sub">医疗影像设备方向</div>
+        <ul>
+          <li>开发 Python 自动化工具支撑内部测试与协同流程，负责需求理解、实现、调试验证与上线支持。</li>
+          <li>与测试工程师和 PM 协作推进工具落地，提升执行效率与流程一致性。</li>
         </ul>
       </div>
     </div>

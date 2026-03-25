@@ -8,10 +8,10 @@ previewTone: "ember"
 liveUrl: "https://rpg.shehao.app"
 metrics:
   - "Author Copilot editing"
-  - "multi-variant suggestions"
-  - "author -> publish -> play validation"
+  - "up to 3 variants"
+  - "8 editor-state views"
   - "15/15 sessions complete"
-  - "0% render fallback"
+  - "2.4s median first submit"
 ---
 
 ## Overview
@@ -28,7 +28,7 @@ Narrative systems are easy to prototype but hard to edit, validate, and evolve. 
 - Designed a Copilot proposal state machine and editing contract with an isolated editor-state workspace supporting draft / applied / superseded / stale states so multi-turn AI edits remain controllable and recoverable.
 - Added multi-variant suggestion support so one instruction over the same draft can produce distinct candidate edits, with Try another behavior instead of near-duplicate outputs.
 - Implemented frontend/backend interface layering for Copilot state and product state, separating product APIs, editor-state data, and bundle / trace internals so the system can evolve without leaking workflow internals into the product surface.
-- Built a real multi-flow evaluation chain: each round generates 5 new stories, 3 persona workflows play through them via real APIs and report subjective experience, and time, token, cache, fallback, and ending-distribution metrics are aggregated into one evaluation surface; the best round reached 15/15 completed sessions with 0% render fallback.
+- Established a real evaluation baseline: each round covers 5 stories × 3 persona workflows = 15 complete playthroughs, aggregating time, token, cache, fallback, ending distribution, and subjective feel; the best round reached 15/15 completed sessions, 0% render fallback, and 2.4s median first-submit latency, with 100+ cumulative real benchmark sessions.
 
 ## Tech Stack
 

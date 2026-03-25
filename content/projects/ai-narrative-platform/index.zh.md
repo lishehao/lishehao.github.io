@@ -8,10 +8,10 @@ previewTone: "ember"
 liveUrl: "https://rpg.shehao.app"
 metrics:
   - "Author Copilot 编辑链路"
-  - "多版本建议"
-  - "author -> publish -> play 联调"
+  - "最多 3 个差异化建议"
+  - "8 类 editor-state 视图"
   - "15/15 会话完成"
-  - "render fallback 0%"
+  - "首回合中位数 2.4s"
 ---
 
 ## 概览
@@ -28,7 +28,7 @@ metrics:
 - 设计 Copilot proposal 状态机与编辑态契约，建立独立 editor-state 作为主工作区，支持 draft / applied / superseded / stale 等状态，保证多轮 AI 修改过程可控、可回溯。
 - 为智能体增加“多版本建议”能力，同一条用户指令在同一版草稿上可生成多个有区分度的候选方案，并支持 Try another，提升了智能体交互自然度和可用性。
 - 完成 Copilot 前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，提升了智能体系统的演进性和维护性。
-- 搭建真实多流程评测链路：每轮自动生成 5 个新故事，由 3 条 persona workflow 通过真实 API 独立游玩并输出主观体感，结合时间、token、cache、fallback 和结局分布进行统一评估；最佳轮次 15/15 session 完成，render fallback 0%。
+- 建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 可写为 100+ sessions 级别。
 
 ## 技术栈
 

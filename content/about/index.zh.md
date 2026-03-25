@@ -29,7 +29,7 @@ tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 
 ## 代表项目
 
-- **[CalendarDIFF｜面向 Gmail + ICS 的 AI Agent 工作流系统 / 日程变更治理平台](/zh/projects/calendardiff/)** - 将 source 接入、规则过滤、proposal、人工审批与 replay 验收收敛为同一套 AI Agent 工作流后端
+- **[CalendarDIFF｜面向 Gmail + ICS 的 AI Agent 工作流系统 / 日程变更治理平台](/zh/projects/calendardiff/)** - 将 source 接入、规则过滤、结构化抽取、proposal、人工审批与全年 replay 验收收敛为同一套治理后端
 - **[Author Copilot 叙事编辑与评测平台](/zh/projects/ai-narrative-platform/)** - 将 Author Copilot 编辑链路、状态化 Play runtime 与 author -> publish -> play 联调验证整合为同一产品闭环
 - **[自动带载断载测试工具](/zh/projects/auto-load-off-test/)** - 面向实际验证流程的自动化工具，强调可重复性与可追踪性
 - **[流程自动化项目](/zh/projects/mail-to-dingtalk-todo/)** - 包括 Email -> DingTalk 待办与 GitHub Issues -> DingTalk 摘要链路
@@ -44,7 +44,7 @@ tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 ## 亮点数据
 
 - CalendarDIFF：**10,368 封 Gmail full-sim** 数据评测；target recall **100%**，overall interception **72.1%**
-- 叙事平台：**5 story × 3 persona workflow** 统一评测；最佳轮次 **15/15 session** 完成，render fallback **0%**
+- 叙事平台：**5 stories × 3 persona workflows** 统一评测；最佳轮次 **15/15 sessions** 完成，render fallback **0%**，首回合提交中位数 **2.4s**
 - Auto Load-Off：测试准备与结果整理工时下降 **75%**
 
 ## 联系方式
