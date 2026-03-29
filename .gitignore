@@ -17,6 +17,7 @@ venv/
 output/
 public/
 resumes/
+todo.md
 
 # hugo runtime
 .hugo_build.lock
