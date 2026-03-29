@@ -1,22 +1,23 @@
 ---
-title: "Author Copilot 叙事编辑与评测平台"
-summary: "已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -> publish -> play 全链路评测构建。"
+title: "RPG Demo 多智能体叙事生成、编辑与游玩平台"
+summary: "已上线的交互叙事产品，围绕 story seed -> preview -> author -> publish -> play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。"
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8
 featured: true
 previewTone: "ember"
 liveUrl: "https://rpg.shehao.app"
 metrics:
-  - "Author Copilot 编辑链路"
+  - "完整 author -> play 主链"
+  - "多阶段 agent runtime"
   - "最多 3 个差异化建议"
-  - "8 类 editor-state 视图"
+  - "checkpoint / session 恢复"
   - "15/15 会话完成"
   - "首回合中位数 2.4s"
 ---
 
 ## 概览
 
-这是一个已上线的交互叙事产品，核心是把故事创作、AI 编辑和游玩运行时放进同一个可控闭环。系统围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -> publish -> play 全链路评测构建，不再把模型当作“直接续写故事”的黑盒。
+这是一个已上线的交互叙事产品，核心是把故事创作、AI 编辑和游玩运行时放进同一个可控闭环。系统围绕 story seed -> preview -> author job -> publish -> play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建，不再把模型当作“直接续写故事”的黑盒。
 
 ## 核心问题
 
@@ -24,11 +25,15 @@ metrics:
 
 ## 系统设计与评测
 
-- 负责设计并实现一个 Author Copilot 智能体编辑链路，用户生成故事草稿后，可通过自然语言指令让系统对人物设定 / 剧情骨架 / 结局倾向 / 玩法规则生成结构化修改建议，并完成 生成建议 -> 预览 -> 应用 的人机协作闭环。
-- 设计 Copilot proposal 状态机与编辑态契约，建立独立 editor-state 作为主工作区，支持 draft / applied / superseded / stale 等状态，保证多轮 AI 修改过程可控、可回溯。
-- 为智能体增加“多版本建议”能力，同一条用户指令在同一版草稿上可生成多个有区分度的候选方案，并支持 Try another，提升了智能体交互自然度和可用性。
-- 完成 Copilot 前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，提升了智能体系统的演进性和维护性。
-- 建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 可写为 100+ sessions 级别。
+- 负责从 0 到 1 设计并实现 RPG Demo 的完整产品工作流，把原本分散的叙事生成脚本收敛成 story seed -> preview -> author job -> publish -> play 的统一主链。
+- 主导 Author Copilot 智能体编辑链路，支持用户用自然语言对人物设定、剧情骨架、结局倾向与玩法规则提出修改意图，并完成 生成建议 -> 预览 diff -> 应用/撤销 的人机协作闭环。
+- 设计 Copilot proposal 状态机与 editor-state 契约，建立独立工作区承接 draft / applied / superseded / stale 等状态，保证多轮 AI 修改不会直接污染主草稿。
+- 将 author 生成流程拆成 story frame、cast、beat plan、rulepack、play plan 等多个子 workflow，统一结构化输出、校验、repair 与 fallback 策略，降低大模型输出抖动对主链的破坏。
+- 设计 play runtime 的多阶段 agent 流程，把一次玩家输入拆为 interpret -> ending judge -> pyrrhic critic -> render 等阶段，每阶段单独治理 schema、telemetry 与错误恢复。
+- 为 Copilot 和 benchmark driver 增加多版本候选与 helper-style agent 调用模式，同一任务可生成多个有区分度的方案，并支持后续 agent/module 并发复用。
+- 完成前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，建立稳定 API contract，使 UI 层与 agent 内核可独立演进。
+- 实现 author job、play session 与 checkpoint 持久化恢复能力，支持服务重启后继续编辑或继续游玩，把一次性 demo 提升为具备真实运行态的 agent 系统。
+- 建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 达 100+ sessions 级别。
 
 ## 技术栈
 

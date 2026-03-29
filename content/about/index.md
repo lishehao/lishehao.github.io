@@ -29,8 +29,7 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## Selected Work
 
-- **[CalendarDIFF | AI Agent Workflow System for Gmail + ICS](/projects/calendardiff/)** — governance backend for Gmail + ICS spanning source intake, structured extraction, proposal generation, human approval, MCP interfaces, and replay validation
-- **[Author Copilot Narrative Editing and Evaluation Platform](/projects/ai-narrative-platform/)** — Author Copilot editing, stateful play runtime, and author -> publish -> play validation inside one product loop
+- **[RPG Demo Multi-Agent Narrative Generation, Editing, and Play Platform](/projects/ai-narrative-platform/)** — built the full story seed -> preview -> author -> publish -> play loop and unified Copilot editing, stateful runtime, and benchmark evaluation inside one agent workflow
 - **[Auto Load-Off Test](/projects/auto-load-off-test/)** — automation tool for repeatable validation runs with structured outputs and test-lab workflow improvements
 - **[Workflow Automation Projects](/projects/mail-to-dingtalk-todo/)** — email/task automation and GitHub-to-DingTalk summary pipelines used in real daily workflows
 
@@ -43,7 +42,6 @@ Worked on medical imaging device testing workflows and internal tooling. Built P
 
 ## Highlight Metrics
 
-- CalendarDIFF: evaluation over **10,368 Gmail full-sim messages**; target recall **100%**, overall interception **72.1%**
 - AI Narrative Platform: **5 stories x 3 persona workflows** in one evaluation loop; best round reached **15/15 sessions**, render fallback **0%**, and median first submit **2.4s**
 - Auto Load-Off Test: **75% reduction** in test setup/result handling effort
 
