@@ -8,11 +8,11 @@
     <language>en-US</language>
     <atom:link href="https://lishehao.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Author Copilot Narrative Editing and Evaluation Platform</title>
+      <title>RPG Demo Multi-Agent Narrative Generation, Editing, and Play Platform</title>
       <link>https://lishehao.github.io/projects/ai-narrative-platform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lishehao.github.io/projects/ai-narrative-platform/</guid>
-      <description>Live interactive narrative product built around an Author Copilot editing loop, a stateful Play runtime, and end-to-end author -&amp;gt; publish -&amp;gt; play evaluation.</description>
+      <description>Live interactive narrative product built around the story seed -&amp;gt; preview -&amp;gt; author -&amp;gt; publish -&amp;gt; play loop, an Author Copilot editing workflow, a stateful Play runtime, and benchmark evaluation.</description>
     </item>
   </channel>
 </rss>

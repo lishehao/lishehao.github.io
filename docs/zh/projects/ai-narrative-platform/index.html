@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Author Copilot 叙事编辑与评测平台 | 李佘昊</title>
+<title>RPG Demo 多智能体叙事生成、编辑与游玩平台 | 李佘昊</title>
 <meta name="keywords" content="FastAPI, React, TypeScript, LangGraph, LangChain, AI Engineering">
-<meta name="description" content="已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&gt; publish -&gt; play 全链路评测构建。">
+<meta name="description" content="已上线的交互叙事产品，围绕 story seed -&gt; preview -&gt; author -&gt; publish -&gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。">
 <meta name="author" content="">
 <link rel="canonical" href="https://lishehao.github.io/zh/projects/ai-narrative-platform/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.76a48da842eb1f0c4118975049a700cebe637f01e01e516f093e41089b03b82f.css" integrity="sha256-dqSNqELrHwxBGJdQSacAzr5jfwHgHlFvCT5BCJsDuC8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lishehao.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
@@ -73,8 +73,8 @@
 
 </script><meta property="og:url" content="https://lishehao.github.io/zh/projects/ai-narrative-platform/">
   <meta property="og:site_name" content="李佘昊">
-  <meta property="og:title" content="Author Copilot 叙事编辑与评测平台">
-  <meta property="og:description" content="已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&gt; publish -&gt; play 全链路评测构建。">
+  <meta property="og:title" content="RPG Demo 多智能体叙事生成、编辑与游玩平台">
+  <meta property="og:description" content="已上线的交互叙事产品，围绕 story seed -&gt; preview -&gt; author -&gt; publish -&gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。">
   <meta property="og:locale" content="zh-CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="projects">
@@ -85,8 +85,8 @@
     <meta property="article:tag" content="LangChain">
     <meta property="article:tag" content="AI Engineering">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Author Copilot 叙事编辑与评测平台">
-<meta name="twitter:description" content="已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&gt; publish -&gt; play 全链路评测构建。">
+<meta name="twitter:title" content="RPG Demo 多智能体叙事生成、编辑与游玩平台">
+<meta name="twitter:description" content="已上线的交互叙事产品，围绕 story seed -&gt; preview -&gt; author -&gt; publish -&gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。">
 
 
 <script type="application/ld+json">
@@ -103,7 +103,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Author Copilot 叙事编辑与评测平台",
+      "name": "RPG Demo 多智能体叙事生成、编辑与游玩平台",
       "item": "https://lishehao.github.io/zh/projects/ai-narrative-platform/"
     }
   ]
@@ -113,14 +113,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Author Copilot 叙事编辑与评测平台",
-  "name": "Author Copilot 叙事编辑与评测平台",
-  "description": "已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -\u0026gt; publish -\u0026gt; play 全链路评测构建。",
+  "headline": "RPG Demo 多智能体叙事生成、编辑与游玩平台",
+  "name": "RPG Demo 多智能体叙事生成、编辑与游玩平台",
+  "description": "已上线的交互叙事产品，围绕 story seed -\u0026gt; preview -\u0026gt; author -\u0026gt; publish -\u0026gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。",
   "keywords": [
     "FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"
   ],
-  "articleBody": "概览 这是一个已上线的交互叙事产品，核心是把故事创作、AI 编辑和游玩运行时放进同一个可控闭环。系统围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -\u003e publish -\u003e play 全链路评测构建，不再把模型当作“直接续写故事”的黑盒。\n核心问题 叙事产品若只停留在“生成内容”，很难让编辑、发布与运行形成稳定闭环。真正困难的不是文本生成本身，而是让 AI 修改过程可控、运行时状态一致，并把质量判断从主观体验收敛到可观测的系统指标。\n系统设计与评测 负责设计并实现一个 Author Copilot 智能体编辑链路，用户生成故事草稿后，可通过自然语言指令让系统对人物设定 / 剧情骨架 / 结局倾向 / 玩法规则生成结构化修改建议，并完成 生成建议 -\u003e 预览 -\u003e 应用 的人机协作闭环。 设计 Copilot proposal 状态机与编辑态契约，建立独立 editor-state 作为主工作区，支持 draft / applied / superseded / stale 等状态，保证多轮 AI 修改过程可控、可回溯。 为智能体增加“多版本建议”能力，同一条用户指令在同一版草稿上可生成多个有区分度的候选方案，并支持 Try another，提升了智能体交互自然度和可用性。 完成 Copilot 前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，提升了智能体系统的演进性和维护性。 建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 可写为 100+ sessions 级别。 技术栈 FastAPI React TypeScript LangGraph LangChain PostgreSQL 状态 线上地址：rpg.shehao.app 当前仓库暂未公开 ",
-  "wordCount" : "96",
+  "articleBody": "概览 这是一个已上线的交互叙事产品，核心是把故事创作、AI 编辑和游玩运行时放进同一个可控闭环。系统围绕 story seed -\u003e preview -\u003e author job -\u003e publish -\u003e play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建，不再把模型当作“直接续写故事”的黑盒。\n核心问题 叙事产品若只停留在“生成内容”，很难让编辑、发布与运行形成稳定闭环。真正困难的不是文本生成本身，而是让 AI 修改过程可控、运行时状态一致，并把质量判断从主观体验收敛到可观测的系统指标。\n系统设计与评测 负责从 0 到 1 设计并实现 RPG Demo 的完整产品工作流，把原本分散的叙事生成脚本收敛成 story seed -\u003e preview -\u003e author job -\u003e publish -\u003e play 的统一主链。 主导 Author Copilot 智能体编辑链路，支持用户用自然语言对人物设定、剧情骨架、结局倾向与玩法规则提出修改意图，并完成 生成建议 -\u003e 预览 diff -\u003e 应用/撤销 的人机协作闭环。 设计 Copilot proposal 状态机与 editor-state 契约，建立独立工作区承接 draft / applied / superseded / stale 等状态，保证多轮 AI 修改不会直接污染主草稿。 将 author 生成流程拆成 story frame、cast、beat plan、rulepack、play plan 等多个子 workflow，统一结构化输出、校验、repair 与 fallback 策略，降低大模型输出抖动对主链的破坏。 设计 play runtime 的多阶段 agent 流程，把一次玩家输入拆为 interpret -\u003e ending judge -\u003e pyrrhic critic -\u003e render 等阶段，每阶段单独治理 schema、telemetry 与错误恢复。 为 Copilot 和 benchmark driver 增加多版本候选与 helper-style agent 调用模式，同一任务可生成多个有区分度的方案，并支持后续 agent/module 并发复用。 完成前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，建立稳定 API contract，使 UI 层与 agent 内核可独立演进。 实现 author job、play session 与 checkpoint 持久化恢复能力，支持服务重启后继续编辑或继续游玩，把一次性 demo 提升为具备真实运行态的 agent 系统。 建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 达 100+ sessions 级别。 技术栈 FastAPI React TypeScript LangGraph LangChain PostgreSQL 状态 线上地址：rpg.shehao.app 当前仓库暂未公开 ",
+  "wordCount" : "171",
   "inLanguage": "zh",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -203,7 +203,7 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Author Copilot 叙事编辑与评测平台
+      RPG Demo 多智能体叙事生成、编辑与游玩平台
     </h1>
     <div class="post-meta"><span>语言:</span>
 <ul class="i18n_list">
@@ -215,16 +215,20 @@
 </div>
   </header> 
   <div class="post-content"><h2 id="概览">概览<a hidden class="anchor" aria-hidden="true" href="#概览">#</a></h2>
-<p>这是一个已上线的交互叙事产品，核心是把故事创作、AI 编辑和游玩运行时放进同一个可控闭环。系统围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&gt; publish -&gt; play 全链路评测构建，不再把模型当作“直接续写故事”的黑盒。</p>
+<p>这是一个已上线的交互叙事产品，核心是把故事创作、AI 编辑和游玩运行时放进同一个可控闭环。系统围绕 story seed -&gt; preview -&gt; author job -&gt; publish -&gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建，不再把模型当作“直接续写故事”的黑盒。</p>
 <h2 id="核心问题">核心问题<a hidden class="anchor" aria-hidden="true" href="#核心问题">#</a></h2>
 <p>叙事产品若只停留在“生成内容”，很难让编辑、发布与运行形成稳定闭环。真正困难的不是文本生成本身，而是让 AI 修改过程可控、运行时状态一致，并把质量判断从主观体验收敛到可观测的系统指标。</p>
 <h2 id="系统设计与评测">系统设计与评测<a hidden class="anchor" aria-hidden="true" href="#系统设计与评测">#</a></h2>
 <ul>
-<li>负责设计并实现一个 Author Copilot 智能体编辑链路，用户生成故事草稿后，可通过自然语言指令让系统对人物设定 / 剧情骨架 / 结局倾向 / 玩法规则生成结构化修改建议，并完成 生成建议 -&gt; 预览 -&gt; 应用 的人机协作闭环。</li>
-<li>设计 Copilot proposal 状态机与编辑态契约，建立独立 editor-state 作为主工作区，支持 draft / applied / superseded / stale 等状态，保证多轮 AI 修改过程可控、可回溯。</li>
-<li>为智能体增加“多版本建议”能力，同一条用户指令在同一版草稿上可生成多个有区分度的候选方案，并支持 Try another，提升了智能体交互自然度和可用性。</li>
-<li>完成 Copilot 前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，提升了智能体系统的演进性和维护性。</li>
-<li>建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 可写为 100+ sessions 级别。</li>
+<li>负责从 0 到 1 设计并实现 RPG Demo 的完整产品工作流，把原本分散的叙事生成脚本收敛成 story seed -&gt; preview -&gt; author job -&gt; publish -&gt; play 的统一主链。</li>
+<li>主导 Author Copilot 智能体编辑链路，支持用户用自然语言对人物设定、剧情骨架、结局倾向与玩法规则提出修改意图，并完成 生成建议 -&gt; 预览 diff -&gt; 应用/撤销 的人机协作闭环。</li>
+<li>设计 Copilot proposal 状态机与 editor-state 契约，建立独立工作区承接 draft / applied / superseded / stale 等状态，保证多轮 AI 修改不会直接污染主草稿。</li>
+<li>将 author 生成流程拆成 story frame、cast、beat plan、rulepack、play plan 等多个子 workflow，统一结构化输出、校验、repair 与 fallback 策略，降低大模型输出抖动对主链的破坏。</li>
+<li>设计 play runtime 的多阶段 agent 流程，把一次玩家输入拆为 interpret -&gt; ending judge -&gt; pyrrhic critic -&gt; render 等阶段，每阶段单独治理 schema、telemetry 与错误恢复。</li>
+<li>为 Copilot 和 benchmark driver 增加多版本候选与 helper-style agent 调用模式，同一任务可生成多个有区分度的方案，并支持后续 agent/module 并发复用。</li>
+<li>完成前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，建立稳定 API contract，使 UI 层与 agent 内核可独立演进。</li>
+<li>实现 author job、play session 与 checkpoint 持久化恢复能力，支持服务重启后继续编辑或继续游玩，把一次性 demo 提升为具备真实运行态的 agent 系统。</li>
+<li>建立真实评测基线：单轮覆盖 5 stories × 3 persona workflows = 15 条完整游玩链路，统一采集时间、token、cache、fallback、ending distribution 与主观体感；最佳轮次 15/15 session 完成、render fallback 0%、首回合提交中位数 2.4s，累计真实 play benchmark 达 100+ sessions 级别。</li>
 </ul>
 <h2 id="技术栈">技术栈<a hidden class="anchor" aria-hidden="true" href="#技术栈">#</a></h2>
 <ul>

@@ -8,11 +8,11 @@
     <language>zh-CN</language>
     <atom:link href="https://lishehao.github.io/zh/tags/ai-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Author Copilot 叙事编辑与评测平台</title>
+      <title>RPG Demo 多智能体叙事生成、编辑与游玩平台</title>
       <link>https://lishehao.github.io/zh/projects/ai-narrative-platform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lishehao.github.io/zh/projects/ai-narrative-platform/</guid>
-      <description>已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&amp;gt; publish -&amp;gt; play 全链路评测构建。</description>
+      <description>已上线的交互叙事产品，围绕 story seed -&amp;gt; preview -&amp;gt; author -&amp;gt; publish -&amp;gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。</description>
     </item>
     <item>
       <title>关于</title>

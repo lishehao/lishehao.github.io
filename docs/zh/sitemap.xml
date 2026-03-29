@@ -2,18 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lishehao.github.io/zh/projects/calendardiff/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/projects/calendardiff/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/projects/calendardiff/"
-                />
-  </url><url>
     <loc>https://lishehao.github.io/zh/projects/ai-narrative-platform/</loc>
     <xhtml:link
                 rel="alternate"
@@ -72,18 +60,6 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="https://lishehao.github.io/zh/projects/test-automation-multitimer/"
-                />
-  </url><url>
-    <loc>https://lishehao.github.io/zh/tags/ai-agent/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/ai-agent/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/ai-agent/"
                 />
   </url><url>
     <loc>https://lishehao.github.io/zh/tags/ai-engineering/</loc>
@@ -266,18 +242,6 @@
                 href="https://lishehao.github.io/zh/tags/langgraph/"
                 />
   </url><url>
-    <loc>https://lishehao.github.io/zh/tags/llm/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/llm/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/llm/"
-                />
-  </url><url>
     <loc>https://lishehao.github.io/zh/tags/llm-workflow/</loc>
     <xhtml:link
                 rel="alternate"
@@ -300,30 +264,6 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="https://lishehao.github.io/zh/tags/mat-file/"
-                />
-  </url><url>
-    <loc>https://lishehao.github.io/zh/tags/mcp/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/mcp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/mcp/"
-                />
-  </url><url>
-    <loc>https://lishehao.github.io/zh/tags/postgresql/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/postgresql/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/postgresql/"
                 />
   </url><url>
     <loc>https://lishehao.github.io/zh/tags/profile/</loc>
@@ -372,18 +312,6 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="https://lishehao.github.io/zh/tags/react/"
-                />
-  </url><url>
-    <loc>https://lishehao.github.io/zh/tags/redis/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lishehao.github.io/tags/redis/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://lishehao.github.io/zh/tags/redis/"
                 />
   </url><url>
     <loc>https://lishehao.github.io/zh/tags/scpi/</loc>
