@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://lishehao.github.io/zh/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9df28eb77ddcf4e1e857784540fda7877201ecb3396d172d340a0a953a6b1128.css" integrity="sha256-nfKOt33c9OHoV3hFQP2nh3IB7LM5bRctNAoKlTprESg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.76a48da842eb1f0c4118975049a700cebe637f01e01e516f093e41089b03b82f.css" integrity="sha256-dqSNqELrHwxBGJdQSacAzr5jfwHgHlFvCT5BCJsDuC8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lishehao.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lishehao.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lishehao.github.io/favicon-32x32.png">
@@ -156,17 +156,17 @@
 </header>
 <main class="main"><div class="profile home-portfolio">
   <div class="home-shell">
-    <section class="home-hero">
+    <section class="home-hero home-reveal">
       <div class="home-hero-copy">
+        <div class="home-signature">李佘昊</div>
         <div class="home-eyebrow">AI Agent / LLM Engineering / Backend Systems</div>
-        <h1>AI Agent、LLM 工程化与后端系统工程。</h1>
-        <p class="home-hero-text">聚焦 AI workflow、结构化输出、人工介入工作流，以及评测 / 回放 / 可观测性。
-          站点集中展示代表项目、量化指标与简历入口。</p>
-        <div class="home-actions">
-          <a class="project-chip project-chip-primary" href="/resume/">打开简历</a>
-          <a class="project-chip" href="/zh/projects/">查看项目</a>
-          <a class="project-chip" href="/zh/about/">关于我</a>
-        </div>
+        <h1>我在做 AI Agent 系统、LLM 工作流与后端产品。</h1>
+        <p class="home-hero-text">我是李佘昊，目前在 UC San Diego 读 Mathematics-Computer Science。相比把模型当成黑盒，我更关心如何把 AI 行为收敛成有状态、可审核、可评测、可迭代的真实产品。</p>
+        <nav class="home-primary-nav" aria-label="首页主导航">
+          <a href="/zh/projects/">项目</a>
+          <a href="/zh/about/">关于</a>
+          <a class="home-link-secondary" href="/resume/">简历</a>
+        </nav>
         <div class="home-link-row">
           <a href="mailto:lishehao@gmail.com">lishehao@gmail.com</a>
           <a href="https://github.com/lishehao" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -175,141 +175,84 @@
       </div>
 
       <aside class="home-hero-side">
-        <div class="home-profile-card">
-          <div class="home-profile-top">
-            <div class="home-avatar-wrap">
-              <img
-                class="home-avatar"
-                src="https://lishehao.github.io/images/shehao_homepage.jpg"
-                alt="me"
-                width="200"
-                height="200">
-            </div>
-            <div>
-              <div class="home-profile-name">李佘昊</div>
-              <div class="home-profile-role">AI Agent / LLM工程化 / 后端系统</div>
-            </div>
-          </div>
-          <div class="home-profile-list">
-            <div class="home-profile-item">
-              <span>目前身份</span>
-              <strong>UC San Diego Math-CS · 2027</strong>
-            </div>
-            <div class="home-profile-item">
-              <span>求职方向</span>
-              <strong>AI Agent / Software Engineer Intern</strong>
-            </div>
-            <div class="home-profile-item">
-              <span>所在地</span>
-              <strong>上海，中国</strong>
-            </div>
+        <div class="home-portrait-frame">
+          <div class="home-avatar-wrap">
+            <img
+              class="home-avatar"
+              src="https://lishehao.github.io/images/shehao_homepage.jpg"
+              alt="me"
+              width="200"
+              height="200">
           </div>
         </div>
-
-        <div class="home-proof-grid">
-          <div class="home-proof-card">
-            <span>真实部署</span>
-            <strong>CalendarDIFF 已上线</strong>
-            <p>不是 demo 页面，而是可访问的真实产品入口。</p>
+        <dl class="home-profile-list">
+          <div class="home-profile-item">
+            <dt>目前</dt>
+            <dd>UC San Diego Math-CS · 2027</dd>
           </div>
-          <div class="home-proof-card">
-            <span>关键环节可控</span>
-            <strong>人工审核放在状态迁移前</strong>
-            <p>高风险结果先审后发，不靠事后补救。</p>
+          <div class="home-profile-item">
+            <dt>方向</dt>
+            <dd>AI Agent / LLM 工程化 / 后端系统</dd>
           </div>
-          <div class="home-proof-card">
-            <span>验证方式</span>
-            <strong>回放与基准评测驱动收敛</strong>
-            <p>关键判断来自回放、评测与真实运行，而不是主观描述。</p>
+          <div class="home-profile-item">
+            <dt>所在地</dt>
+            <dd>上海，中国</dd>
           </div>
-        </div>
+        </dl>
       </aside>
     </section>
-
-    <section class="home-section">
+    <section class="home-section home-reveal home-reveal-delay">
       <div class="home-section-head">
         <div>
           <div class="home-section-kicker">主打项目</div>
-          <h2>代表项目</h2>
+          <h2>最近在做的代表项目</h2>
         </div>
         <a class="home-section-link" href="/zh/projects/">
-          全部项目
+          查看全部项目
         </a>
       </div>
 
-      <div class="home-feature-grid">
-        <article class="home-feature-card tone-sky">
-          <div class="home-feature-header">
-            <div class="home-eyebrow">已上线产品</div>
-            <h3>CalendarDIFF｜面向 Gmail &#43; ICS 的 AI Agent 工作流系统 / 日程变更治理平台</h3>
-            <p>面向 Gmail &#43; ICS 多源接入的 AI 日程变更治理后端，围绕规则过滤、LLM 结构化抽取、proposal 生成、人工审批、显式状态机 runtime 与全年 chronological replay 构建。</p>
-          </div>
+      <article class="home-spotlight-card tone-ember">
+        <div class="home-spotlight-copy">
+          <div class="home-eyebrow">已上线产品</div>
+          <h3>RPG Demo 多智能体叙事生成、编辑与游玩平台</h3>
+          <p>已上线的交互叙事产品，围绕 story seed -&gt; preview -&gt; author -&gt; publish -&gt; play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。</p>
+        </div>
+        <div class="home-spotlight-side">
           <div class="project-metric-row">
-            <span class="project-metric-chip">AI Agent 工作流后端</span>
-            <span class="project-metric-chip">MCP Server 接口</span>
-            <span class="project-metric-chip">全年 replay 验收</span>
-            <span class="project-metric-chip">overall interception 72.1%</span>
-          </div>
-          <div class="home-feature-actions">
-            <a class="project-chip" href="https://lishehao.github.io/zh/projects/calendardiff/">查看详情</a>
-            <a class="project-chip project-chip-primary" href="https://cal.shehao.app" target="_blank" rel="noopener noreferrer">访问首页</a>
-          </div>
-        </article>
-        <article class="home-feature-card tone-ember">
-          <div class="home-feature-header">
-            <div class="home-eyebrow">已上线产品</div>
-            <h3>Author Copilot 叙事编辑与评测平台</h3>
-            <p>已上线的交互叙事产品，围绕 Author Copilot 编辑链路、状态化 Play runtime 与 author -&gt; publish -&gt; play 全链路评测构建。</p>
-          </div>
-          <div class="project-metric-row">
-            <span class="project-metric-chip">Author Copilot 编辑链路</span>
+            <span class="project-metric-chip">完整 author -&gt; play 主链</span>
+            <span class="project-metric-chip">多阶段 agent runtime</span>
             <span class="project-metric-chip">最多 3 个差异化建议</span>
-            <span class="project-metric-chip">8 类 editor-state 视图</span>
-            <span class="project-metric-chip">15/15 会话完成</span>
+            <span class="project-metric-chip">checkpoint / session 恢复</span>
           </div>
-          <div class="home-feature-actions">
-            <a class="project-chip" href="https://lishehao.github.io/zh/projects/ai-narrative-platform/">查看详情</a>
-            <a class="project-chip project-chip-primary" href="https://rpg.shehao.app" target="_blank" rel="noopener noreferrer">访问首页</a>
+          <div class="home-spotlight-actions">
+            <a href="https://lishehao.github.io/zh/projects/ai-narrative-platform/">阅读项目拆解</a>
+            <a href="https://rpg.shehao.app" target="_blank" rel="noopener noreferrer">访问线上产品</a>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </section>
 
     <section class="home-section">
       <div class="home-section-head home-section-head-tight">
         <div>
-          <div class="home-section-kicker">构建方式</div>
-          <h2>关注的问题</h2>
+          <div class="home-section-kicker">片段</div>
+          <h2>最近在做什么</h2>
         </div>
       </div>
-      <div class="home-principles">
-        <article class="home-principle-card">
-          <h3>长流程运行时</h3>
-          <p>不把 AI 当成一次性调用，而是把长链路任务拆成显式状态、边界条件和可恢复步骤。</p>
+      <div class="home-notes-grid">
+        <article class="home-note">
+          <h3>近期</h3>
+          <p>在 UC San Diego 继续读 Math-CS，也持续把真实项目里的 AI workflow 做得更稳、更可追踪。</p>
         </article>
-        <article class="home-principle-card">
-          <h3>人工介入流程</h3>
-          <p>审核、纠错和确认应该在关键状态迁移之前出现，而不是在错误结果发出之后补救。</p>
+        <article class="home-note">
+          <h3>关注</h3>
+          <p>长流程 agent runtime、结构化输出、评测回放，以及能让 AI 产品真正稳定下来的后端边界。</p>
         </article>
-        <article class="home-principle-card">
-          <h3>评测与可观测性</h3>
-          <p>回放、基准评测、追踪，以及 token / 缓存命中 / 延迟指标要从一开始就是系统的一部分。</p>
+        <article class="home-note">
+          <h3>更多</h3>
+          <p>更完整的项目拆解在 Projects，背景和经历在 About；需要紧凑版本时再看简历。</p>
         </article>
-      </div>
-    </section>
-
-    <section class="home-cta-band">
-      <div>
-        <div class="home-section-kicker">下一步</div>
-        <h2>从简历或项目开始。</h2>
-      </div>
-      <div class="home-actions">
-        <a class="project-chip project-chip-primary" href="/resume/">
-          打开简历
-        </a>
-        <a class="project-chip" href="/zh/projects/">
-          浏览项目
-        </a>
       </div>
     </section>
   </div>
