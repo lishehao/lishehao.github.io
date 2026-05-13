@@ -1,8 +1,10 @@
 ---
 title: "GitHub Issues 到 DingTalk 摘要服务"
 summary: "基于 webhook 聚合与增量同步，把 GitHub Issues 活动整理成面向负责人的 DingTalk 摘要。"
-tags: ["Automation", "DevOps", "Integration"]
+tags: []
 weight: 35
+draft: true
+hideFromProjects: true
 ---
 
 ## 概览

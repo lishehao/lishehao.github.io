@@ -1,10 +1,12 @@
 ---
 title: "RPG Demo 多智能体叙事生成、编辑与游玩平台"
+displayTitle: "RPG Demo / Tiny Stories"
 summary: "已上线的交互叙事产品，围绕 story seed -> preview -> author -> publish -> play 主链、Author Copilot 编辑链路、状态化 Play runtime 与 benchmark 评测构建。"
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8
 featured: true
 previewTone: "ember"
+visual: "rpg"
 liveUrl: "https://rpg.shehao.app"
 metrics:
   - "完整 author -> play 主链"
@@ -47,4 +49,4 @@ metrics:
 ## 状态
 
 - 线上地址：**[rpg.shehao.app](https://rpg.shehao.app)**
-- 当前仓库暂未公开
+- 代码仓库：**[github.com/lishehao/RPG_Demo](https://github.com/lishehao/RPG_Demo)**

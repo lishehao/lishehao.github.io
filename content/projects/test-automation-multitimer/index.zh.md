@@ -1,8 +1,10 @@
 ---
 title: "Test Automation MultiTimer"
 summary: "补充型 Python Tkinter GUI 工具：用 VISA / SCPI 做有时间边界的 DMM 监控，并支持采样、日志与可选 MAT 导出。"
-tags: ["Python", "Tkinter", "PyVISA", "VISA", "SCPI", "DMM", "Keysight 34461A", "MAT-File"]
+tags: []
 weight: 50
+draft: true
+hideFromProjects: true
 ---
 
 ## 概览

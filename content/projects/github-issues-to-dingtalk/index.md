@@ -1,8 +1,10 @@
 ---
 title: "GitHub Issues to DingTalk"
 summary: "Webhook-based GitHub issue digest service that aggregates issue events, performs incremental sync, and pushes summaries into DingTalk for responsible owners."
-tags: ["Automation", "DevOps", "Integration"]
+tags: []
 weight: 35
+draft: true
+hideFromProjects: true
 ---
 
 ## Overview

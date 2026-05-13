@@ -1,13 +1,13 @@
 ---
 title: "自动带载断载测试工具"
-summary: "面向 AWG + 示波器验证流程的 Python 自动化工具，补齐 validation、logging、retry/timeout 与 CSV/MAT 导出。"
+summary: "面向 AWG + 示波器验证流程的 Python 自动化小工具，补齐运行配置、validation、logging、retry/timeout 与 CSV/MAT 导出。"
 tags: ["Python", "Test Automation", "PyVISA", "SCPI", "Tkinter", "Data Logging"]
 weight: 20
 ---
 
 ## 概览
 
-Auto Load-Off Test 是一个面向仪器验证流程的 Python 自动化工具。它自动控制 AWG 与示波器，标准化测试准备和执行过程，并输出结构化结果，让验证运行可以被重复执行和横向比较。
+Auto Load-Off Test 是一个面向仪器验证流程的小型 Python 自动化工具。它自动控制 AWG 与示波器，标准化测试准备和执行过程，并输出结构化结果，让验证运行可以被重复执行和横向比较。
 
 ## 问题
 
@@ -17,7 +17,7 @@ Auto Load-Off Test 是一个面向仪器验证流程的 Python 自动化工具�
 
 - 自动化完成 AWG + 示波器验证链路
 - 补齐 validation、logging、retry/timeout 和 CSV/MAT 导出能力
-- 把偏手工的实验室流程转成可重复执行、可供团队实际使用的工具
+- 把偏手工的实验室流程转成可重复执行、可供团队实际使用的小工具
 
 ## 架构
 

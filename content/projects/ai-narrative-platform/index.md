@@ -1,10 +1,12 @@
 ---
 title: "RPG Demo Multi-Agent Narrative Generation, Editing, and Play Platform"
+displayTitle: "RPG Demo / Tiny Stories"
 summary: "Live interactive narrative product built around the story seed -> preview -> author -> publish -> play loop, an Author Copilot editing workflow, a stateful Play runtime, and benchmark evaluation."
 tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
 weight: 8
 featured: true
 previewTone: "ember"
+visual: "rpg"
 liveUrl: "https://rpg.shehao.app"
 metrics:
   - "full author -> play loop"
@@ -47,4 +49,4 @@ Narrative systems are easy to prototype but hard to edit, validate, and evolve. 
 ## Status
 
 - Live site: **[rpg.shehao.app](https://rpg.shehao.app)**
-- Repository is private for now
+- Repository: **[github.com/lishehao/RPG_Demo](https://github.com/lishehao/RPG_Demo)**

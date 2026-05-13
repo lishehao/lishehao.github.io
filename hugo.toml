@@ -24,7 +24,7 @@ defaultContentLanguageInSubdir = false
     [languages.en.params.profileMode]
       enabled = true
       title = "Shehao Li"
-      subtitle = "Math-CS @ UCSD.\nAI agent, LLM engineering, and backend systems."
+      subtitle = "Math-CS @ UCSD.\nAI products, workflow automation, and inspectable systems."
       imageUrl = "images/shehao_homepage.jpg"
       imageWidth = 200
       imageHeight = 200
@@ -67,7 +67,7 @@ defaultContentLanguageInSubdir = false
     [languages.zh.params.profileMode]
       enabled = true
       title = "李佘昊"
-      subtitle = "UC San Diego 数学-计算机科学本科。\nAI Agent、LLM工程化与后端系统。"
+      subtitle = "UC San Diego 数学-计算机科学本科。\nAI 产品、流程自动化与可复盘系统。"
       imageUrl = "images/shehao_homepage.jpg"
       imageWidth = 200
       imageHeight = 200

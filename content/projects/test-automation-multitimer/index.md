@@ -1,8 +1,10 @@
 ---
 title: "Test Automation MultiTimer"
 summary: "Supplementary Python Tkinter GUI for timed DMM monitoring over VISA/SCPI with interval sampling, logging, and optional MAT export."
-tags: ["Python", "Tkinter", "PyVISA", "VISA", "SCPI", "DMM", "Keysight 34461A", "MAT-File"]
+tags: []
 weight: 50
+draft: true
+hideFromProjects: true
 ---
 
 ## Overview

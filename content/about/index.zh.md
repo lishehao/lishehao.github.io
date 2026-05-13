@@ -1,10 +1,15 @@
 ---
 title: "关于"
-summary: "李佘昊的背景、经历与 AI Agent / LLM工程化 / 后端系统方向。"
-tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
+summary: "李佘昊在 AI 产品、测试自动化与可复盘系统方向的背景、经历和代表项目。"
+tags: ["Profile", "UCSD", "AI Product", "Test Automation", "AI Engineering"]
 ---
 
-我是李佘昊，目前就读于 UC San Diego，专业是 Mathematics-Computer Science，求职方向为 AI Agent / Software Engineer Intern。重点方向是 LLM 工程化与后端系统，关注可运行、可维护的 AI workflow、结构化输出、评测验证，以及 human-in-the-loop 交互闭环。
+我是李佘昊，目前在 UC San Diego 就读 Mathematics-Computer Science。我比较感兴趣的不是“单纯把代码写出来”，而是把一个模糊的需求或复杂流程，做成别人可以运行、理解、复盘、继续改进的软件系统。
+
+现阶段最能代表我的项目主要有两条线：
+
+- **RPG Demo / Tiny Stories**：一个全栈 AI 叙事产品，包含创作、预览、AI 编辑、发布、游玩 runtime 和 benchmark 评测。
+- **Auto Load-Off Test**：面向仪器验证流程的 Python 自动化小工具，重点是 AWG/示波器控制、日志、retry/timeout 和结构化导出。
 
 ## 基本信息
 
@@ -12,38 +17,39 @@ tags: ["Profile", "UCSD", "LLM Workflow", "Backend", "AI Engineering"]
 - 专业：Mathematics-Computer Science
 - 预计毕业时间：2027 年 6 月
 - GPA：3.95
-- 当前所在地：上海，中国
+- 来自上海，目前在 UC San Diego 就读
 
-## 实习经历
+## 经历
 
 ### 赛炜 - 软件工程实习生 / 测试工程实习生
 上海，中国 | 2025.07 - 2025.09
 
-参与医疗影像设备方向的内部测试与协同流程工具建设，负责需求理解、实现、调试验证与上线支持。与测试工程师和 PM 协作推进工具落地，提升执行效率与流程一致性。
+参与医疗影像设备方向的测试验证流程和内部工具建设。现阶段最适合公开展示的是 Auto Load-Off Test：一个小型 Python 工具，用来让重复的 AWG/示波器验证运行更容易配置、执行、记录和比较。
+
+这段经历让我对“有用的软件系统”有了更具体的理解：不是一个脚本跑通一次就够了，而是需要配置、日志、幂等、可重复执行，以及足够清晰的产品表面，让其他人愿意依赖它。
 
 ## 我在做什么类型的系统
 
-- **LLM workflow 运行时系统**：把长链路任务拆成显式状态、可恢复步骤和可追踪输出
-- **人工介入工作流**：把审核、纠错和确认放在真正关键的位置，而不是事后兜底
-- **评测与可观测性**：关注回放、基准评测、日志和稳定性指标，而不只是在“调用模型”
+- **AI 产品系统**：把模型行为放进可见、可控、可复盘的用户流程，而不是只输出一次结果。
+- **测试自动化**：减少重复手工操作，同时保留配置、日志和可导出的验证证据。
+- **可审阅的全栈产品**：重视前端检查点、后端契约、持久化、恢复和复盘界面。
 
 ## 代表项目
 
-- **[RPG Demo 多智能体叙事生成、编辑与游玩平台](/zh/projects/ai-narrative-platform/)** - 负责从 0 到 1 搭建 story seed -> preview -> author -> publish -> play 主链，并把 Copilot、状态化 runtime 与 benchmark 评测整合为同一套 agent workflow
-- **[自动带载断载测试工具](/zh/projects/auto-load-off-test/)** - 面向实际验证流程的自动化工具，强调可重复性与可追踪性
-- **[流程自动化项目](/zh/projects/mail-to-dingtalk-todo/)** - 包括 Email -> DingTalk 待办与 GitHub Issues -> DingTalk 摘要链路
+- **[RPG Demo / Tiny Stories](/zh/projects/ai-narrative-platform/)** - 搭建 story seed -> preview -> author -> publish -> play 主链，并把 Copilot 编辑、状态化 runtime 和 benchmark 评测整合到同一个 AI 产品中。
+- **[Auto Load-Off Test](/zh/projects/auto-load-off-test/)** - 面向 AWG / 示波器验证流程的 Python 自动化工具，包含 PyVISA/SCPI 控制和结构化导出。
 
 ## 技术栈
 
-- **编程语言**：Python、Java、C/Cpp
-- **框架与工程**：FastAPI、Pydantic、LangGraph、Pytest、React、TypeScript、Vite
-- **基础设施**：PostgreSQL、Redis、SQLite、Docker
-- **AI 工程**：OpenAI API、结构化输出、提示词设计、基准评测
+- **编程语言**：Python、TypeScript、Java、C/C++
+- **前端**：React、TypeScript、Vite、产品 UI 原型
+- **后端与系统**：FastAPI、Pydantic、SQLite、PostgreSQL、Docker
+- **自动化**：PyVISA、SCPI、Tkinter、CSV/MAT 导出、validation logging
+- **AI 工程**：LangGraph、LangChain、结构化输出、benchmark 循环、状态化 runtime
 
-## 亮点数据
+## 当前方向
 
-- 叙事平台：**5 stories × 3 persona workflows** 统一评测；最佳轮次 **15/15 sessions** 完成，render fallback **0%**，首回合提交中位数 **2.4s**
-- Auto Load-Off：测试准备与结果整理工时下降 **75%**
+我现在也在通过持续中的实习探索新的 agent 产品形态。这个网站现阶段先把主叙事放在已经完成、可以被审阅的项目上；更长期的方向，是做产品判断、前端体验、后端系统设计和可评测工作流质量同时成立的 AI 产品。
 
 ## 联系方式
 

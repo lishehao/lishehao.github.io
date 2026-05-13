@@ -1,8 +1,10 @@
 ---
 title: "从邮件创建钉钉待办"
 summary: "通过轮询 IMAP 邮箱、提取结构化字段、创建钉钉待办并做幂等控制，把邮件工作流转成稳定的任务链路。"
-tags: ["Python", "IMAP", "Email Parsing", "Workflow Automation", "DingTalk"]
+tags: []
 weight: 30
+draft: true
+hideFromProjects: true
 ---
 
 ## 概览

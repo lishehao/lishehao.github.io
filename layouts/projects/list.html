@@ -20,10 +20,53 @@
 </div>
 {{- end }}
 
-{{- $paginator := .Paginate .RegularPages }}
+{{- $visiblePages := where .RegularPages "Params.hideFromProjects" "!=" true }}
+{{- $paginator := .Paginate $visiblePages }}
 {{- $isZh := eq site.Language.Lang "zh" }}
 {{- $featured := where $paginator.Pages "Params.featured" true }}
 {{- $rest := where $paginator.Pages "Params.featured" "!=" true }}
+{{- $rpgUrl := cond $isZh "/zh/projects/ai-narrative-platform/" "/projects/ai-narrative-platform/" }}
+{{- $autoUrl := cond $isZh "/zh/projects/auto-load-off-test/" "/projects/auto-load-off-test/" }}
+
+<section class="project-system-intro">
+  <article class="project-system-panel project-system-rpg">
+    <div class="project-system-copy">
+      <span>{{ if $isZh }}AI 产品系统{{ else }}AI Product System{{ end }}</span>
+      <h2>RPG Demo / Tiny Stories</h2>
+      <p>{{ if $isZh }}从故事种子、AI 编辑、发布、游玩到 benchmark 的完整闭环，展示我把 AI 能力产品化、状态化、可复盘化的能力。{{ else }}A complete loop from story seed, AI editing, publishing, play, and benchmark review; the clearest proof of my AI product and workflow-system work.{{ end }}</p>
+      <a href="{{ $rpgUrl }}">{{ if $isZh }}阅读 RPG Demo 项目{{ else }}Read RPG Demo case study{{ end }}</a>
+    </div>
+    <div class="project-system-visual">
+      <video
+        src="/videos/rpg-demo-admissions-showcase.mp4"
+        poster="/images/rpg-demo-admissions-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="{{ if $isZh }}RPG Demo 成品视频预览{{ else }}RPG Demo product video preview{{ end }}"
+      ></video>
+    </div>
+  </article>
+
+  <article class="project-system-panel project-system-auto">
+    <div class="project-system-copy">
+      <span>{{ if $isZh }}Instrument Automation{{ else }}Instrument Automation{{ end }}</span>
+      <h2>Auto Load-Off Test</h2>
+      <p>{{ if $isZh }}这部分不再包装成一组杂项内部工具，而是集中展示 Auto Load-Off Test：一个面向 AWG / 示波器验证流程的小型 Python 自动化项目。{{ else }}This section now focuses on Auto Load-Off Test rather than a bundle of internal tools: a small Python automation project for AWG/oscilloscope validation workflows.{{ end }}</p>
+      <div class="project-system-links">
+        <a href="{{ $autoUrl }}">{{ if $isZh }}查看项目详情{{ else }}Read project details{{ end }}</a>
+      </div>
+    </div>
+    <div class="project-system-pipeline" aria-label="{{ if $isZh }}Auto Load-Off Test 链路图{{ else }}Auto Load-Off Test pipeline diagram{{ end }}">
+      <span>Setup</span>
+      <span>AWG / OSC</span>
+      <span>Retry / Log</span>
+      <span>CSV / MAT</span>
+    </div>
+  </article>
+</section>
 
 {{- if gt (len $featured) 0 }}
 <section class="project-showcase-grid">
@@ -46,7 +89,7 @@
             {{- if $isZh }}项目案例{{ else }}Case Study{{ end -}}
           {{- end -}}
         </div>
-        <h2>{{ .Title }}</h2>
+        <h2>{{ .Params.displayTitle | default .Title }}</h2>
         <p>{{ .Summary | plainify | htmlUnescape }}</p>
         {{- with .Params.metrics }}
         <div class="project-metric-row">

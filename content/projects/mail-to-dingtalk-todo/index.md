@@ -1,8 +1,10 @@
 ---
 title: "DingTalk To-Do Creator from Email"
 summary: "Email-to-task automation pipeline that extracts structured workflow data from IMAP mailboxes, creates DingTalk To-Dos, and preserves idempotent processing state."
-tags: ["Python", "IMAP", "Email Parsing", "Workflow Automation", "DingTalk"]
+tags: []
 weight: 30
+draft: true
+hideFromProjects: true
 ---
 
 ## Overview
