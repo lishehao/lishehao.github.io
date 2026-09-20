@@ -1,0 +1,61 @@
+.sky-play{height:200svh;position:relative;z-index:2;pointer-events:none;--sky-fade:0;--sky-blur:0px;--work-show:0}
+.sky-play__stage{height:100svh;position:sticky;top:0;overflow:hidden;isolation:isolate}
+.sky-play__backdrop{position:absolute;inset:0;z-index:0;background:#667caa var(--pocket-hidden-sky) center/cover;opacity:calc(1 - var(--sky-fade));filter:saturate(.96) contrast(.98)}
+.sky-play__backlight{position:absolute;left:0;top:0;width:100%;height:75%;z-index:2;opacity:calc(1 - var(--sky-fade));pointer-events:none;contain:strict}
+.sky-play__wipe{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;opacity:calc((1 - var(--sky-fade)) * .985)}
+.sky-play__ground{position:absolute;left:-15%;width:130%;top:75%;height:140svh;z-index:3;isolation:isolate;contain:paint;border-radius:50% 50% 0 0 / 8svh 8svh 0 0;background:#f5d78c url('./assets/yellow-paper-v1.png') center/650px;transform:translate3d(0,calc(-1 * var(--ground-rise,0svh)),0);opacity:calc(1 - var(--ground-fade,0));pointer-events:none}
+.sky-play__tip{position:absolute;right:5%;top:65px;max-width:min(340px,88vw);background:#fff1cc;color:#36213f;padding:14px 18px;box-shadow:0 6px 18px #36213f19;font:400 13px/1.55 'Figtree',sans-serif;pointer-events:none;z-index:7}
+.sky-play__tip strong{font-weight:500}.sky-play__tip p{margin:8px 0 0}
+.sky-play__ground::before{content:"";position:absolute;inset:0 0 auto;height:70svh;border-radius:inherit;background:var(--pocket-terrain) center top/100% 100% no-repeat;mask-image:linear-gradient(#000 35%,transparent 100%);pointer-events:none}
+.sky-play__tip[hidden]{display:none}
+.sky-play__editorial{position:absolute;inset:0;z-index:4;opacity:calc(1 - var(--type-exit,0));transform:translateY(calc(var(--type-exit,0) * -55px));filter:blur(calc(var(--type-exit,0) * 9px));mask-image:linear-gradient(to bottom,transparent calc(var(--type-exit,0) * 100% - 30%),#000 calc(var(--type-exit,0) * 100% + 12%));color:#36213f;pointer-events:none;will-change:transform,opacity}
+.sky-play__editorial h1{position:absolute;top:13%;left:5%;width:90%;margin:0;font:400 clamp(80px,15.7vw,260px)/1 'Anton',sans-serif;letter-spacing:-.035em;white-space:nowrap;text-align:center}
+.sky-play__editorial{mask-size:100% 100%;mask-repeat:no-repeat}
+.sky-play__editorial p{position:absolute;top:51%;left:6%;font:italic 400 clamp(20px,2.7vw,42px)/1.1 'Source Serif 4',serif;margin:0}
+.sky-play__editorial aside{position:absolute;right:6%;top:56%;background:#fff0ce;padding:25px 30px;font:italic 400 23px 'Source Serif 4',serif;transform:rotate(-7deg);color:#36213f}
+@media(max-width:700px){.sky-play__editorial h1{top:17%;font-size:15.5vw}.sky-play__editorial p{top:32%;font-size:21px}.sky-play__editorial aside{top:39%;right:5%;font-size:14px;padding:12px}}
+.sky-play__canvas{position:absolute;inset:0;z-index:5;pointer-events:auto;touch-action:pan-y}
+.sky-play__canvas canvas{display:block;width:100%;height:100%}
+.sky-play__controls{position:absolute;bottom:24px;left:5%;right:5%;z-index:7;display:flex;align-items:center;justify-content:flex-end;gap:16px;color:#12324d}
+.sky-play__controls button{pointer-events:auto;background:#fffaf0;border:0;padding:12px 16px;color:inherit;cursor:pointer;font:500 13px 'Figtree',sans-serif}
+.sky-play__controls span{font:500 13px 'Figtree',sans-serif}
+.sky-play__arrival{display:none}
+.sky-play__actions{position:absolute;left:50%;bottom:90px;z-index:7;transform:translateX(-50%);display:flex;gap:8px;max-width:94%;opacity:calc(1 - var(--work-show));pointer-events:auto}
+.sky-play__actions button{min-height:44px;border:1px solid #796c3d;background:#fff8e8;color:#233821;padding:8px 12px;font:500 12px 'Figtree',sans-serif;cursor:pointer;white-space:nowrap;border-radius:8px}
+.sky-play__actions button:hover{background:#f8d466}
+.sky-play__actions button{background:transparent;border:0;border-radius:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:14px;color:#36213f}
+.sky-play__actions button+button{border-left:1px solid #796c3d}
+@media(min-width:701px){.sky-play__editorial h1{transform:scaleY(1.32);transform-origin:top center}}
+.sky-play__actions button:focus-visible{outline:3px solid #12324d;outline-offset:3px}
+@media(max-width:700px){.sky-play__actions{gap:4px;bottom:85px;flex-wrap:wrap;justify-content:center;width:94%}.sky-play__actions button{padding:8px}}
+.sky-play__arrival span{font:400 clamp(2rem,6vw,5rem)/1.15 'Source Serif 4',serif;text-align:center}
+.sky-play__fallback{position:absolute;width:min(70vw,65svh);height:auto;left:50%;top:50%;transform:translate(-50%,-50%);opacity:calc(1 - var(--sky-fade))}
+.sky-play--still{height:100svh}
+.daybook .daybook-work{position:relative;z-index:1;margin-top:-65svh;padding-top:0;background:#f5d78c url('./assets/yellow-paper-v1.png') center/650px}
+.daybook{--daybook-paper:#f5d78c;--daybook-paper-bright:#f8df9f;background:#f5d78c url('./assets/yellow-paper-v1.png') center/650px}
+.daybook .daybook-project__copy{background:transparent}
+.sky-play--still + .daybook-work{margin-top:0;padding-top:64px}
+.daybook-header{position:absolute!important;z-index:5;background:transparent!important;border:0!important;width:100%}
+.sky-play__controls,.sky-play__actions{opacity:calc(1 - var(--control-fade,0))}
+.daybook .daybook-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+.daybook .daybook-project{display:flex;flex-direction:column;margin:0;gap:24px}
+.daybook .daybook-project__media{width:100%}
+.daybook .daybook-project__media{order:0}
+.daybook .daybook-project__copy{order:1}
+.sky-play__keyboard button{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);pointer-events:auto}
+.sky-play__keyboard button:focus-visible{width:auto;height:auto;clip-path:none;top:80px;left:5%;padding:12px;background:#fffaf0;color:#12324d;border:2px solid #12324d;z-index:8}
+.daybook .daybook-project__copy{width:100%;padding:0}
+.daybook .daybook-project__index{display:none}
+.daybook .daybook-project h3{font-size:clamp(1.8rem,3vw,2.8rem)}
+@media(max-width:700px){.daybook .daybook-projects{grid-template-columns:1fr}.sky-play__controls{bottom:16px}.sky-play__controls span{max-width:30%;text-align:center}}
+@media(prefers-reduced-motion:reduce){.sky-play{height:100svh}}
+
+.sky-play__loading{position:absolute;left:0;right:0;top:65%;text-align:center;color:#36213f;pointer-events:none}
+.scene-cursor{position:fixed;left:0;top:0;width:40px;height:40px;pointer-events:none;z-index:2147483647;will-change:transform}
+.sky-play__canvas[data-custom-cursor],.sky-play__canvas[data-custom-cursor] *{cursor:none!important}
+
+/* Empty layout boxes must not interrupt the painted scene pointer. */
+.daybook-header,.sky-play__controls,.sky-play__actions{pointer-events:none}
+.daybook-header a,.daybook-header button,.sky-play__controls button,.sky-play__actions button{pointer-events:auto}
+
+html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:none!important}

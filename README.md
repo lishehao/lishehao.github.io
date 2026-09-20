@@ -4,6 +4,16 @@ This repository contains the source for `https://lishehao.github.io/`.
 
 ## Stack
 
+- Homepage: `portfolio/` — React / Vite Pocket Planet + per-project gallery.
+- Case studies and resume retain their existing Hugo URLs. Hidden/draft project
+  entries are not promoted into the gallery.
+- Build homepage: `npm ci --prefix portfolio && npm run build --prefix portfolio`.
+- Overlay tracked Pages output: `node portfolio/publish.mjs docs`.
+- CI builds Hugo first, then overlays the same gallery into its `public/` artifact.
+- Pages currently publishes `main:/docs`; publishing requires committing the
+  generated overlay as well as source changes. Never overwrite the resume or
+  remove case study directories to update the homepage.
+
 - Static site generator: `Hugo`
 - Theme: `PaperMod`
 - Deploy target: `GitHub Pages`

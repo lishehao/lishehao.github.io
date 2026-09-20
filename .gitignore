@@ -21,3 +21,6 @@ todo.md
 
 # hugo runtime
 .hugo_build.lock
+
+portfolio/node_modules/
+portfolio/dist/

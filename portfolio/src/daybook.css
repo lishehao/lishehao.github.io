@@ -1,0 +1,1310 @@
+:root {
+  --daybook-sky: #2bb9ee;
+  --daybook-paper: #f6f0e4;
+  --daybook-paper-bright: #fffaf0;
+  --daybook-ink: #092f5a;
+  --daybook-ink-soft: #315472;
+  --daybook-orange: #f06d20;
+  --daybook-line: rgba(9, 47, 90, 0.24);
+  --daybook-gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --pointer-x: 0;
+  --pointer-y: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--daybook-paper);
+  color: var(--daybook-ink);
+  font-family: 'Figtree', Arial, sans-serif;
+}
+
+body.daybook-modal-open {
+  overflow: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+.daybook {
+  min-width: 320px;
+  overflow: clip;
+  background-color: var(--daybook-paper);
+  background-image: url('/assets/atlas-paper.webp');
+  background-size: 460px auto;
+}
+
+.daybook-header {
+  position: relative;
+  z-index: 30;
+  min-height: 4.75rem;
+  padding: 0 var(--daybook-gutter);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  background: var(--daybook-paper-bright);
+  border-bottom: 1px solid var(--daybook-line);
+}
+
+.daybook-header button {
+  appearance: none;
+  border: 0;
+  padding: 0.4rem 0;
+  color: var(--daybook-ink);
+  background: transparent;
+  cursor: pointer;
+}
+
+.daybook-wordmark {
+  justify-self: start;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.daybook-header nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 3vw, 3rem);
+}
+
+.daybook-header nav button,
+.daybook-language {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.daybook-header nav button {
+  position: relative;
+}
+
+.daybook-header nav button::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0.15rem;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 180ms ease;
+}
+
+.daybook-header nav button:hover::after,
+.daybook-header nav button:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.daybook-language {
+  justify-self: end;
+  min-width: 2.2rem;
+  text-align: right;
+}
+
+.daybook-hero {
+  position: relative;
+  min-height: calc(100svh - 4.75rem);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--daybook-ink);
+  background: var(--daybook-sky);
+}
+
+.daybook-hero__art {
+  position: absolute;
+  z-index: -1;
+  inset: -1.5%;
+  width: 103%;
+  height: 103%;
+  object-fit: cover;
+  object-position: center center;
+  transform: translate(calc(var(--pointer-x) * -0.5rem), calc(var(--pointer-y) * -0.35rem)) scale(1.02);
+  transition: transform 260ms cubic-bezier(.2,.7,.2,1);
+  animation: daybook-hero-reveal 900ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-hero h1 {
+  position: absolute;
+  z-index: 1;
+  top: clamp(2.6rem, 8vh, 6.6rem);
+  left: var(--daybook-gutter);
+  margin: 0;
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: clamp(6.25rem, 12.3vw, 14.5rem);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.daybook-hero h1 span {
+  display: inline-block;
+  animation: daybook-letter-in 760ms cubic-bezier(.16,1,.3,1) both;
+  animation-delay: calc(180ms + var(--letter-index) * 55ms);
+}
+
+.daybook-hero__line {
+  position: absolute;
+  left: var(--daybook-gutter);
+  bottom: 8.75rem;
+  max-width: 20rem;
+  margin: 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.8rem);
+  font-style: italic;
+  line-height: 1.15;
+  animation: daybook-copy-in 600ms 760ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-carryon {
+  position: absolute;
+  z-index: 3;
+  right: clamp(1.25rem, 3.2vw, 4rem);
+  bottom: 5rem;
+  width: clamp(18rem, 29vw, 28rem);
+  height: clamp(15rem, 38vh, 23rem);
+  perspective: 900px;
+  pointer-events: none;
+  transform: translate(calc(var(--pointer-x) * 0.35rem), calc(var(--pointer-y) * 0.28rem));
+  transition: transform 260ms cubic-bezier(.2,.7,.2,1);
+}
+
+.daybook-carryon__shadow {
+  position: absolute;
+  z-index: 0;
+  right: 7%;
+  bottom: 1.5%;
+  left: 7%;
+  height: 12%;
+  border-radius: 50%;
+  background: rgba(5, 24, 43, 0.28);
+  filter: blur(0.6rem);
+  animation: daybook-case-shadow 620ms 620ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-carryon__lid {
+  position: absolute;
+  z-index: 1;
+  right: 11%;
+  bottom: 29%;
+  left: 11%;
+  height: 43%;
+  overflow: hidden;
+  border: 0.32rem solid var(--daybook-ink);
+  border-radius: 1.6rem 1.6rem 0.9rem 0.9rem;
+  background: var(--daybook-paper-bright);
+  box-shadow: 0.25rem 0.45rem 0.65rem rgba(5, 24, 43, 0.2);
+  transform-origin: bottom center;
+  transform: rotateX(-12deg);
+  animation: daybook-case-lid-open 620ms 720ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-carryon__lid::before,
+.daybook-carryon__base::before {
+  content: '';
+  position: absolute;
+  inset: 0.55rem;
+  border: 1px solid rgba(9, 47, 90, 0.33);
+  border-radius: 0.95rem;
+}
+
+.daybook-carryon__lid-line {
+  position: absolute;
+  top: 18%;
+  right: 12%;
+  left: 12%;
+  height: 0.38rem;
+  background: var(--daybook-orange);
+  box-shadow: 0 2.6rem 0 var(--daybook-orange);
+}
+
+.daybook-carryon__stamp {
+  position: absolute;
+  right: 11%;
+  bottom: 13%;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  color: var(--daybook-paper-bright);
+  background: var(--daybook-ink);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transform: rotate(8deg);
+}
+
+.daybook-carryon__mouth {
+  position: absolute;
+  z-index: 2;
+  right: 9%;
+  bottom: 24%;
+  left: 9%;
+  height: 15%;
+  border: 0.28rem solid var(--daybook-ink);
+  border-radius: 50%;
+  background: #061d36;
+  box-shadow: inset 0 0.75rem 1.2rem rgba(0, 0, 0, 0.32);
+  animation: daybook-case-rise 560ms 620ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-carryon__keepsakes {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+}
+
+.daybook-carryon__object {
+  position: absolute;
+  z-index: 3;
+  left: var(--drop-left);
+  bottom: var(--drop-bottom);
+  width: var(--drop-width);
+  height: auto;
+  opacity: 1;
+  user-select: none;
+  filter: drop-shadow(0.28rem 0.42rem 0.24rem rgba(5, 24, 43, 0.22));
+  transform: rotate(var(--drop-rest));
+  transform-origin: center bottom;
+  animation: daybook-object-drop 760ms var(--drop-delay) cubic-bezier(.16,.84,.26,1) both;
+}
+
+.daybook-carryon__object--outside {
+  z-index: 6;
+}
+
+.daybook-carryon__base {
+  position: absolute;
+  z-index: 5;
+  right: 7%;
+  bottom: 4%;
+  left: 7%;
+  height: 28%;
+  overflow: hidden;
+  border: 0.34rem solid var(--daybook-ink);
+  border-radius: 1.1rem 1.1rem 1.7rem 1.7rem;
+  background: #f5b15e;
+  box-shadow: 0.35rem 0.7rem 0.8rem rgba(5, 24, 43, 0.22);
+  animation: daybook-case-rise 560ms 620ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-carryon__strap {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  background: var(--daybook-ink);
+}
+
+.daybook-carryon__strap--left { left: 18%; }
+.daybook-carryon__strap--right { right: 18%; }
+
+.daybook-carryon__label {
+  position: absolute;
+  z-index: 2;
+  top: 36%;
+  left: 50%;
+  padding: 0.36rem 0.6rem;
+  color: var(--daybook-ink);
+  background: var(--daybook-paper-bright);
+  border: 1px solid var(--daybook-ink);
+  font-size: clamp(0.46rem, 0.7vw, 0.62rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.daybook-carryon__clasp {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  width: 8%;
+  height: 22%;
+  border: 2px solid var(--daybook-paper-bright);
+  background: var(--daybook-ink);
+}
+
+.daybook-carryon__clasp--left { left: 18%; }
+.daybook-carryon__clasp--right { right: 18%; }
+
+.daybook-carryon__handle {
+  position: absolute;
+  z-index: 6;
+  bottom: -1.5%;
+  left: 50%;
+  width: 24%;
+  height: 8%;
+  border: 0.3rem solid var(--daybook-ink);
+  border-bottom: 0;
+  border-radius: 0.7rem 0.7rem 0 0;
+  transform: translateX(-50%) rotate(180deg);
+  animation: daybook-case-rise 560ms 720ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-signal {
+  position: absolute;
+  z-index: 4;
+  top: 28%;
+  right: var(--daybook-gutter);
+  width: min(14rem, 20vw);
+  padding: 1rem 1.1rem 1.1rem;
+  color: var(--daybook-ink);
+  background: rgba(255, 250, 240, 0.9);
+  border: 1px solid rgba(9, 47, 90, 0.45);
+  box-shadow: 0.45rem 0.55rem 0 var(--daybook-ink);
+  transform: translate(calc(var(--pointer-x) * 0.65rem), calc(var(--pointer-y) * 0.5rem)) rotate(1.5deg);
+  transition: transform 260ms cubic-bezier(.2,.7,.2,1);
+  animation: daybook-note-in 600ms 820ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-signal span,
+.daybook-kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.daybook-signal p {
+  margin: 0.75rem 0 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.daybook-rail {
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 5rem;
+  background: var(--daybook-paper-bright);
+  border-top: 1px solid var(--daybook-ink);
+  animation: daybook-rail-in 500ms 1100ms cubic-bezier(.16,1,.3,1) both;
+}
+
+.daybook-reel {
+  position: relative;
+  height: 340svh;
+  color: var(--daybook-ink);
+  background: var(--daybook-paper);
+}
+
+.daybook-reel__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--daybook-paper);
+  background-image: url('/assets/atlas-paper.webp');
+  background-size: 460px auto;
+}
+
+.daybook-reel__sticky::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: auto 0 0;
+  height: 37%;
+  background: var(--daybook-sky);
+  transform: scaleY(var(--reel-progress));
+  transform-origin: bottom;
+  opacity: 0.16;
+}
+
+.daybook-reel__label {
+  position: absolute;
+  z-index: 8;
+  top: clamp(1.25rem, 3vw, 2.5rem);
+  left: var(--daybook-gutter);
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.daybook-reel__type {
+  position: absolute;
+  z-index: -1;
+  inset: 50% var(--daybook-gutter) auto;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  color: rgba(9, 47, 90, 0.1);
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: clamp(6rem, 18vw, 20rem);
+  line-height: 0.8;
+}
+
+.daybook-reel__print {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: min(76vw, 74rem);
+  margin: 0;
+  padding: clamp(0.45rem, 1vw, 0.85rem);
+  background: var(--daybook-paper-bright);
+  border: 1px solid var(--daybook-ink);
+  box-shadow: clamp(0.55rem, 1vw, 1rem) clamp(0.7rem, 1.2vw, 1.2rem) 0 var(--daybook-ink);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.daybook-reel__print img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.daybook-reel__print--hangar { z-index: 3; }
+.daybook-reel__print--lake { z-index: 2; }
+.daybook-reel__print--play { z-index: 1; }
+
+.daybook-reel__captions p {
+  position: absolute;
+  z-index: 7;
+  right: var(--daybook-gutter);
+  bottom: clamp(2.2rem, 5vw, 4.5rem);
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.daybook-reel__captions b {
+  color: var(--daybook-orange);
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.daybook-reel__captions span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.daybook-reel__meter {
+  position: absolute;
+  z-index: 8;
+  right: var(--daybook-gutter);
+  bottom: 1.5rem;
+  width: min(12rem, 26vw);
+  height: 1px;
+  overflow: hidden;
+  background: var(--daybook-line);
+}
+
+.daybook-reel__meter span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--daybook-orange);
+  transform: scaleX(var(--reel-progress));
+  transform-origin: left;
+}
+
+.daybook-rail button {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  border: 0;
+  border-right: 1px solid var(--daybook-line);
+  color: var(--daybook-ink);
+  background: transparent;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.daybook-rail button:last-child {
+  border-right: 0;
+}
+
+.daybook-rail button span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.daybook-rail button:hover,
+.daybook-rail button:focus-visible,
+.daybook-rail button.is-active {
+  color: var(--daybook-paper-bright);
+  background: var(--daybook-ink);
+}
+
+.daybook-section {
+  scroll-margin-top: 1rem;
+  padding: clamp(6.5rem, 13vw, 12rem) var(--daybook-gutter);
+}
+
+.daybook-section__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.6fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+  max-width: 90rem;
+  margin: 0 auto clamp(5rem, 10vw, 9rem);
+}
+
+.daybook-section__intro .daybook-kicker {
+  grid-column: 1 / -1;
+  margin: 0 0 -0.5rem;
+}
+
+.daybook-section__intro h2,
+.daybook-about h2 {
+  margin: 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(3.5rem, 8vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.daybook-section__intro > p:last-child {
+  max-width: 31rem;
+  margin: 0 0 0.35rem;
+  color: var(--daybook-ink-soft);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.daybook-projects {
+  display: grid;
+  gap: clamp(7rem, 15vw, 14rem);
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+.daybook-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(17rem, 0.65fr);
+  gap: clamp(2.5rem, 7vw, 8rem);
+  align-items: center;
+}
+
+.daybook-project--reverse {
+  grid-template-columns: minmax(17rem, 0.65fr) minmax(0, 1.6fr);
+}
+
+.daybook-project--reverse .daybook-project__media {
+  order: 2;
+}
+
+.daybook-project--reverse .daybook-project__copy {
+  order: 1;
+}
+
+.daybook-project__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--daybook-ink);
+  border: 1px solid var(--daybook-ink);
+  box-shadow: 0.8rem 0.9rem 0 rgba(9, 47, 90, 0.12);
+}
+
+.daybook-project__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 300ms ease;
+}
+
+.daybook-project__media:hover video {
+  transform: scale(1.018);
+}
+
+.daybook-film-control {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.7rem;
+  padding: 0 1rem;
+  border: 1px solid var(--daybook-paper-bright);
+  color: var(--daybook-paper-bright);
+  background: var(--daybook-ink);
+  cursor: pointer;
+}
+
+.daybook-film-control__dot {
+  width: 0.52rem;
+  height: 0.52rem;
+  border-radius: 50%;
+  background: var(--daybook-orange);
+}
+
+.daybook-project__copy {
+  position: relative;
+  padding-top: 4rem;
+  border-top: 1px solid var(--daybook-line);
+}
+
+.daybook-project__index {
+  position: absolute;
+  top: -1.1rem;
+  right: 0;
+  color: var(--daybook-orange);
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.daybook-project__copy .daybook-kicker {
+  margin: 0 5rem 1.2rem 0;
+}
+
+.daybook-project__copy h3 {
+  margin: 0 0 1.2rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(2.3rem, 4vw, 4.2rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.daybook-project__copy > p:not(.daybook-kicker) {
+  margin: 0 0 1.2rem;
+  color: var(--daybook-ink-soft);
+  line-height: 1.6;
+}
+
+.daybook-project__copy small {
+  display: block;
+  margin: 0 0 1.5rem;
+  color: var(--daybook-ink-soft);
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.daybook-project__copy a,
+.daybook-about__body a {
+  display: inline-block;
+  padding-bottom: 0.25rem;
+  color: var(--daybook-ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.daybook-notes {
+  padding-top: 4rem;
+  background: var(--daybook-sky);
+}
+
+.daybook-section__intro--notes {
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.daybook-note-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: start;
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+.daybook-note {
+  appearance: none;
+  display: block;
+  padding: 0;
+  color: var(--daybook-ink);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.daybook-note--1 {
+  grid-column: 1 / span 7;
+}
+
+.daybook-note--2 {
+  grid-column: 8 / span 5;
+  margin-top: 7rem;
+}
+
+.daybook-note--3 {
+  grid-column: 3 / span 5;
+  margin-top: 2rem;
+}
+
+.daybook-note__image {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--daybook-ink);
+  background: var(--daybook-paper-bright);
+  box-shadow: 0.65rem 0.75rem 0 var(--daybook-ink);
+  transition: transform 260ms cubic-bezier(.2,.7,.2,1), box-shadow 260ms ease;
+}
+
+.daybook-note__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+
+.daybook-note:hover .daybook-note__image,
+.daybook-note:focus-visible .daybook-note__image {
+  transform: translate(-0.25rem, -0.25rem) rotate(-0.5deg);
+  box-shadow: 0.95rem 1rem 0 var(--daybook-ink);
+}
+
+.daybook-note:hover img,
+.daybook-note:focus-visible img {
+  transform: scale(1.025);
+}
+
+.daybook-note__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.daybook-note__meta i {
+  grid-row: 1 / span 2;
+  color: var(--daybook-orange);
+  font-family: 'Anton', Impact, sans-serif;
+  font-size: 1.65rem;
+  font-style: normal;
+  line-height: 1;
+}
+
+.daybook-note__meta strong {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(1.45rem, 2.4vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.daybook-note__meta em {
+  margin-top: 0.45rem;
+  color: var(--daybook-ink-soft);
+  font-size: 0.78rem;
+  font-style: normal;
+  letter-spacing: 0.05em;
+}
+
+.daybook-about {
+  scroll-margin-top: 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.7fr);
+  gap: clamp(3rem, 8vw, 10rem);
+  position: relative;
+  padding: clamp(7rem, 14vw, 13rem) var(--daybook-gutter) clamp(6rem, 10vw, 9rem);
+  background: var(--daybook-paper-bright);
+  border-top: 1px solid var(--daybook-ink);
+}
+
+.daybook-about .daybook-kicker {
+  margin: 0 0 2rem;
+}
+
+.daybook-about__body {
+  align-self: end;
+  max-width: 32rem;
+}
+
+.daybook-about__body p {
+  margin: 0 0 2rem;
+  color: var(--daybook-ink-soft);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.55;
+}
+
+.daybook-top {
+  position: absolute;
+  right: var(--daybook-gutter);
+  bottom: 2rem;
+  padding: 0 0 0.25rem;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  color: var(--daybook-ink);
+  background: transparent;
+  cursor: pointer;
+}
+
+.daybook-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem var(--daybook-gutter);
+  color: var(--daybook-paper-bright);
+  background: var(--daybook-ink);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+.daybook-dialog {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 4rem);
+  background: rgba(5, 24, 43, 0.88);
+  animation: daybook-fade 180ms ease both;
+}
+
+.daybook-dialog__panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.72fr);
+  width: min(72rem, 100%);
+  max-height: 88svh;
+  overflow: auto;
+  background: var(--daybook-paper-bright);
+  border: 1px solid var(--daybook-paper-bright);
+  box-shadow: 1rem 1rem 0 var(--daybook-orange);
+  animation: daybook-pop 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.daybook-dialog__panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  object-fit: cover;
+}
+
+.daybook-dialog__copy {
+  align-self: end;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.daybook-dialog__copy h3 {
+  margin: 1rem 0 1.5rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(2.4rem, 4vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.daybook-dialog__copy > p:last-child {
+  color: var(--daybook-ink-soft);
+  line-height: 1.65;
+}
+
+.daybook-dialog__close {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  right: 1rem;
+  min-height: 2.5rem;
+  padding: 0 0.85rem;
+  color: var(--daybook-paper-bright);
+  background: var(--daybook-ink);
+  border: 1px solid var(--daybook-paper-bright);
+  cursor: pointer;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(2.25rem);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+
+[data-reveal][data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--daybook-orange);
+  outline-offset: 4px;
+}
+
+@keyframes daybook-fade {
+  from { opacity: 0; }
+}
+
+@keyframes daybook-hero-reveal {
+  from { clip-path: inset(100% 0 0 0); transform: translateY(1.5rem) scale(1.04); }
+}
+
+@keyframes daybook-letter-in {
+  from { opacity: 0; transform: translateY(0.75em) rotate(2deg); }
+}
+
+@keyframes daybook-copy-in {
+  from { opacity: 0; transform: translateY(1rem); }
+}
+
+@keyframes daybook-case-rise {
+  from { opacity: 0; transform: translateY(4rem) scale(0.96); }
+}
+
+@keyframes daybook-case-shadow {
+  from { opacity: 0; transform: scaleX(0.55); }
+}
+
+@keyframes daybook-case-lid-open {
+  from { opacity: 0; transform: translateY(34%) rotateX(-78deg); }
+}
+
+@keyframes daybook-object-drop {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--drop-from-x), -70vh, 0) rotate(var(--drop-spin)) scale(0.82);
+  }
+  16% { opacity: 1; }
+  68% { transform: translate3d(0, 0, 0) rotate(var(--drop-rest)) scale(1); }
+  79% { transform: translate3d(0, -0.55rem, 0) rotate(var(--drop-rest)) scale(1); }
+  90% { transform: translate3d(0, 0.08rem, 0) rotate(var(--drop-rest)) scale(1); }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(var(--drop-rest)) scale(1);
+  }
+}
+
+@keyframes daybook-note-in {
+  from { opacity: 0; transform: translate(1.5rem, 1rem) rotate(5deg); }
+}
+
+@keyframes daybook-rail-in {
+  from { transform: translateY(100%); }
+}
+
+@keyframes daybook-pop {
+  from { opacity: 0; transform: translateY(1.5rem) scale(0.985); }
+}
+
+@media (max-width: 900px) {
+  .daybook-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .daybook-header nav {
+    display: none;
+  }
+
+  .daybook-hero h1 {
+    top: 2.5rem;
+    font-size: clamp(5.5rem, 17vw, 9rem);
+  }
+
+  .daybook-signal {
+    display: none;
+  }
+
+  .daybook-carryon {
+    right: clamp(-1rem, -1vw, 0rem);
+    width: clamp(17rem, 37vw, 21rem);
+  }
+
+  .daybook-section__intro,
+  .daybook-project,
+  .daybook-project--reverse,
+  .daybook-about {
+    grid-template-columns: 1fr;
+  }
+
+  .daybook-project--reverse .daybook-project__media,
+  .daybook-project--reverse .daybook-project__copy {
+    order: initial;
+  }
+
+  .daybook-project__copy {
+    max-width: 36rem;
+  }
+
+  .daybook-about__body {
+    justify-self: end;
+  }
+
+  .daybook-dialog__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .daybook-dialog__panel img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1080px) {
+  .daybook-signal {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .daybook-header {
+    min-height: 4rem;
+  }
+
+  .daybook-wordmark {
+    font-size: 0.82rem;
+  }
+
+  .daybook-hero {
+    min-height: calc(100svh - 4rem);
+  }
+
+  .daybook-hero__art {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 61% center;
+    transform: none;
+  }
+
+  .daybook-hero h1 {
+    top: 2rem;
+    max-width: 8ch;
+    font-size: clamp(4.5rem, 24vw, 7.5rem);
+    line-height: 0.82;
+    overflow-wrap: anywhere;
+  }
+
+  .daybook-hero__line {
+    display: none;
+  }
+
+  .daybook-signal {
+    display: none;
+  }
+
+  .daybook-carryon {
+    right: 0;
+    bottom: 4.25rem;
+    width: min(17rem, 76vw);
+    height: 17rem;
+    transform: none;
+  }
+
+  .daybook-carryon__object[data-object-id='train'],
+  .daybook-carryon__object[data-object-id='ticket'] {
+    display: none;
+  }
+
+  .daybook-rail {
+    min-height: 4.25rem;
+  }
+
+  .daybook-rail button {
+    gap: 0.45rem;
+    font-size: 0.78rem;
+  }
+
+  .daybook-rail button span {
+    display: none;
+  }
+
+  .daybook-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .daybook-reel {
+    height: 310svh;
+  }
+
+  .daybook-reel__print {
+    top: 48%;
+    width: 88vw;
+    padding: 0.4rem;
+    box-shadow: 0.45rem 0.55rem 0 var(--daybook-ink);
+  }
+
+  .daybook-reel__type {
+    inset: 48% 1rem auto;
+    flex-direction: column;
+    font-size: 26vw;
+  }
+
+  .daybook-reel__type span:last-child {
+    align-self: flex-end;
+  }
+
+  .daybook-reel__captions p {
+    right: var(--daybook-gutter);
+    bottom: 3rem;
+  }
+
+  .daybook-reel__meter {
+    bottom: 1.35rem;
+    width: 42vw;
+  }
+
+  .daybook-section__intro {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4.5rem;
+  }
+
+  .daybook-section__intro .daybook-kicker {
+    margin: 0;
+  }
+
+  .daybook-section__intro h2,
+  .daybook-about h2 {
+    font-size: clamp(3.3rem, 16vw, 5.5rem);
+  }
+
+  .daybook-projects {
+    gap: 7rem;
+  }
+
+  .daybook-project__media {
+    aspect-ratio: 4 / 3;
+    box-shadow: 0.45rem 0.55rem 0 rgba(9, 47, 90, 0.14);
+  }
+
+  .daybook-project__copy {
+    padding-top: 3rem;
+  }
+
+  .daybook-project__index {
+    font-size: 3.6rem;
+  }
+
+  .daybook-note-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4.5rem;
+  }
+
+  .daybook-note--1,
+  .daybook-note--2,
+  .daybook-note--3 {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .daybook-note__image {
+    box-shadow: 0.45rem 0.55rem 0 var(--daybook-ink);
+  }
+
+  .daybook-about {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .daybook-about__body {
+    justify-self: start;
+  }
+
+  .daybook-top {
+    bottom: 2rem;
+  }
+
+  .daybook-footer {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .daybook-dialog {
+    padding: 0.75rem;
+  }
+
+  .daybook-dialog__panel {
+    max-height: 92svh;
+    box-shadow: 0.5rem 0.55rem 0 var(--daybook-orange);
+  }
+
+  .daybook-dialog__copy {
+    padding: 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .daybook-hero__art,
+  .daybook-signal,
+  .daybook-carryon {
+    transform: none;
+  }
+
+  .daybook-carryon *,
+  .daybook-carryon *::before,
+  .daybook-carryon *::after {
+    animation: none !important;
+  }
+
+  .daybook-carryon__object {
+    opacity: 1;
+    transform: rotate(var(--drop-rest));
+  }
+
+  .daybook-reel {
+    height: auto;
+    padding: 5rem var(--daybook-gutter);
+  }
+
+  .daybook-reel__sticky {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .daybook-reel__label {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .daybook-reel__type,
+  .daybook-reel__captions,
+  .daybook-reel__meter,
+  .daybook-reel__sticky::after {
+    display: none;
+  }
+
+  .daybook-reel__print {
+    position: static;
+    width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+}
