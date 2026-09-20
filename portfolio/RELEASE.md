@@ -35,4 +35,4 @@ after user interaction and pause when their room leaves the viewport.
   No bypass attempted. Actual IAB rendering, mouse interaction, mobile gestures,
   flicker and Inspector performance are NOT accepted by these tests.
 - Pre-migration commit: `401a766a634b974b80dc9a4d2ddc6b9a10a53189`.
-  The migration is one reversible Git commit; preserve later work when reverting.
+  Migration commits remain reversible; preserve later work when reverting.
