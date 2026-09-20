@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {galleryTransition as pose} from '../src/galleryTransition.js';
+test('reading holds are still and each endpoint is clean',()=>{assert.deepEqual(pose(0),pose(.25));assert.deepEqual(pose(.75),pose(1));assert.equal(pose(0).inX,100);assert.equal(pose(1).inX,0);assert.equal(pose(0).beam,0);assert.ok(pose(1).beam<1e-12)});
+test('reversible continuous monotonic wall handoff',()=>{let last=0;const all=[];for(let i=0;i<=1000;i++){const p=pose(i/1000);assert.ok(p.t>=last);last=p.t;Object.values(p).forEach(n=>assert.ok(Number.isFinite(n)));assert.ok(p.shade<=.18);assert.ok(p.beam<=.23);all.push(p)}for(let i=1000;i>=0;i--)assert.deepEqual(pose(i/1000),all[i]);});
