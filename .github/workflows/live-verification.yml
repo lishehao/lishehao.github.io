@@ -1,0 +1,34 @@
+name: Verify published portfolio
+on:
+  push:
+    branches: [audit/live-verification-59df2c6]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser verification tools
+        run: |
+          mkdir .live-verification-runtime
+          cd .live-verification-runtime
+          npm init -y >/dev/null
+          npm install --no-save --ignore-scripts playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Verify the deployed public website
+        run: |
+          cp .github/live-verification.mjs .live-verification-runtime/check.mjs
+          cd .live-verification-runtime
+          node check.mjs
+      - name: Save browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-browser-evidence
+          path: .live-verification-runtime/evidence
+          retention-days: 1
