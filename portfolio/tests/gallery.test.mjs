@@ -15,8 +15,6 @@ test('homepage renders both public galleries in both languages, without removed 
    globalThis.location={pathname};const html=renderToStaticMarkup(React.createElement(DaybookPortfolio));
    assert.equal((html.match(/class="gallery-room"/g)||[]).length,2);
    assert.equal((html.match(/<video/g)||[]).length,2);
-   assert.match(html,/planet-lite--compact/);assert.doesNotMatch(html,/<canvas|sky-play__canvas/);
-   assert.match(html,pathname==='/zh/'?/开启互动/:/Enable interaction/);
    assert.doesNotMatch(html,/sky-play__tip|daybook-notes|Things I keep noticing|Hold to drag|Inside: A350/);
    assert.match(html,/href="\/resume\/"/);assert.doesNotMatch(html,/autoplay/i);
    for(const project of galleryProjects){assert.ok(html.includes(project.title));assert.ok(html.includes(`${pathname==='/zh/'?'/zh':''}/projects/${project.slug}/`));}

@@ -19,8 +19,9 @@
 .gallery-room__details details{border-top:1px solid color-mix(in srgb,var(--room-ink),transparent 65%);padding-top:12px}.gallery-room__details summary{cursor:pointer;line-height:1.5}.gallery-room__details p{line-height:1.65}.gallery-room__details>small{grid-column:1/-1;opacity:.7;font-size:11px}
 .gallery-room__next{align-self:flex-end;font:italic 15px 'Source Serif 4',serif}
 .gallery-room a:focus-visible,.gallery-room button:focus-visible,.gallery-room summary:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.sky-play--still + .project-gallery{margin-top:0}
 @media(max-width:760px),(max-height:650px){.gallery-room{min-height:auto}.gallery-room__sticky{position:relative;padding:35px 6vw 55px;gap:28px}.gallery-room__exhibit{grid-template-columns:1fr;gap:34px;transform:none!important}.gallery-room__frame video{max-height:45svh}.gallery-room__details{grid-template-columns:1fr;gap:14px}.gallery-room__heading span:last-child{display:none}.gallery-room h2{font-size:clamp(36px,9vw,58px)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-gallery{margin-top:0}.gallery-room{min-height:auto}.gallery-room__sticky{position:relative}.gallery-room__exhibit{transform:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery-room{min-height:auto}.gallery-room__sticky{position:relative}.gallery-room__exhibit{transform:none!important}}
 .gallery-handoff{display:none}
 .project-gallery--motion{height:280svh;background:#e9cc85}
 .project-gallery--motion .project-gallery__stage{position:sticky;top:0;height:100svh;overflow:clip;isolation:isolate;perspective:1800px;background:#e9cc85}
@@ -30,22 +31,3 @@
 .project-gallery--motion .gallery-handoff{display:block;position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
 .gallery-handoff__shade{position:absolute;inset:0;background:#392c3e;opacity:var(--handoff-shade,0)}
 .gallery-handoff__light{position:absolute;inset:-40%;background:linear-gradient(112deg,transparent 32%,#ffefb5 49%,transparent 65%);opacity:var(--handoff-light,0);transform:translate3d(var(--handoff-light-x,-45%),0,0)}
-
-/* Keep the existing type and colours while making every visible action usable. */
-.daybook-header__links{display:flex;align-items:center;justify-self:end;gap:12px;pointer-events:none}
-.daybook-header .daybook-github{display:inline-flex;align-items:center;gap:7px;color:inherit;text-decoration:none;font-size:.88rem}
-.daybook-header button,.daybook-header a,.daybook-about__body a,.daybook-top,.sky-play__controls button,.gallery-room__play,.gallery-room__links a,.gallery-room__next{min-width:44px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center}
-.daybook-header button,.daybook-header nav a{padding:8px 6px}
-.daybook-header a:focus-visible,.daybook-header button:focus-visible,.daybook-top:focus-visible,.daybook-about__body a:focus-visible,.gallery-room h2:focus-visible{outline:2px solid currentColor;outline-offset:3px}
-.gallery-room__details summary{min-height:44px;box-sizing:border-box;align-content:center}
-.gallery-room__play{margin-left:auto}
-.daybook{overflow-anchor:none}
-.project-gallery--reading .gallery-room{min-height:auto}
-.project-gallery--reading .gallery-room__sticky{position:relative}
-@media(max-width:900px){
- .daybook-header{grid-template-columns:1fr auto;gap:0 8px;padding-top:8px;padding-bottom:8px}
- .daybook-header__links{grid-column:2;grid-row:1;gap:8px}
- .daybook-header nav{display:flex;grid-column:1/-1;grid-row:2;justify-content:center;gap:20px}
- .daybook-header .daybook-language{justify-self:auto}
- .sky-play__editorial h1{top:max(17%,136px)}
-}

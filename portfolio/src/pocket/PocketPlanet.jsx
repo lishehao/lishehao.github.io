@@ -9,7 +9,6 @@ import {createSceneClock} from './sceneClock.js';
 import {createGlassSurface} from './glassSurface.js';
 import {createEraseSurface} from './eraseSurface.js';
 import {pickVisible} from './scenePicking.js';
-import {disposeScene} from './disposeScene.js';
 
 const items=[
   {name:['Little snake','小蛇'],rect:[18,50,400,439],x:0,y:0,size:2.3,z:0.5},
@@ -57,7 +56,7 @@ c.rgb*=1.-edgeDepth*.34;gl_FragColor=c;
 }
 `;
 
-export function PocketPlanet({lang,onWork,compact=false,onClose}){
+export function PocketPlanet({lang,onWork}){
  const root=useRef(null),host=useRef(null),api=useRef(null),wipe=useRef(null),backlight=useRef(null);
  const [failed,setFailed]=useState(false),[ready,setReady]=useState(false);
  const [hint,setHint]=useState(''),[inventory,setInventory]=useState(false);
@@ -188,7 +187,7 @@ export function PocketPlanet({lang,onWork,compact=false,onClose}){
   function applyScroll(){
    scrollDirty=false;
    const r=root.current.getBoundingClientRect();
-   progress=reduced||compact?0:clamp(-r.top/Math.max(1,root.current.offsetHeight-innerHeight));
+   progress=reduced?0:clamp(-r.top/Math.max(1,root.current.offsetHeight-innerHeight));
    const fade=ease(.18,.8,progress);
    root.current.style.setProperty('--sky-fade',String(fade));
    root.current.style.setProperty('--sky-blur',`${ease(.15,.75,progress)*7}px`);
@@ -333,7 +332,7 @@ export function PocketPlanet({lang,onWork,compact=false,onClose}){
    drag={binding,object,x:e.clientX,y:e.clientY,ox:object?.offset.x||0,oy:object?.offset.y||0,id:e.pointerId,moved:false,action:binding?.kind==='mascot'?binding.action:null};
    if(e.pointerType!=='touch')cursor.show(binding?'grabbing':'eraser',e,true);
    if(!object&&e.pointerType!=='touch')erase(e);
-   if(object&&object===objects[0]){const point=worldPoint(e);snakeDrag.x=object.home.x;snakeDrag.y=object.home.y;snakeDrag.vx=snakeDrag.vy=snakeDrag.angular=0;object.offset.set(0,0);object.velocity.set(0,0);drag.pose=object.mesh.material.uniforms.map.value;target.copy(orbit);drag.snakeGrab=point.sub(object.home);drag.last={x:object.home.x,y:object.home.y,t:e.timeStamp};}
+   if(object===objects[0]){const point=worldPoint(e);snakeDrag.x=object.home.x;snakeDrag.y=object.home.y;snakeDrag.vx=snakeDrag.vy=snakeDrag.angular=0;object.offset.set(0,0);object.velocity.set(0,0);drag.pose=object.mesh.material.uniforms.map.value;target.copy(orbit);drag.snakeGrab=point.sub(object.home);drag.last={x:object.home.x,y:object.home.y,t:e.timeStamp};}
    if(object&&object!==objects[0]){
     object.pull=null;object.fall={vx:0,vy:0,spin:0};
     const point=worldPoint(e);drag.grab=point.sub(object.home);drag.last={x:object.home.x,y:object.home.y,t:e.timeStamp};
@@ -347,7 +346,7 @@ export function PocketPlanet({lang,onWork,compact=false,onClose}){
     cursor.move(e);fastUntil=performance.now()+120;
     const dx=(e.clientX-drag.x)/screen.x,dy=(e.clientY-drag.y)/screen.y;
     if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)drag.moved=true;
-    if(drag.object&&drag.object===objects[0]){const p=worldPoint(e).sub(drag.snakeGrab),elapsed=Math.max(.008,(e.timeStamp-drag.last.t)/1000);snakeDrag.vx=(p.x-snakeDrag.x)/elapsed;snakeDrag.vy=(p.y-snakeDrag.y)/elapsed;snakeDrag.x=p.x;snakeDrag.y=p.y;snakeDrag.angle=THREE.MathUtils.clamp(snakeDrag.vx*.045,-.5,.5);drag.last={x:p.x,y:p.y,t:e.timeStamp};}
+    if(drag.object===objects[0]){const p=worldPoint(e).sub(drag.snakeGrab),elapsed=Math.max(.008,(e.timeStamp-drag.last.t)/1000);snakeDrag.vx=(p.x-snakeDrag.x)/elapsed;snakeDrag.vy=(p.y-snakeDrag.y)/elapsed;snakeDrag.x=p.x;snakeDrag.y=p.y;snakeDrag.angle=THREE.MathUtils.clamp(snakeDrag.vx*.045,-.5,.5);drag.last={x:p.x,y:p.y,t:e.timeStamp};}
     else if(drag.object&&drag.object!==objects[0]){
      const o=drag.object,p=worldPoint(e).sub(drag.grab),elapsed=Math.max(.008,(e.timeStamp-drag.last.t)/1000);
      const [l,r]=propBounds(o);o.home.x=THREE.MathUtils.clamp(p.x,l+o.radius,r-o.radius);o.home.y=Math.max(propFloor(o),Math.min(3,p.y));
@@ -380,7 +379,7 @@ export function PocketPlanet({lang,onWork,compact=false,onClose}){
   function release(e){
    if(drag&&el.hasPointerCapture(drag.id))el.releasePointerCapture(drag.id);
    if(drag?.action&&!drag.moved&&e?.type==='pointerup')act(drag.action);
-   if(drag?.object&&drag.object===objects[0]){const o=drag.object;if(drag.moved&&!reduced)o.offset.set(snakeDrag.x-snakeX,snakeDrag.y-(ground(snakeX)+o.baseScale*.9*.48));snakeDrag.angular=0;root.current.dataset.snakeThrowSpeed=String(Math.hypot(snakeDrag.vx,snakeDrag.vy).toFixed(2));}
+   if(drag?.object===objects[0]){const o=drag.object;if(drag.moved&&!reduced)o.offset.set(snakeDrag.x-snakeX,snakeDrag.y-(ground(snakeX)+o.baseScale*.9*.48));snakeDrag.angular=0;root.current.dataset.snakeThrowSpeed=String(Math.hypot(snakeDrag.vx,snakeDrag.vy).toFixed(2));}
    if(drag?.object&&drag.object!==objects[0]){
     const f=drag.object.fall;
     if(e?.type!=='pointerup'||!drag.moved||e.timeStamp-drag.last.t>100){f.vx=f.vy=0;}
@@ -536,9 +535,9 @@ export function PocketPlanet({lang,onWork,compact=false,onClose}){
   return()=>{disposed=true;scheduler.dispose();eraser.dispose();glass.dispose();observer.disconnect();ro.disconnect();window.removeEventListener('scroll',updateScroll);media.removeEventListener('change',reducedChange);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('blur',release);
    document.removeEventListener('pointermove',controlPointer);document.removeEventListener('pointerout',viewportLeave);
    el.removeEventListener('pointerenter',move);el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',release);el.removeEventListener('pointercancel',release);el.removeEventListener('pointerleave',leave);
-   cursor.dispose();audioContext?.close().catch(()=>{});disposeScene(scene,renderer,[shadowTexture,texture,...walkFrames,...snakeFrames,...objects.map(o=>o.ownTexture)]);objects.length=0;walkFrames.length=0;snakeFrames.length=0;pixels=owners=null;api.current=null;};
- },[compact]);
- return <section className={`sky-play${compact?' sky-play--compact':''}`} ref={root} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'} style={{'--pocket-hidden-sky':`url("${pocketAssets.hiddenSky}")`,'--pocket-terrain':`url("${pocketAssets.terrain}")`}}>
+   shadowTexture.dispose();objects.forEach(o=>{o.edges?.forEach(e=>e.material.dispose());if(o.shadow){o.shadow.geometry.dispose();o.shadow.material.dispose();scene.remove(o.shadow);}});cursor.dispose();audioContext?.close().catch(()=>{});walkFrames.forEach(t=>t.dispose());snakeFrames.forEach(t=>t.dispose());globe.geometry.dispose();globe.material.dispose();objects.forEach(o=>{o.ownTexture.dispose();o.mesh.geometry.dispose();o.mesh.material.dispose();o.points.geometry.dispose();o.points.material.dispose();});texture?.dispose();renderer.dispose();renderer.domElement.remove();api.current=null;};
+ },[]);
+ return <section className="sky-play" ref={root} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'} style={{'--pocket-hidden-sky':`url("${pocketAssets.hiddenSky}")`,'--pocket-terrain':`url("${pocketAssets.terrain}")`}}>
   <div className="sky-play__stage">
    <div className="sky-play__backdrop"/>
    <canvas className="sky-play__wipe" ref={wipe} aria-hidden="true"/>
@@ -548,7 +547,7 @@ export function PocketPlanet({lang,onWork,compact=false,onClose}){
    <div className="sky-play__canvas" ref={host} aria-hidden="true"/>
    {(!ready||failed)&&<p className="sky-play__loading" role="status">{failed?(lang==='zh'?'场景加载失败，请刷新重试。':'Scene could not load. Please refresh.'):(lang==='zh'?'正在打开口袋星球…':'Opening Pocket Planet…')}</p>}
    <div className="sky-play__actions" aria-label={lang==='zh'?'小蛇互动':'Meet the snake'}>{[['left','向左走','Walk left'],['head','换表情','Change mood'],['body','换装','Change outfit'],['pocket','掏口袋','Pocket surprise'],['right','向右走','Walk right']].map(([action,zh,en])=><button key={action} data-scene-action={action} aria-label={lang==='zh'?zh:en} onFocus={()=>setInventory(action==='pocket')} onBlur={()=>setInventory(false)} onMouseEnter={()=>setInventory(action==='pocket')} onMouseLeave={()=>setInventory(false)} onClick={()=>api.current?.act(action)}>{lang==='zh'?zh:en}</button>)}</div>
-   <div className="sky-play__controls">{onClose&&<button className="sky-play__close" onClick={onClose}>{lang==='zh'?'返回静态预览':'Use static preview'}</button>}<button onClick={onWork}>{lang==='zh'?'查看作品':'Selected work'} ↓</button></div>
+   <div className="sky-play__controls"><button onClick={onWork}>{lang==='zh'?'查看作品':'Selected work'} ↓</button></div>
   </div>
  </section>;
 }
