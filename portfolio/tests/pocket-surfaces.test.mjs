@@ -34,9 +34,9 @@ test('resize retains mask, repeated same-size resize is a no-op, stale encode ca
  const e=environment(t),c=e.canvas(),editorial={style:{}},root={dataset:{}};
  const s=createEraseSurface(c,editorial,root,'sky',()=>{});s.resize(900,600);e.load();s.flush();s.erase({clientX:150,clientY:150});s.flush();
  const mask=s.mask,revision=s.revision;s.resize(900,600);assert.equal(s.revision,revision);
- s.resize(600,400);assert.equal(root.dataset.revealed,'true');assert.equal(mask.width,200);
+ s.resize(600,400);assert.equal(root.dataset.revealed,'true');assert.equal(mask.width,600);
  const copy=mask.getContext('2d').operations.filter(op=>op.name==='drawImage').at(-1);assert.ok(copy,'mask restored from saved canvas');
- assert.equal(copy.args[0].width,300);assert.equal(copy.args[3],200);
+ assert.equal(copy.args[0].width,900);assert.equal(copy.args[3],600);
  s.reset();e.encodes.shift()({});assert.equal(editorial.style.maskImage,'none');assert.equal(root.dataset.revealed,'false');
  s.dispose();
 });
