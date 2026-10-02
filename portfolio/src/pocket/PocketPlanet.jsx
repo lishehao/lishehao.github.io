@@ -39,17 +39,19 @@ gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}
 `;
 const fragment=`
 uniform float edgeDepth;uniform sampler2D map;uniform vec4 crop;uniform float dissolve;uniform float outfit;uniform float facing;
+uniform vec2 outfitOffset;
 varying vec2 vUv;
 ${noiseGLSL}
 void main(){
 vec2 sampleUV=vec2(facing<0.?1.-vUv.x:vUv.x,vUv.y);
 vec4 c=texture2D(map,crop.xy+sampleUV*crop.zw);
-if(outfit>0.5 && vUv.y>.19 && vUv.y<.54 && c.r>.35 && c.g>.22 && c.b<c.g*.55 && c.r>c.g*1.05){
+vec2 clothUV=vUv+vec2(facing*outfitOffset.x,outfitOffset.y);
+if(outfit>0.5 && clothUV.y>.19 && clothUV.y<.54 && c.r>.35 && c.g>.22 && c.b<c.g*.55 && c.r>c.g*1.05){
  vec3 cloth=outfit<1.5?vec3(.23,.52,.78):vec3(.85,.36,.28);
  if(outfit>2.5)cloth=vec3(.48,.62,.43);
  if(outfit>3.5)cloth=vec3(.62,.47,.72);
- if(outfit>4.5)cloth=mix(vec3(.92,.85,.65),vec3(.28,.43,.59),step(.65,fract(vUv.y*65.)));
- if(outfit>5.5)cloth=mix(vec3(.88,.53,.55),vec3(.98,.9,.72),1.-smoothstep(.08,.15,length(fract(vUv*vec2(24.,32.))-.5)));
+ if(outfit>4.5)cloth=mix(vec3(.92,.85,.65),vec3(.28,.43,.59),step(.65,fract(clothUV.y*65.)));
+ if(outfit>5.5)cloth=mix(vec3(.88,.53,.55),vec3(.98,.9,.72),1.-smoothstep(.08,.15,length(fract(clothUV*vec2(24.,32.))-.5)));
  c.rgb=cloth*(.55+c.g*.65);
 }
 float edge=field(vUv)-dissolve;
@@ -115,12 +117,12 @@ export function PocketPlanet({lang,onWork}){
   let drag=null,fastUntil=0,clock=0,texture,pixels,owners;
   let physicsRemainder=0,scrollDirty=true;
   const scheduler=createSceneClock({render,fast:()=>Boolean(drag)||performance.now()<fastUntil||
-   Math.abs(walkTo-snakeX)>.015||objects.some(o=>o.pull||Math.abs(o.fall?.vx||0)>.02||Math.abs(o.fall?.vy||0)>.02||Math.abs(o.fall?.spin||0)>.02),
+   Math.abs(walkTo-snakeX)>.015||stanceBlend<.999||objects.some(o=>o.pull||Math.abs(o.fall?.vx||0)>.02||Math.abs(o.fall?.vy||0)>.02||Math.abs(o.fall?.spin||0)>.02),
    running:()=>!disposed&&active&&visible});
   let snakeDrag={x:0,y:0,vx:0,vy:0,angle:0,angular:0};
   let snakeX=0,walkTo=0,mood=0,outfit=0,face=1,pocketAt=-10,dropIndex=0,poseAction='idle',pocketStyle=throws[0];
   const walks=[{name:'stroll',speed:1.25,sway:.012},{name:'bouncy',speed:1.4,sway:.035},{name:'tiptoe',speed:.95,sway:.025}];
-  let walkStyle=0,walkDistance=0,walkSpeed=0,walkDelta=0,awayFromHome=false,greetingUntil=-1,winkUntil=-1;
+  let walkStyle=0,walkDistance=0,walkSpeed=0,walkDelta=0,stanceBlend=1,awayFromHome=false,greetingUntil=-1,winkUntil=-1;
   const snakeFrames=[],walkFrames=[];
   const actionNames={left:['Go left','向左走'],right:['Go right','向右走'],head:['Change mood','换个表情'],body:['Change outfit','换件衣服'],pocket:['A little surprise','掏出口袋里的惊喜']};
   function act(action){
@@ -225,6 +227,9 @@ export function PocketPlanet({lang,onWork}){
    const walking=!holding&&!reduced&&(Math.abs(walkTo-snakeX)>1e-6||Math.abs(walkSpeed)>.001);
    const walkStep=holding||reduced?{x:snakeX,speed:0,distance:0}:stepWalk(snakeX,walkTo,walkSpeed,dt,walks[walkStyle].speed);
    walkDelta=walkStep.x-snakeX;snakeX=walkStep.x;walkSpeed=walkStep.speed;walkDistance+=walkStep.distance;
+   // Keep the same planted foot while the walking pose settles into its idle
+   // lean and bob. Switching these offsets in one frame snaps the head sideways.
+   stanceBlend=reduced?1:THREE.MathUtils.damp(stanceBlend,walking?0:1,12,dt);
    if(walking)face=walkFacing(walkDelta,face);
    if(Math.abs(snakeX)>.6)awayFromHome=true;
    if(awayFromHome&&Math.abs(snakeX)<.02&&Math.abs(walkTo)<.02&&!walking&&!holding&&poseAction!=='pocket'&&!reduced){awayFromHome=false;greetingUntil=clock+1.1;root.current.dataset.egg='home-greeting';}
@@ -265,10 +270,10 @@ export function PocketPlanet({lang,onWork}){
     }
     const roam=0;
     const gait=walks[walkStyle],phase=walkDistance/WALK_STRIDE*Math.PI*2;
-    const swim=i===0&&!reduced&&!holding?(walking?0:Math.sin(clock*2)*.012+Math.sin(kick*Math.PI)*.15):0;
+    const swim=i===0&&!reduced&&!holding?stanceBlend*(Math.sin(clock*2)*.012+Math.sin(kick*Math.PI)*.15):0;
     const viewHeight=2*Math.tan(THREE.MathUtils.degToRad(20))*(radius-o.home.z);
     o.mesh.position.set(o.home.x+o.offset.x+roam,o.home.y+o.offset.y+swim+gather*viewHeight*1.1,o.home.z);
-    o.mesh.rotation.z=i===0?(drag?.object===o?snakeDrag.angle:walking?0:-snakeX*.065+Math.sin(clock*2)*.012): (o.angle||0);
+    o.mesh.rotation.z=i===0?(drag?.object===o?snakeDrag.angle:stanceBlend*(-snakeX*.065+Math.sin(clock*2)*.012)): (o.angle||0);
     if(i===0){
      // The source walking artwork faces right; the shader mirrors its UVs
      // around the registered central axis for leftward movement.
@@ -279,7 +284,9 @@ export function PocketPlanet({lang,onWork}){
      if(snakeFrames.length===12){
       const frameIndex=reduced?mood:poseAction==='pocket'&&clock-pocketAt<pocketStyle.duration+.25?8+Math.min(3,Math.floor((clock-pocketAt)/pocketStyle.duration*4)):walking?4+walkFrame(walkDistance,4):!reduced&&clock<greetingUntil?1:!reduced&&clock<winkUntil?3:mood;
       o.mesh.material.uniforms.map.value=holding?drag.pose:walking&&walkFrames.length===16&&!reduced&&poseAction!=='pocket'?walkFrames[walkFrame(walkDistance)]:snakeFrames[frameIndex];
-      if(walking)o.mesh.rotation.z+=Math.sin(phase)*gait.sway*.3;
+      const outfitOffset=o.mesh.material.uniforms.map.value.userData.outfitOffset;
+      o.mesh.material.uniforms.outfitOffset.value.set(outfitOffset?.x||0,outfitOffset?.y||0);
+      if(walking)o.mesh.rotation.z+=(1-stanceBlend)*Math.sin(phase)*gait.sway*.3;
       if(poseAction==='pocket'&&clock-pocketAt>pocketStyle.duration+.25)poseAction='idle';
      }
     }
@@ -491,7 +498,7 @@ export function PocketPlanet({lang,onWork}){
     const cut=document.createElement('canvas');cut.width=w;cut.height=h;const cc=cut.getContext('2d'),data=cc.createImageData(w,h);
     for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){const src=(y+yy)*1254+x+xx,dst=(yy*w+xx)*4;if(owners[src]!==owner)continue;data.data.set(pixels.subarray(src*4,src*4+4),dst);}
     cc.putImageData(data,0,0);const ownTexture=new THREE.CanvasTexture(cut);
-    const mat=new THREE.ShaderMaterial({uniforms:{edgeDepth:{value:0},map:{value:ownTexture},crop:{value:crop},time:{value:0},snake:{value:0},outfit:{value:0},facing:{value:1},dissolve:{value:0}},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthWrite:false,side:THREE.DoubleSide});
+    const mat=new THREE.ShaderMaterial({uniforms:{edgeDepth:{value:0},map:{value:ownTexture},crop:{value:crop},time:{value:0},snake:{value:0},outfit:{value:0},outfitOffset:{value:new THREE.Vector2()},facing:{value:1},dissolve:{value:0}},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthWrite:false,side:THREE.DoubleSide});
     const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1,1,24,24),mat);scene.add(mesh);
     const pos=[],colors=[],seeds=[];
     for(let yy=1;yy<h;yy+=3)for(let xx=1;xx<w;xx+=3){
@@ -549,7 +556,18 @@ export function PocketPlanet({lang,onWork}){
       im.data[a+3]=0;const x=p%W,y=Math.floor(p/W);if(x>0)q.push(p-1);if(x<W-1)q.push(p+1);if(y>0)q.push(p-W);if(y<H-1)q.push(p+W);
      }
      fc.putImageData(im,0,0);
-     const ft=new THREE.CanvasTexture(frameCanvas);snakeFrames.push(ft);
+     let poseCanvas=frameCanvas,outfitOffset;
+     if(r===0){
+      // Idle/mood poses share the walking atlas's head axis and planted sole.
+      // Translation preserves the original painted size and all action poses.
+      const metric=measureWalkFrame(im.data,frameCanvas.width,frameCanvas.height);
+      const shiftX=192-(metric.pivot+.5),shiftY=327-(metric.bottom+1);
+      poseCanvas=document.createElement('canvas');poseCanvas.width=384;poseCanvas.height=341;
+      poseCanvas.getContext('2d').drawImage(frameCanvas,shiftX,shiftY);
+      // Keep the existing garment mask and patterns attached to the artwork.
+      outfitOffset=new THREE.Vector2(-shiftX/poseCanvas.width,shiftY/poseCanvas.height);
+     }
+     const ft=new THREE.CanvasTexture(poseCanvas);if(outfitOffset)ft.userData.outfitOffset=outfitOffset;snakeFrames.push(ft);
     }
     sheet.dispose();setReady(true);resize();
    },undefined,()=>setFailed(true));resize();
@@ -570,7 +588,7 @@ export function PocketPlanet({lang,onWork}){
    act,
    setErasing:value=>{release();erasingRef.current=value;setErasing(value);el.dataset.erasing=String(value);el.style.touchAction=value?'none':'pan-y';},
    reveal:()=>{if(root.current.dataset.revealed==='true')paintSky();else eraser.reveal();},
-   reset:()=>{paintSky();walkTo=0;snakeX=0;walkSpeed=0;walkDistance=0;awayFromHome=false;greetingUntil=winkUntil=-1;mood=0;outfit=0;dropIndex=0;objects.forEach(o=>{o.offset.set(0,0);o.velocity.set(0,0);o.held=false;o.released=false;});target.set(0,0);wake();},
+   reset:()=>{paintSky();walkTo=0;snakeX=0;walkSpeed=0;walkDistance=0;stanceBlend=1;awayFromHome=false;greetingUntil=winkUntil=-1;mood=0;outfit=0;dropIndex=0;objects.forEach(o=>{o.offset.set(0,0);o.velocity.set(0,0);o.held=false;o.released=false;});target.set(0,0);wake();},
    nudge:(i,key)=>{const o=objects[i];if(!o)return;o.held=true;o.offset.x=THREE.MathUtils.clamp(o.offset.x+(key==='ArrowRight'?.2:key==='ArrowLeft'?-.2:0),-2,2);o.offset.y=THREE.MathUtils.clamp(o.offset.y+(key==='ArrowUp'?.2:key==='ArrowDown'?-.2:0),-2,2);wake();},
    release:()=>{objects.forEach(o=>o.held=false);wake();}
   };
