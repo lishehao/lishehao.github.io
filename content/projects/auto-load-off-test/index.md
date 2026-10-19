@@ -23,7 +23,7 @@ I wrote this version myself, except for part of the instrument-driver file (`equ
 
 ## The 2026 restructuring (main)
 
-A coding agent rewrote the program to my specification as a layered application. It adds checks on settings before they are sent, an event log, timeouts, and cleanup that turns the generator's output off whenever a sweep finishes, fails, or is stopped. It also changed two of the 2025 checks: it no longer reads back the oscilloscope's range and offset after setting them, and a frequency that does not match now raises a warning instead of stopping the sweep. Its 168 automated tests run in CI without hardware, using fake instrument ports where needed. The restructured version has not been run on real instruments.
+A coding agent rewrote the program to my specification as a layered application. It adds checks on settings before they are sent, an event log, timeouts, and cleanup that turns the generator's output off whenever a sweep finishes, fails, or is stopped. It also changed two of the 2025 checks: it no longer reads back the oscilloscope's range and offset after setting them, and a frequency that does not match now raises a warning instead of stopping the sweep. It still reads back the frequency and amplitude at every point. Its 168 automated tests run in CI without hardware, using fake instrument ports where needed. The restructured version has not been run on real instruments.
 
 ## Tech Stack
 
