@@ -1,52 +1,45 @@
 ---
-title: "RPG Demo Multi-Agent Narrative Generation, Editing, and Play Platform"
-displayTitle: "RPG Demo / Tiny Stories"
-summary: "Live interactive narrative product built around the story seed -> preview -> author -> publish -> play loop, an Author Copilot editing workflow, a stateful Play runtime, and benchmark evaluation."
-tags: ["FastAPI", "React", "TypeScript", "LangGraph", "LangChain", "AI Engineering"]
+title: "Tiny Stories / RPG Demo"
+displayTitle: "Tiny Stories / RPG Demo"
+summary: "An interactive story system I built with coding agents in 2026: one premise becomes a 12-turn story with a player role, an advisor that cannot change the story, persistent sessions, replay, and a reviewer view."
+tags: ["FastAPI", "React", "TypeScript", "SQLite", "AI Engineering"]
 weight: 8
 featured: true
 previewTone: "ember"
 visual: "rpg"
-liveUrl: "https://rpg.shehao.app"
 metrics:
-  - "full author -> play loop"
-  - "multi-stage agent runtime"
-  - "up to 3 variants"
-  - "checkpoint recovery"
-  - "15/15 sessions complete"
-  - "2.4s median first submit"
+  - "12-turn play loop"
+  - "typed API contracts"
+  - "SQLite sessions + replay"
+  - "reviewer view"
 ---
 
 ## Overview
 
-This project is a live interactive narrative product built around the story seed -> preview -> author job -> publish -> play loop, an Author Copilot editing workflow, a stateful Play runtime, and a benchmark layer spanning the full product path. Instead of treating the model as a black-box story generator, the system makes editing, application, and validation part of one controllable product flow.
+Tiny Stories asks whether an LLM story generator can feel like a designed game loop instead of a chatbot. A player types one premise. The system builds a cast, a player role with a private objective, and an opening scene, then runs a 12-turn story in which the player picks from a few options or writes a free-form action. The ending is built from the history of that run, and a finished run can be replayed.
 
-## Core Problem
+## How it is built
 
-Narrative systems are easy to prototype but hard to edit, validate, and evolve. The hard part is not raw text generation; it is keeping AI edits controllable, runtime state consistent, and quality evaluation tied to the real product loop rather than isolated prompt tests.
+I built it in 2026 with coding agents: a React frontend and a FastAPI/Python backend.
 
-## System Design and Evaluation
-
-- Designed and implemented the full RPG Demo product workflow, turning scattered narrative-generation scripts into a single story seed -> preview -> author job -> publish -> play runtime path.
-- Led the Author Copilot editing workflow so users can issue natural-language requests against generated drafts, producing structured modifications for character setup, story spine, ending tendency, and gameplay rules before a preview diff -> apply/undo loop.
-- Designed a Copilot proposal state machine and editor-state contract with an isolated workspace supporting draft / applied / superseded / stale states so multi-turn AI edits stay controllable and recoverable.
-- Split the authoring pipeline into story frame, cast, beat plan, rulepack, and play plan sub-workflows, with shared structured-output validation, repair, and fallback rules to reduce LLM instability on the main path.
-- Designed the Play runtime as a multi-stage agent workflow, decomposing each player turn into interpret -> ending judge -> pyrrhic critic -> render so schema enforcement, telemetry, and failure recovery can be managed per stage.
-- Added multi-variant candidate generation and helper-style agent invocation patterns for Copilot and benchmark drivers so the same task can produce meaningfully different options and be reused by future internal agents/modules.
-- Implemented frontend/backend contract layering that separates product APIs, editor-state data, and bundle / trace internals, allowing the UI surface and agent core to evolve independently.
-- Added persistence and recovery for author jobs, play sessions, and checkpoints so the system can survive restarts and behave like a real agent runtime rather than a one-shot demo.
-- Established a real evaluation baseline: each round covers 5 stories × 3 persona workflows = 15 complete playthroughs, aggregating time, token, cache, fallback, ending distribution, and subjective feel; the best round reached 15/15 completed sessions, 0% render fallback, and 2.4s median first-submit latency, with 100+ cumulative real benchmark sessions.
-
-## Tech Stack
-
-- FastAPI
-- React
-- TypeScript
-- LangGraph
-- LangChain
-- PostgreSQL
+- **Typed API contracts.** Pydantic models on the backend, mirrored by TypeScript types in the frontend.
+- **Persistent sessions.** Story templates, sessions, and message history are stored in SQLite, so sessions persist and a finished run can be replayed.
+- **State before generation.** Before each model call, Python code assembles the turn's state: what each character is pushing for, the pressure toward the next twist, inventory, and recent consequences. The model returns structured output for the next scene and its options.
+- **A bounded advisor.** A second model can read the run's context to advise the player, but it cannot change the story state.
+- **Reviewer view.** I designed the session replay and the reviewer view, which shows the seed, stage, role, number of options, inventory, and ending state behind the player's screen.
 
 ## Status
 
-- Live site: **[rpg.shehao.app](https://rpg.shehao.app)**
+Tiny Stories is a portfolio project, not a validated consumer product. The play loop works, but whether players want to replay a story or share a result is still unproven.
+
+## Tech Stack
+
+- React (TypeScript)
+- FastAPI (Python)
+- Pydantic
+- SQLite
+
+## Links
+
 - Repository: **[github.com/lishehao/RPG_Demo](https://github.com/lishehao/RPG_Demo)**
+- Case study: **[docs/CASE_STUDY.md](https://github.com/lishehao/RPG_Demo/blob/main/docs/CASE_STUDY.md)**

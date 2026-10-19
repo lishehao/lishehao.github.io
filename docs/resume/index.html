@@ -215,13 +215,26 @@
       <div class="section-title">实习经历</div>
       <div class="entry">
         <div class="row">
-          <div class="title">赛炜｜软件工程实习生 / 测试工程实习生</div>
+          <div class="title">DMYH｜技术产品经理实习生（Technical Product Manager Intern）</div>
+          <div class="meta">上海，中国（6 月 20 日前远程） ｜ 2026.04 - 2026.09</div>
+        </div>
+        <div class="sub">上海的 AI 创业公司</div>
+        <ul>
+          <li>评测公司的 GUI agent（按书面任务操作 App 的智能体）：阅读它的运行日志，上报结果看起来没问题、日志里却出了错的运行。</li>
+          <li>把公司原有的基础日志评测扩展成自动化 pipeline，通过比较动作前后的两屏来判断每一个动作。</li>
+          <li>用 coding agent 搭建公司的选题工具，根据参考视频和已有的点子给内容运营推荐视频选题。</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">Intalight｜产品与工程实习生（Product &amp; Engineering Intern）</div>
           <div class="meta">上海，中国 ｜ 2025.07 - 2025.09</div>
         </div>
-        <div class="sub">医疗影像设备方向</div>
+        <div class="sub">眼科影像公司</div>
         <ul>
-          <li>开发 Python 自动化工具支撑内部测试与协同流程，负责需求理解、实现、调试验证与上线支持。</li>
-          <li>与测试工程师和 PM 协作推进工具落地，提升执行效率与流程一致性。</li>
+          <li>硬件组做频响测量时常常要手改 Python 脚本；我是为替代这一步而写的 Python/Tkinter 程序的唯一开发者，程序负责任意波形发生器和示波器的配置、单位和结果格式。</li>
+          <li>设完示波器的量程、偏置和信号源的幅度、频率后读回，按仪器报告的值继续，超出容差时提示操作员；用线程、队列和 stop event 协调采集和部分界面状态，测试进行中开始按钮一直禁用。</li>
+          <li>根据操作员的反馈统一 MAT/TXT/CSV 输出和图表；公司测试工程师在仪器上测过之后，系统组的工程师用了它。代码公开在 GitHub（auto-load-off-test 的 tag v0.1.0）。</li>
         </ul>
       </div>
     </div>
@@ -231,34 +244,29 @@
 
       <div class="entry">
         <div class="row">
-          <div class="title">RPG Demo｜多智能体叙事生成、编辑与游玩平台负责人</div>
-          <div class="meta">FastAPI / React / TypeScript / LangGraph / Structured Output / Benchmarking ｜ 2026.01 - 至今</div>
+          <div class="title">Tiny Stories / RPG Demo｜互动故事系统</div>
+          <div class="meta">React / FastAPI / Python / SQLite ｜ 2026</div>
         </div>
         <ul>
-          <li>负责从 0 到 1 设计并实现 RPG Demo 的完整 AI workflow：story seed -> preview -> author job -> publish -> play，把原本分散的生成脚本收敛成可运行、可回放、可评测的产品主链。</li>
-          <li>主导 Author Copilot 智能体编辑链路，支持用户用自然语言对人物、剧情、结局与玩法规则提出修改意图，并完成 生成建议 -> 预览 diff -> 应用/撤销 的人机协作闭环。</li>
-          <li>设计 Copilot proposal 状态机与 editor-state 契约，支持 draft / applied / superseded / stale 等状态，保证多轮 AI 修改不会直接污染主工作区，提升可控性与可回溯性。</li>
-          <li>将 author 生成链拆成 story frame、cast、beat plan、rulepack、play plan 等多个子 workflow，统一结构化输出约束、错误恢复与 fallback 策略，降低大模型输出抖动对主链的破坏。</li>
-          <li>实现 play runtime 的多阶段 agent 设计，把一次玩家输入拆为 interpret -> ending judge -> pyrrhic critic -> render 等阶段，每阶段单独治理 schema、repair 与 telemetry，提升可维护性。</li>
-          <li>为 Copilot 与 benchmark driver 引入多版本候选与 helper-style agent 调用模式，同一任务可生成多个有区分度的方案，并支持后续 agent/module 并发复用，提高系统扩展性。</li>
-          <li>完成前后端接口分层与状态治理，避免产品前端直接依赖内部 bundle / trace 数据，建立稳定 API contract，使 UI 层与 agent 内核可独立演进。</li>
-          <li>实现 author job、play session 与 checkpoint 持久化恢复能力，支持服务重启后继续编辑或继续游玩，把一次性 demo 提升为具备真实运行态的 agent 系统。</li>
-          <li>设计并落地 LLM-as-a-Judge + Trace-based Evaluation 质量体系，扩展 benchmark 至 10 stories × 5 personas = 50 sessions，统一采集 session-level judge ratings 与 turn-level traces（failure reason / repair path / provider / token / latency）。</li>
-          <li>在本地真实 benchmark 中完成 50/50 sessions，judge non-fallback rate 100%，agent/play trace coverage 均为 100%，render fallback rate 降至 1.0%，用可追溯评测数据驱动 agent 质量迭代。</li>
+          <li>用 coding agent 构建：输入一个故事前提，生成角色、玩家身份和开场，进入 12 回合的故事，可以选选项，也可以自由行动；结局根据这一局的历史生成。</li>
+          <li>前后端使用类型化 API 契约；用 SQLite 存储故事模板、会话和消息记录，会话可保存、可回放；顾问对话和故事状态分开，顾问不能改动故事状态。</li>
+          <li>设计了会话回放和 reviewer 视图，用来查看每一回合背后的运行时状态。</li>
         </ul>
       </div>
 
+    </div>
+
+    <div class="section">
+      <div class="section-title">教学经历</div>
       <div class="entry">
         <div class="row">
-          <div class="title">自动带载断载测试工具</div>
-          <div class="meta">Python / PyVISA / SCPI / Tkinter ｜ 2025.07 - 2025.09</div>
+          <div class="title">UC San Diego｜CSE 003 Tutor</div>
+          <div class="meta">2026 秋季</div>
         </div>
         <ul>
-          <li>自动控制 AWG 与示波器完成验证流程，补齐 validation、logging、retry/timeout 与 CSV/MAT 导出，提升测试可重复性与可追踪性。</li>
-          <li>将测试准备与结果整理工时降低 75%，支撑约 5 名使用者的实际测试工作流。</li>
+          <li>在 CSE 3（Fluency in Information Technology）负责一组学生的辅导，协助每周的 lab，并在 Gradescope 上批改作业。</li>
         </ul>
       </div>
-
     </div>
 
     <div class="section">
@@ -266,18 +274,17 @@
       <div class="entry">
         <div class="row">
           <div class="title">加州大学圣地亚哥分校（University of California, San Diego）</div>
-          <div class="meta">毕业时间：2027.06</div>
+          <div class="meta">预计毕业：2027.06</div>
         </div>
-        <div class="edu-line">数学-计算机科学（Mathematics–Computer Science） ｜ GPA：3.95</div>
+        <div class="edu-line">数学-计算机科学（Mathematics-Computer Science） ｜ GPA：3.952 ｜ 8 个学季获 Provost Honors</div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">技术栈一览</div>
-      <div class="skills inline-block"><strong>编程语言：</strong>Python / Java / C/Cpp</div>
-      <div class="skills inline-block"><strong>框架与工程：</strong>FastAPI / Pydantic / LangGraph / Pytest / React / TypeScript / Vite</div>
-      <div class="skills inline-block"><strong>基础设施：</strong>PostgreSQL / Redis / SQLite / Docker</div>
-      <div class="skills inline-block"><strong>AI 工程：</strong>OpenAI-compatible Responses API / Structured Output / Prompt Design / Benchmarking</div>
+      <div class="skills inline-block"><strong>编程语言：</strong>Python / Java / C / C++</div>
+      <div class="skills inline-block"><strong>工具：</strong>FastAPI / React / Tkinter / PostgreSQL（含向量检索）/ SQLite / Git / CI 与测试</div>
+      <div class="skills inline-block"><strong>AI 系统：</strong>tool calling / 结构化输出 / 检索与 embedding / trace 与 replay / LLM-as-judge</div>
     </div>
 
   </div>
