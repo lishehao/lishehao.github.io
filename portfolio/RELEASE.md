@@ -1,3 +1,30 @@
+# Motion refresh — 2026-10-19
+
+User asked for better motion on the homepage, approved the recorded preview,
+and asked for it to be published.
+
+- Hero: when the scene is ready, one wave runs through the POCKET PLANET
+  letters. The title stays readable throughout (no hidden-then-shown text).
+- Hero to work: boot prints appear on the rising ground and lead to a
+  SELECTED WORK chapter title, which exits with the same blur-and-lift as the
+  hero title. This replaces the previously empty full-screen ground.
+- Rooms: each room enters once when 30% of it is visible: the heading rule
+  wipes in, the film card lifts off the page, the title rises, the three steps
+  fill in order, then links and notes. Room 01 uses the hero paper texture so
+  the hand-off has no seam. Hover: film card lifts, link underline thickens.
+- About: "Curious," wobbles in; "concrete." lands letter by letter (Chinese
+  copy gets the same treatment).
+- Rules kept from the migration: no scroll interception, no animation
+  library, no idle loop. Entrances are one-shot CSS keyframes triggered by
+  IntersectionObserver (`src/reveal.js`). Content is hidden only after
+  `data-reveal="ready"` is set, which never happens under reduced motion or
+  without IntersectionObserver; focus inside a room reveals it immediately.
+- Removed the old unused `[data-reveal]` / `[data-visible]` rule in
+  `daybook.css`; it hid whole sections once the new attribute appeared.
+- Evidence: 29 Node tests pass (3 new for reveal). Recorded desktop and mobile
+  previews in headless Chromium with software WebGL; real-GPU smoothness and
+  Safari/Firefox rendering were not checked.
+
 # Gallery homepage migration — 2026-09-20
 
 User requested replacement of the GitHub Pages resume-site homepage with the
