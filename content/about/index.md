@@ -27,7 +27,7 @@ DMYH is an AI startup in Shanghai.
 - Extended the company's basic log evaluation into an automated pipeline that judges each action by comparing the screen before it with the screen after it.
 - Built, with coding agents, the company's topic-selection tool, which suggests video ideas to the content operators based on reference videos and existing ideas.
 
-### Intalight · Product & Engineering Intern
+### Intalight · Technical Product Intern
 Shanghai, China | Jul 2025 - Sep 2025
 
 Intalight is an ophthalmic-imaging company. There, the hardware team often set up frequency-response measurements on an arbitrary waveform generator and an oscilloscope by editing Python scripts by hand. I was the sole developer of a Python/Tkinter program written to replace that step.

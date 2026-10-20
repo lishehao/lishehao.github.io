@@ -27,7 +27,7 @@ DMYH 是上海的一家 AI 创业公司。
 - 把公司原有的基础日志评测扩展成自动化 pipeline，通过比较动作前后的两屏来判断每一个动作。
 - 用 coding agent 搭建公司的选题工具，根据参考视频和已有的点子给内容运营推荐视频选题。
 
-### Intalight · 产品与工程实习生（Product & Engineering Intern）
+### Intalight · 技术产品实习生（Technical Product Intern）
 上海，中国 | 2025.07 - 2025.09
 
 Intalight 是一家眼科影像公司。硬件组做频响测量时，常常要手改 Python 脚本来设置任意波形发生器和示波器。我是为替代这一步而写的 Python/Tkinter 程序的唯一开发者。
