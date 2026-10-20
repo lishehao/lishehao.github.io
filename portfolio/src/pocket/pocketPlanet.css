@@ -69,3 +69,20 @@ html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:non
 .sky-play__action-short{display:none}
 @media(max-width:700px),(pointer:coarse){.sky-play__action-full{display:none}.sky-play__action-short{display:inline}.sky-play__actions{flex-wrap:nowrap}.sky-play__actions button{padding:8px;min-width:44px;font-size:13px}}
 @media(max-height:500px){.sky-play__ground{top:65%}.sky-play__actions{bottom:70px}.sky-play__controls{bottom:16px}}
+
+/* Motion refresh (2026-10): when the scene is ready a wave runs through the title (it stays readable
+   throughout); on scroll, boot prints lead the rising ground to the work. */
+.sky-play__editorial h1 span{display:inline-block}
+.sky-play__chapter{position:absolute;left:0;right:0;top:75%;height:72svh;z-index:3;transform:translate3d(0,calc(-1 * var(--ground-rise,0svh)),0);opacity:calc(1 - var(--work-show,0));pointer-events:none;color:#36213f}
+@media(max-height:500px){.sky-play__chapter{top:65%}}
+.sky-play__trail{list-style:none;margin:0;padding:0}
+.sky-play__trail li{--step:clamp(0,calc(var(--trail,0) * 9 - var(--i)),1);position:absolute;left:calc(50% + var(--x));top:var(--y);width:18px;height:30px;margin-left:-9px;background:radial-gradient(ellipse 46% 36% at 50% 30%,currentColor 96%,transparent 100%),radial-gradient(ellipse 36% 24% at 50% 82%,currentColor 96%,transparent 100%);opacity:calc(var(--step) * .42);transform:rotate(var(--turn)) scale(calc(.55 + var(--step) * .45));mix-blend-mode:multiply}
+.sky-play__trail li:nth-child(even){scale:-1 1}
+.sky-play__chapter p{position:absolute;left:0;right:0;top:52svh;margin:0;text-align:center;font:400 clamp(56px,11vw,190px)/1 'Anton',sans-serif;letter-spacing:-.03em;white-space:nowrap;opacity:clamp(0,calc((var(--trail,0) - .45) * 2.4),1);transform:translateY(calc((1 - var(--trail,0)) * 60px - var(--work-show,0) * 50px));filter:blur(calc(var(--work-show,0) * 8px))}
+@media(min-width:701px){.sky-play__chapter p{transform:translateY(calc((1 - var(--trail,0)) * 60px - var(--work-show,0) * 50px)) scaleY(1.32);transform-origin:top center}}
+@media(max-width:700px){.sky-play__trail li{width:14px;height:23px;margin-left:-7px}.sky-play__chapter p{font-size:15vw;top:50svh}}
+@media(prefers-reduced-motion:no-preference){
+ .sky-play[data-ready] .sky-play__editorial h1 span{animation:pocket-letter-wave 820ms cubic-bezier(.3,1.5,.5,1);animation-delay:calc(var(--i) * 45ms)}
+}
+@media(prefers-reduced-motion:reduce){.sky-play__chapter{display:none}}
+@keyframes pocket-letter-wave{0%{transform:none}35%{transform:translateY(-12%) rotate(calc((var(--i) - 6) * -1deg))}65%{transform:translateY(2%)}100%{transform:none}}

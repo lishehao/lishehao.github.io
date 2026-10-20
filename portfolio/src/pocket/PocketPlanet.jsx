@@ -27,6 +27,9 @@ const items=[
 ];
 const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=(a,b,x)=>{let t=clamp((x-a)/(b-a));return t*t*(3-2*t);};
+const TITLE='POCKET PLANET';
+// Boot prints from the hero down to the chapter title: [x from centre, y below the ground's edge, heading].
+const TRAIL=[['-1.4vw','10svh','170deg'],['3.6vw','14.9svh','165deg'],['2.5vw','19.7svh','168deg'],['6.3vw','24.6svh','175deg'],['3.5vw','29.4svh','185deg'],['5.3vw','34.3svh','192deg'],['0.8vw','39.1svh','195deg'],['1.4vw','44svh','190deg']];
 const noiseGLSL=`
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float field(vec2 p){return .12+(1.-p.y)*.46+sin(p.x*12.+p.y*8.)*.055+hash(floor(p*700.))*.18;}
@@ -199,6 +202,8 @@ export function PocketPlanet({lang,onWork}){
    root.current.style.setProperty('--ground-rise',`${ease(.04,.85,progress)*110}svh`);
    root.current.style.setProperty('--ground-fade',String(ease(.5,.86,progress)));
    root.current.style.setProperty('--control-fade',String(ease(.04,.28,progress)));
+   // Boot prints and the chapter title ride on the rising ground.
+   root.current.style.setProperty('--trail',String(ease(.12,.5,progress)));
    for(const panel of root.current.querySelectorAll('.sky-play__actions,.sky-play__controls'))panel.inert=progress>.28;
    root.current.dataset.progress=progress.toFixed(3);
    el.inert=progress>.8;
@@ -628,13 +633,14 @@ export function PocketPlanet({lang,onWork}){
    el.removeEventListener('pointerenter',move);el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',release);el.removeEventListener('pointercancel',release);el.removeEventListener('pointerleave',leave);
    cursor.dispose();audioContext?.close().catch(()=>{});disposeScene(scene,renderer,[shadowTexture,texture,...walkFrames,...snakeFrames,...objects.map(o=>o.ownTexture)]);activeProps.length=0;physics.held=null;objects.length=0;walkFrames.length=0;snakeFrames.length=0;pixels=owners=null;api.current=null;};
  },[]);
- return <section className="sky-play" ref={root} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'} style={{'--pocket-hidden-sky':`url("${pocketAssets.hiddenSky}")`,'--pocket-terrain':`url("${pocketAssets.terrain}")`}}>
+ return <section className="sky-play" ref={root} data-ready={ready?'true':undefined} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'} style={{'--pocket-hidden-sky':`url("${pocketAssets.hiddenSky}")`,'--pocket-terrain':`url("${pocketAssets.terrain}")`}}>
   <div className="sky-play__stage">
    <div className="sky-play__backdrop"/>
    <canvas className="sky-play__wipe" ref={wipe} aria-hidden="true"/>
    <canvas className="sky-play__backlight" ref={backlight} aria-hidden="true"/>
    <div className="sky-play__ground"/>
-   <div className="sky-play__editorial"><h1>POCKET PLANET</h1></div>
+   <div className="sky-play__chapter" aria-hidden="true"><ol className="sky-play__trail">{TRAIL.map((step,i)=><li key={i} style={{'--i':i,'--x':step[0],'--y':step[1],'--turn':step[2]}}/>)}</ol><p>SELECTED WORK</p></div>
+   <div className="sky-play__editorial"><h1 aria-label={TITLE}>{[...TITLE].map((letter,i)=><span key={i} aria-hidden="true" style={{'--i':i}}>{letter===' '?' ':letter}</span>)}</h1></div>
    <div className="sky-play__canvas" ref={host} aria-hidden="true"/>
    {(!ready||failed)&&<p className="sky-play__loading" role="status">{failed?(lang==='zh'?'场景加载失败，请刷新重试。':'Scene could not load. Please refresh.'):(lang==='zh'?'正在打开口袋星球…':'Opening Pocket Planet…')}</p>}
    <div className="sky-play__actions" aria-label={lang==='zh'?'小蛇互动':'Meet the snake'}>{[['left','向左走','Walk left'],['head','换表情','Change mood'],['body','换装','Change outfit'],['pocket','掏口袋','Pocket surprise'],['right','向右走','Walk right']].map(([action,zh,en])=><button key={action} data-scene-action={action} aria-label={lang==='zh'?zh:en} onFocus={()=>setInventory(action==='pocket')} onBlur={()=>setInventory(false)} onMouseEnter={()=>setInventory(action==='pocket')} onMouseLeave={()=>setInventory(false)} onClick={()=>api.current?.act(action)}><span className="sky-play__action-full">{lang==='zh'?zh:en}</span><span className="sky-play__action-short" aria-hidden="true">{{left:'←',right:'→',head:lang==='zh'?'表情':'Mood',body:lang==='zh'?'换装':'Outfit',pocket:lang==='zh'?'口袋':'Pocket'}[action]}</span></button>)}</div>

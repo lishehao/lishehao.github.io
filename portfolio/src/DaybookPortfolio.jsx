@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import '@fontsource/anton';
 import '@fontsource/figtree/400.css';
 import '@fontsource/figtree/500.css';
@@ -9,9 +9,18 @@ import './daybook.css';
 import {PocketPlanet} from './pocket/PocketPlanet.jsx';
 import {ProjectGallery} from './ProjectGallery.jsx';
 import {languageFromPath,languageURL,navigateTo} from './navigation.js';
+import {observeReveal} from './reveal.js';
+
+// "Curious" wobbles in; the second half lands letter by letter.
+function AboutHeadline({zh}){
+ const lead=zh?'先好奇，':'Curious,',land=zh?'再把它做出来。':'concrete.';
+ return <h2 aria-label={zh?'先好奇，再把它做出来。':'Curious, then concrete.'}><span className="about-lead" aria-hidden="true">{lead}</span>{zh?null:<> <span className="about-then" aria-hidden="true">then</span> </>}<span className={zh?'about-land':'about-land about-land--word'} aria-hidden="true">{[...land].map((letter,i)=><span key={i} style={{'--i':i}}>{letter}</span>)}</span></h2>;
+}
 
 export function DaybookPortfolio(){
  const [lang,setLang]=useState(()=>languageFromPath(location.pathname)),zh=lang==='zh';
+ const about=useRef(null);
+ useEffect(()=>{const el=about.current;return observeReveal(el,[[el,el]]);},[]);
  useEffect(()=>{document.documentElement.lang=zh?'zh-CN':'en';document.title='Shehao Li — Selected Work';},[zh]);
  useEffect(()=>{const previous=history.scrollRestoration;const restore=()=>{setLang(languageFromPath(location.pathname));navigateTo(location.hash.slice(1)||'top',{history:false,behavior:'instant'});};history.scrollRestoration='manual';addEventListener('popstate',restore);addEventListener('hashchange',restore);return()=>{removeEventListener('popstate',restore);removeEventListener('hashchange',restore);history.scrollRestoration=previous;};},[]);
  const scrollTo=id=>navigateTo(id);
@@ -24,8 +33,8 @@ export function DaybookPortfolio(){
   </header>
   <PocketPlanet lang={lang} onWork={()=>scrollTo('work')}/>
   <ProjectGallery lang={lang}/>
-  <section id="about" className="daybook-about" tabIndex={-1}>
-   <div><h2>{zh?'先好奇，再把它做出来。':'Curious, then concrete.'}</h2></div>
+  <section ref={about} id="about" className="daybook-about" tabIndex={-1}>
+   <div><AboutHeadline zh={zh}/></div>
    <div className="daybook-about__body"><p>{zh?'加州大学圣地亚哥分校数学-计算机专业。我做 AI 产品、互动体验，以及让日常工程工作更可靠的工具。最近最关心的是：怎么检查一个 AI agent 有没有按要求的方式完成任务。':'Math-CS at UC San Diego. I build AI products, interactive experiences, and tools for everyday engineering work. Lately I care most about checking whether an AI agent carried out a task the way it was asked to.'}</p><a href="https://github.com/lishehao" target="_blank" rel="noreferrer">GitHub / lishehao ↗</a><a href="/resume/">{zh?'查看简历 ↗':'Resume ↗'}</a></div>
    <button className="daybook-top" onClick={()=>scrollTo('top')}>{zh?'回到顶部':'Back to top'}</button>
   </section>

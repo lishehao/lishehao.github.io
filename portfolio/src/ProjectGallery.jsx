@@ -3,6 +3,7 @@ import {galleryProjects} from './galleryProjects.js';
 import {galleryTransition} from './galleryTransition.js';
 import {navigateTo} from './navigation.js';
 import {createVideoPlayback} from './videoPlayback.js';
+import {observeReveal} from './reveal.js';
 import './projectGallery.css';
 
 function GalleryRoom({project,index,lang}){
@@ -40,6 +41,7 @@ function GalleryRoom({project,index,lang}){
 }
 export function ProjectGallery({lang}){
  const root=useRef(null);
+ useEffect(()=>{const el=root.current;return observeReveal(el,[...el.querySelectorAll('.gallery-room')].map(room=>[room,room.querySelector('.gallery-room__sticky')]));},[]);
  useEffect(()=>{
   const el=root.current,rooms=[...el.querySelectorAll('.gallery-room')],contents=rooms.map(room=>room.querySelector('.gallery-room__sticky'));
   const media=matchMedia('(max-width: 760px), (max-height: 650px)'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
