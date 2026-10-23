@@ -1,3 +1,17 @@
+# Clinic Inbox Checks (2026-10-22)
+
+User asked to publish the clinic inbox project alongside his applications.
+
+- New case study at `/projects/clinic-inbox-checks/` (English and Chinese)
+  with the 20-second demo video at the top; listed first on the projects page.
+- Homepage gallery: Clinic Inbox Checks is room 01 (video, three features,
+  repository link). The gallery test now counts rooms from `galleryProjects`.
+- Resume page: the project is the first entry under 项目经历, matching the
+  application resume entry.
+- Numbers on the page (60 runs, 10 of 10 lost saves caught, 6 flags from 2
+  wrong checks, 54 of 60 agreement) come from the repository's
+  `results/pilot-2026-10/`.
+
 # Motion refresh — 2026-10-19
 
 User asked for better motion on the homepage, approved the recorded preview,
