@@ -244,6 +244,18 @@
 
       <div class="entry">
         <div class="row">
+          <div class="title">Clinic Inbox Checks｜诊所收件箱里的 AI agent 检查</div>
+          <div class="meta">Python / Flask / Playwright ｜ 2026.10</div>
+        </div>
+        <ul>
+          <li>用 coding agent 搭建模拟的诊所病人消息收件箱：AI agent 在真浏览器里按 10 条诊所政策一步一个动作处理消息；检查只读服务器自己的事件日志和存储状态，不读 agent 对自己工作的说法。</li>
+          <li>在 12 个合成任务上跑了 60 次；其中两个任务的分诊保存会悄悄失败、界面照样显示“已保存”，碰到它的 10 次运行，agent 全部重新打开消息又存了一次。</li>
+          <li>比较事先写好的检查和另一个模型按同一份政策生成的检查：60 次里 54 次判断一致，6 次标记全部来自 2 条写错的检查，两种各一条。代码和全部运行日志公开在 GitHub（clinic-inbox-checks）。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
           <div class="title">Tiny Stories / RPG Demo｜互动故事系统</div>
           <div class="meta">React / FastAPI / Python / SQLite ｜ 2026</div>
         </div>
