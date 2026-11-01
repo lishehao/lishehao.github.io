@@ -31,8 +31,8 @@ export const galleryProjects=[
  {id:'auto',slug:'auto-load-off-test',title:'Auto Load-Off Test',subtitle:'2025 internship · 2026 rebuild',color:'#cbd1ad',ink:'#253b31',
   medium:['Python · Instrument automation','Python · 仪器自动化'],
   summary:['Turn a repeated lab procedure into a run you can configure, inspect and reproduce.','把重复的实验室操作，变成可配置、可检查、可复现的测试流程。'],
-  video:'/assets/auto-load-off-test-console-replay.mp4',poster:'/assets/auto-load-off-test-console-poster.jpg',repository:'https://github.com/lishehao/auto-load-off-test',
-  note:['Real operator console replaying a simulated 72-point fixture · no hardware','真实操作界面回放 72 点模拟数据 · 没有接仪器'],
+  video:'/assets/auto-load-off-test-promo.mp4',poster:'/assets/auto-load-off-test-promo-poster.jpg',repository:'https://github.com/lishehao/auto-load-off-test',
+  note:['3D bench illustration · real operator console replaying a simulated 72-point fixture · no hardware','测试台是 3D 示意 · 真实操作界面回放 72 点模拟数据 · 没有接仪器'],
   steps:[['Configure','配置'],['Measure','测量'],['Export','导出']],
   features:[
    ['One program instead of edited scripts','一个程序代替手改脚本','Written to replace the hand-edited Python scripts behind frequency-response measurements; saves MAT, TXT and CSV results with plots.','为替代硬件组做频响测量时常常要手改的 Python 脚本而写，结果存成 MAT、TXT、CSV 和图表。'],
