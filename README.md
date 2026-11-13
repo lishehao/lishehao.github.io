@@ -2,12 +2,22 @@
 
 This repository contains the source for `https://lishehao.github.io/`.
 
+## Project data
+
+`data/projects.json` is the single source for project names, one-line summaries,
+authorship, stacks, numbers (each with its source), links, room colors and demo
+media. The homepage rooms (`portfolio/src/galleryProjects.js`) and the Projects
+page (`layouts/projects/list.html`) render from it; repository READMEs and the
+GitHub profile README copy their one-line summaries from it. Edit this file first.
+
 ## Stack
 
 - Homepage: `portfolio/` — React / Vite Pocket Planet + per-project gallery.
 - Case studies and resume retain their existing Hugo URLs. Hidden/draft project
   entries are not promoted into the gallery.
-- Build homepage: `npm ci --prefix portfolio && npm run build --prefix portfolio`.
+- Build homepage: `npm ci --prefix portfolio && npm run build --prefix portfolio`. The build also
+  prerenders the English and Chinese homepages (SSR build of the same components) so
+  they paint before the JS arrives; the client hydrates.
 - Overlay tracked Pages output: `node portfolio/publish.mjs docs`.
 - CI builds Hugo first, then overlays the same gallery into its `public/` artifact.
 - Pages currently publishes `main:/docs`; publishing requires committing the
