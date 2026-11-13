@@ -86,3 +86,7 @@ html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:non
 }
 @media(prefers-reduced-motion:reduce){.sky-play__chapter{display:none}}
 @keyframes pocket-letter-wave{0%{transform:none}35%{transform:translateY(-12%) rotate(calc((var(--i) - 6) * -1deg))}65%{transform:translateY(2%)}100%{transform:none}}
+
+@media(max-width:760px){.sky-play__ground,.daybook .daybook-work,.daybook{background-image:url('./assets/yellow-paper-v1-768.webp')}}
+.sky-play{--pocket-hidden-sky:url('./assets/pocket-hidden-lake-v1.webp');--pocket-terrain:url('./assets/pocket-moon-ground-v1.webp')}
+@media(max-width:760px){.sky-play{--pocket-hidden-sky:url('./assets/pocket-hidden-lake-v1-768.webp');--pocket-terrain:url('./assets/pocket-moon-ground-v1-768.webp')}}

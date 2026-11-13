@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import './pocketPlanet.css';
-import {pocketAssets} from './assets.js';
 
 const TITLE='POCKET PLANET';
 // Boot prints from the hero down to the chapter title: [x from centre, y below the ground's edge, heading].
@@ -16,12 +15,17 @@ export function PocketPlanet({lang,onWork}){
  const setInventory=value=>{uiRef.current.inventory=value;};
  useEffect(()=>{
   let cancelled=false,cleanup;
-  import('./scene.js').then(({mountPocketScene})=>{
+  // Start the WebGL scene once the page has loaded and the browser is idle (at most 1.2 s later),
+  // so the hero's images are not competing with the 150 KB scene chunk.
+  const ready=new Promise(resolve=>{const idle=()=>(window.requestIdleCallback||(f=>setTimeout(f,1)))(resolve,{timeout:1200});
+   if(document.readyState==='complete')idle();else addEventListener('load',idle,{once:true});});
+  ready.then(()=>cancelled?null:import('./scene.js')).then(module=>{
+   if(!module||cancelled)return;const {mountPocketScene}=module;
    if(!cancelled)cleanup=mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventory,setFailed,setReady,setErasing,erasingRef,langRef});
   },()=>{if(!cancelled)setFailed(true);});
   return()=>{cancelled=true;cleanup?.();};
  },[]);
- return <section className="sky-play" ref={root} data-ready={ready?'true':undefined} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'} style={{'--pocket-hidden-sky':`url("${pocketAssets.hiddenSky}")`,'--pocket-terrain':`url("${pocketAssets.terrain}")`}}>
+ return <section className="sky-play" ref={root} data-ready={ready?'true':undefined} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'}>
   <div className="sky-play__stage">
    <div className="sky-play__backdrop"/>
    <canvas className="sky-play__wipe" ref={wipe} aria-hidden="true"/>

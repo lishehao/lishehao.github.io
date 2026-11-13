@@ -24,3 +24,4 @@ todo.md
 
 portfolio/node_modules/
 portfolio/dist/
+portfolio/dist-ssr/
