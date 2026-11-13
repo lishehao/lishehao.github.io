@@ -1,6 +1,6 @@
 ---
-title: "Tiny Stories / RPG Demo"
-displayTitle: "Tiny Stories / RPG Demo"
+title: "Tiny Stories"
+displayTitle: "Tiny Stories"
 summary: "An interactive story system I built with coding agents in 2026: one premise becomes a 12-turn story with a player role, an advisor that cannot change the story, persistent sessions, replay, and a reviewer view."
 tags: ["FastAPI", "React", "TypeScript", "SQLite", "AI Engineering"]
 weight: 8

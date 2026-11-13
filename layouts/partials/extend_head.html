@@ -1,0 +1,9 @@
+{{- /* Room colors for case studies, from data/projects.json (matched by the page bundle folder). */ -}}
+{{- with .File }}
+  {{- $slug := path.Base .Dir }}
+  {{- range site.Data.projects.projects }}
+    {{- if eq .slug $slug }}
+<style>:root{--room:{{ .palette.room | safeCSS }};--room-ink:{{ .palette.ink | safeCSS }}}</style>
+    {{- end }}
+  {{- end }}
+{{- end }}

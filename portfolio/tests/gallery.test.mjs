@@ -16,8 +16,8 @@ test('homepage renders every public gallery in both languages, without removed c
    assert.equal((html.match(/class="gallery-room"/g)||[]).length,galleryProjects.length);
    assert.equal((html.match(/<video/g)||[]).length,galleryProjects.length);
    assert.doesNotMatch(html,/sky-play__tip|daybook-notes|Things I keep noticing|Hold to drag|Inside: A350/);
-   assert.match(html,/href="\/resume\/"/);assert.doesNotMatch(html,/autoplay/i);
-   for(const project of galleryProjects){assert.ok(html.includes(project.title));assert.ok(html.includes(`${pathname==='/zh/'?'/zh':''}/projects/${project.slug}/`));}
+   assert.match(html,pathname==='/zh/'?/href="\/resume\/zh\/"/:/href="\/resume\/"/);assert.doesNotMatch(html,/autoplay/i);
+   for(const project of galleryProjects){assert.ok(html.includes(project.title));if(project.caseStudy)assert.ok(html.includes(`${pathname==='/zh/'?'/zh':''}/projects/${project.slug}/`));}
   }
   for(const project of galleryProjects){
    assert.ok(existsSync(new URL(`../public${project.video}`,import.meta.url)));

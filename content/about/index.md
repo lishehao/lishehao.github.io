@@ -48,8 +48,10 @@ Fall 2026
 
 ## Selected Work
 
-- **[Tiny Stories / RPG Demo](/projects/ai-narrative-platform/)**: an interactive story system I built with coding agents in 2026. One premise becomes a cast, a player role, and a 12-turn story; sessions are stored in SQLite and can be replayed, and a reviewer view shows the state behind each turn.
-- **[Auto Load-Off Test](/projects/auto-load-off-test/)**: the frequency-response test program from my Intalight internship, and the 2026 restructuring of it that a coding agent wrote to my specification.
+- **[Clinic Inbox Checks](/projects/clinic-inbox-checks/)**: a simulated clinic inbox for testing AI agents. The checks read the server's record, not the agent's report. Coding agents wrote most of the code.
+- **[Auto-Load-off-Test](/projects/auto-load-off-test/)**: the frequency-response bench program from my Intalight internship (tag [v0.1.0](https://github.com/lishehao/auto-load-off-test/tree/v0.1.0), written by hand), and its 2026 restructuring, written by a coding agent to my specification.
+- **[Tiny Stories](/projects/ai-narrative-platform/)**: an interactive story system built with coding agents. One premise becomes a 12-turn story of choices or free actions, with saved sessions, replay, and a reviewer view of each turn's state.
+- **[batch.](https://lishehao.github.io/batch-lab/)**: an interactive 3D lesson about batching, waiting, and server scheduling.
 
 ## Skills
 

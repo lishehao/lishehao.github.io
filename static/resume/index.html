@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>李佘昊 - 中文简历</title>
+  <title>Shehao Li · Resume</title>
   <style>
     :root {
       --text: #16202f;
@@ -23,7 +23,7 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -192,113 +192,111 @@
       .meta { white-space: normal; }
       .highlight-grid { grid-template-columns: 1fr; }
     }
+      @font-face{font-family:"Figtree";font-weight:400;src:url(/fonts/figtree-latin-400-normal.woff2) format("woff2")}
+    @font-face{font-family:"Figtree";font-weight:600;src:url(/fonts/figtree-latin-600-normal.woff2) format("woff2")}
+    .lang{position:absolute;right:0.48in;top:0.3in;font-size:10px}
+    .lang a{color:var(--accent)}
+    @media print{.lang{display:none}}
+    .page{position:relative}
+    .title a{color:inherit;text-decoration-color:var(--line-strong);text-underline-offset:2px}
   </style>
 </head>
 <body>
   <div class="page">
+    <div class="lang"><a href="/resume/zh/">中文</a></div>
     <div class="header">
-      <div class="name">李佘昊</div>
-      <div class="role">AI Agent / LLM工程化 / 后端系统</div>
+      <div class="name">Shehao Li</div>
+      <div class="role">Mathematics-Computer Science, UC San Diego</div>
       <div class="contact">
-        上海，中国 ｜ 17749796137 ｜ <a href="mailto:lishehao@gmail.com">lishehao@gmail.com</a> ｜ <a href="https://github.com/lishehao">github.com/lishehao</a>
+        <a href="mailto:lishehao@gmail.com">lishehao@gmail.com</a> ｜ <a href="https://github.com/lishehao">github.com/lishehao</a> ｜ <a href="https://lishehao.github.io/">lishehao.github.io</a>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">个人概况</div>
-      <div class="summary">
-        UC San Diego 数学-计算机科学本科，求职方向为 AI Agent / Software Engineer Intern。偏 LLM 工程化与后端系统，关注可运行、可维护的 AI workflow、结构化输出与评测验证。
+      <div class="section-title">Education</div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">University of California, San Diego</div>
+          <div class="meta">Expected June 2027</div>
+        </div>
+        <div class="edu-line">B.S. Mathematics-Computer Science ｜ GPA 3.952 ｜ Provost Honors in 8 quarters</div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">实习经历</div>
+      <div class="section-title">Experience</div>
       <div class="entry">
         <div class="row">
-          <div class="title">DMYH｜技术产品经理实习生（Technical Product Manager Intern）</div>
-          <div class="meta">上海，中国（6 月 20 日前远程） ｜ 2026.04 - 2026.09</div>
+          <div class="title">DMYH ｜ Technical Product Manager Intern</div>
+          <div class="meta">Shanghai, China (remote until June 20) ｜ Apr 2026 to Sep 2026</div>
         </div>
-        <div class="sub">上海的 AI 创业公司</div>
+        <div class="sub">An AI startup in Shanghai</div>
         <ul>
-          <li>评测公司的 GUI agent（按书面任务操作 App 的智能体）：阅读它的运行日志，上报结果看起来没问题、日志里却出了错的运行。</li>
-          <li>把公司原有的基础日志评测扩展成自动化 pipeline，通过比较动作前后的两屏来判断每一个动作。</li>
-          <li>用 coding agent 搭建公司的选题工具，根据参考视频和已有的点子给内容运营推荐视频选题。</li>
+          <li>Proposed an idea-finding tool instead of the requested trend monitor after asking operators where their time went; the company estimates the tool cut 3 operators' daily research from 1 to 2 hours to about 15 minutes.</li>
+          <li>Built it with coding agents in inspectable stages adapted from a colleague's workflow (an LLM wrote long-tail keywords; code searched platforms via data APIs), with a search direction operators could change daily.</li>
+          <li>Judged several hundred run logs of the company's GUI agent; reported about 20 to 30 runs whose final result looked fine while the log showed a problem, such as in-app search on only 2 of 5 required platforms.</li>
+          <li>Built out the team's basic log evaluation into a more complete automated pipeline that reads each action as the change between screens before and after it, and scores runs overall, by trajectory, and per checkpoint.</li>
         </ul>
       </div>
       <div class="entry">
         <div class="row">
-          <div class="title">Intalight｜技术产品实习生（Technical Product Intern）</div>
-          <div class="meta">上海，中国 ｜ 2025.07 - 2025.09</div>
+          <div class="title">Intalight ｜ Technical Product Intern</div>
+          <div class="meta">Shanghai, China ｜ Jul 2025 to Sep 2025</div>
         </div>
-        <div class="sub">眼科影像公司</div>
+        <div class="sub">An ophthalmic-imaging company</div>
         <ul>
-          <li>硬件组做频响测量时常常要手改 Python 脚本；我是为替代这一步而写的 Python/Tkinter 程序的唯一开发者，程序负责任意波形发生器和示波器的配置、单位和结果格式。</li>
-          <li>设完示波器的量程、偏置和信号源的幅度、频率后读回，按仪器报告的值继续，超出容差时提示操作员；用线程、队列和 stop event 协调采集和部分界面状态，测试进行中开始按钮一直禁用。</li>
-          <li>根据操作员的反馈统一 MAT/TXT/CSV 输出和图表；公司测试工程师在仪器上测过之后，系统组的工程师用了它。代码公开在 GitHub（auto-load-off-test 的 tag v0.1.0）。</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">项目经历</div>
-
-      <div class="entry">
-        <div class="row">
-          <div class="title">Clinic Inbox Checks｜诊所收件箱里的 AI agent 检查</div>
-          <div class="meta">Python / Flask / Playwright ｜ 2026.10</div>
-        </div>
-        <ul>
-          <li>用 coding agent 搭建模拟的诊所病人消息收件箱：AI agent 在真浏览器里按 10 条诊所政策一步一个动作处理消息；检查只读服务器自己的事件日志和存储状态，不读 agent 对自己工作的说法。</li>
-          <li>在 12 个合成任务上跑了 60 次；其中两个任务的分诊保存会悄悄失败、界面照样显示“已保存”，碰到它的 10 次运行，agent 全部重新打开消息又存了一次。</li>
-          <li>比较事先写好的检查和另一个模型按同一份政策生成的检查：60 次里 54 次判断一致，6 次标记全部来自 2 条写错的检查，两种各一条。代码和全部运行日志公开在 GitHub（clinic-inbox-checks）。</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="row">
-          <div class="title">Tiny Stories / RPG Demo｜互动故事系统</div>
-          <div class="meta">React / FastAPI / Python / SQLite ｜ 2026</div>
-        </div>
-        <ul>
-          <li>用 coding agent 构建：输入一个故事前提，生成角色、玩家身份和开场，进入 12 回合的故事，可以选选项，也可以自由行动；结局根据这一局的历史生成。</li>
-          <li>前后端使用类型化 API 契约；用 SQLite 存储故事模板、会话和消息记录，会话可保存、可回放；顾问对话和故事状态分开，顾问不能改动故事状态。</li>
-          <li>设计了会话回放和 reviewer 视图，用来查看每一回合背后的运行时状态。</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="section">
-      <div class="section-title">教学经历</div>
-      <div class="entry">
-        <div class="row">
-          <div class="title">UC San Diego｜CSE 003 Tutor</div>
-          <div class="meta">2026 秋季</div>
-        </div>
-        <ul>
-          <li>在 CSE 3（Fluency in Information Technology）负责一组学生的辅导，协助每周的 lab，并在 Gradescope 上批改作业。</li>
+          <li>Sole developer of a Python/Tkinter bench program (3,100+ lines I wrote) built to replace hand-edited scripts: it steps a signal generator, captures each response on an oscilloscope, and computes gain and phase.</li>
+          <li>Made it read back settings and warn when one was out of tolerance, since an instrument could accept a setting yet silently do something else; ran acquisition on a worker thread with queues and stop events.</li>
+          <li>Test engineers tested it on instruments before company engineers used it; open-sourced with permission as <a href="https://github.com/lishehao/auto-load-off-test/tree/v0.1.0">Auto-Load-off-Test</a>. In 2026 a coding agent restructured it as I specified, adding 168 hardware-free tests.</li>
         </ul>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">教育背景</div>
+      <div class="section-title">Projects</div>
       <div class="entry">
         <div class="row">
-          <div class="title">加州大学圣地亚哥分校（University of California, San Diego）</div>
-          <div class="meta">预计毕业：2027.06</div>
+          <div class="title"><a href="https://github.com/lishehao/clinic-inbox-checks">Clinic Inbox Checks</a></div>
+          <div class="meta">Python, Flask, Playwright ｜ Oct 2026</div>
         </div>
-        <div class="edu-line">数学-计算机科学（Mathematics-Computer Science） ｜ GPA：3.952 ｜ 8 个学季获 Provost Honors</div>
+        <ul>
+          <li>Designed a simulated clinic inbox where an AI agent works patient messages under a 10-rule policy; checks read the server's event log and stored state, not the agent's report. Coding agents wrote most of the code.</li>
+          <li>Recorded 60 agent runs on 12 synthetic tasks; in the two tasks where a routing save fails silently while the screen says “saved,” the agent reopened the message and saved again in all 10 runs.</li>
+          <li>Compared checks written in advance with checks a second model generated from the same policy: verdicts matched on 54 of 60 runs, and I traced all 6 flags to 2 faulty checks, one of each kind.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <div class="title"><a href="https://github.com/lishehao/RPG_Demo">Tiny Stories</a></div>
+          <div class="meta">React, FastAPI, SQLite ｜ 2026</div>
+        </div>
+        <ul>
+          <li>Built an interactive story system with coding agents: one premise becomes a 12-turn story of choices or free actions, with saved sessions, replay, and a reviewer view of each turn's state.</li>
+        </ul>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">技术栈一览</div>
-      <div class="skills inline-block"><strong>编程语言：</strong>Python / Java / C / C++</div>
-      <div class="skills inline-block"><strong>工具：</strong>FastAPI / React / Tkinter / PostgreSQL（含向量检索）/ SQLite / Git / CI 与测试</div>
-      <div class="skills inline-block"><strong>AI 系统：</strong>tool calling / 结构化输出 / 检索与 embedding / trace 与 replay / LLM-as-judge</div>
+      <div class="section-title">Teaching</div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">UC San Diego ｜ Tutor, CSE 3 (Fluency in Information Technology)</div>
+          <div class="meta">Fall 2026</div>
+        </div>
+        <ul>
+          <li>Tutor a pod of 41 students, many first-years outside computer science: a weekly lab, one-on-one help, and grading every homework; contact students around each deadline based on their Gradescope status.</li>
+          <li>Posted a first-week note explaining that each question is graded all-or-nothing; the instructor asked the other pod's tutor to send a similar one. Started study-partner matching when weekly reflections showed demand.</li>
+        </ul>
+      </div>
     </div>
 
+    <div class="section">
+      <div class="section-title">Skills</div>
+      <div class="skills inline-block"><strong>Languages:</strong> Python, Java, C, C++</div>
+      <div class="skills inline-block"><strong>Frameworks and libraries:</strong> FastAPI, React, Playwright, Tkinter, NumPy</div>
+      <div class="skills inline-block"><strong>Data and infrastructure:</strong> PostgreSQL, SQLite, MySQL, Docker, Git, GitHub Actions, AWS, Azure</div>
+      <div class="skills inline-block"><strong>AI systems:</strong> tool calling, structured outputs, retrieval and embeddings, agent evaluation (trajectory and checkpoint scoring, LLM-as-judge)</div>
+    </div>
   </div>
 </body>
 </html>

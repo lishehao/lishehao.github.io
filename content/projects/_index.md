@@ -1,6 +1,5 @@
 ---
 title: "Projects"
-summary: "Selected work: Clinic Inbox Checks, Tiny Stories / RPG Demo and Auto Load-Off Test."
+summary: "Selected work: Clinic Inbox Checks, Auto-Load-off-Test, Tiny Stories and batch."
+description: "Four projects, each with a short demo, its code and who wrote what."
 ---
-
-Selected work: **Clinic Inbox Checks**, which checks an AI agent's work in a simulated clinic inbox against the server's own record; **Tiny Stories / RPG Demo** as an AI product system; and **Auto Load-Off Test** as a focused Python automation tool for instrument validation.

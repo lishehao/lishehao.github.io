@@ -15,9 +15,11 @@ function GalleryRoom({project,index,lang}){
   const controller=createVideoPlayback(v,{allowed,onState:setPlaying});playback.current=controller;
   const cancel=()=>controller.cancel(),check=()=>{if(!allowed())cancel();};
   const observer=new IntersectionObserver(check);observer.observe(v);
+  // Posters load only as a room comes near, so below-the-fold images do not compete with the hero.
+  const near=new IntersectionObserver(([e])=>{if(e.isIntersecting){v.poster=v.dataset.poster;near.disconnect();}},{rootMargin:'900px 0px'});near.observe(v);
   const mutation=new MutationObserver(check);mutation.observe(room,{attributes:true,attributeFilter:['inert','aria-hidden']});
   room.addEventListener('portfolio:room-deactivate',cancel);document.addEventListener('visibilitychange',check);window.addEventListener('pagehide',cancel);
-  return()=>{observer.disconnect();mutation.disconnect();room.removeEventListener('portfolio:room-deactivate',cancel);document.removeEventListener('visibilitychange',check);window.removeEventListener('pagehide',cancel);controller.dispose();playback.current=null;};
+  return()=>{near.disconnect();observer.disconnect();mutation.disconnect();room.removeEventListener('portfolio:room-deactivate',cancel);document.removeEventListener('visibilitychange',check);window.removeEventListener('pagehide',cancel);controller.dispose();playback.current=null;};
  },[]);
  const next=index+1<galleryProjects.length?`project-${galleryProjects[index+1].id}`:'about';
  return <article ref={section} id={`project-${project.id}`} className="gallery-room" style={{'--room-color':project.color,'--room-ink':project.ink}} aria-labelledby={`title-${project.id}`}>
@@ -25,13 +27,13 @@ function GalleryRoom({project,index,lang}){
    <div className="gallery-room__heading"><span>{String(index+1).padStart(2,'0')} / {String(galleryProjects.length).padStart(2,'0')}</span><span>{project.medium[l]}</span><span>{zh?'精选项目':'SELECTED WORK'}</span></div>
    <div className="gallery-room__exhibit">
     <div className="gallery-room__frame">
-     <video ref={video} controls={playing} playsInline preload="none" poster={project.poster}><source src={project.video} type="video/mp4"/></video>
+     <video ref={video} controls={playing} playsInline muted preload="none" width="1920" height="1080" data-poster={project.poster}>{project.videoWebm&&<source src={project.videoWebm} type="video/webm"/>}<source src={project.video} type="video/mp4"/></video>
      <button className="gallery-room__play" aria-pressed={playing} onClick={()=>playback.current?.toggle()}>{playing?(zh?'暂停演示':'Pause film'):(zh?'播放演示 ↗':'Play film ↗')}</button>
      {project.note&&<small>{project.note[l]}</small>}
     </div>
     <div className="gallery-room__label"><p>{project.subtitle}</p><h2 id={`title-${project.id}`} tabIndex={-1}>{project.title}</h2><p className="gallery-room__summary">{project.summary[l]}</p>
      <ol className="gallery-room__steps">{project.steps.map((step,i)=><li key={step[0]}><span>0{i+1}</span>{step[l]}</li>)}</ol>
-     <div className="gallery-room__links"><a href={`${zh?'/zh':''}/projects/${project.slug}/`}>{zh?'完整项目介绍 ↗':'Read case study ↗'}</a><a href={project.repository} target="_blank" rel="noopener noreferrer">GitHub ↗</a>{project.live&&<a href={project.live} target="_blank" rel="noopener noreferrer">{zh?'体验产品 ↗':'Try it ↗'}</a>}</div>
+     <div className="gallery-room__links">{project.caseStudy&&<a href={`${zh?'/zh':''}/projects/${project.slug}/`}>{zh?'完整项目介绍 ↗':'Read case study ↗'}</a>}<a href={project.repository} target="_blank" rel="noopener noreferrer">GitHub ↗</a>{project.live&&<a href={project.live} target="_blank" rel="noopener noreferrer">{zh?'体验产品 ↗':'Try it ↗'}</a>}</div>
     </div>
    </div>
    <div className="gallery-room__details">{project.features.map(f=><details key={f[0]}><summary>{f[l]}</summary><p>{f[2+l]}</p></details>)}<small>{project.stack}</small></div>
