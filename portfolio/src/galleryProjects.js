@@ -6,7 +6,7 @@ export const galleryProjects=[...data.projects].sort((a,b)=>a.order-b.order).map
  id:p.id,slug:p.slug,title:p.name,subtitle:p.subtitle||p.kicker,
  color:p.palette.room,ink:p.palette.ink,
  medium:p.site.medium,summary:[p.one_liner,p.site.summary_zh],
- video:p.site.video,videoWebm:p.site.video_webm,poster:p.site.poster,
+ video:p.site.video,videoWebm:p.site.video_webm,poster:p.site.poster,illustration:p.site.illustration,
  repository:p.links.repo,live:p.links.live||p.links.reviewer_demo,
  note:p.site.note,steps:p.site.steps,features:p.site.features,
  stack:p.stack.join(' · '),caseStudy:Boolean(p.links.case_study),

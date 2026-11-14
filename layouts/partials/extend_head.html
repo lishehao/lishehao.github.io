@@ -3,7 +3,7 @@
   {{- $slug := path.Base .Dir }}
   {{- range site.Data.projects.projects }}
     {{- if eq .slug $slug }}
-<style>:root{--room:{{ .palette.room | safeCSS }};--room-ink:{{ .palette.ink | safeCSS }}}</style>
+<style>:root{--room:{{ .palette.room | safeCSS }};--room-ink:{{ .palette.ink | safeCSS }}}{{ with .site.illustration }}.post-single .post-header{--keeper:url({{ .src | safeCSS }})}{{ end }}</style>
     {{- end }}
   {{- end }}
 {{- end }}

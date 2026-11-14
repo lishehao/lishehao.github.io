@@ -87,3 +87,11 @@
 @keyframes room-step-text{from{color:color-mix(in srgb,var(--room-ink),transparent 75%)}to{color:var(--room-ink)}}
 @keyframes room-step-bar{0%{opacity:1;transform:scaleX(0)}75%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
 @media(max-width:760px){.gallery-room:first-child{background-image:url('./pocket/assets/yellow-paper-v1-768.webp')}}
+/* Room keepers: the planet's kid at work in each room, from data/projects.json */
+.gallery-room__details{grid-template-columns:repeat(3,minmax(0,1fr)) clamp(190px,21vw,320px);align-items:start}
+.gallery-room__details>small{grid-column:1/4}
+.gallery-room__keeper{grid-column:4;grid-row:1/span 2;align-self:end;justify-self:end;width:100%;height:auto;max-height:min(230px,26svh);object-fit:contain;object-position:right bottom;margin-top:-130px;pointer-events:none;filter:drop-shadow(0 8px 0 color-mix(in srgb,var(--room-ink),transparent 88%))}
+@media(max-width:760px),(max-height:650px){.gallery-room__details{grid-template-columns:1fr}.gallery-room__details>small{grid-column:auto}.gallery-room__keeper{grid-column:auto;grid-row:auto;width:min(72%,300px);max-height:none;margin:8px 0 0 auto}}
+.daybook-about__keeper{display:block;width:auto;height:clamp(150px,19vw,250px);margin-top:clamp(1.5rem,3vw,2.5rem)}
+@media(prefers-reduced-motion:no-preference){.gallery-room.is-entered .gallery-room__keeper{animation:keeper-in .7s 1.55s cubic-bezier(.16,1,.3,1) backwards}}
+@keyframes keeper-in{from{opacity:0;transform:translateY(14px)}}

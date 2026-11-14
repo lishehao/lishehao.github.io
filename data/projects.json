@@ -94,7 +94,12 @@
         ],
         "video": "/assets/clinic-loop.mp4",
         "poster": "/assets/clinic-loop-poster.webp",
-        "video_webm": "/assets/clinic-loop.webm"
+        "video_webm": "/assets/clinic-loop.webm",
+        "illustration": {
+          "src": "/assets/rooms/clinic.webp",
+          "width": 640,
+          "height": 542
+        }
       }
     },
     {
@@ -191,7 +196,12 @@
         ],
         "video": "/assets/auto-loop.mp4",
         "poster": "/assets/auto-loop-poster.webp",
-        "video_webm": "/assets/auto-loop.webm"
+        "video_webm": "/assets/auto-loop.webm",
+        "illustration": {
+          "src": "/assets/rooms/auto.webp",
+          "width": 640,
+          "height": 500
+        }
       }
     },
     {
@@ -276,7 +286,12 @@
           ]
         ],
         "video": "/assets/tiny-stories-demo.mp4",
-        "poster": "/assets/tiny-stories-video-poster.jpg"
+        "poster": "/assets/tiny-stories-video-poster.jpg",
+        "illustration": {
+          "src": "/assets/rooms/tiny.webp",
+          "width": 640,
+          "height": 418
+        }
       }
     },
     {
@@ -358,7 +373,12 @@
         ],
         "video": "/assets/batch-loop.mp4",
         "poster": "/assets/batch-loop-poster.webp",
-        "video_webm": "/assets/batch-loop.webm"
+        "video_webm": "/assets/batch-loop.webm",
+        "illustration": {
+          "src": "/assets/rooms/batch.webp",
+          "width": 640,
+          "height": 395
+        }
       }
     }
   ],
