@@ -285,13 +285,18 @@
             "reviewer 视图展示每一回合背后的状态；顾问能读这一局，但不能改动故事。整个项目用 coding agent 构建。"
           ]
         ],
-        "video": "/assets/tiny-stories-demo.mp4",
-        "poster": "/assets/tiny-stories-video-poster.jpg",
+        "video": "/assets/tiny-loop.mp4",
+        "poster": "/assets/tiny-loop-poster.webp",
         "illustration": {
           "src": "/assets/rooms/tiny.webp",
           "width": 640,
           "height": 418
-        }
+        },
+        "video_webm": "/assets/tiny-loop.webm",
+        "note": [
+          "A live local run · gpt-4.1-mini standing in for DeepSeek V4 Flash",
+          "本地实跑一局 · 模型用 gpt-4.1-mini 代替 DeepSeek V4 Flash"
+        ]
       }
     },
     {
