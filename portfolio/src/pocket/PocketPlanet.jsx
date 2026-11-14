@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './pocketPlanet.css';
+import {claimReload,clearReload} from './reloadOnce.js';
 
 const TITLE='POCKET PLANET';
 // Boot prints from the hero down to the chapter title: [x from centre, y below the ground's edge, heading].
@@ -21,12 +22,11 @@ export function PocketPlanet({lang,onWork}){
    if(document.readyState==='complete')idle();else addEventListener('load',idle,{once:true});});
   ready.then(()=>cancelled?null:import('./scene.js')).then(module=>{
    if(!module||cancelled)return;const {mountPocketScene}=module;
-   try{sessionStorage.removeItem('pocket-reload');}catch{}
+   clearReload();
    if(!cancelled)cleanup=mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventory,setFailed,setReady,setErasing,erasingRef,langRef});
   },()=>{
    if(cancelled)return;
-   let tried=true;try{tried=sessionStorage.getItem('pocket-reload')==='1';sessionStorage.setItem('pocket-reload','1');}catch{}
-   if(tried)setFailed(true);else location.reload();
+   if(claimReload())location.reload();else setFailed(true);
   });
   return()=>{cancelled=true;cleanup?.();};
  },[]);
