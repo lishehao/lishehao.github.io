@@ -190,7 +190,8 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    const fade=ease(.18,.8,progress);
    root.current.style.setProperty('--sky-fade',String(fade));
    root.current.style.setProperty('--sky-blur',`${ease(.15,.75,progress)*7}px`);
-   root.current.style.setProperty('--type-exit',ease(.08,.5,progress));
+   const typeExit=ease(.08,.5,progress);
+   root.current.style.setProperty('--type-exit',typeExit);root.current.toggleAttribute('data-type-exiting',typeExit>0);
    root.current.style.setProperty('--work-show',String(ease(.62,.94,progress)));
    root.current.style.setProperty('--ground-rise',`${ease(.04,.85,progress)*110}svh`);
    root.current.style.setProperty('--ground-fade',String(ease(.5,.86,progress)));
