@@ -308,8 +308,8 @@
       "year": "2026",
       "kicker": "Interactive lesson, server scheduling",
       "one_liner": "An interactive 3D lesson about batching, waiting, and server scheduling.",
-      "what_i_did": "TODO(owner): confirm wording.",
-      "who_wrote_the_code": "TODO(owner): confirm. Commit history shows coding-agent co-authorship.",
+      "what_i_did": "Set the direction and defined what the lesson teaches: when a server should start a batch at once and when it should wait for more requests.",
+      "who_wrote_the_code": "Coding agents wrote almost all of the code. I set the direction and defined what the lesson should teach and how it should behave.",
       "stack": [
         "React",
         "TypeScript",
