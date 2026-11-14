@@ -2,7 +2,8 @@ import {ERASER_RADIUS,normalizedPoint,skyCover} from './sceneCoordinates.js';
 // Pointer events only enqueue brushes. Paint and encode at most once per frame,
 // with one asynchronous mask encoding in flight and explicit URL ownership.
 export function createEraseSurface(canvas,editorial,root,url,wake){
- const mask=document.createElement('canvas'),image=new Image();
+ const mask=document.createElement('canvas'),small=document.createElement('canvas'),image=new Image();
+ const smallContext=small.getContext('2d',{willReadFrequently:true});
  let cssWidth=0,cssHeight=0,lastPoint=null;
  let queue=[],dirty=true,maskDirty=false,encoding=false,disposed=false,objectUrl=null,epoch=0,revision=0;
  function replaceUrl(next){const old=objectUrl;objectUrl=next;editorial.style.maskImage=next?`url("${next}")`:'none';if(old)URL.revokeObjectURL(old);}
@@ -13,20 +14,20 @@ export function createEraseSurface(canvas,editorial,root,url,wake){
   cssWidth=w;cssHeight=h;epoch++;lastPoint=null;
   const saved=document.createElement('canvas');saved.width=mask.width;saved.height=mask.height;
   if(mask.width&&mask.height)saved.getContext('2d').drawImage(mask,0,0);
-  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);mask.width=w;mask.height=h;
-  const g=mask.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,mask.width,mask.height);
-  if(root.dataset.revealed==='true'){g.clearRect(0,0,mask.width,mask.height);g.drawImage(saved,0,0,mask.width,mask.height);maskDirty=true;}
+  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);mask.width=w;mask.height=h;small.width=Math.max(1,Math.round(w/3));small.height=Math.max(1,Math.round(h/3));
+  for(const [g,c] of [[mask.getContext('2d'),mask],[smallContext,small]]){g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);
+   if(root.dataset.revealed==='true'){g.clearRect(0,0,c.width,c.height);g.drawImage(saved,0,0,c.width,c.height);maskDirty=true;}}
   dirty=true;revision++;
  }
- function reset(){epoch++;revision++;queue=[];lastPoint=null;const g=mask.getContext('2d');g.globalCompositeOperation='source-over';g.fillStyle='#fff';g.fillRect(0,0,mask.width,mask.height);replaceUrl(null);root.dataset.revealed='false';dirty=true;maskDirty=false;wake();}
+ function reset(){epoch++;revision++;queue=[];lastPoint=null;for(const [g,c] of [[mask.getContext('2d'),mask],[smallContext,small]]){g.globalCompositeOperation='source-over';g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);}replaceUrl(null);root.dataset.revealed='false';dirty=true;maskDirty=false;wake();}
  function flush(){
   if(disposed)return;
   if(queue.length){
-   const g=mask.getContext('2d');g.globalCompositeOperation='destination-out';
+   for(const [g,c] of [[mask.getContext('2d'),mask],[smallContext,small]]){g.globalCompositeOperation='destination-out';
    for(const p of queue){
-    g.save();g.scale(mask.width,mask.height);g.translate(p.x,p.y);g.scale(ERASER_RADIUS/cssWidth,ERASER_RADIUS/cssHeight);
+    g.save();g.scale(c.width,c.height);g.translate(p.x,p.y);g.scale(ERASER_RADIUS/cssWidth,ERASER_RADIUS/cssHeight);
     const brush=g.createRadialGradient(0,0,.55,0,0,1);brush.addColorStop(0,'#000');brush.addColorStop(1,'#0000');g.fillStyle=brush;g.fillRect(-1,-1,2,2);g.restore();
-   }
+   }}
    queue=[];dirty=maskDirty=true;revision++;root.dataset.revealed='true';
   }
   if(dirty&&image.naturalWidth){
@@ -37,7 +38,7 @@ export function createEraseSurface(canvas,editorial,root,url,wake){
   }
   if(maskDirty&&!encoding){
    encoding=true;maskDirty=false;const version=epoch;
-   mask.toBlob(blob=>{encoding=false;if(disposed)return;if(blob&&version===epoch)replaceUrl(URL.createObjectURL(blob));if(maskDirty)wake();});
+   small.toBlob(blob=>{encoding=false;if(disposed)return;if(blob&&version===epoch)replaceUrl(URL.createObjectURL(blob));if(maskDirty)wake();});
   }
  }
  image.onload=()=>{if(!disposed){dirty=true;wake();}};image.src=url;
@@ -50,7 +51,7 @@ export function createEraseSurface(canvas,editorial,root,url,wake){
    queue.push(p);lastPoint=p;wake();
   },
   endStroke(){lastPoint=null;},
-  reveal(){epoch++;revision++;queue=[];lastPoint=null;mask.getContext('2d').clearRect(0,0,mask.width,mask.height);root.dataset.revealed='true';dirty=maskDirty=true;wake();},
+  reveal(){epoch++;revision++;queue=[];lastPoint=null;mask.getContext('2d').clearRect(0,0,mask.width,mask.height);smallContext.clearRect(0,0,small.width,small.height);root.dataset.revealed='true';dirty=maskDirty=true;wake();},
   dispose(){disposed=true;image.onload=null;if(objectUrl)URL.revokeObjectURL(objectUrl);queue=[];},
  };
 }

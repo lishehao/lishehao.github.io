@@ -21,8 +21,13 @@ export function PocketPlanet({lang,onWork}){
    if(document.readyState==='complete')idle();else addEventListener('load',idle,{once:true});});
   ready.then(()=>cancelled?null:import('./scene.js')).then(module=>{
    if(!module||cancelled)return;const {mountPocketScene}=module;
+   try{sessionStorage.removeItem('pocket-reload');}catch{}
    if(!cancelled)cleanup=mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventory,setFailed,setReady,setErasing,erasingRef,langRef});
-  },()=>{if(!cancelled)setFailed(true);});
+  },()=>{
+   if(cancelled)return;
+   let tried=true;try{tried=sessionStorage.getItem('pocket-reload')==='1';sessionStorage.setItem('pocket-reload','1');}catch{}
+   if(tried)setFailed(true);else location.reload();
+  });
   return()=>{cancelled=true;cleanup?.();};
  },[]);
  return <section className="sky-play" ref={root} data-ready={ready?'true':undefined} aria-label={lang==='zh'?'我的兴趣空间':'A few things I love'}>
