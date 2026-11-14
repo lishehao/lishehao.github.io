@@ -42,7 +42,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .post-content h2,.post-content h3{font-family:"Source Serif 4",Georgia,serif;font-weight:500;color:var(--ink);letter-spacing:0}
 .post-content h2{font-size:1.75rem;margin-top:2.4em;padding-top:.6em;border-top:1px solid var(--border)}
 .post-content h3{font-size:1.3rem}
-.post-content a,.post-content a code{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}
+.post-content a,.post-content a code{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:var(--accent);text-underline-offset:3px;box-shadow:none}
 .post-content a:hover{color:var(--accent)}
 .post-content strong{color:var(--ink)}
 .post-content video,.post-content img{border-radius:var(--radius)!important;box-shadow:10px 12px 0 color-mix(in srgb,var(--room),black 12%)}
@@ -81,3 +81,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .footer a{color:var(--ink)}
 .top-link{background:var(--ink);color:var(--paper-bright)}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Case study band: the room's kid, from data/projects.json */
+@media(min-width:761px){
+  .post-single .post-header{min-height:150px}
+  .post-single .post-header:has(.post-title){padding-right:clamp(200px,30%,270px)}
+  .post-single .post-header::after{content:"";position:absolute;right:18px;bottom:-14px;width:clamp(180px,28%,250px);height:190px;
+    background:var(--keeper,none) right bottom/contain no-repeat;pointer-events:none;filter:drop-shadow(0 8px 0 color-mix(in srgb,var(--room-ink),transparent 88%))}
+}

@@ -15,8 +15,8 @@ function GalleryRoom({project,index,lang}){
   const controller=createVideoPlayback(v,{allowed,onState:setPlaying});playback.current=controller;
   const cancel=()=>controller.cancel(),check=()=>{if(!allowed())cancel();};
   const observer=new IntersectionObserver(check);observer.observe(v);
-  // Posters load only as a room comes near, so below-the-fold images do not compete with the hero.
-  const near=new IntersectionObserver(([e])=>{if(e.isIntersecting){v.poster=v.dataset.poster;near.disconnect();}},{rootMargin:'900px 0px'});near.observe(v);
+  // Posters and the room illustration load only as a room comes near, so below-the-fold images do not compete with the hero.
+  const near=new IntersectionObserver(([e])=>{if(e.isIntersecting){v.poster=v.dataset.poster;const k=room.querySelector('.gallery-room__keeper');if(k)k.src=k.dataset.src;near.disconnect();}},{rootMargin:'900px 0px'});near.observe(v);
   const mutation=new MutationObserver(check);mutation.observe(room,{attributes:true,attributeFilter:['inert','aria-hidden']});
   room.addEventListener('portfolio:room-deactivate',cancel);document.addEventListener('visibilitychange',check);window.addEventListener('pagehide',cancel);
   return()=>{near.disconnect();observer.disconnect();mutation.disconnect();room.removeEventListener('portfolio:room-deactivate',cancel);document.removeEventListener('visibilitychange',check);window.removeEventListener('pagehide',cancel);controller.dispose();playback.current=null;};
@@ -36,7 +36,7 @@ function GalleryRoom({project,index,lang}){
      <div className="gallery-room__links">{project.caseStudy&&<a href={`${zh?'/zh':''}/projects/${project.slug}/`}>{zh?'完整项目介绍 ↗':'Read case study ↗'}</a>}<a href={project.repository} target="_blank" rel="noopener noreferrer">GitHub ↗</a>{project.live&&<a href={project.live} target="_blank" rel="noopener noreferrer">{zh?'体验产品 ↗':'Try it ↗'}</a>}</div>
     </div>
    </div>
-   <div className="gallery-room__details">{project.features.map(f=><details key={f[0]}><summary>{f[l]}</summary><p>{f[2+l]}</p></details>)}<small>{project.stack}</small></div>
+   <div className="gallery-room__details">{project.features.map(f=><details key={f[0]}><summary>{f[l]}</summary><p>{f[2+l]}</p></details>)}<small>{project.stack}</small>{project.illustration&&<img className="gallery-room__keeper" data-src={project.illustration.src} width={project.illustration.width} height={project.illustration.height} alt="" decoding="async"/>}</div>
    <a className="gallery-room__next" onClick={event=>{if(event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){event.preventDefault();navigateTo(next);}}} href={`#${next}`}>{index+1<galleryProjects.length?(zh?'下一间展厅':'Next gallery'):(zh?'关于我':'About me')} ↓</a>
   </div>
  </article>;

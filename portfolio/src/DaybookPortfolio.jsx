@@ -34,7 +34,7 @@ export function DaybookPortfolio(){
   <PocketPlanet lang={lang} onWork={()=>scrollTo('work')}/>
   <ProjectGallery lang={lang}/>
   <section ref={about} id="about" className="daybook-about" tabIndex={-1}>
-   <div><AboutHeadline zh={zh}/></div>
+   <div><AboutHeadline zh={zh}/><img className="daybook-about__keeper" src="/assets/rooms/about.webp" width="400" height="553" alt="" loading="lazy" decoding="async"/></div>
    <div className="daybook-about__body"><p>{zh?'加州大学圣地亚哥分校数学-计算机专业。我做 AI 产品、互动体验，以及让日常工程工作更可靠的工具。最近最关心的是：怎么检查一个 AI agent 有没有按要求的方式完成任务。':'Math-CS at UC San Diego. I build AI products, interactive experiences, and tools for everyday engineering work. Lately I care most about checking whether an AI agent carried out a task the way it was asked to.'}</p><a href="https://github.com/lishehao" target="_blank" rel="noreferrer">GitHub / lishehao ↗</a><a href={zh?'/resume/zh/':'/resume/'}>{zh?'查看简历 ↗':'Resume ↗'}</a></div>
    <button className="daybook-top" onClick={()=>scrollTo('top')}>{zh?'回到顶部':'Back to top'}</button>
   </section>
