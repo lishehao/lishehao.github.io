@@ -36,7 +36,7 @@ export function createGlassSurface(canvas,url,wake){
    g.drawImage(mask,0,0);tiles.push({tile,left:left*scale,top:top*scale});
   }
  }
- image.onload=()=>{if(!disposed){resize(width,height);wake();}};image.src=url;
+ image.onload=()=>{if(!disposed&&width&&height){resize(width,height);wake();}};image.src=url;
  return {
   resize,
   render(time,reduced=false,mask=null,revision=0){
