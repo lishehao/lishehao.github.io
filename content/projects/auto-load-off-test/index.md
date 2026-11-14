@@ -1,5 +1,5 @@
 ---
-title: "Auto Load-Off Test"
+title: "Auto-Load-off-Test"
 summary: "The Python/Tkinter frequency-response test program I wrote during my 2025 Intalight internship (tag v0.1.0), and its 2026 restructuring, written by a coding agent to my specification."
 tags: ["Python", "Test Automation", "PyVISA", "SCPI", "Tkinter", "Data Logging"]
 weight: 20

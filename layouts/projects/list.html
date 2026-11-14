@@ -1,182 +1,30 @@
 {{- define "main" }}
-
-{{- if not .IsHome | and .Title }}
+{{- $zh := eq site.Language.Lang "zh" }}
 <header class="page-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>{{ .Title }}</h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description | markdownify }}
-  </div>
-  {{- end }}
+  {{- with .Description }}<div class="post-description">{{ . | markdownify }}</div>{{ end }}
 </header>
-{{- end }}
-
-{{- if .Content }}
-<div class="post-content">
-  {{- if not (.Param "disableAnchoredHeadings") }}
-  {{- partial "anchored_headings.html" .Content -}}
-  {{- else }}{{ .Content }}{{ end }}
-</div>
-{{- end }}
-
-{{- $visiblePages := where .RegularPages "Params.hideFromProjects" "!=" true }}
-{{- $paginator := .Paginate $visiblePages }}
-{{- $isZh := eq site.Language.Lang "zh" }}
-{{- $featured := where $paginator.Pages "Params.featured" true }}
-{{- $rest := where $paginator.Pages "Params.featured" "!=" true }}
-{{- $rpgUrl := cond $isZh "/zh/projects/ai-narrative-platform/" "/projects/ai-narrative-platform/" }}
-{{- $autoUrl := cond $isZh "/zh/projects/auto-load-off-test/" "/projects/auto-load-off-test/" }}
-
-<section class="project-system-intro">
-  <article class="project-system-panel project-system-rpg">
-    <div class="project-system-copy">
-      <span>{{ if $isZh }}AI 产品系统{{ else }}AI Product System{{ end }}</span>
-      <h2>Tiny Stories / RPG Demo</h2>
-      <p>{{ if $isZh }}用 coding agent 做的互动故事系统：一个故事前提变成 12 回合的故事，有不能改动故事的顾问、可保存的会话、回放和能看到运行时状态的 reviewer 视图。{{ else }}An interactive story system built with coding agents: one premise becomes a 12-turn story, with an advisor that cannot change the story, persistent sessions, replay, and a reviewer view of the runtime state.{{ end }}</p>
-      <a href="{{ $rpgUrl }}">{{ if $isZh }}阅读 Tiny Stories 项目{{ else }}Read the Tiny Stories case study{{ end }}</a>
-    </div>
-    <div class="project-system-visual">
-      <video
-        src="/videos/rpg-demo-showcase.mp4"
-        poster="/images/rpg-demo-showcase-poster.jpg"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        aria-label="{{ if $isZh }}RPG Demo 成品视频预览{{ else }}RPG Demo product video preview{{ end }}"
-      ></video>
-    </div>
-  </article>
-
-  <article class="project-system-panel project-system-auto">
-    <div class="project-system-copy">
-      <span>{{ if $isZh }}Instrument Automation{{ else }}Instrument Automation{{ end }}</span>
-      <h2>Auto Load-Off Test</h2>
-      <p>{{ if $isZh }}2025 年 Intalight 实习时写的频响测试程序，为替代硬件组常常要手改的测量脚本而写，会读回仪器设定；2026 年由 coding agent 按我的要求重构。{{ else }}The frequency-response test program I wrote at my 2025 Intalight internship, to replace the hand-edited Python scripts behind each measurement setup. It reads instrument settings back. A coding agent restructured it to my specification in 2026.{{ end }}</p>
-      <div class="project-system-links">
-        <a href="{{ $autoUrl }}">{{ if $isZh }}查看项目详情{{ else }}Read project details{{ end }}</a>
+{{- with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
+<section class="rooms" aria-label="{{ if $zh }}项目{{ else }}Projects{{ end }}">
+  {{- range sort site.Data.projects.projects "order" }}
+  <article class="room-card" style="--room:{{ .palette.room | safeCSS }};--room-ink:{{ .palette.ink | safeCSS }}">
+    <div>
+      <div class="room-card__kicker">{{ .kicker }}</div>
+      <h2>{{ .name }}</h2>
+      <p>{{ if $zh }}{{ .site.summary_zh }}{{ else }}{{ .one_liner }}{{ end }}</p>
+      {{- if not (hasPrefix .who_wrote_the_code "TODO") }}<p class="room-card__who">{{ .who_wrote_the_code }}</p>{{ end }}
+      <p class="room-card__stack">{{ delimit .stack " · " }}</p>
+      <div class="room-card__links">
+        {{- with .links.case_study }}<a href="{{ if $zh }}{{ replace . "https://lishehao.github.io/" "/zh/" }}{{ else }}{{ replace . "https://lishehao.github.io" "" }}{{ end }}">{{ if $zh }}项目介绍{{ else }}Case study{{ end }}</a>{{ end }}
+        <a href="{{ .links.repo }}" rel="noopener">GitHub</a>
+        {{- with or .links.live .links.reviewer_demo }}<a href="{{ . }}" rel="noopener">{{ if $zh }}体验{{ else }}Try it{{ end }}</a>{{ end }}
       </div>
     </div>
-    <div class="project-system-pipeline" aria-label="{{ if $isZh }}Auto Load-Off Test 链路图{{ else }}Auto Load-Off Test pipeline diagram{{ end }}">
-      <span>Setup</span>
-      <span>AWG / OSC</span>
-      <span>Read back</span>
-      <span>MAT / TXT / CSV</span>
-    </div>
-  </article>
-</section>
-
-{{- if gt (len $featured) 0 }}
-<section class="project-showcase-grid">
-  {{- range $featured }}
-  <article class="project-feature-card tone-{{ .Params.previewTone | default "sky" }}">
-    <div class="project-feature-visual">
-      <div class="project-feature-browser">
-        <span class="project-preview-dot"></span>
-        <span class="project-preview-dot"></span>
-        <span class="project-preview-dot"></span>
-        <span class="project-preview-url">
-          {{- with .Params.liveUrl }}{{ . }}{{ else }}{{ .Permalink }}{{ end -}}
-        </span>
-      </div>
-      <div class="project-feature-canvas">
-        <div class="project-feature-kicker">
-          {{- if .Params.liveUrl -}}
-            {{- if $isZh }}已上线产品{{ else }}Live Product{{ end -}}
-          {{- else -}}
-            {{- if $isZh }}项目案例{{ else }}Case Study{{ end -}}
-          {{- end -}}
-        </div>
-        <h2>{{ .Params.displayTitle | default .Title }}</h2>
-        <p>{{ .Summary | plainify | htmlUnescape }}</p>
-        {{- with .Params.metrics }}
-        <div class="project-metric-row">
-          {{- range first 4 . }}
-          <span class="project-metric-chip">{{ . }}</span>
-          {{- end }}
-        </div>
-        {{- end }}
-      </div>
-    </div>
-    <div class="project-feature-body">
-      <div class="project-feature-actions">
-        <a class="project-chip" href="{{ .Permalink }}">
-          {{- if $isZh }}查看详情{{ else }}Details{{ end -}}
-        </a>
-        {{- with .Params.liveUrl }}
-        <a class="project-chip project-chip-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
-          {{- if $isZh }}访问首页{{ else }}Live Site{{ end -}}
-        </a>
-        {{- end }}
-      </div>
-    </div>
+    <a class="room-card__shot" href="{{ with .links.case_study }}{{ if $zh }}{{ replace . "https://lishehao.github.io/" "/zh/" }}{{ else }}{{ replace . "https://lishehao.github.io" "" }}{{ end }}{{ else }}{{ or .links.live .links.repo }}{{ end }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ .site.poster }}" alt="" loading="lazy" decoding="async" width="1920" height="1080">
+    </a>
   </article>
   {{- end }}
 </section>
-{{- end }}
-
-{{- if gt (len $rest) 0 }}
-<section class="project-compact-grid">
-{{- range $rest }}
-<article class="post-entry project-post-entry">
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-      <a class="project-card-title" href="{{ .Permalink }}">{{ .Title }}</a>
-      {{- if .Draft }}
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-      {{- end }}
-    </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-  </div>
-  {{- end }}
-  <footer class="entry-footer project-entry-footer">
-    <div class="project-entry-links">
-      <a class="project-chip" href="{{ .Permalink }}">
-        {{- if $isZh }}查看详情{{ else }}Details{{ end -}}
-      </a>
-      {{- with .Params.liveUrl }}
-      <a class="project-chip project-chip-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
-        {{- if $isZh }}访问首页{{ else }}Live Site{{ end -}}
-      </a>
-      {{- end }}
-    </div>
-  </footer>
-</article>
-{{- end }}
-</section>
-{{- end }}
-
-{{- if gt $paginator.TotalPages 1 }}
-<footer class="page-footer">
-  <nav class="pagination">
-    {{- if $paginator.HasPrev }}
-    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-      «&nbsp;{{ i18n "prev_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-      {{- end }}
-    </a>
-    {{- end }}
-    {{- if $paginator.HasNext }}
-    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-      {{- i18n "next_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-      {{- end }}&nbsp;»
-    </a>
-    {{- end }}
-  </nav>
-</footer>
-{{- end }}
-
 {{- end }}

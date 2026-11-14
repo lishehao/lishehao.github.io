@@ -48,8 +48,10 @@ Intalight 是一家眼科影像公司。硬件组做频响测量时，常常要�
 
 ## 代表项目
 
-- **[Tiny Stories / RPG Demo](/zh/projects/ai-narrative-platform/)**：2026 年我用 coding agent 做的互动故事系统。一个故事前提会生成角色、玩家身份和 12 回合的故事；会话存在 SQLite 里，可以回放，reviewer 视图能看到每一回合背后的状态。
-- **[Auto Load-Off Test](/zh/projects/auto-load-off-test/)**：Intalight 实习时写的频响测试程序，以及 2026 年由 coding agent 按我的要求写的重构版。
+- **[Clinic Inbox Checks](/zh/projects/clinic-inbox-checks/)**：一个模拟的诊所收件箱，用来测试 AI agent。检查读的是服务器的记录，不读 agent 自己的汇报。大部分代码由 coding agent 写。
+- **[Auto-Load-off-Test](/zh/projects/auto-load-off-test/)**：Intalight 实习时写的频响测试台程序（tag [v0.1.0](https://github.com/lishehao/auto-load-off-test/tree/v0.1.0)，手写），以及 2026 年由 coding agent 按我的要求写的重构版。
+- **[Tiny Stories](/zh/projects/ai-narrative-platform/)**：用 coding agent 做的互动故事系统。一个故事前提变成 12 回合的故事，每回合可以选选项或自由行动，能存档、回放，还有查看每回合状态的审阅视图。
+- **[batch.](https://lishehao.github.io/batch-lab/)**：一节关于批处理、等待和服务器调度的 3D 互动课。
 
 ## 技能
 

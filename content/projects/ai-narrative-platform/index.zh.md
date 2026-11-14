@@ -1,6 +1,6 @@
 ---
-title: "Tiny Stories / RPG Demo"
-displayTitle: "Tiny Stories / RPG Demo"
+title: "Tiny Stories"
+displayTitle: "Tiny Stories"
 summary: "2026 年我用 coding agent 做的互动故事系统：一个故事前提会变成 12 回合的故事，有玩家身份、不能改动故事的顾问、可持久化的会话、回放和 reviewer 视图。"
 tags: ["FastAPI", "React", "TypeScript", "SQLite", "AI Engineering"]
 weight: 8

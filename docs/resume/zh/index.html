@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李佘昊 - 中文简历</title>
+  <style>
+    :root {
+      --text: #16202f;
+      --muted: #516173;
+      --line: #d6deea;
+      --line-strong: #7f93ad;
+      --accent: #2f5f92;
+      --accent-soft: #edf4fb;
+      --paper: #ffffff;
+      --bg: #eef2f7;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      height: auto;
+      margin: 20px auto;
+      background: var(--paper);
+      padding: 0.33in 0.48in 0.31in;
+      box-shadow: 0 10px 28px rgba(24, 38, 58, 0.08);
+      border-top: 5px solid var(--accent);
+      line-height: 1.42;
+      overflow: visible;
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--line-strong);
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .role {
+      font-size: 10.9px;
+      margin-bottom: 5px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .contact {
+      font-size: 9.9px;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .section {
+      margin-top: 14px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .section-title {
+      display: inline-block;
+      font-size: 10.9px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 8px;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 9px;
+    }
+
+    .entry {
+      margin-bottom: 6px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .entry:last-child { margin-bottom: 0; }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .title {
+      font-size: 10.8px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .meta {
+      font-size: 10px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .sub {
+      font-size: 9.7px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .summary, .skills, .edu-line {
+      font-size: 9.85px;
+    }
+
+    ul {
+      margin: 8px 0 0 15px;
+      padding: 0;
+    }
+
+    li {
+      font-size: 9.7px;
+      margin: 7px 0;
+      color: #223044;
+    }
+
+    .inline-block { margin-bottom: 2px; }
+
+    .skills strong { color: var(--accent); }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px 0;
+      margin-top: 1px;
+    }
+
+    .highlight-item {
+      font-size: 9.9px;
+      color: var(--text);
+    }
+
+    @page {
+      size: Letter;
+      margin: 0;
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        height: auto;
+        margin: 0;
+        padding: 0.33in 0.48in 0.31in;
+        box-shadow: none;
+        border-top: 5px solid var(--accent);
+        overflow: visible;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: auto;
+        height: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 18px;
+        box-shadow: none;
+      }
+      .row { flex-wrap: wrap; }
+      .meta { white-space: normal; }
+      .highlight-grid { grid-template-columns: 1fr; }
+    }
+    @media print{.lang-en{display:none}}
+  </style>
+</head>
+<body>
+  <div class="page" style="position:relative">
+    <div style="position:absolute;right:0.48in;top:0.3in;font-size:10px" class="lang-en"><a href="/resume/" style="color:var(--accent)">English</a></div>
+    <div class="header">
+      <div class="name">李佘昊</div>
+      <div class="role">AI Agent / LLM工程化 / 后端系统</div>
+      <div class="contact">
+        上海，中国 ｜ 17749796137 ｜ <a href="mailto:lishehao@gmail.com">lishehao@gmail.com</a> ｜ <a href="https://github.com/lishehao">github.com/lishehao</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">个人概况</div>
+      <div class="summary">
+        UC San Diego 数学-计算机科学本科，求职方向为 AI Agent / Software Engineer Intern。偏 LLM 工程化与后端系统，关注可运行、可维护的 AI workflow、结构化输出与评测验证。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">实习经历</div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">DMYH｜技术产品经理实习生（Technical Product Manager Intern）</div>
+          <div class="meta">上海，中国（6 月 20 日前远程） ｜ 2026.04 - 2026.09</div>
+        </div>
+        <div class="sub">上海的 AI 创业公司</div>
+        <ul>
+          <li>评测公司的 GUI agent（按书面任务操作 App 的智能体）：阅读它的运行日志，上报结果看起来没问题、日志里却出了错的运行。</li>
+          <li>把公司原有的基础日志评测扩展成自动化 pipeline，通过比较动作前后的两屏来判断每一个动作。</li>
+          <li>用 coding agent 搭建公司的选题工具，根据参考视频和已有的点子给内容运营推荐视频选题。</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">Intalight｜技术产品实习生（Technical Product Intern）</div>
+          <div class="meta">上海，中国 ｜ 2025.07 - 2025.09</div>
+        </div>
+        <div class="sub">眼科影像公司</div>
+        <ul>
+          <li>硬件组做频响测量时常常要手改 Python 脚本；我是为替代这一步而写的 Python/Tkinter 程序的唯一开发者，程序负责任意波形发生器和示波器的配置、单位和结果格式。</li>
+          <li>设完示波器的量程、偏置和信号源的幅度、频率后读回，按仪器报告的值继续，超出容差时提示操作员；用线程、队列和 stop event 协调采集和部分界面状态，测试进行中开始按钮一直禁用。</li>
+          <li>根据操作员的反馈统一 MAT/TXT/CSV 输出和图表；公司测试工程师在仪器上测过之后，系统组的工程师用了它。代码公开在 GitHub（auto-load-off-test 的 tag v0.1.0）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">项目经历</div>
+
+      <div class="entry">
+        <div class="row">
+          <div class="title">Clinic Inbox Checks｜诊所收件箱里的 AI agent 检查</div>
+          <div class="meta">Python / Flask / Playwright ｜ 2026.10</div>
+        </div>
+        <ul>
+          <li>用 coding agent 搭建模拟的诊所病人消息收件箱：AI agent 在真浏览器里按 10 条诊所政策一步一个动作处理消息；检查只读服务器自己的事件日志和存储状态，不读 agent 对自己工作的说法。</li>
+          <li>在 12 个合成任务上跑了 60 次；其中两个任务的分诊保存会悄悄失败、界面照样显示“已保存”，碰到它的 10 次运行，agent 全部重新打开消息又存了一次。</li>
+          <li>比较事先写好的检查和另一个模型按同一份政策生成的检查：60 次里 54 次判断一致，6 次标记全部来自 2 条写错的检查，两种各一条。代码和全部运行日志公开在 GitHub（clinic-inbox-checks）。</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <div class="title">Tiny Stories｜互动故事系统</div>
+          <div class="meta">React / FastAPI / Python / SQLite ｜ 2026</div>
+        </div>
+        <ul>
+          <li>用 coding agent 构建：输入一个故事前提，生成角色、玩家身份和开场，进入 12 回合的故事，可以选选项，也可以自由行动；结局根据这一局的历史生成。</li>
+          <li>前后端使用类型化 API 契约；用 SQLite 存储故事模板、会话和消息记录，会话可保存、可回放；顾问对话和故事状态分开，顾问不能改动故事状态。</li>
+          <li>设计了会话回放和 reviewer 视图，用来查看每一回合背后的运行时状态。</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="section">
+      <div class="section-title">教学经历</div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">UC San Diego｜CSE 003 Tutor</div>
+          <div class="meta">2026 秋季</div>
+        </div>
+        <ul>
+          <li>在 CSE 3（Fluency in Information Technology）负责一组学生的辅导，协助每周的 lab，并在 Gradescope 上批改作业。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">教育背景</div>
+      <div class="entry">
+        <div class="row">
+          <div class="title">加州大学圣地亚哥分校（University of California, San Diego）</div>
+          <div class="meta">预计毕业：2027.06</div>
+        </div>
+        <div class="edu-line">数学-计算机科学（Mathematics-Computer Science） ｜ GPA：3.952 ｜ 8 个学季获 Provost Honors</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">技术栈一览</div>
+      <div class="skills inline-block"><strong>编程语言：</strong>Python / Java / C / C++</div>
+      <div class="skills inline-block"><strong>工具：</strong>FastAPI / React / Tkinter / PostgreSQL（含向量检索）/ SQLite / Git / CI 与测试</div>
+      <div class="skills inline-block"><strong>AI 系统：</strong>tool calling / 结构化输出 / 检索与 embedding / trace 与 replay / LLM-as-judge</div>
+    </div>
+
+  </div>
+</body>
+</html>

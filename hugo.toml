@@ -95,5 +95,5 @@ defaultContentLanguageInSubdir = false
 
   [[languages.zh.menu.main]]
     name = "简历"
-    url = "/resume/"
+    url = "/resume/zh/"
     weight = 30

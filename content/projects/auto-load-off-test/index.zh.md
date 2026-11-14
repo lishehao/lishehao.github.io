@@ -1,5 +1,5 @@
 ---
-title: "自动带载断载测试工具"
+title: "Auto-Load-off-Test"
 summary: "2025 年在 Intalight 实习时写的 Python/Tkinter 频响测试程序（tag v0.1.0），以及 2026 年由 coding agent 按我的要求写的重构版。"
 tags: ["Python", "Test Automation", "PyVISA", "SCPI", "Tkinter", "Data Logging"]
 weight: 20
