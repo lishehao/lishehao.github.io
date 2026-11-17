@@ -15,15 +15,15 @@
 .sky-play__editorial p{position:absolute;top:51%;left:6%;font:italic 400 clamp(20px,2.7vw,42px)/1.1 'Source Serif 4',serif;margin:0}
 .sky-play__editorial aside{position:absolute;right:6%;top:56%;background:#fff0ce;padding:25px 30px;font:italic 400 23px 'Source Serif 4',serif;transform:rotate(-7deg);color:#36213f}
 @media(max-width:700px){.sky-play__editorial h1{top:17%;font-size:15.5vw}.sky-play__editorial p{top:32%;font-size:21px}.sky-play__editorial aside{top:39%;right:5%;font-size:14px;padding:12px}}
-.sky-play__canvas{position:absolute;inset:0;z-index:5;pointer-events:auto;touch-action:pan-y}
+.sky-play__canvas{position:absolute;inset:0;z-index:5;pointer-events:auto;touch-action:pan-y pinch-zoom}
 .sky-play__canvas canvas{display:block;width:100%;height:100%}
 .sky-play__controls{position:absolute;bottom:24px;left:5%;right:5%;z-index:7;display:flex;align-items:center;justify-content:flex-end;gap:16px;color:#12324d}
-.sky-play__controls button{pointer-events:auto;background:#fffaf0;border:0;padding:12px 16px;color:inherit;cursor:pointer;font:500 13px 'Figtree',sans-serif}
+.sky-play__controls :is(a,button){pointer-events:auto;text-decoration:none;background:#fffaf0;border:0;padding:12px 16px;color:inherit;cursor:pointer;font:500 13px 'Figtree',sans-serif}
 .sky-play__controls span{font:500 13px 'Figtree',sans-serif}
 .sky-play__arrival{display:none}
 .sky-play__actions{position:absolute;left:50%;bottom:90px;z-index:7;transform:translateX(-50%);display:flex;gap:8px;max-width:94%;opacity:calc(1 - var(--work-show));pointer-events:auto}
 .sky-play__actions button{min-height:44px;border:1px solid #796c3d;background:#fff8e8;color:#233821;padding:8px 12px;font:500 12px 'Figtree',sans-serif;cursor:pointer;white-space:nowrap;border-radius:8px}
-.sky-play__actions button:hover{background:#f8d466}
+.sky-play__actions button:enabled:hover{background:#f8d466}
 .sky-play__actions button{background:transparent;border:0;border-radius:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:14px;color:#36213f}
 .sky-play__actions button+button{border-left:1px solid #796c3d}
 @media(min-width:701px){.sky-play__editorial h1{transform:scaleY(1.32);transform-origin:top center}}
@@ -36,7 +36,8 @@
 .daybook .daybook-project__copy{background:transparent}
 .sky-play--still + .daybook-work{margin-top:0;padding-top:64px}
 .daybook-header{position:absolute!important;z-index:5;background:transparent!important;border:0!important;width:100%}
-.sky-play__controls,.sky-play__actions{opacity:calc(1 - var(--control-fade,0))}
+.sky-play__controls{opacity:calc(1 - var(--control-fade,0))}
+.sky-play__actions,.sky-play__eraser{opacity:calc(1 - var(--action-fade,0))}
 .daybook .daybook-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
 .daybook .daybook-project{display:flex;flex-direction:column;margin:0;gap:24px}
 .daybook .daybook-project__media{width:100%}
@@ -56,7 +57,7 @@
 
 /* Empty layout boxes must not interrupt the painted scene pointer. */
 .daybook-header,.sky-play__controls,.sky-play__actions{pointer-events:none}
-.daybook-header a,.daybook-header button,.sky-play__controls button,.sky-play__actions button{pointer-events:auto}
+.daybook-header a,.daybook-header button,.sky-play__controls :is(a,button),.sky-play__actions button{pointer-events:auto}
 
 html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:none!important}
 
@@ -66,6 +67,10 @@ html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:non
 .sky-play__eraser:focus-visible{outline:3px solid #12324d;outline-offset:3px}
 @media(max-width:700px),(pointer:coarse){.sky-play__controls .sky-play__eraser{display:inline-flex}.sky-play__controls{justify-content:space-between}}
 .sky-play__canvas[data-erasing='true']{touch-action:none}
+.sky-play [data-scene-action]:disabled{opacity:.65;cursor:wait}
+.sky-play[data-failed] [data-scene-action]{visibility:hidden}
+.sky-play[data-failed]{height:100svh}
+.sky-play[data-failed] + .project-gallery{margin-top:0}
 
 .sky-play__action-short{display:none}
 @media(max-width:700px),(pointer:coarse){.sky-play__action-full{display:none}.sky-play__action-short{display:inline}.sky-play__actions{flex-wrap:nowrap}.sky-play__actions button{padding:8px;min-width:44px;font-size:13px}}
