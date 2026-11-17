@@ -79,6 +79,10 @@ html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:non
 /* Motion refresh (2026-10): when the scene is ready a wave runs through the title (it stays readable
    throughout); on scroll, boot prints lead the rising ground to the work. */
 .sky-play__editorial h1 span{display:inline-block}
+.sky-play__title-baseline{width:0;height:0;overflow:hidden}
+.sky-play__title-canvas{position:absolute;left:0;width:100%;visibility:hidden}
+.sky-play__editorial[data-title-canvas] h1{opacity:0}
+.sky-play__editorial[data-title-canvas] .sky-play__title-canvas{visibility:visible}
 .sky-play__chapter{position:absolute;left:0;right:0;top:75%;height:72svh;z-index:3;transform:translate3d(0,calc(-1 * var(--ground-rise,0svh)),0);opacity:calc(1 - var(--work-show,0));pointer-events:none;color:#36213f}
 @media(max-height:500px){.sky-play__chapter{top:65%}}
 .sky-play__trail{list-style:none;margin:0;padding:0}
@@ -88,7 +92,7 @@ html[data-pocket-cursor='active'],html[data-pocket-cursor='active'] *{cursor:non
 @media(min-width:701px){.sky-play__chapter p{transform:translateY(calc((1 - var(--trail,0)) * 60px - var(--work-show,0) * 50px)) scaleY(1.32);transform-origin:top center}}
 @media(max-width:700px){.sky-play__trail li{width:14px;height:23px;margin-left:-7px}.sky-play__chapter p{font-size:15vw;top:50svh}}
 @media(prefers-reduced-motion:no-preference){
- .sky-play[data-ready] .sky-play__editorial h1 span{animation:pocket-letter-wave 820ms cubic-bezier(.3,1.5,.5,1);animation-delay:calc(var(--i) * 45ms)}
+ .sky-play[data-ready] .sky-play__editorial:not([data-title-settled]) h1 span:not(.sky-play__title-baseline){animation:pocket-letter-wave 820ms cubic-bezier(.3,1.5,.5,1);animation-delay:calc(var(--i) * 45ms)}
 }
 @media(prefers-reduced-motion:reduce){.sky-play__chapter{display:none}}
 @keyframes pocket-letter-wave{0%{transform:none}35%{transform:translateY(-12%) rotate(calc((var(--i) - 6) * -1deg))}65%{transform:translateY(2%)}100%{transform:none}}
