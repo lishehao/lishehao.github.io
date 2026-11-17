@@ -38,7 +38,9 @@ export function PocketPlanet({lang}){
    <canvas className="sky-play__backlight" ref={backlight} aria-hidden="true"/>
    <div className="sky-play__ground"/>
    <div className="sky-play__chapter" aria-hidden="true"><ol className="sky-play__trail">{TRAIL.map((step,i)=><li key={i} style={{'--i':i,'--x':step[0],'--y':step[1],'--turn':step[2]}}/>)}</ol><p>SELECTED WORK</p></div>
-   <div className="sky-play__editorial"><h1 aria-label={TITLE}>{[...TITLE].map((letter,i)=><span key={i} aria-hidden="true" style={{'--i':i}}>{letter===' '?' ':letter}</span>)}</h1></div>
+   <div className="sky-play__editorial"><h1 aria-label={TITLE}>{[...TITLE].map((letter,i)=><span key={i} aria-hidden="true" style={{'--i':i}}>{letter===' '?' ':letter}</span>)}<span className="sky-play__title-baseline" aria-hidden="true"/></h1>
+    <canvas className="sky-play__title-canvas" aria-hidden="true"/>
+   </div>
    <div className="sky-play__canvas" ref={host} aria-hidden="true"/>
    {(!ready||failed)&&<p className="sky-play__loading" role="status">{failed?(lang==='zh'?'场景加载失败，请刷新重试。':'Scene could not load. Please refresh.'):(lang==='zh'?'正在打开口袋星球…':'Opening Pocket Planet…')}</p>}
    <div className="sky-play__actions" aria-label={lang==='zh'?'小蛇互动':'Meet the snake'}>{[['left','向左走','Walk left'],['head','换表情','Change mood'],['body','换装','Change outfit'],['pocket','掏口袋','Pocket surprise'],['right','向右走','Walk right']].map(([action,zh,en])=><button key={action} data-scene-action={action} disabled={!ready||failed} aria-label={lang==='zh'?zh:en} onFocus={()=>setInventory(action==='pocket')} onBlur={()=>setInventory(false)} onMouseEnter={()=>setInventory(action==='pocket')} onMouseLeave={()=>setInventory(false)} onClick={()=>api.current?.act(action)}><span className="sky-play__action-full">{lang==='zh'?zh:en}</span><span className="sky-play__action-short" aria-hidden="true">{{left:'←',right:'→',head:lang==='zh'?'表情':'Mood',body:lang==='zh'?'换装':'Outfit',pocket:lang==='zh'?'口袋':'Pocket'}[action]}</span></button>)}</div>

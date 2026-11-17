@@ -9,6 +9,7 @@ import {throws,stepProps} from './propPhysics.js';
 import {createSceneClock} from './sceneClock.js';
 import {createGlassSurface} from './glassSurface.js';
 import {createEraseSurface} from './eraseSurface.js';
+import {createTitleSurface} from './titleSurface.js';
 import {pickVisible} from './scenePicking.js';
 import {disposeScene} from './disposeScene.js';
 import {createSceneProjection} from './sceneProjection.js';
@@ -110,7 +111,8 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
     const osc=audioContext.createOscillator(),gain=audioContext.createGain();osc.type=kind==='drop'?'sine':'triangle';osc.frequency.setValueAtTime(kind==='drop'?210:kind==='pocket'?720:450,t);osc.frequency.exponentialRampToValueAtTime(kind==='drop'?70:kind==='pocket'?1100:620,t+.12);gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.035,t+.01);gain.gain.exponentialRampToValueAtTime(.0001,t+.18);osc.connect(gain);gain.connect(audioContext.destination);osc.start(t);osc.stop(t+.2);
    }catch{/* Audio is optional; visual interaction remains available. */}
   }
-  const eraser=createEraseSurface(wipe.current,root.current.querySelector('.sky-play__editorial'),root.current,pocketAssets.sky,wake);
+  const title=createTitleSurface(root.current.querySelector('.sky-play__editorial'),wake);
+  const eraser=createEraseSurface(wipe.current,title,root.current,pocketAssets.sky,wake);
   const glass=createGlassSurface(backlight.current,pocketAssets.hiddenSky,wake);
   const paintSky=()=>eraser.reset(),erase=e=>eraser.erase(e);
   let drag=null,fastUntil=0,clock=0,texture,pixels,owners;
@@ -600,7 +602,7 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
   observer.observe(root.current);
   const ro=new ResizeObserver(resize);ro.observe(el);
   let dprMedia;
-  function dprChange(){syncPixelRatio();watchDpr();wake();}
+  function dprChange(){syncPixelRatio();title.invalidate();watchDpr();wake();}
   function watchDpr(){dprMedia?.removeEventListener('change',dprChange);dprMedia=matchMedia(`(resolution: ${devicePixelRatio}dppx)`);dprMedia.addEventListener('change',dprChange);}
   watchDpr();
   window.addEventListener('scroll',updateScroll,{passive:true});window.addEventListener('resize',resize);

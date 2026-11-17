@@ -1,57 +1,136 @@
-import {ERASER_RADIUS,normalizedPoint,skyCover} from './sceneCoordinates.js';
-// Pointer events only enqueue brushes. Paint and encode at most once per frame,
-// with one asynchronous mask encoding in flight and explicit URL ownership.
-export function createEraseSurface(canvas,editorial,root,url,wake){
- const mask=document.createElement('canvas'),small=document.createElement('canvas'),image=new Image();
- const smallContext=small.getContext('2d',{willReadFrequently:true});
- let cssWidth=0,cssHeight=0,lastPoint=null;
- let queue=[],dirty=true,maskDirty=false,encoding=false,disposed=false,objectUrl=null,epoch=0,revision=0;
- function replaceUrl(next){const old=objectUrl;objectUrl=next;editorial.style.maskImage=next?`url("${next}")`:'none';if(old)URL.revokeObjectURL(old);}
- function resize(w,h){
-  w=Math.max(1,Math.round(w));h=Math.max(1,Math.round(h));
-  const dpr=Math.min(globalThis.devicePixelRatio||1,1.25);
-  if(cssWidth===w&&cssHeight===h&&canvas.width===Math.round(w*dpr))return;
-  cssWidth=w;cssHeight=h;epoch++;lastPoint=null;
-  const saved=document.createElement('canvas');saved.width=mask.width;saved.height=mask.height;
-  if(mask.width&&mask.height)saved.getContext('2d').drawImage(mask,0,0);
-  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);mask.width=w;mask.height=h;small.width=Math.max(1,Math.round(w/3));small.height=Math.max(1,Math.round(h/3));
-  for(const [g,c] of [[mask.getContext('2d'),mask],[smallContext,small]]){g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);
-   if(root.dataset.revealed==='true'){g.clearRect(0,0,c.width,c.height);g.drawImage(saved,0,0,c.width,c.height);maskDirty=true;}}
-  dirty=true;revision++;
- }
- function reset(){epoch++;revision++;queue=[];lastPoint=null;for(const [g,c] of [[mask.getContext('2d'),mask],[smallContext,small]]){g.globalCompositeOperation='source-over';g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);}replaceUrl(null);root.dataset.revealed='false';dirty=true;maskDirty=false;wake();}
- function flush(){
-  if(disposed)return;
-  if(queue.length){
-   for(const [g,c] of [[mask.getContext('2d'),mask],[smallContext,small]]){g.globalCompositeOperation='destination-out';
-   for(const p of queue){
-    g.save();g.scale(c.width,c.height);g.translate(p.x,p.y);g.scale(ERASER_RADIUS/cssWidth,ERASER_RADIUS/cssHeight);
-    const brush=g.createRadialGradient(0,0,.55,0,0,1);brush.addColorStop(0,'#000');brush.addColorStop(1,'#0000');g.fillStyle=brush;g.fillRect(-1,-1,2,2);g.restore();
-   }}
-   queue=[];dirty=maskDirty=true;revision++;root.dataset.revealed='true';
+import {ERASER_RADIUS, normalizedPoint, skyCover} from './sceneCoordinates.js';
+
+export function createEraseSurface(canvas, title, root, url, wake) {
+  const mask = document.createElement('canvas');
+  const context = mask.getContext('2d');
+  const image = new Image();
+  let cssWidth = 0;
+  let cssHeight = 0;
+  let lastPoint = null;
+  let queue = [];
+  let dirty = true;
+  let disposed = false;
+  let revision = 0;
+
+  function resize(width, height) {
+    const w = Math.max(1, Math.round(width));
+    const h = Math.max(1, Math.round(height));
+    const dpr = Math.min(globalThis.devicePixelRatio || 1, 1.25);
+    const bufferWidth = Math.round(w * dpr);
+    const bufferHeight = Math.round(h * dpr);
+    if (cssWidth === w && cssHeight === h && canvas.width === bufferWidth && canvas.height === bufferHeight) return;
+
+    canvas.width = bufferWidth;
+    canvas.height = bufferHeight;
+    dirty = true;
+    if (cssWidth === w && cssHeight === h) return;
+
+    const revealed = root.dataset.revealed === 'true';
+    const saved = revealed ? document.createElement('canvas') : null;
+    if (saved) {
+      saved.width = mask.width;
+      saved.height = mask.height;
+      saved.getContext('2d').drawImage(mask, 0, 0);
+    }
+    cssWidth = mask.width = w;
+    cssHeight = mask.height = h;
+    context.globalCompositeOperation = 'source-over';
+    if (saved) context.drawImage(saved, 0, 0, w, h);
+    else {
+      context.fillStyle = '#fff';
+      context.fillRect(0, 0, w, h);
+    }
+    lastPoint = null;
+    title.invalidate();
+    revision++;
   }
-  if(dirty&&image.naturalWidth){
-   const g=canvas.getContext('2d');g.globalCompositeOperation='source-over';g.clearRect(0,0,canvas.width,canvas.height);
-   const cover=skyCover(image.width,image.height,canvas.width,canvas.height);
-   g.drawImage(image,0,0,image.width,cover.sourceHeight,cover.x,cover.y,cover.width,cover.height);
-   g.globalCompositeOperation='destination-in';g.drawImage(mask,0,0,canvas.width,canvas.height);g.globalCompositeOperation='source-over';dirty=false;
+
+  function reset() {
+    queue = [];
+    lastPoint = null;
+    context.globalCompositeOperation = 'source-over';
+    context.fillStyle = '#fff';
+    context.fillRect(0, 0, mask.width, mask.height);
+    title.reset();
+    root.dataset.revealed = 'false';
+    revision++;
+    dirty = true;
+    wake();
   }
-  if(maskDirty&&!encoding){
-   encoding=true;maskDirty=false;const version=epoch;
-   small.toBlob(blob=>{encoding=false;if(disposed)return;if(blob&&version===epoch)replaceUrl(URL.createObjectURL(blob));if(maskDirty)wake();});
+
+  function flush() {
+    if (disposed) return;
+    if (queue.length) {
+      context.globalCompositeOperation = 'destination-out';
+      for (const point of queue) {
+        context.save();
+        context.translate(point.x * cssWidth, point.y * cssHeight);
+        const brush = context.createRadialGradient(0, 0, ERASER_RADIUS * .55, 0, 0, ERASER_RADIUS);
+        brush.addColorStop(0, '#000');
+        brush.addColorStop(1, '#0000');
+        context.fillStyle = brush;
+        context.fillRect(-ERASER_RADIUS, -ERASER_RADIUS, ERASER_RADIUS * 2, ERASER_RADIUS * 2);
+        context.restore();
+      }
+      queue = [];
+      dirty = true;
+      revision++;
+      root.dataset.revealed = 'true';
+    }
+    if (dirty && image.naturalWidth) {
+      const g = canvas.getContext('2d');
+      g.globalCompositeOperation = 'source-over';
+      g.clearRect(0, 0, canvas.width, canvas.height);
+      const cover = skyCover(image.width, image.height, canvas.width, canvas.height);
+      g.drawImage(image, 0, 0, image.width, cover.sourceHeight, cover.x, cover.y, cover.width, cover.height);
+      g.globalCompositeOperation = 'destination-in';
+      g.drawImage(mask, 0, 0, canvas.width, canvas.height);
+      dirty = false;
+    }
+    if (root.dataset.revealed === 'true') title.paint(mask, revision);
   }
- }
- image.onload=()=>{if(!disposed){dirty=true;wake();}};image.src=url;
- return {resize,reset,flush,get mask(){return mask;},get revision(){return revision;},
-  erase(e){
-   const r=canvas.getBoundingClientRect(),p=normalizedPoint(e,r);
-   if(lastPoint){const distance=Math.hypot((p.x-lastPoint.x)*r.width,(p.y-lastPoint.y)*r.height),steps=Math.ceil(distance/(ERASER_RADIUS*.4));
-    for(let i=1;i<steps;i++)queue.push({x:lastPoint.x+(p.x-lastPoint.x)*i/steps,y:lastPoint.y+(p.y-lastPoint.y)*i/steps});
-   }
-   queue.push(p);lastPoint=p;wake();
-  },
-  endStroke(){lastPoint=null;},
-  reveal(){epoch++;revision++;queue=[];lastPoint=null;mask.getContext('2d').clearRect(0,0,mask.width,mask.height);smallContext.clearRect(0,0,small.width,small.height);root.dataset.revealed='true';dirty=maskDirty=true;wake();},
-  dispose(){disposed=true;image.onload=null;if(objectUrl)URL.revokeObjectURL(objectUrl);queue=[];},
- };
+
+  image.onload = () => {
+    if (disposed) return;
+    dirty = true;
+    wake();
+  };
+  image.src = url;
+
+  return {
+    resize, reset, flush,
+    get mask() { return mask; },
+    get revision() { return revision; },
+    erase(event) {
+      const rect = canvas.getBoundingClientRect();
+      const point = normalizedPoint(event, rect);
+      if (lastPoint) {
+        const dx = point.x - lastPoint.x;
+        const dy = point.y - lastPoint.y;
+        const steps = Math.ceil(Math.hypot(dx * rect.width, dy * rect.height) / (ERASER_RADIUS * .4));
+        for (let i = 1; i < steps; i++) {
+          queue.push({x: lastPoint.x + dx * i / steps, y: lastPoint.y + dy * i / steps});
+        }
+      }
+      queue.push(point);
+      lastPoint = point;
+      wake();
+    },
+    endStroke() { lastPoint = null; },
+    reveal() {
+      queue = [];
+      lastPoint = null;
+      context.clearRect(0, 0, mask.width, mask.height);
+      root.dataset.revealed = 'true';
+      revision++;
+      dirty = true;
+      wake();
+    },
+    dispose() {
+      disposed = true;
+      image.onload = null;
+      title.dispose();
+      queue = [];
+    },
+  };
 }
