@@ -4,7 +4,9 @@ import {languageFromPath,languageURL} from '../src/navigation.js';
 import {createVideoPlayback} from '../src/videoPlayback.js';
 import {disposeScene} from '../src/pocket/disposeScene.js';
 class Video extends EventTarget{
- paused=true;requests=[];
+ paused=true;requests=[];source=new EventTarget();loads=0;
+ querySelector(){return this.source;}
+ load(){this.loads++;}
  play(){this.paused=false;this.dispatchEvent(new Event('play'));return new Promise((resolve,reject)=>this.requests.push({resolve,reject}));}
  pause(){if(this.paused)return;this.paused=true;this.dispatchEvent(new Event('pause'));}
 }
@@ -17,13 +19,29 @@ test('an old play rejection cannot overwrite a new play after rapid cancellation
  const video=new Video(),states=[],controller=createVideoPlayback(video,{onState:v=>states.push(v)});
  const old=controller.toggle();await controller.toggle();const current=controller.toggle();
  video.requests[1].resolve();await current;video.requests[0].reject(new Error('old abort'));await old;
- assert.equal(video.paused,false);assert.equal(states.at(-1),true);controller.dispose();assert.equal(video.paused,true);
+ assert.equal(video.paused,false);assert.equal(states.at(-1),'playing');controller.dispose();assert.equal(video.paused,true);
 });
 test('cancelled, offscreen, and disposed play completions stay stopped',async()=>{
  let allowed=true;const video=new Video(),states=[],controller=createVideoPlayback(video,{allowed:()=>allowed,onState:v=>states.push(v)});
  const pending=controller.toggle();allowed=false;controller.cancel();video.requests[0].resolve();await pending;
- assert.equal(video.paused,true);assert.equal(states.at(-1),false);
+ assert.equal(video.paused,true);assert.equal(states.at(-1),'idle');
  allowed=true;const late=controller.toggle();controller.dispose();const length=states.length;video.requests[1].resolve();await late;assert.equal(states.length,length);assert.equal(video.paused,true);
+});
+test('video reports loading and errors, retries, and accepts native playback controls',async()=>{
+ const video=new Video(),states=[],controller=createVideoPlayback(video,{onState:state=>states.push(state)});
+ const first=controller.toggle();
+ assert.equal(states.at(-1),'loading');
+ video.source.dispatchEvent(new Event('error'));
+ assert.equal(states.at(-1),'error');
+ controller.cancel();assert.equal(states.at(-1),'error');
+ const retry=controller.toggle();assert.equal(video.loads,1);video.requests[1].resolve();await retry;
+ video.requests[0].reject(new Error('old request'));await first;
+ assert.equal(states.at(-1),'playing');
+ video.pause();assert.equal(states.at(-1),'idle');
+ const nativePlay=video.play();video.dispatchEvent(new Event('playing'));
+ assert.equal(states.at(-1),'playing');
+ video.requests[2].resolve();await nativePlay;
+ controller.dispose();
 });
 test('scene teardown disposes shared geometry/textures once and nested edge materials too',()=>{
  const scene=new THREE.Scene(),texture=new THREE.Texture(),geometry=new THREE.PlaneGeometry(),material=new THREE.ShaderMaterial({uniforms:{map:{value:texture}}});

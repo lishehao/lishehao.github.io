@@ -76,17 +76,17 @@ button {
   gap: clamp(1.2rem, 3vw, 3rem);
 }
 
-.daybook-header nav button,
+.daybook-header nav a,
 .daybook-language {
   font-size: 0.88rem;
   font-weight: 500;
 }
 
-.daybook-header nav button {
+.daybook-header nav a {
   position: relative;
 }
 
-.daybook-header nav button::after {
+.daybook-header nav a::after {
   content: '';
   position: absolute;
   right: 0;
@@ -99,8 +99,8 @@ button {
   transition: transform 180ms ease;
 }
 
-.daybook-header nav button:hover::after,
-.daybook-header nav button:focus-visible::after {
+.daybook-header nav a:hover::after,
+.daybook-header nav a:focus-visible::after {
   transform: scaleX(1);
   transform-origin: left;
 }
@@ -1302,15 +1302,11 @@ a:focus-visible {
 .daybook-about h2 span{display:inline-block}
 .daybook-about .about-land--word{white-space:nowrap}
 @media (prefers-reduced-motion: no-preference){
-  .daybook-about[data-reveal=ready]:not(.is-entered) h2 span,
-  .daybook-about[data-reveal=ready]:not(.is-entered) .daybook-about__body{opacity:0}
   .daybook-about.is-entered .about-lead{transform-origin:20% 80%;animation:about-wobble 1s cubic-bezier(.3,1.3,.5,1) backwards}
   .daybook-about.is-entered .about-then{animation:about-fade .5s .4s ease-out backwards}
   .daybook-about.is-entered .about-land>span{animation:about-land .55s backwards;animation-delay:calc(.55s + var(--i) * 55ms)}
-  .daybook-about.is-entered .daybook-about__body{animation:about-rise .7s 1.05s cubic-bezier(.16,1,.3,1) backwards}
 }
 @media print{.daybook-about[data-reveal] *{animation:none!important;opacity:1!important}}
 @keyframes about-wobble{0%{opacity:0;transform:translateY(.25em) rotate(-8deg)}50%{opacity:1;transform:translateY(-.03em) rotate(3deg)}75%{transform:rotate(-1.2deg)}100%{opacity:1;transform:none}}
 @keyframes about-fade{from{opacity:0}to{opacity:1}}
 @keyframes about-land{0%{opacity:0;transform:translateY(-.7em);animation-timing-function:cubic-bezier(.5,0,.75,0)}80%{opacity:1;transform:translateY(.03em);animation-timing-function:ease-out}100%{opacity:1;transform:none}}
-@keyframes about-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}

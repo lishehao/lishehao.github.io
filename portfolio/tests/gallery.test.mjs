@@ -7,7 +7,7 @@ import {existsSync} from 'node:fs';
 import {galleryProjects} from '../src/galleryProjects.js';
 
 test('homepage renders every public gallery in both languages, without removed content',async()=>{
- const server=await createServer({root:new URL('../',import.meta.url).pathname,server:{middlewareMode:true},appType:'custom'});
+ const server=await createServer({root:new URL('../',import.meta.url).pathname,optimizeDeps:{noDiscovery:true,include:[]},server:{middlewareMode:true},appType:'custom'});
  const original=globalThis.location;
  try{
   const {DaybookPortfolio}=await server.ssrLoadModule('/src/DaybookPortfolio.jsx');
@@ -15,9 +15,10 @@ test('homepage renders every public gallery in both languages, without removed c
    globalThis.location={pathname};const html=renderToStaticMarkup(React.createElement(DaybookPortfolio));
    assert.equal((html.match(/class="gallery-room"/g)||[]).length,galleryProjects.length);
    assert.equal((html.match(/<video/g)||[]).length,galleryProjects.length);
+   assert.match(html,/href="#work"/);assert.match(html,/href="#about"/);
    assert.doesNotMatch(html,/sky-play__tip|daybook-notes|Things I keep noticing|Hold to drag|Inside: A350/);
    assert.match(html,pathname==='/zh/'?/href="\/resume\/zh\/"/:/href="\/resume\/"/);assert.doesNotMatch(html,/autoplay/i);
-   for(const project of galleryProjects){assert.ok(html.includes(project.title));if(project.caseStudy)assert.ok(html.includes(`${pathname==='/zh/'?'/zh':''}/projects/${project.slug}/`));}
+   for(const project of galleryProjects){assert.ok(html.includes(`href="#project-${project.id}"`));assert.ok(html.includes(`id="project-${project.id}"`));assert.ok(html.includes(`src="${project.poster}"`));if(project.caseStudy)assert.ok(html.includes(`${pathname==='/zh/'?'/zh':''}/projects/${project.slug}/`));}
   }
   for(const project of galleryProjects){
    assert.ok(existsSync(new URL(`../public${project.video}`,import.meta.url)));

@@ -75,6 +75,9 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
   const publishHint=value=>{uiRef.current.hint=value;};
   const publishInventory=setInventory;
   const el=host.current;
+  const actions=root.current.querySelector('.sky-play__actions');
+  const controls=root.current.querySelector('.sky-play__controls');
+  const eraserButton=controls.querySelector('.sky-play__eraser');
   let viewRect=el.getBoundingClientRect();
   const debug=import.meta.env.DEV&&new URLSearchParams(location.search).has('sceneDebug');
   const cursor=createSceneCursor(el,pocketAssets.cursors);
@@ -196,14 +199,19 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    root.current.style.setProperty('--ground-rise',`${ease(.04,.85,progress)*110}svh`);
    root.current.style.setProperty('--ground-fade',String(ease(.5,.86,progress)));
    root.current.style.setProperty('--control-fade',String(ease(.04,.28,progress)));
+   root.current.style.setProperty('--action-fade',String(ease(0,.1,progress)));
    // Boot prints and the chapter title ride on the rising ground.
    root.current.style.setProperty('--trail',String(ease(.12,.5,progress)));
-   for(const panel of root.current.querySelectorAll('.sky-play__actions,.sky-play__controls'))panel.inert=progress>.28;
+   actions.inert=eraserButton.inert=progress>.1;
+   controls.inert=progress>.28;
    root.current.dataset.progress=progress.toFixed(3);
    el.inert=progress>.8;
    el.style.pointerEvents=progress>.8?'none':'auto';
-   if(progress>.1){cursor.hide();publishHint('');publishInventory(false);}
-   if(progress>.1&&drag){release();}
+   if(progress>.1){
+    cursor.hide();publishHint('');publishInventory(false);
+    if(erasingRef.current)setEraseMode(false);
+    else if(drag)release();
+   }
   }
   function wake(){scheduler.wake();}
   function render(now,dt){
@@ -354,20 +362,20 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    return {object,index,kind:index===0?'mascot':'prop',action,key:index===0?action:`prop-${index}`,uv:h.uv};
   }
   function down(e){
-   if(progress>.1||e.button!==0)return;
+   if(progress>.1||e.button!==0||!e.isPrimary||drag)return;
    getPointer(e);
-   const touchErase=e.pointerType==='touch'&&erasingRef.current;
-   const pointedHit=touchErase?null:hit();
+   const shouldErase=erasingRef.current;
+   const pointedHit=shouldErase?null:hit();
    const pointedBinding=bindingFromHit(pointedHit);
    // Never reuse a stale binding after leaving the visible alpha silhouette.
    const binding=pointedBinding;
    const object=binding?.object||null;
    if(debug)root.current.dataset.lastDown=JSON.stringify({kind:binding?.kind||'background',action:binding?.action||'erase',key:binding?.key||'eraser'});
    // Touch keeps vertical page scrolling; horizontal drag is an optional extra.
-   drag={binding,object,x:e.clientX,y:e.clientY,ox:object?.offset.x||0,oy:object?.offset.y||0,id:e.pointerId,moved:false,action:binding?.kind==='mascot'?binding.action:null,erasing:touchErase||!object,event:e,localPoint:pointedHit?object.mesh.worldToLocal(pointedHit.point.clone()):null};
+   drag={binding,object,x:e.clientX,y:e.clientY,ox:object?.offset.x||0,oy:object?.offset.y||0,id:e.pointerId,moved:false,action:binding?.kind==='mascot'?binding.action:null,erasing:shouldErase||!object,event:e,localPoint:pointedHit?object.mesh.worldToLocal(pointedHit.point.clone()):null};
    eraser.endStroke();
    if(e.pointerType!=='touch')cursor.show(binding?'grabbing':'eraser',e,true);
-   if(!object&&(touchErase||e.pointerType!=='touch'))erase(e);
+   if(!object&&(shouldErase||e.pointerType!=='touch'))erase(e);
    if(object&&object===objects[0]){const point=worldPoint(e,object.mesh.position.z);snakeDrag.x=object.mesh.position.x;snakeDrag.y=object.mesh.position.y;snakeDrag.vx=snakeDrag.vy=snakeDrag.angular=0;object.offset.set(0,0);object.velocity.set(0,0);drag.pose=object.mesh.material.uniforms.map.value;target.copy(orbit);drag.snakeGrab=point.sub(object.mesh.position);drag.z=object.mesh.position.z;drag.last={x:object.home.x,y:object.home.y,t:e.timeStamp};}
    if(object&&object!==objects[0]){
     object.pull=null;object.fall={vx:0,vy:0,spin:0};
@@ -376,6 +384,7 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    el.setPointerCapture(e.pointerId);fastUntil=performance.now()+1000;wake();
   }
   function move(e,refresh=false){
+   if(!e.isPrimary||(drag&&drag.id!==e.pointerId))return;
    hoverEvent=e.pointerType==='touch'?null:e;
    getPointer(e);
    if(drag){
@@ -413,6 +422,7 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    if(!refresh)wake();
   }
   function release(e){
+   if(e?.pointerId!==undefined&&(!drag||drag.id!==e.pointerId))return;
    eraser.endStroke();
    if(drag&&el.hasPointerCapture(drag.id))el.releasePointerCapture(drag.id);
    if(drag?.action&&!drag.moved&&e?.type==='pointerup')act(drag.action);
@@ -431,6 +441,15 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
     else leave();
    }else{hoverEvent=null;cursor.hide();}
    wake();
+  }
+  function setEraseMode(value){
+   release();
+   erasingRef.current=value;
+   setErasing(value);
+   el.dataset.erasing=String(value);
+  }
+  function escapeErase(e){
+   if(e.key==='Escape'&&erasingRef.current)setEraseMode(false);
   }
   function leave(e){
    hoverEvent=null;if(drag)return;
@@ -451,7 +470,7 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    }
    if(!el.contains(e.target)&&!drag)cursor.hide();
   }
-  function viewportLeave(e){if(!e.relatedTarget)release();}
+  function viewportLeave(e){if(e.isPrimary&&!e.relatedTarget)release();}
   function visibility(){visible=!document.hidden;scheduler.stop();physicsRemainder=0;if(visible)wake();else release();}
   const loader=new THREE.TextureLoader();
   loader.load(pocketAssets.walk,async sheet=>{
@@ -586,11 +605,11 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
   watchDpr();
   window.addEventListener('scroll',updateScroll,{passive:true});window.addEventListener('resize',resize);
   media.addEventListener('change',reducedChange);document.addEventListener('visibilitychange',visibility);window.addEventListener('blur',release);
-  document.addEventListener('pointermove',controlPointer);document.addEventListener('pointerout',viewportLeave);
-  el.addEventListener('pointerenter',move);el.addEventListener('pointerdown',down);el.addEventListener('pointermove',move);el.addEventListener('pointerup',release);el.addEventListener('pointercancel',release);el.addEventListener('pointerleave',leave);
+  document.addEventListener('pointermove',controlPointer);document.addEventListener('pointerout',viewportLeave);document.addEventListener('keydown',escapeErase);
+  el.addEventListener('pointerenter',move);el.addEventListener('pointerdown',down);el.addEventListener('pointermove',move);el.addEventListener('pointerup',release);el.addEventListener('pointercancel',release);el.addEventListener('lostpointercapture',release);el.addEventListener('pointerleave',leave);
   api.current={
    act,
-   setErasing:value=>{release();erasingRef.current=value;setErasing(value);el.dataset.erasing=String(value);el.style.touchAction=value?'none':'pan-y';},
+   setErasing:setEraseMode,
    reveal:()=>{if(root.current.dataset.revealed==='true')paintSky();else eraser.reveal();},
    reset:()=>{paintSky();walkTo=0;snakeX=0;walkSpeed=0;walkDistance=0;stanceBlend=1;awayFromHome=false;greetingUntil=winkUntil=-1;mood=0;outfit=0;dropIndex=0;objects.forEach(o=>{o.offset.set(0,0);o.velocity.set(0,0);o.held=false;o.released=false;});target.set(0,0);wake();},
    nudge:(i,key)=>{const o=objects[i];if(!o)return;o.held=true;o.offset.x=THREE.MathUtils.clamp(o.offset.x+(key==='ArrowRight'?.2:key==='ArrowLeft'?-.2:0),-2,2);o.offset.y=THREE.MathUtils.clamp(o.offset.y+(key==='ArrowUp'?.2:key==='ArrowDown'?-.2:0),-2,2);wake();},
@@ -628,7 +647,7 @@ export function mountPocketScene({root,host,api,wipe,backlight,uiRef,setInventor
    }};
   reducedChange();resize();
   return()=>{disposed=true;scheduler.dispose();eraser.dispose();glass.dispose();observer.disconnect();ro.disconnect();dprMedia?.removeEventListener('change',dprChange);window.removeEventListener('scroll',updateScroll);window.removeEventListener('resize',resize);if(root.current)delete root.current.__pocketDebug;media.removeEventListener('change',reducedChange);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('blur',release);
-   document.removeEventListener('pointermove',controlPointer);document.removeEventListener('pointerout',viewportLeave);
-   el.removeEventListener('pointerenter',move);el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',release);el.removeEventListener('pointercancel',release);el.removeEventListener('pointerleave',leave);
+   document.removeEventListener('pointermove',controlPointer);document.removeEventListener('pointerout',viewportLeave);document.removeEventListener('keydown',escapeErase);
+   el.removeEventListener('pointerenter',move);el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',release);el.removeEventListener('pointercancel',release);el.removeEventListener('lostpointercapture',release);el.removeEventListener('pointerleave',leave);
    cursor.dispose();audioContext?.close().catch(()=>{});disposeScene(scene,renderer,[shadowTexture,texture,...walkFrames,...snakeFrames,...objects.map(o=>o.ownTexture)]);activeProps.length=0;physics.held=null;objects.length=0;walkFrames.length=0;snakeFrames.length=0;pixels=owners=null;api.current=null;};
 }
